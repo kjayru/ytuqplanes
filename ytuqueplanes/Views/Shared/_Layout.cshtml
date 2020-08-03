@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="es-PE">
+
+<head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="Cache-control" content="public">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y tu que planes</title>
+
+    <script src="//www.google.com/recaptcha/api.js?render="></script>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="limit">
+            <h1 class="header__titulo-principal">
+                <a href="index.php"><img src="assets/images/y-tu-que-planes.png" alt=""></a>
+            </h1>
+            <nav class="header__nav">
+                <ul class="header__nav__lista">
+                    <li class="header__nav__item">
+                        <a href="ofertas.php" class="header__nav__enlace -activo-"><strong>Ofertas</strong></a>
+                    </li>
+                    <li class="header__nav__item">
+                        <a href="destinos.php" class="header__nav__enlace">
+                            <strong>Destinos</strong>
+                        </a>
+                        <ul class="header__nav__interno header__nav__destinos -norte-">
+                            <span class="header__mapa"></span>
+                            <aside class="header__nav__destinos__filtros">
+                                <span class="header__nav__destinos__filtro fnVerDepartamentosPorZona -activo-" data-filtro="-norte-">Norte</span>
+                                <span class="header__nav__destinos__filtro fnVerDepartamentosPorZona" data-filtro="-centro-">Centro</span>
+                                <span class="header__nav__destinos__filtro fnVerDepartamentosPorZona" data-filtro="-sur-">Sur</span>
+                            </aside>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace -default-" data-mapa="amazonas">Amazonas</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="ancash">Ancash</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="apurimac">Apurimac</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="arequipa">Arequipa</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="ayacucho">Ayacucho</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="cajamarca">Cajamarca</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="callao">Callao</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="cusco">Cusco</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="huancavelica">Huancavelica</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="huanuco">Huánuco</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="ica">Ica</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="junin">Junín</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="la-libertad">La Libertad</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="lambayeque">Lambayeque</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="lima">Lima</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="loreto">Loreto</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="madre-de-dios">Madre De Dios</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="moquegua">Moquegua</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="" class="header__nav__destinos__enlace" data-mapa="pasco">Pasco</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="" class="header__nav__destinos__enlace" data-mapa="piura">Piura</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="" class="header__nav__destinos__enlace" data-mapa="puno">Puno</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="" class="header__nav__destinos__enlace" data-mapa="san-martin">San Martín</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="" class="header__nav__destinos__enlace" data-mapa="tacna">Tacna</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="" class="header__nav__destinos__enlace" data-mapa="">Tumbes</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="" class="header__nav__destinos__enlace" data-mapa="">Ucayali</a></li>
+                        </ul>
+                        <span class="header__nav__enlace__bg"></span>
+                        <span class="header__nav__item__ver-mas fnToggleClass"
+                              data-targets=".header__nav__item__ver-mas, .header__nav__destinos"></span>
+                    </li>
+                    <li class="header__nav__item">
+                        <a href="#" class="header__nav__enlace"><strong>Experiencias</strong></a>
+                    </li>
+                    <span class="header__nav__item m--logo">
+                        <a href="index.php"><img src="assets/images/y-tu-que-planes.png" alt=""></a>
+                    </span>
+                    <li class="header__nav__item">
+                        <a href="rutas-cortas.php" class="header__nav__enlace"><strong>Rutas Cortas</strong></a>
+                    </li>
+                    <li class="header__nav__item">
+                        <a href="#" class="header__nav__enlace"><strong>Blog viajero</strong></a>
+                    </li>
+                    <aside id="buscador-principal" class="header__nav__interno buscador-principal -no-focus-">
+                        <form class="buscador-principal__form">
+                            <input type="text" placeholder="Busca en Y tu Qué planes…." class="buscador-principal__input">
+                            <button type="submit" class="buscador-principal__boton">></button>
+                        </form>
+                        <strong class="buscador-principal__subtitulo">Lo más buscado por los viajeros</strong>
+                        <p class="buscador-principal__tags">
+                            <span>Churín</span> <span>Tarapoto</span> <span>Lunahuaná</span> <span>Huaraz</span> <span>Iquitos</span>
+                        </p>
+                    </aside>
+                </ul>
+                <aside class="header__nav__submenu">
+                    <img src="assets/images/lupa.svg" alt="" class="header__nav__submenu__lupa fnToggleClass fnMostrarBuscadorPrincipal" data-targets="#buscador-principal, .header__nav__enlace__bg">
+                    <a href=""
+                       class="header__nav__submenu__enlace header__nav__submenu__boton-noticias fnToggleClass"
+                       data-targets=".header__nav__submenu__menu-noticias"
+                       data-removes=".header__nav__submenu__menu-usuario, .header__nav__lista, .header__nav__submenu__boton-menu">
+                        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                    </a>
+                    <a href=""
+                       class="header__nav__submenu__enlace m--usuario header__nav__submenu__boton-usuario fnToggleClass"
+                       data-targets=".header__nav__submenu__menu-usuario"
+                       data-removes=".header__nav__submenu__menu-noticias, .header__nav__lista, .header__nav__submenu__boton-menu">
+                        <img src="assets/images/usuario.svg" alt="">
+                    </a>
+                    <a href="#" title="Mostra Menú"
+                       class="header__nav__submenu__enlace header__nav__submenu__boton-menu fnToggleClass"
+                       data-targets=".header__nav__submenu__boton-menu, .header__nav__lista"
+                       data-removes=".header__nav__submenu__menu-usuario, .header__nav__submenu__menu-noticias">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                    <div class="header__nav__submenu__menu-usuario">
+                        <span class="bg-cerrar fnToggleClass"
+                              data-removes=".header__nav__submenu__menu-usuario, .header__nav__submenu__menu-noticias">
+                        </span>
+                        <div class="header__nav__submenu__menu-usuario__inset">
+                            <strong class="header__nav__submenu__menu-usuario__nombre">
+                                Bienvenido, <span>Martín</span>
+                            </strong>
+                            <ul class="header__nav__submenu__menu-usuario__lista">
+                                <li class="header__nav__submenu__menu-usuario__item"><a href="#" class="header__nav__submenu__menu-usuario__enlace">Editar perfil</a></li>
+                                <li class="header__nav__submenu__menu-usuario__item"><a href="#" class="header__nav__submenu__menu-usuario__enlace">Cambiar contraseña</a></li>
+                                <li class="header__nav__submenu__menu-usuario__item"><a href="#" class="header__nav__submenu__menu-usuario__enlace m--cerrar-sesion">Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="header__nav__submenu__menu-noticias">
+                        <span class="bg-cerrar fnToggleClass"
+                              data-removes=".header__nav__submenu__menu-usuario, .header__nav__submenu__menu-noticias">
+                        </span>
+                        <div class="header__nav__submenu__menu-noticias__inset">
+                            <p class="header__nav__submenu__menu-noticias__ultima-fecha">Última publicación: 13 de Noviembre 2019</p>
+                            <div class="header__nav__submenu__menu-noticias__bloque m--alertas">
+                                <strong class="header__nav__submenu__menu-noticias__cabecera">
+                                    ALERTAS
+                                    <a href="#">Ver todo ></a>
+                                </strong>
+                                <article class="header__nav__submenu__menu-noticias__articulo">
+                                    <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                    <div class="header__nav__submenu__menu-noticias__articulo___contenido">
+                                        <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
+                                        <header class="header__nav__submenu__menu-noticias__articulo__header">
+                                            <h1 class="header__nav__submenu__menu-noticias__articulo__titulo">Todo sobre el COVID 19</h1>
+                                        </header>
+                                        <a href="#" class="header__nav__submenu__menu-noticias__articulo__enlace">Ver más ></a>
+                                    </div>
+                                </article>
+                                <article class="header__nav__submenu__menu-noticias__articulo">
+                                    <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                    <div class="header__nav__submenu__menu-noticias__articulo___contenido">
+                                        <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
+                                        <header class="header__nav__submenu__menu-noticias__articulo__header">
+                                            <h1 class="header__nav__submenu__menu-noticias__articulo__titulo">Todo sobre el COVID 19</h1>
+                                        </header>
+                                        <a href="#" class="header__nav__submenu__menu-noticias__articulo__enlace">Ver más ></a>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="header__nav__submenu__menu-noticias__bloque m--noticias">
+                                <strong class="header__nav__submenu__menu-noticias__cabecera">
+                                    NOTICIAS
+                                    <a href="#">Ver todo ></a>
+                                </strong>
+                                <article class="header__nav__submenu__menu-noticias__articulo">
+                                    <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                    <div class="header__nav__submenu__menu-noticias__articulo___contenido">
+                                        <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
+                                        <header class="header__nav__submenu__menu-noticias__articulo__header">
+                                            <strong class="header__nav__submenu__menu-noticias__articulo__fecha">Hace 2 semanas</strong>
+                                            <h1 class="header__nav__submenu__menu-noticias__articulo__titulo">Todo sobre el COVID 19</h1>
+                                        </header>
+                                        <a href="#" class="header__nav__submenu__menu-noticias__articulo__enlace">Ver más ></a>
+                                    </div>
+                                </article>
+                                <article class="header__nav__submenu__menu-noticias__articulo">
+                                    <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                    <div class="header__nav__submenu__menu-noticias__articulo___contenido">
+                                        <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
+                                        <header class="header__nav__submenu__menu-noticias__articulo__header">
+                                            <strong class="header__nav__submenu__menu-noticias__articulo__fecha">Hace 2 semanas</strong>
+                                            <h1 class="header__nav__submenu__menu-noticias__articulo__titulo">Todo sobre el COVID 19</h1>
+                                        </header>
+                                        <a href="#" class="header__nav__submenu__menu-noticias__articulo__enlace">Ver más ></a>
+                                    </div>
+                                </article>
+                                <article class="header__nav__submenu__menu-noticias__articulo">
+                                    <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                    <div class="header__nav__submenu__menu-noticias__articulo___contenido">
+                                        <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
+                                        <header class="header__nav__submenu__menu-noticias__articulo__header">
+                                            <strong class="header__nav__submenu__menu-noticias__articulo__fecha">Hace 2 semanas</strong>
+                                            <h1 class="header__nav__submenu__menu-noticias__articulo__titulo">Todo sobre el COVID 19</h1>
+                                        </header>
+                                        <a href="#" class="header__nav__submenu__menu-noticias__articulo__enlace">Ver más ></a>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="header__nav__enlace__bg"></span>
+                </aside>
+            </nav>
+        </div>
+    </header>
+
+    @RenderBody()
+
+
+    <footer class="footer">
+        <div class="limit footer__contenido">
+            <div class="footer__bloque m--enlaces">
+                <div class="footer__titulo">Información para tu viaje</div>
+                <ul class="footer__lista">
+                    <li><a href="" class="footer__lista__enlace">Lista de Feriados 2020</a></li>
+                    <li><a href="" class="footer__lista__enlace">Clima y Pronóstico del Tiempo</a></li>
+                    <li><a href="" class="footer__lista__enlace">Áreas Naturales Protegidas</a></li>
+                </ul>
+            </div>
+            <div class="footer__bloque m--botones">
+                <div class="footer__titulo">Asistencia al viajero 24 horas</div>
+                <a href="#" class="boton m--mediano m--235 m--wsp"><strong><i class="fa fa-whatsapp" aria-hidden="true"></i>944492314</strong></a>
+                <img src="/assets/images/i-peru-gris.png" alt="" class="footer__peru">
+                <div class="footer__titulo m--top">Recibe nuevas ofertas y novedades</div>
+                <a href="#" class="boton m--mediano m--235 m--morado"><strong>Suscribirme</strong></a>
+            </div>
+            <div class="footer__bloque m--redes">
+                <div class="footer__titulo">Siguenos</div>
+                <div class="footer__redes-wrap">
+                    <div class="footer__redes">
+                        <a href="#" class="footer__redes__enlace m--facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="footer__redes__enlace m--twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" class="footer__redes__enlace m--instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" class="footer__redes__enlace m--youtube"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                        <a href="#" class="footer__redes__enlace m--spotify"><i class="fa fa-spotify" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="footer__logos">
+                        <img src="/assets/images/promperu.png" alt="" width="66" height="29" />
+                        <img src="/assets/images/logo-ministerio.png" alt="" width="152" height="31">
+                        <div class="footer__logos__separador"></div>
+                        <img src="/assets/images/perumarca.png" alt="" width="44" height="29">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="footer__separador">
+        <div class="limit footer__inferior">
+            <ul class="footer__inferior__lista">
+                <li><a href="#" class="footer__inferior__enlace">Mapa de sitio</a></li>
+                <li><a href="#" class="footer__inferior__enlace fnToggleClass" data-targets="#aviso-legal">Aviso legal</a></li>
+                <li><a href="#" class="footer__inferior__enlace">Términos y Condiciones</a></li>
+            </ul>
+            <p class="footer__inferior__copyright">Todos los derechos reservados, <span>ytuqueplanes 2020</span></p>
+        </div>
+    </footer>
+
+    <div id="aviso-legal" class="box">
+        <div class="box__inset">
+            <span class="bg-cerrar fnToggleClass" data-removes="#aviso-legal"></span>
+            <div class="box__contenido">
+                <img src="/assets/images/y-tu-que-planes-gris.svg" alt="" class="box__logo">
+                <h6 class="box__titulo">Ahora te vas de ytuqueplanes.com</h6>
+                <p>
+                    ytuqueplanes no controla ni es responsable de la disponibilidad o el contenido de sitios web de terceros vinculados.
+                </p>
+                <p>
+                    Tenga en cuenta que su uso del sitio web vinculado de dicho tercero está sujeto a su política de privacidad y términos de uso, que pueden diferir de los de ytuqueplanes.
+                </p>
+                <p>
+                    Como tal, le recomendamos que lea detenidamente la política de <a href="">privacidad y los términos</a> de uso del tercero.
+                </p>
+                <div class="boton-contenedor">
+                    <a href="#" class="boton m--verde m--grande"><strong>Continuar</strong></a>
+                </div>
+                <img src="/assets/images/box-cerrar.svg" alt="" class="box__cerrar fnToggleClass" data-removes="#aviso-legal" />
+            </div>
+        </div>
+    </div>
+
+    <span class="header__mapa__fuente"></span>
+
+    <script src="/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+    <script src="/assets/js/site.js"></script>
+
+
+
+</body>
+</html>

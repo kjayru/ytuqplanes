@@ -1,0 +1,944 @@
+.header
+	position fixed
+	top 0
+	left 0
+	width 100%
+	padding-top 33px
+	z-index 10
+
+	&__titulo-principal
+		display none
+
+	&__mapa
+		width 197px
+		height 153px
+		position absolute
+		overflow hidden
+		top 57px
+		left 45px
+
+		svg
+			position absolute
+			transition all ease .25s
+			&.-activo-, &.-default-
+				fill #3bada1
+
+		&__fuente
+			display none
+
+		&__tumbes
+			top 39.5px
+			left 7.6px
+			fill #F7D54A
+
+		&__piura
+			top 44.9px
+			left 4.5px
+			fill #FBC53B
+
+		&__lambayeque
+			top 55.2px
+			left 16px
+			fill #F7A733
+
+		&__la-libertad
+			top 64px
+			left 30.8px
+			fill #FBC53B
+
+		&__cajamarca
+			top 46.3px
+			left 31.5px
+			fill #F7D54A
+
+		&__amazonas
+			top 33.1px
+			left 40px
+			fill #FBC53B
+
+		&__san-martin
+			top 51px
+			left 53.7px
+			fill #F7A733
+
+		&__loreto
+			top 7px
+			left 50.2px
+			fill #F7D54A
+
+		&__ancash
+			top 72.1px
+			left 47.2px
+			 fill #F7D54A
+
+		&__lima
+			top 88.8px
+			left 60.7px
+			fill #F7A733
+
+		&__huanuco
+			top 73.1px
+			left 64.8px
+			fill #F7A733
+
+		&__pasco
+			top 81.3px
+			left 76.2px
+			fill #F7D54A
+
+		&__junin
+			top 89.2px
+			left 80.3px
+			fill #FBC53B
+
+		&__ucayali
+			top 62.5px
+			left 82.5px
+			fill #FBC53B
+
+		&__ica
+			top 108.4px
+			left 86.8px
+			fill #FBC53B
+
+		&__huancavelica
+			top 99.7px
+			left 93.6px
+			fill #F7D54A
+
+		&__ayacucho
+			top 100.8px
+			left 104.8px
+			fill #F7A733
+
+		&__apurimac
+			top 109px
+			left 120.2px
+			fill #FBC53B
+
+		&__cusco
+			top 91px
+			left 118px
+			fill #F7D54A
+
+		&__madre-de-dios
+			top 79.7px
+			left 137px
+			fill #F7A733
+
+		&__arequipa
+			top 118px
+			left 108.3px
+			fill #F7D54A
+
+		&__puno
+			top 102.3px
+			left 156.7px
+			fill #FBC53B
+
+		&__moquegua
+			top 126.9px
+			left 155.8px
+			fill #F7A733
+
+		&__tacna
+			top 133.4px
+			left 162.5px
+			fill #FBC53B
+
+	&__nav
+		height 44px
+		border-radius 22px
+		background-color verde
+		padding-right 15px
+		box-shadow 0 2px 8px 0 rgba(215, 215, 215, 0.5)
+		position relative
+
+		display flex
+		align-items center
+		justify-content space-between
+
+		&__lista
+			height 100%
+			flex 1
+			display flex
+			flex 0 1 900px
+
+		&__item
+			flex 1
+			display flex
+
+			&:first-child
+				border-top-left-radius 22px
+				border-bottom-left-radius 22px
+				overflow hidden
+
+			&.m--logo
+				position relative
+				z-index 2
+				flex 0 1 100px
+				align-items center
+				justify-content center
+				img
+					flex none
+					max-width 75px
+					height 75px
+
+		&__enlace
+			color #fff
+			font-size 0.875rem
+			position relative
+			transition all ease .25s
+
+			flex 1
+			display flex
+			align-items center
+			justify-content center
+
+			strong
+				animation menuItemOut ease .35s forwards
+
+			&:hover, &.-activo-
+				color verde
+				background-color #fff
+				strong
+					animation menuItemIn ease .35s forwards
+			@media (min-width 811px)
+				&:hover ~ .header__nav__enlace__bg
+					animation menuBg ease .35s forwards
+				&:hover ~ .header__nav__destinos
+					display flex
+					animation navInternoIn ease .5s forwards
+					.header__nav__destinos__item
+						animation navInternoItemIn ease-out .25s forwards
+						&:nth-child(1)
+							animation-delay .15s
+						&:nth-child(2)
+							animation-delay .16s
+						&:nth-child(3)
+							animation-delay .17s
+						&:nth-child(4)
+							animation-delay .18s
+						&:nth-child(5)
+							animation-delay .19s
+						&:nth-child(6)
+							animation-delay .20s
+						&:nth-child(7)
+							animation-delay .21s
+						&:nth-child(8)
+							animation-delay .22s
+						&:nth-child(8)
+							animation-delay .23s
+						&:nth-child(7)
+							animation-delay .24s
+						&:nth-child(8)
+							animation-delay .25s
+						&:nth-child(9)
+							animation-delay .26s
+						&:nth-child(10)
+							animation-delay .27s
+						&:nth-child(11)
+							animation-delay .28s
+						&:nth-child(12)
+							animation-delay .29s
+						&:nth-child(13)
+							animation-delay .30s
+						&:nth-child(14)
+							animation-delay .31s
+						&:nth-child(15)
+							animation-delay .32s
+						&:nth-child(16)
+							animation-delay .33s
+						&:nth-child(17)
+							animation-delay .34s
+						&:nth-child(18)
+							animation-delay .35s
+						&:nth-child(19)
+							animation-delay .36s
+						&:nth-child(20)
+							animation-delay .37s
+						&:nth-child(21)
+							animation-delay .38s
+						&:nth-child(22)
+							animation-delay .39s
+						&:nth-child(23)
+							animation-delay .40s
+						&:nth-child(24)
+							animation-delay .41s
+						&:nth-child(25)
+							animation-delay .42s
+						&:nth-child(26)
+							animation-delay .43s
+
+			&__bg
+				opacity 0
+				position fixed
+				z-index -2
+				top -100%
+				left 0
+				width 100%
+				height 100%
+				background-color rgba(0,0,0,.3)
+				opacity 0
+				animation menuBgOut ease .25s forwards
+
+				&.-activo-
+					animation menuBg ease .35s forwards
+
+		&__interno
+			display none
+			position absolute
+			top 44px
+			left 0
+			background rgba(255,255,255,.96)
+			width calc(100% - 80px)
+			left 40px
+			border-bottom-left-radius 28px
+			border-bottom-right-radius 28px
+
+		&__submenu
+			flex 0 0 120px
+
+			display flex
+			justify-content space-around
+
+			&__enlace
+				display block
+				width 32px
+				height 32px
+				border-radius 50%
+				color #fff
+				overflow hidden
+
+				transition all ease .25s
+
+				display flex
+				align-items center
+				justify-content center
+
+				&:hover
+					background-color #fff
+					color verde
+
+				// &.m--lupa:hover
+				// 	background none
+
+				&.m--usuario
+					color verde
+					font-size 2rem
+					align-self flex-end
+
+					&:hover, &.-activo-
+						background-color crema
+
+			&__lupa
+				cursor pointer
+				margin-right 5px
+
+			&__boton-menu
+				display none
+				border 1px solid #fff
+				// display flex
+				align-items center
+				justify-content center
+				flex-direction column
+				span
+					height 1px
+					width 15px
+					background-color #fff
+					transition all ease .25s
+					&:nth-child(2)
+						margin 4px 0
+				&:hover
+					background none
+				&.-activo-
+					span
+						&:nth-child(1)
+							transform translate(0,5px) rotate(45deg)
+						&:nth-child(2)
+							opacity 0
+						&:nth-child(3)
+							transform translate(0,-5px) rotate(-45deg)
+
+			@media (min-width 811px)
+				&__boton-noticias
+					&:hover ~ .header__nav__submenu__menu-noticias
+						display block
+						animation navInternoIn ease .25s .1s forwards
+					&:hover ~ .header__nav__enlace__bg
+						animation menuBg ease .25s forwards
+
+				&__boton-usuario
+					&:hover ~ .header__nav__submenu__menu-usuario
+						display block
+						animation navInternoIn ease .25s .1s forwards
+					&:hover ~ .header__nav__enlace__bg
+						animation menuBg ease .25s forwards
+
+			&__menu-usuario
+				position absolute
+				top 36px
+				right 15px
+				width 150px
+				display none
+				// background-color red
+				padding-top 18px
+				opacity 0
+
+				&:before
+					content ''
+					display block
+					width 20px
+					height 20px
+					background-color #fff
+					position absolute
+					top 10px
+					right 12px
+					transform rotate(45deg)
+
+				&__inset
+					padding 10px
+					background-color #fff
+					box-shadow 0 0 9px 0 rgba(0, 0, 0, 0.15)
+					border-radius 4px
+					position relative
+					z-index 1
+
+				&__nombre
+					display block
+					font-size 0.7rem
+					font-family f-news
+					padding 0 3px 5px
+					border-bottom 1px solid rgba(0,0,0,.1)
+					color #787878
+					span
+						font-family f-bold
+
+				&__lista
+					padding 5px 3px 0
+				&__enlace
+					font-size 0.6rem
+					color #bbb
+					line-height 1
+					font-family f-news
+					&:hover
+						color celeste
+					&.m--cerrar-sesion
+						font-size 0.65rem
+						color celeste
+						text-decoration underline
+						&:hover
+							text-decoration none
+
+				@media (min-width: 811px)
+					&:hover
+						display block
+						opacity 1
+						~ .header__nav__enlace__bg
+							animation menuBg ease .25s forwards
+
+			&__menu-noticias
+				position absolute
+				top 36px
+				right 15px
+				width 500px
+				display none
+				padding-top 18px
+				font-size 0.7rem
+				opacity 0
+
+				@media (min-width: 811px)
+					&:hover
+						opacity 1
+						display block
+						~ .header__nav__enlace__bg
+							animation menuBg ease .25s forwards
+
+				&:before
+					content ''
+					display block
+					width 20px
+					height 20px
+					background-color #fff
+					position absolute
+					top 10px
+					right 60px
+					transform rotate(45deg)
+
+				&__inset
+					padding 15px
+					background-color #fff
+					box-shadow 0 0 9px 0 rgba(0, 0, 0, 0.15)
+					border-radius 4px
+					position relative
+					z-index 1
+
+					display flex
+					flex-wrap wrap
+
+				&__ultima-fecha
+					color #787878
+					padding-bottom 10px
+					width 100%
+					font-size 0.65rem
+
+				&__bloque
+					flex 1
+					&.m--alertas
+						padding-right 15px
+						border-right 1px solid #F7F7F7
+					&.m--noticias
+						padding-left 15px
+
+				&__cabecera
+					display flex
+					align-items center
+					padding-bottom 5px
+					a
+						margin-left auto
+						color celeste
+						text-decoration underline
+						font-size 0.6rem
+						&:hover
+							text-decoration none
+
+				&__articulo
+					font-size 0.55rem
+					color #787878
+					padding 5px 0
+
+					display flex
+					align-items center
+
+					&___contenido
+						padding-left 10px
+
+					&__nuevo
+						display inline-block
+						background-color crema
+						color #fff
+						padding 3px 7px 2px
+						border-radius 4px
+
+					&__header
+						padding 5px 0 3px
+					&__titulo
+						font-size 0.65rem
+
+					&__enlace
+						color celeste
+						&:hover
+							text-decoration underline
+
+		@media (max-width 960px)
+			&__destinos
+				background-position 20px center
+				padding 25px 20px 25px 220px
+
+		@media (max-width 810px)
+
+			&__item
+				position relative
+				flex-direction column
+				flex none
+				order 1
+
+				&__ver-mas
+					position absolute
+					top 0
+					right 15px
+					width 50px
+					height 60px
+					background url('../images/flecha.svg') no-repeat center center
+					transition transform ease .25s
+					&.-activo-
+						transform rotate(180deg)
+
+			&__enlace
+				min-height 60px
+
+				&:hover, &.-activo-
+					color amarillo
+					background none
+
+			&__destinos
+				width 100%
+				position static
+				background none
+				padding 0 0 10px
+				text-align center
+
+				&__filtros
+					display block
+					padding-bottom 10px
+
+				&__filtro
+					display inline-block
+					color #fff
+					font-size 1rem
+					line-height 1
+					color verde
+					background-color #fff
+					padding 10px 17px 8px
+					border-radius 8px
+					cursor pointer
+					margin 0 4px
+
+					&.-activo-
+						background-color crema
+						color #fff
+
+				&__item
+					display none
+
+				&__enlace
+					display block
+					font-size 0.8rem
+					line-height 1
+					padding 12px 0
+					color #fff
+
+				&.-activo-
+					display block
+				&.-norte-
+					.header__nav__destinos__item[data-filtro="norte"]
+						display block
+				&.-centro-
+					.header__nav__destinos__item[data-filtro="centro"]
+						display block
+				&.-sur-
+					.header__nav__destinos__item[data-filtro="sur"]
+						display block
+
+			&__submenu
+				&__lupa
+					display none
+				&__boton-menu
+					display flex
+
+				&__menu-usuario
+				&__menu-noticias
+					position fixed
+					width 100%
+					height calc(100% - 50px)
+					right 0
+					padding-top 0
+					top 50px
+					overflow auto
+					&__inset
+						border-radius 0
+						box-shadow 0 5px 5px rgba(0,0,0,0.2)
+					&:before
+						display none
+					&.-activo-
+						display block
+						opacity 1
+						~ .header__nav__enlace__bg
+							animation menuBg ease .25s forwards
+				&__menu-usuario
+					&__nombre
+						padding 8px 0
+						font-size 0.8rem
+					&__item
+						padding 4.5px 0
+					&__enlace
+						font-size 0.75rem
+						&.m--cerrar-sesion
+							font-size 0.75rem
+
+		@media (max-width 500px)
+
+			&__submenu
+				&__menu-noticias
+					&__inset
+						flex-direction column
+					&__bloque
+						&.m--alertas
+							padding 0 0 10px
+							border-right 0
+							border-bottom 1px solid #f7f7f7
+						&.m--noticias
+							padding 15px 0 0
+
+		@media (min-width 811px)
+			&__destinos
+				max-height 300px
+				padding 25px 20px 25px 280px
+				background-color rgba(255,255,255,.96)
+				opacity 0
+
+				// display flex
+				flex-flow column wrap
+
+				&__filtros
+					display none
+
+				&__item
+					opacity 0
+
+					flex 0 0 44px
+					display flex
+					align-items center
+
+				&__enlace
+					font-size 0.75rem
+					font-family f-book
+					color #787878
+					line-height 1
+					padding 7px 10px 5px
+					border-radius 15px
+					transition all ease .25s
+					&:hover, &.-activo-, &.-default-
+						color #fff
+						background-color verde
+						font-family f-medium
+
+				&:hover
+					display flex
+					opacity 1
+					.header__nav__destinos__item
+						opacity 1
+						transform translate(0,0)
+					~ .header__nav__enlace__bg
+						animation menuBg ease .25s forwards
+
+	@media (max-width 810px)
+		padding 0
+		position fixed
+
+		.limit
+			padding 0
+
+		&__mapa
+			display none
+
+		&__titulo-principal
+			display block
+			position absolute
+			top 0
+			left 0
+			z-index 2
+			padding-left 15px
+			img
+				width 50px
+
+		&__nav
+			border-radius 0
+			height 50px
+			&__lista
+				display none
+				background-color rgba(59, 173, 161, 0.9)
+				position fixed
+				top 50px
+				left 0
+				width 100%
+				height calc(100% - 50px)
+				overflow-y auto
+
+				flex-direction column
+				&.-activo-
+					display flex
+					opacity 0
+					animation navInternoIn ease .25s .1s forwards
+			&__item
+				padding 0 15px
+				min-height 50px
+				&:first-child
+					border-radius 0
+				&:last-child
+					.header__nav__enlace
+						border-bottom 0
+				&.m--logo
+					display none
+			&__enlace
+				padding 0 15px
+				border-top 1px solid rgba(255,255,255,.7)
+				text-transform uppercase
+				letter-spacing 0.5px
+				justify-content flex-start
+
+			&__submenu
+				margin-left auto
+
+@keyframes menuBg
+	0%
+		top -100%
+		opacity 0
+	1%
+		top 0
+		opacity 0
+	100%
+		top 0
+		opacity 1
+@keyframes menuBgOut
+	0%
+		top 0
+		opacity 1
+	99%
+		top 0
+		opacity 0
+	100%
+		top -100%
+		opacity 0
+@keyframes menuItemIn
+	0%
+		transform translate(0,0)
+		opacity 1
+	40%
+		transform translate(0,-10px)
+		opacity 0
+	41%
+		transform translate(0,10px)
+		opacity 0
+	100%
+		transform translate(0,0)
+		opacity 1
+@keyframes menuItemOut
+	0%
+		transform translate(0,0)
+		opacity 1
+	40%
+		transform translate(0,10px)
+		opacity 0
+	41%
+		transform translate(0,-10px)
+		opacity 0
+	100%
+		transform translate(0,0)
+		opacity 1
+
+.buscador
+
+	&-principal
+		padding 40px 20px
+		opacity 0
+
+		&__form
+			width 100%
+			max-width 540px
+			height 55px
+			margin auto
+			position relative
+
+		&__input
+			width 100%
+			height 100%
+			border-radius 24px
+			background-color #edefee
+			border 1px solid #edefee
+			padding 0 25px
+			font-family f-bbold
+
+			transition border-color ease .25s
+
+			&:focus
+				border-color verde
+
+		&__boton
+			position absolute
+			top 0
+			right 0
+			height 100%
+			width 50px
+			border 0
+			background none
+			color morado
+			font-size 1.25rem
+			cursor pointer
+
+		&__subtitulo
+			font-size 1.125rem
+			line-height 1
+			text-align center
+			display block
+			color morado
+			font-weight bold
+			padding 25px 0 10px
+
+		&__tags
+			font-size 0.875rem
+			color #fff
+			max-width 560px
+			margin auto
+			text-align center
+			line-height 1
+			border-top 1px solid #d8d8d8
+			padding-top 15px
+
+			span
+				padding 9px 15px 7px
+				margin 4px
+				border-radius 15px
+				display inline-block
+				&:nth-child(1n)
+					background-color crema
+				&:nth-child(2n)
+					background-color verdeHoja
+				&:nth-child(3n)
+					background-color naranja
+				&:nth-child(4n)
+					background-color morado
+				&:nth-child(5n)
+					background-color rojo
+				&:nth-child(6n)
+					background-color verde
+				&:nth-child(7n)
+					background-color amarillo
+
+		&.-activo-
+			display block
+			animation navInternoIn ease-out .25s .1s forwards
+
+	@media (max-width 810px)
+
+		&-principal
+			position static
+			display block
+			opacity 1
+			width 100%
+			border-radius 0
+			background none
+			padding 20px 15px
+
+			&__form
+			&__input
+			&__boton
+				transition all ease .25s
+
+			&.-no-focus-
+
+				.buscador-principal
+					&__form
+						height 38px
+
+					&__input
+						background none
+						font-size 0
+
+					&__boton
+						height 38px
+						background transparent url('../images/lupa.svg') no-repeat center center
+						font-size 0
+
+					&__subtitulo, &__tags
+						display none
+
+			&__subtitulo
+				color #fff
+				font-weight normal
+
+			&__tags
+				text-align left
+
+@keyframes navInternoIn
+	0%
+		opacity 0
+	100%
+		opacity 1
+@keyframes navInternoItemIn
+	0%
+		opacity 0
+		transform translate(0,10px)
+	100%
+		opacity 1
+		transform translate(0,0)

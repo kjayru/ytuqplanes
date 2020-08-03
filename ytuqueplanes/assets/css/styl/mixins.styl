@@ -1,0 +1,28 @@
+box()
+	box-sizing border-box
+relative()
+	position relative
+font-regular()
+	font-weight 400
+italic()
+	font-style italic
+centrado()
+	position absolute
+	top 50%
+	left 50%
+	transform translate(-50%,-50%)
+hnos()
+	display	inline-block
+	vertical-align middle
+bgCentrado()
+	background-repeat no-repeat
+	background-position center center
+	background-size cover
+ico(x1, y1, x2, y2, w, h, cursor = false)
+	background-position x1 y1
+	width w
+	height h
+	if cursor
+		cursor pointer
+	&:hover
+		background-position x2 y2

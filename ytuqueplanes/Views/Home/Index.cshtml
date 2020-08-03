@@ -1,0 +1,189 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Inicio";
+
+}
+
+
+
+<section class="all swiper-container sliders fnSliderHome">
+    <div class="swiper-wrapper">
+
+        @foreach (ytuqueplanes.Models.Slide slide in Model.sliders)
+        {
+
+
+
+            <article class="swiper-slide slider" style="background-image: url('/assets/images/@slide.imagen_lg');">
+                <div class="limit">
+                    <div class="slider__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Amazonas</div>
+                    <h2 class="slider__titulo">@slide.titulo</h2>
+                    <p class="slider__contenido">@slide.descripcion</p>
+                    <a href="" title="" class="boton m--grande m--verde"><strong>Más información</strong></a>
+                </div>
+            </article>
+        }
+    </div>
+
+    <div class="limit">
+        <div class="sliders__nav">
+            <div class="sliders__nav__items">
+                @{
+
+                    int i = 1;
+                    foreach (ytuqueplanes.Models.Slide slide in Model.sliders)
+                    {
+                        <div class="sliders__nav__item ">i</div>
+
+                        i++;
+
+                    }
+                }
+            </div>
+            <div class="sliders__nav__space"></div>
+            <div id="fnSliderPlayPause" class="sliders__nav__play fnSliderPlayPause"></div>
+        </div>
+    </div>
+</section>
+
+<main class="seccion">
+
+    <section class="seccion m--slider-horizontal">
+        <div class="limit seccion__inset">
+            <article class="seccion__contenido">
+                <h2 class="seccion__titulo">¿No sabes a dónde ir?</h2>
+                <p class="seccion__resumen">Descubre nuevas ideas de viaje gracias a las recomendaciones de nuestros viajeros.</p>
+                <a href="#" class="boton m--verde-hoja m--grande m--235"><strong>Ir al Blog</strong></a>
+            </article>
+            <div class="swiper-container seccion__slider fnSliderFree">
+                <div class="swiper-wrapper">
+                    @foreach (ytuqueplanes.Models.Blog blog in Model.notas) { 
+                <div class="swiper-slide">
+                    <article class="card-info m--tipo1">
+                        <img src="/assets/images/@blog.imagen" alt="" class="card-info__imagen">
+                        <header class="card-info__header">
+                            <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Cusco</address>
+                           <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>-->
+                            <h1 class="card-info__titulo">@blog.resumen</h1>
+                        </header>
+                        <a href="#" class="card-info__mas-informacion">Más información</a>
+                    </article>
+                </div>
+                    }
+                </div>
+            </div>
+            <a href="#" class="boton m--verde-hoja m--grande seccion__boton-mobile"><strong>Ir al Blog</strong></a>
+        </div>
+    </section>
+
+    <section class="seccion m--slider-horizontal">
+        <div class="limit seccion__inset">
+            <article class="seccion__contenido">
+                <h2 class="seccion__titulo">¡No hay excusas!</h2>
+                <p class="seccion__resumen">Encuentra las mejores ofertas para tu próximo viaje.</p>
+                <a href="#" class="boton m--amarillo m--grande m--235"><strong>Ver todas las ofertas</strong></a>
+            </article>
+            <div class="swiper-container seccion__slider fnSliderFree">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <article class="card-poster m--tipo1">
+                            <img src="/assets/images/rutas-cortas-9.jpg" alt="" class="card-poster__imagen">
+                            <strong class="card-poster__precio">
+                                S/ 280
+                                <span class="card-poster__precio-anterior">Antes S/ 340</span>
+                            </strong>
+                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
+                            <header class="card-poster__header">
+                                <span class="card-poster__compra">Compra online</span>
+                                <strong class="card-poster__subtitulo">Full Day</strong>
+                                <h1 class="card-poster__titulo">TINGO MARÍA Y SU PARAÍSO MÍSTICO</h1>
+                            </header>
+                            <a href="#" class="card-poster__mas-informacion">Más información</a>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="card-poster m--tipo1">
+                            <img src="/assets/images/rutas-cortas-5.jpg" alt="" class="card-poster__imagen">
+                            <strong class="card-poster__precio">
+                                S/ 280
+                                <span class="card-poster__precio-anterior">Antes S/ 340</span>
+                            </strong>
+                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
+                            <header class="card-poster__header">
+                                <span class="card-poster__compra">Compra online</span>
+                                <strong class="card-poster__subtitulo">Full Day</strong>
+                                <h1 class="card-poster__titulo">TINGO MARÍA Y SU PARAÍSO MÍSTICO</h1>
+                            </header>
+                            <a href="#" class="card-poster__mas-informacion">Más información</a>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="card-poster m--tipo1">
+                            <img src="/assets/images/rutas-cortas-10.jpg" alt="" class="card-poster__imagen">
+                            <strong class="card-poster__precio">
+                                S/ 280
+                                <span class="card-poster__precio-anterior">Antes S/ 340</span>
+                            </strong>
+                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
+                            <header class="card-poster__header">
+                                <span class="card-poster__compra">Compra online</span>
+                                <strong class="card-poster__subtitulo">Full Day</strong>
+                                <h1 class="card-poster__titulo">TINGO MARÍA Y SU PARAÍSO MÍSTICO</h1>
+                            </header>
+                            <a href="#" class="card-poster__mas-informacion">Más información</a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="boton m--amarillo m--grande m--235 seccion__boton-mobile"><strong>Ir al Blog</strong></a>
+        </div>
+    </section>
+
+    <section class="seccion">
+        <div class="limit">
+            <article class="card-full" style="background-image: url('/assets/images/rutas-cortas-1.jpg');">
+                <header><h1 class="card-full__titulo">Rutas cortas</h1></header>
+                <p class="card-full__contenido">Una buena experiencia turística puede estar cerca de ti.</p>
+                <a href="#" class="boton m--grande m--morado m--padding-pequeno"><strong>Ver rutas</strong></a>
+            </article>
+        </div>
+    </section>
+
+    <section class="seccion m--bg-tramado m--slider-grilla">
+        <div class="limit section__inset">
+            <h4 class="seccion__titulo">Festivales y eventos</h4>
+            <div class="swiper-container seccion__slider fnSliderGrilla">
+                <div class="swiper-wrapper">
+                    @foreach (ytuqueplanes.Models.Festividad festividad in Model.festividades) {
+                    <div class="swiper-slide">
+                        <article class="card-info m--tipo3">
+                            <img src="/assets/images/@festividad.imagen" alt="" class="card-info__imagen">
+                            <header class="card-info__header">
+                                <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@festividad.provincia</address>
+                                <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>1</aside>
+                                <h1 class="card-info__titulo">Fiesta de <br>@festividad.nombre</h1>
+                                <aside class="card-info__fecha">@festividad.inicio @festividad.mes</aside>
+                            </header>
+                            <a href="#" class="card-info__mas-informacion">Más información</a>
+                        </article>
+                    </div>
+                    }
+                </div>
+            </div>
+            <div class="boton-contenedor">
+                <a href="#" class="boton m--morado m--grande m--padding-pequeno"><strong>Ver calendario de festividades</strong></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion">
+        <div class="limit">
+            <article class="card-full m--centrado" style="background-image: url('/assets/images/bg_card-servicios.jpg');">
+                <header><h1 class="card-full__titulo">Servicios complementarios</h1></header>
+                <p class="card-full__contenido">Vive un viaje personalizado para ti y tu familia.</p>
+                <a href="#" class="boton m--grande m--morado m--padding-pequeno"><strong>Ver servicios</strong></a>
+            </article>
+        </div>
+    </section>
+
+</main>

@@ -1,0 +1,1142 @@
+.boton
+	display inline-flex
+	font-family f-medium
+	text-align center
+	padding 0 55px
+	overflow hidden
+	position relative
+	cursor pointer
+	transition background-color ease 0.25s
+
+	align-items center
+	justify-content center
+
+	&:before
+		content ''
+		display block
+		width 0
+		height 0
+		border-radius 50%
+		position absolute
+		z-index 1
+		top 50%
+		left 50%
+		background-color inherit
+		transform translate(-50%, -50%)
+		transition all ease .5s
+
+	strong
+		position relative
+		z-index 2
+		animation menuItemOut ease 0.35s forwards
+		color #fff
+
+	&:hover
+		&:before
+			width 400px
+			height 400px
+		strong
+			animation menuItemIn ease 0.45s forwards
+
+	&-contenedor
+		display flex
+		justify-content center
+
+	&.m--grande
+		min-height 53px
+		border-radius 24px
+		font-size 1.125rem
+
+	&.m--mediano
+		min-height 40px
+		border-radius 20px
+		font-size 1rem
+
+	&.m--pequeno
+		min-height 32px
+		border-radius 16px
+		font-size 0.75rem
+
+	&.m--235
+		width 235px
+		padding 0
+	&.m--148
+		margin 0 auto
+		display flex
+		width 148px
+		padding 0 10px
+
+	&.m--padding-pequeno
+		padding 0 30px
+
+	&.m--verde
+		background-color verde
+		&:hover:before
+			background-color verdeOscuro
+
+	&.m--verde-hoja
+		background-color verdeHoja
+		&:hover:before
+			background-color verdeHojaOscuro
+
+	&.m--amarillo
+		background-color amarillo
+		&:hover:before
+			background-color amarilloOscuro
+
+	&.m--morado
+		background-color morado
+		&:hover:before
+			background-color moradoOscuro
+
+	&.m--wsp
+		background-color #77b822
+		i
+			font-size 1.3rem
+			margin-right 5px
+			vertical-align middle
+		&:hover
+			background-color #77b822
+
+	&.m--filtro, &.m--filtro.m--morado
+		background-color #fff
+		border 1px solid #a2a2a2
+		opacity 0.6
+		cursor pointer
+		&:before
+			background-color #fbfbfb
+		strong
+			color #a2a2a2
+			font-size 1rem
+			line-height 1
+		&:hover
+			opacity 1
+			border-color verde
+			strong
+				color verde
+		&.-activo-, &.-activo-:hover
+			opacity 1
+			background-color verde
+			border-color verde
+			&:before
+				background-color verde
+			strong
+				color #fff
+		&.m--filtro.m--morado
+			&:hover
+				border-color morado
+				strong
+					color morado
+			&.-activo-, &.-activo-:hover
+				background-color morado
+				border-color morado
+				&:before
+					background-color morado
+				strong
+					color #fff
+
+
+	@media (max-width 600px)
+		&.m--grande
+			font-size 1rem
+
+
+/* Filtro selector */
+.filtro-selector
+	padding-bottom 50px
+	.boton
+		margin-right 10px
+		padding 0 30px
+
+	&__select-ui
+		display none
+		width 280px
+		padding 0 25px
+
+		&:after
+			content ''
+			display block
+			width 13px
+			height 7px
+			background-image url('../images/icono_select.svg')
+			position absolute
+			top 50%
+			margin-top -3.5px
+			right 23px
+			z-index 2
+
+		&__select
+			position absolute
+			top 0
+			left 0
+			width 100%
+			height 100%
+			border 0
+			opacity 0
+			z-index 3
+			font-family f-book
+			outline none
+			padding 0 10px
+
+	@media (max-width 900px)
+		.boton
+			display none
+		.filtro-selector__select-ui
+			display flex
+			margin 0 auto
+
+
+/* Slider Principal */
+.sliders
+	height 100%
+	max-height 720px
+	min-height 470px
+
+	&__nav
+		position absolute
+		bottom 59px
+		right 15px
+		z-index 2
+
+		display flex
+		justify-content center
+		align-items center
+
+		@media (max-width 600px)
+			width 100%
+			right 0
+			bottom 15px
+
+		&__items
+			display flex
+			align-items center
+
+		&__item
+			width 31px
+			height 31px
+			line-height 31px
+			border 1px solid #fff
+			opacity 1
+			background none
+			border-radius 0
+			border-top-left-radius 10px
+			border-bottom-right-radius 10px
+			color #fff
+			text-align center
+			font-size 1rem
+			// font-family f-news
+			margin-right 14px
+			cursor pointer
+			outline none
+			transition color ease .25s, background-color ease .25s
+
+			&:hover, &.swiper-pagination-bullet-active
+				background-color #fff
+				color verde
+
+		&__space
+			width 1px
+			height 31px
+			background-color #fff
+			margin-right 14px
+
+		&__play
+			overflow hidden
+			cursor pointer
+			height 16px
+			width 12px
+			position relative
+
+			&:before
+			&:after
+				content ''
+				display block
+				width 3px
+				height 16px
+				background-color #fff
+				position absolute
+				transition all ease .25s
+			&:before
+				left 0
+
+			&:after
+				right 0
+
+			&.-active-
+				&:before
+					width 16px
+					height 16px
+					margin-right 0
+					transform translate(-7px) rotate(45deg)
+					transform-origin 50% 50%
+				&:after
+					opacity 0
+					transform scale(0)
+
+.slider
+	height 100%
+	padding-top 78px
+	color #fff
+	background #ddd no-repeat center center / cover
+
+	display flex
+	align-items center
+
+	&__ubicacion
+		display inline-block
+		padding 4px 8px
+		// height 25px
+		line-height 1
+		border-radius 9px
+		background-color rgba(255,255,255,0.8)
+		color azulClaro
+		font-size 0.81rem
+		margin-bottom 8px
+
+		animation sliderContenidoOut .65s ease forwards
+		animation-delay .1s
+
+		i
+			margin-right 5px
+			font-size 1rem
+
+	&__titulo
+		font-size 2.25rem
+		font-family f-bbold
+		animation sliderContenidoOut .6s ease forwards
+		animation-delay .15s
+
+		@media (max-width 600px)
+			font-size 1.8rem
+
+	&__contenido
+		font-family f-medium
+		line-height 1.4
+		letter-spacing 0.5px
+		margin 10px 0 30px
+		max-width 500px
+		animation sliderContenidoOut .55s ease forwards
+		animation-delay .2s
+		@media (max-width 600px)
+			margin 10px 0 18px
+
+	.boton
+		animation sliderContenidoOut .5s ease forwards
+		animation-delay .25s
+
+	&.swiper-slide-active
+		.slider
+			&__ubicacion
+				animation sliderContenidoIn .65s ease .1s forwards
+			&__titulo
+				animation sliderContenidoIn .6s ease .15s forwards
+			&__contenido
+				animation sliderContenidoIn .55s ease .2s forwards
+		.boton
+			animation sliderContenidoIn .5s ease .25s forwards
+
+	@media (max-width 810px)
+		padding-top 44px
+
+@keyframes sliderContenidoIn
+	0%
+		opacity 0
+		transform translateY(40px)
+	100%
+		opacity 1
+		transform translateY(0)
+
+@keyframes sliderContenidoOut
+	0%
+		opacity 1
+		transform translateY(0)
+	60%
+		opacity 0
+	100%
+		opacity 0
+		transform translateY(-40px)
+
+/* corazon */
+.corazon
+	font-size 0.81rem
+	font-family f-news
+	i
+		margin-right 5px
+		font-size 1rem
+
+	&.m--gris
+		color gris
+
+	&.m--blanco
+		color #fff
+
+/* Cards */
+.card
+
+	&-info
+		border-radius 12px
+		box-shadow 2px 3px 7px rgba(176, 176, 176, 0.3)
+		background-color #fff
+		position relative
+		overflow hidden
+
+		&__imagen
+			width 100%
+			object-fit cover
+
+		&__header
+			display flex
+			flex-wrap wrap
+			align-content flex-start
+
+		&__ubicacion
+			color azulClaro
+			font-size 0.81rem
+			margin-right auto
+			font-family f-news
+
+			i
+				margin-right 5px
+				font-size 1rem
+
+		&__titulo
+			font-size 0.93rem
+			font-family f-bold
+			line-height 1rem
+			padding-top 12px
+			width 100%
+
+			display block
+			display -webkit-box
+			max-width 100%
+			-webkit-line-clamp 3
+			-webkit-box-orient vertical
+			overflow hidden
+			text-overflow ellipsis
+
+			transition color ease .25s
+
+		&__mas-informacion
+			font-size 0
+
+			position absolute
+			top 0
+			left 0
+			width 100%
+			height 100%
+
+		&:hover
+			.card-info__titulo
+				color verde
+
+		&.m--tipo1
+			max-width 231px
+
+			.card-info
+				&__imagen
+					height 246px
+
+				&__header
+					height 108px
+					padding 14px
+
+				&__titulo
+					font-size 0.93rem
+					line-height 1rem
+					padding-top 12px
+					width 100%
+
+		&.m--tipo2
+			max-width 261px
+
+			.card-info
+				&__imagen
+					height 261px
+
+				&__header
+					height 115px
+					padding 16px
+
+				&__titulo
+					padding-top 10px
+					font-size 1rem
+					line-height 19px
+
+		&.m--tipo3
+			max-width 265px
+			border-radius 0
+			border-bottom-right-radius 32px
+
+			.card-info
+				&__imagen
+					height 138px
+
+				&__header
+					height 155px
+					padding 16px
+
+				&__titulo
+					padding-top 10px
+					font-size 0.93rem
+					line-height 20px
+					height 70px
+
+				&__fecha
+					color morado
+					font-size 0.75rem
+					font-family f-bold
+					text-transform uppercase
+					margin-top 20px
+
+	&-poster
+		background-color #bbb
+		overflow hidden
+		border-radius 12px
+		background #bbb center center / cover
+		position relative
+
+		&__imagen
+			width 100%
+			height 100%
+			object-fit cover
+			position absolute
+			top 0
+			left 0
+			z-index 1
+			transition all ease .25s
+
+		&__precio
+			background-color crema
+			border-bottom-right-radius 12px
+			color azulOscuro
+			font-family f-bold
+			position absolute
+			top 0
+			left 0
+			z-index 3
+
+			display flex
+			flex-direction column
+			align-items center
+			justify-content center
+
+			&-anterior
+				font-size 0.6rem
+				text-decoration line-through
+				font-familiy f-news
+		&__ubicacion
+			position absolute
+			top 15px
+			left 15px
+			z-index 3
+
+		&__corazon
+			position absolute
+			top 15px
+			right 15px
+			z-index 3
+
+		&__header
+			position absolute
+			bottom 0
+			left 0
+			color #fff
+			width 100%
+			font-family f-news
+			z-index 3
+			transition all ease .25s
+
+		&__compra
+			display inline-block
+			background-color rojo
+			font-size 0.6rem
+			height 21px
+			line-height 21px
+			border-radius 2px
+			padding 0 10px
+
+		&__subtitulo
+			font-size 0.9rem
+			display block
+			margin 5px 0 3px
+
+		&__titulo
+			font-size 1.125rem
+			// text-transform uppercase
+			font-family f-bold
+
+		&__mas-informacion
+			position absolute
+			top 0
+			left 0
+			width 100%
+			height 100%
+			font-size 0
+			z-index 4
+
+		&:before
+		&:after
+			content ''
+			display block
+			width 100%
+			height 100%
+			position absolute
+			top 0
+			left 0
+			z-index 2
+			transition all ease .25s
+		&:before
+			background linear-gradient(rgba(255,255,255,0), rgba(0,0,0,.7))
+		&:after
+			background rgba(0,0,0,.5)
+			opacity 0
+		&:hover
+			&:before
+				opacity 0
+			&:after
+				opacity 1
+			.card-poster
+				&__header
+					bottom 20px
+				&__imagen
+					transform scale(1.05)
+
+		&.m--tipo1
+			width 231px
+			height 354px
+
+			.card-poster
+
+				&__precio
+					width 105px
+					height 62px
+					font-size 1.6rem
+
+				&__header
+					padding 0 15px 30px
+
+		&.m--tipo2
+			width 206px
+			height 314px
+
+			.card-poster
+
+				&__precio
+					width 76px
+					height 56px
+					font-size 1.25rem
+
+				&__header
+					padding 0 15px 15px
+
+		&.m--tipo3
+			width 257px
+			height 375px
+
+			.card-poster
+
+				&__header
+					padding 0 15px 20px
+
+				&__titulo
+					text-align center
+					display block
+					font-size 1.375rem
+					font-family f-medium
+
+		&.m--tipo4
+			width 257px
+			height 279px
+
+			.card-poster
+
+				&__header
+					padding 0 15px 20px
+
+				&__titulo
+					text-align center
+					display block
+					font-size 1.375rem
+					font-family f-medium
+
+		&.m--tipo5
+			width 263px
+			height 279px
+
+			.card-poster
+
+				&__header
+					padding 0 15px 20px
+
+				&__titulo
+					text-align center
+					display block
+					font-size 1.125rem
+					font-family f-bbold
+					padding-bottom 20px
+
+	&-full
+		height 317px
+		border-bottom-right-radius 40px
+		background #eee no-repeat center center / cover
+		box-shadow 2px 3px 7px 0 rgba(176, 176, 176, 0.9)
+		padding 0 68px
+		color #fff
+		text-shadow 0 2px 18px rgba(0, 0, 0, 0.5)
+
+		display flex
+		flex-direction column
+		align-items flex-start
+		justify-content center
+
+		&.m--centrado
+			align-items center
+			text-align center
+
+		&__titulo
+			font-family f-bold
+			font-size 2.25rem
+
+		&__contenido
+			font-family f-news
+			font-size 1.5rem
+			padding 8px 0 18px
+
+		@media (max-width 800px)
+			padding 0 30px
+
+		@media (max-width 600px)
+			padding 0 15px
+
+			&__titulo
+				font-size 1.8rem
+
+			&__contenido
+				font-size 1.2rem
+				padding 5px 0 12px
+
+/* secciones de paginas */
+.seccion
+	padding 40px 0
+
+	&__titulo
+		font-size 1.65rem
+		font-family f-bold
+		text-align center
+		padding-bottom 40px
+
+	&__resumen
+		font-family f-book
+
+	&.m--bg-tramado
+		background #eee url('../images/seccion-bg.jpg') no-repeat center center / cover
+
+	&.m--contenedor-selector
+		padding-bottom 0
+		.filtro-selector
+			padding-bottom 10px
+
+	&.m--slider-horizontal
+		.seccion
+			&__inset
+				padding 0 10px 0 15px
+				display flex
+				align-items center
+
+			&__contenido
+				flex 0 1 285px
+
+			&__titulo
+				padding 0
+				text-align left
+
+			&__resumen
+				padding 20px 0
+
+			&__slider
+				flex 1
+				margin 0 0 0 75px
+				padding 0 5px 0 5px
+
+				display flex
+				justify-content space-between
+
+				.swiper-slide
+					width auto
+					padding 0 13px 10px 0
+					&:last-of-type
+						padding-right 0
+
+			&__boton-mobile
+				display none
+
+	&.m--slider-grilla
+		.seccion
+			&__inset
+				padding 0 10px 0 15px
+			&__slider
+				width calc(100% + 5px)
+				margin-bottom 20px
+				height 615px
+				padding 0 0 10px
+				.swiper-wrapper
+					padding-right 10px
+				.swiper-slide
+					width 274.5px
+					height calc((100% - 5px) / 2)
+				.card-info
+					width 260px
+
+	&.m--grilla-poster
+		.seccion
+			&__grilla
+				margin 0 -10px
+
+				&__bloques
+					width 100%
+					display flex
+					flex-wrap wrap
+					justify-content center
+
+				.card-poster
+					//width calc(25% - 20px)
+					// margin 0 10px 20px
+					margin 0 9px 20px
+					&.m--tipo5
+						width 258px
+
+				.boton-contenedor
+					display none
+					padding-top 20px
+
+				&.-mostrar-ocultos-, &.-mas-6-, &.-mas-4-
+					.boton-contenedor
+						display none
+
+				&.-mas-8-
+					.boton-contenedor
+						display flex
+
+				&.-mostrar-todos-
+					.card-poster
+						&:nth-of-type(8) ~ .card-poster
+							display  none
+
+					&.-mostrar-ocultos-
+						.card-poster
+							&:nth-of-type(8) ~ .card-poster
+								display block
+						.boton-contenedor
+							display none
+
+				&.-activo-
+					.card-poster
+						display none
+						&.-activo-
+							display block
+							&.-si-8- ~ .card-poster.-activo-
+								display none
+					&.-mostrar-ocultos-
+						.card-poster
+							&.-activo-
+								&.-si-8- ~ .card-poster.-activo-
+									display block
+						.boton-contenedor
+							display none
+
+	&.m--slider-standard
+		.seccion
+			&__slider
+				height auto
+				.swiper-wrapper
+					height auto
+					padding 0 0 10px
+				.swiper-slide
+					width 274px
+					&:last-of-type
+						width 263px
+		&.m--tipo2
+			.seccion
+				&__titulo
+					text-align left
+				&__slider
+					.swiper-slide
+						width 220px
+
+	@media (max-width 1114px)
+		&.m--slider-grilla
+			.seccion
+				&__slider
+					width 100%
+
+	// @media (max-width 1000px)
+	// 	&.m--grilla-poster
+	// 		.seccion
+	// 			&__grilla
+	// 				margin 0 -5px
+
+	// 				.card-poster
+	// 					width calc(25% - 10px)
+	// 					margin 0 5px 10px
+
+	@media (max-width 1110px)
+		&.m--grilla-poster
+			.seccion
+				&__grilla
+					margin 0
+
+					&.-mas-6-
+						.boton-contenedor
+							display flex
+
+					&.-mostrar-todos-
+						.card-poster
+							&:nth-of-type(6) ~ .card-poster
+								display  none
+
+						&.-mostrar-ocultos-
+							.card-poster
+								&:nth-of-type(6) ~ .card-poster
+									display block
+					&.-activo-
+						.card-poster
+							display none
+							&.-activo-
+								display block
+								&.-si-6- ~ .card-poster.-activo-
+									display none
+						&.-mostrar-ocultos-
+							.card-poster
+								&.-activo-
+									&.-si-6- ~ .card-poster.-activo-
+										display block
+
+	@media (max-width 854px)
+		&.m--grilla-poster
+			.seccion
+				&__grilla
+
+					&.-mas-4-
+						.boton-contenedor
+							display flex
+
+					&.-mostrar-todos-
+						.card-poster
+							&:nth-of-type(4) ~ .card-poster
+								display  none
+
+						&.-mostrar-ocultos-
+							.card-poster
+								&:nth-of-type(4) ~ .card-poster
+									display block
+					&.-activo-
+						.card-poster
+							display none
+							&.-activo-
+								display block
+								&.-si-4- ~ .card-poster.-activo-
+									display none
+						&.-mostrar-ocultos-
+							.card-poster
+								&.-activo-
+									&.-si-4- ~ .card-poster.-activo-
+										display block
+
+	@media (max-width 810px)
+
+		padding 35px 0
+
+		&__titulo
+			padding-bottom 20px
+
+		&.m--slider-horizontal
+			.seccion
+				&__slider
+					margin 0 5px 0 30px
+
+		// &.m--grilla-poster
+		// 	.seccion
+		// 		&__grilla
+		// 			margin 0 -5px
+
+		// 			.card-poster
+		// 				width calc(33.3% - 10px)
+		// 				margin 0 5px 10px
+		// 				&:nth-child(6) ~ .card-poster
+		// 					display  none
+
+	@media (max-width 680px)
+
+		padding 30px 0
+
+		.filtro-selector
+			padding-bottom  25px
+
+		&.m--slider-horizontal
+			.seccion
+				&__inset
+					padding-right 15px
+					flex-direction column
+				&__contenido
+					text-align center
+					flex auto
+					.boton
+						display none
+				&__titulo
+					text-align center
+				&__resumen
+					padding 10px 0 20px
+				&__slider
+					flex auto
+					margin 0
+				&__boton-mobile
+					display inline-flex
+					margin-top 20px
+
+		&.m--slider-grilla
+			.seccion
+				&__slider
+					margin-bottom 25px
+					height 300px
+					padding 0
+					.swiper-wrapper
+						padding-right 0
+					.swiper-slide
+						width 274.5px
+						height 100%
+						&:last-of-type
+							width 265px
+					.card-info
+						width 260px
+
+		// &.m--grilla-poster
+		// 	.seccion
+		// 		&__grilla
+		// 			.card-poster
+		// 				width calc(50% - 10px)
+		// 				&:nth-child(4) ~ .card-poster
+		// 					display  none
+
+	@media (max-width 480px)
+
+		&__titulo
+			font-size 1.35rem
+
+	// @media (max-width 470px)
+	// 	&.m--grilla-poster
+	// 		.seccion
+	// 			&__grilla
+	// 				margin 0
+
+	// 				.card-poster
+	// 					width 100%
+	// 					margin 0 0 10px
+	// 					&:nth-child(4) ~ .card-poster
+	// 						display  none
+
+
+/* Box */
+.box
+	position fixed
+	top 0
+	left 0
+	width 100%
+	height 100%
+	z-index 20
+	background-color rgba(0,0,0,.5)
+	color #283342
+	font-family f-book
+	overflow auto
+	display none
+	opacity 0
+
+	p
+		padding 5px 0
+
+	a
+		color celeste
+
+	&__inset
+		width 100%
+		min-height 100%
+		padding 25px
+		display flex
+		align-items center
+		justify-content center
+
+	&__contenido
+		display block
+		padding 40px 75px
+		background-color #fff
+		box-shadow 0 2px 18px 0 rgba(130, 130, 130, 0.5)
+		max-width 800px
+		width 100%
+		border-radius 18px
+		position relative
+		z-index 2
+
+	&__cerrar
+		position absolute
+		top 25px
+		right 30px
+		cursor pointer
+		transition transform ease .25s
+
+		&:hover
+			transform scale(1.1)
+
+	&__logo
+		margin 0 auto 35px
+
+	&__titulo
+		font-family f-bold
+		font-size 1.375rem
+		text-align center
+		display block
+		padding-bottom 20px
+
+	.boton
+		margin-top 50px
+
+	&.-activo-
+		display block
+		animation boxIn ease .25s .1s forwards
+		.box__contenido
+			animation boxContentIn ease .35s forwards
+
+	@media (max-width 700px)
+		&__inset
+			padding 15px
+		&__contenido
+			padding 40px
+
+	@media (max-width 540px)
+
+		&__logo
+			width 70px
+			margin-bottom 20px
+		&__titulo
+			padding-bottom 10px
+			font-size 1.25rem
+		&__contenido
+			padding 25px
+		&__cerrar
+			top 20px
+			right 20px
+			width 25px
+		.boton
+			margin-top 25px
+
+@keyframes boxIn
+	0%
+		opacity 0
+	100%
+		opacity 1
+
+@keyframes boxContentIn
+	0%
+		opacity 0
+		transform translate(0,50px)
+	100%
+		opacity 1
+		transform translate(0,0)

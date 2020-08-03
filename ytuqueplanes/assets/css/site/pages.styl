@@ -1,0 +1,181 @@
+.page
+
+	&__header
+		height 480px
+		width 100%
+		padding-top 120px
+		color #fff
+		background #ccc no-repeat center center / cover
+
+		&__inset
+			position relative
+			min-height 100%
+			display flex
+			flex-direction column
+			justify-content center
+			align-items center
+
+		&__miga-de-pan
+			color #fff
+			font-size 0.95rem
+			font-family f-bold
+			position absolute
+			top 0
+			left 15px
+			display flex
+			align-items center
+			span
+				padding-left 10px
+				text-shadow 0 1px 1px rgba(0,0,0,.75)
+
+		&__titulo
+			font-size 3rem
+			font-family f-bold
+			padding 0 0 15px
+			text-shadow 0 3px 5px rgba(0,0,0,0.25)
+
+		&__resumen
+			max-width 570px
+			text-align center
+
+		&__form
+			position relative
+			width 100%
+			max-width 420px
+			height 52px
+			background-color #fff
+			border-radius 52px
+
+			&__input
+				width 200px
+				height 100%
+				border 0
+				padding 0 20px
+				background-color transparent
+
+			&__selector
+				position absolute
+				top 0
+				right 0
+				height 100%
+				padding 0 20px
+
+				display flex
+				align-items center
+				justify-content flex-end
+
+				&__select
+					position absolute
+					top 0
+					right 0
+					width 100%
+					height 100%
+					opacity 0
+					outline none
+
+				&__contenido
+					color morado
+					font-family f-bbold
+					line-height 1
+					&:after
+						content ' >'
+
+				&__boton
+					display none
+
+		&.m--ofertas
+			.page__header
+				&__inset
+					align-items flex-start
+				&__titulo
+					font-size 2.3rem
+					text-align left
+
+
+	@media (max-width 810px)
+
+		&__header
+			padding-top 65px
+			height 400px
+
+			&.m--ofertas
+				.page__header__titulo
+					font-size 2rem
+
+	@media (max-width 680px)
+
+		&__header
+			&__titulo
+				font-size 2.5rem
+
+	@media (max-width 500px)
+
+		&__header
+
+			&.m--ofertas
+				.page__header__titulo
+					font-size 1.6rem
+
+
+
+/* Rutas Cortas */
+.rutas-cortas
+
+	&__buscador
+		text-align center
+
+		&__titulo
+			font-size 1.875rem
+			font-family f-bbold
+
+		&__resumen
+			font-size 0.875rem
+			max-width 780px
+			margin auto
+			padding 20px 0 45px
+			color #787878
+			line-height 1.3
+
+		&__form
+			width 90%
+			max-width 460px
+			margin 0 auto 60px
+			position relative
+
+			&__lupa
+				position absolute
+				top 50%
+				margin-top -11px
+				left 10px
+
+			&__input
+				width 100%
+				border 0
+				border-bottom 2px solid #979797
+				height 40px
+				font-size 1.125rem
+				line-height 1.125rem
+				color verde
+				padding 0 20px 0 45px
+				transition border-color ease .25s
+
+				&:focus
+					border-color verde
+
+			&__boton
+				display none
+
+	@media (max-width 600px)
+
+		&__buscador
+
+			&__titulo
+				font-size 1.5rem
+
+			&__resumen
+				padding 20px 0
+				font-size 0.8rem
+
+			&__form
+				margin-bottom 40px
+
