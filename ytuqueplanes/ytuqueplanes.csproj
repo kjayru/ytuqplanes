@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BlogViajeroController.cs" />
     <Compile Include="Controllers\DestinosController.cs" />
     <Compile Include="Controllers\FestividadesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -190,6 +191,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include=".gitignore" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="assets\css\site\footer.styl" />
@@ -219,6 +221,7 @@
     <Content Include="assets\fonts\ClanOffc-News.eot" />
     <Content Include="assets\fonts\ClanOffc-News.ttf" />
     <Content Include="assets\fonts\ClanOffc-News.woff" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -249,14 +252,15 @@
     <Content Include="Views\users\Details.cshtml" />
     <Content Include="Views\users\Edit.cshtml" />
     <Content Include="Views\users\Index.cshtml" />
+    <Content Include="Views\Destinos\Index.cshtml" />
+    <Content Include="Views\Rutas\Index.cshtml" />
+    <Content Include="Views\Ofertas\Index.cshtml" />
+    <Content Include="Views\BlogViajero\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Destinos\" />
     <Folder Include="Views\Festividades\" />
     <Folder Include="Views\Noticias\" />
-    <Folder Include="Views\Ofertas\" />
-    <Folder Include="Views\Rutas\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

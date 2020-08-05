@@ -1,0 +1,12 @@
+C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\bin\Release\EntidadesData.dll.config
+C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\bin\Release\EntidadesData.dll
+C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\bin\Release\EntidadesData.pdb
+C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\bin\Release\EntityFramework.dll
+C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\bin\Release\EntityFramework.xml
+C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Release\EntidadesData.csprojAssemblyReference.cache
+C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Release\EntidadesData.csproj.CoreCompileInputs.cache
+C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Release\EntidadesData.csproj.CopyComplete
+C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Release\EntidadesData.dll
+C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Release\EntidadesData.pdb

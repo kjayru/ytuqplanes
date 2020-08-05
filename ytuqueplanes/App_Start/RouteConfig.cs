@@ -13,11 +13,29 @@ namespace ytuqueplanes
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+         routes.MapRoute(
+             "Blog",
+             "blog-viajero",
+             new { controller = "BlogViajero", action = "Index" }
+         );
+
+         routes.MapRoute(
+             "Rutas",
+             "rutas-cortas",
+             new { controller = "Rutas", action = "Index" }
+         );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+          
+        }
+        protected void Application_Start()
+        {
+            RegisterRoutes(RouteTable.Routes);
         }
     }
 }

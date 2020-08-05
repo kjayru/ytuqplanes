@@ -1,0 +1,815 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ytuqueplanesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="actividade">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="icono" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ruta_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ruta" Relationship="Self.FK__actividad__ruta___4BAC3F29" FromRole="actividades" ToRole="rutas" />
+  </EntityType>
+  <EntityType Name="alerta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="alt_imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="atractivo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="banner" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contenido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="destino_id" Type="Int32" />
+    <NavigationProperty Name="destino" Relationship="Self.FK__atractivo__desti__4CA06362" FromRole="atractivos" ToRole="destinos" />
+  </EntityType>
+  <EntityType Name="categoria_noticia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="noticias" Relationship="ytuqueplanesDBModel.categoria_noticia_noticia_fk" FromRole="categoria_noticia" ToRole="noticia" />
+  </EntityType>
+  <EntityType Name="categoria_ruta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="categoria">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="ofertas" Relationship="Self.FK__ofertas__categor__534D60F1" FromRole="categorias" ToRole="ofertas" />
+  </EntityType>
+  <EntityType Name="categorias_blog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="como_llegar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="alt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="destino">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contenido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="provincia_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="atractivos" Relationship="Self.FK__atractivo__desti__4CA06362" FromRole="destinos" ToRole="atractivos" />
+    <NavigationProperty Name="provincia" Relationship="Self.FK__destinos__provin__4D94879B" FromRole="destinos" ToRole="provincias" />
+    <NavigationProperty Name="experiencias" Relationship="Self.FK__experienc__desti__4E88ABD4" FromRole="destinos" ToRole="experiencias" />
+  </EntityType>
+  <EntityType Name="experiencia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="banner" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="destino_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="destino" Relationship="Self.FK__experienc__desti__4E88ABD4" FromRole="experiencias" ToRole="destinos" />
+  </EntityType>
+  <EntityType Name="festividade">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="inicio" Type="Int32" Nullable="false" />
+    <Property Name="final" Type="Int32" Nullable="false" />
+    <Property Name="provincia_id" Type="Int32" Nullable="false" />
+    <Property Name="imagen" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="contenido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mes_id" Type="Int32" />
+    <Property Name="likes" Type="Int32" />
+    <Property Name="documento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="mes" Relationship="Self.FK__festivida__mes_i__4F7CD00D" FromRole="festividades" ToRole="meses" />
+    <NavigationProperty Name="provincia" Relationship="Self.FK__festivida__provi__5070F446" FromRole="festividades" ToRole="provincias" />
+  </EntityType>
+  <EntityType Name="icono">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="latitud" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="longitud" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="icono1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="contenido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mapa_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="mapa" Relationship="Self.FK__iconos__mapa_id__5165187F" FromRole="iconos" ToRole="mapas" />
+  </EntityType>
+  <EntityType Name="mapa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="latitud" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="longitud" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ruta_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="iconos" Relationship="Self.FK__iconos__mapa_id__5165187F" FromRole="mapas" ToRole="iconos" />
+    <NavigationProperty Name="ruta" Relationship="Self.FK__mapas__ruta_id__52593CB8" FromRole="mapas" ToRole="rutas" />
+  </EntityType>
+  <EntityType Name="marca">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="imagen_alt" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="imagen" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="mes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="festividades" Relationship="Self.FK__festivida__mes_i__4F7CD00D" FromRole="meses" ToRole="festividades" />
+  </EntityType>
+  <EntityType Name="noticia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="resumen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imagen" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="likes" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <Property Name="categoria_noticia_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="categoria_noticia" Relationship="ytuqueplanesDBModel.categoria_noticia_noticia_fk" FromRole="noticia" ToRole="categoria_noticia" />
+  </EntityType>
+  <EntityType Name="oferta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="subtitulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="imagen" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="precio" Type="Decimal" Precision="6" Scale="1" Nullable="false" />
+    <Property Name="oferta1" Type="Int32" />
+    <Property Name="precio_oferta" Type="Decimal" Precision="6" Scale="1" />
+    <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fecha_final" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="estado" Type="Boolean" />
+    <Property Name="estado_app" Type="Boolean" />
+    <Property Name="destacado" Type="Boolean" />
+    <Property Name="tipo_oferta_id" Type="Int32" />
+    <Property Name="provincia_id" Type="Int32" Nullable="false" />
+    <Property Name="categoria_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="categoria" Relationship="Self.FK__ofertas__categor__534D60F1" FromRole="ofertas" ToRole="categorias" />
+    <NavigationProperty Name="provincia" Relationship="Self.FK__ofertas__provinc__5441852A" FromRole="ofertas" ToRole="provincias" />
+    <NavigationProperty Name="opciones" Relationship="Self.fk_opciones_oferta" FromRole="ofertas" ToRole="opciones" />
+  </EntityType>
+  <EntityType Name="opcione">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="oferta_id" Type="Int32" Nullable="false" />
+    <Property Name="incluye" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="actividades" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="condiciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="nosotros" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="oferta" Relationship="Self.fk_opciones_oferta" FromRole="opciones" ToRole="ofertas" />
+  </EntityType>
+  <EntityType Name="page">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="post">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="resumen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="contenido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imagen" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="updated_at" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="likes" Type="Int32" />
+    <Property Name="categoria_blog_id" Type="Int32" Nullable="false" />
+    <Property Name="destacado" Type="Int32" />
+  </EntityType>
+  <EntityType Name="preferencias_destino">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="destino_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="provincia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="region_id" Type="Int32" />
+    <NavigationProperty Name="destinos" Relationship="Self.FK__destinos__provin__4D94879B" FromRole="provincias" ToRole="destinos" />
+    <NavigationProperty Name="festividades" Relationship="Self.FK__festivida__provi__5070F446" FromRole="provincias" ToRole="festividades" />
+    <NavigationProperty Name="ofertas" Relationship="Self.FK__ofertas__provinc__5441852A" FromRole="provincias" ToRole="ofertas" />
+    <NavigationProperty Name="region" Relationship="Self.FK__provincia__regio__5812160E" FromRole="provincias" ToRole="region" />
+  </EntityType>
+  <EntityType Name="rating">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="destino_id" Type="Int32" Nullable="false" />
+    <Property Name="rating1" Type="Int32" Nullable="false" />
+    <Property Name="comentarion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="redes_soclaies">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="icono" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="region">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="provincias" Relationship="Self.FK__provincia__regio__5812160E" FromRole="region" ToRole="provincias" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="idrol" />
+    </Key>
+    <Property Name="idrol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="slug" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="condicion" Type="Boolean" />
+    <NavigationProperty Name="users" Relationship="Self.user_rol_fk" FromRole="roles" ToRole="users" />
+  </EntityType>
+  <EntityType Name="ruta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tiempo_recorrido" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="documento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Boolean" />
+    <Property Name="destacar" Type="Boolean" />
+    <Property Name="rutascortas_id" Type="Int32" Nullable="false" />
+    <Property Name="categoria_ruta_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="actividades" Relationship="Self.FK__actividad__ruta___4BAC3F29" FromRole="rutas" ToRole="actividades" />
+    <NavigationProperty Name="mapas" Relationship="Self.FK__mapas__ruta_id__52593CB8" FromRole="rutas" ToRole="mapas" />
+    <NavigationProperty Name="rutascorta" Relationship="Self.FK__rutas__rutascort__5AEE82B9" FromRole="rutas" ToRole="rutascortas" />
+  </EntityType>
+  <EntityType Name="rutascorta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="banner" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="provincia_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="rutas" Relationship="Self.FK__rutas__rutascort__5AEE82B9" FromRole="rutascortas" ToRole="rutas" />
+  </EntityType>
+  <EntityType Name="seo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="og_title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="og_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="og_image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="og_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="twitter_card" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="twitter_site" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="twitter_creator" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="twitter_domain" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="twitter_title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="twitter_imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="twitter_account_id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="fb_app_id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="fb_admins" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="scripts" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="slider_item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="slider_id" Type="Int32" Nullable="false" />
+    <Property Name="imagen_xl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="imagen_lg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="imagen_md" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="imagen_sm" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="alt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="slider">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="C_created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="suscripcion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellidos" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_suscripcion_id" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tag">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tipo_oferta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tipo_suscripcion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="idusuario" />
+    </Key>
+    <Property Name="idusuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="paterno" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="materno" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idrol" Type="Int32" />
+    <Property Name="password_hash" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="password_salt" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="condicion" Type="Boolean" />
+    <NavigationProperty Name="role" Relationship="Self.user_rol_fk" FromRole="users" ToRole="roles" />
+  </EntityType>
+  <EntityType Name="destino_como_llegar">
+    <Key>
+      <PropertyRef Name="destino_id" />
+    </Key>
+    <Property Name="destino_id" Type="Int32" Nullable="false" />
+    <Property Name="como_llegar_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="destino_seo">
+    <Key>
+      <PropertyRef Name="destino_id" />
+      <PropertyRef Name="seo_id" />
+    </Key>
+    <Property Name="destino_id" Type="Int32" Nullable="false" />
+    <Property Name="seo_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="festividad_tag">
+    <Key>
+      <PropertyRef Name="festividad_id" />
+      <PropertyRef Name="tag_id" />
+    </Key>
+    <Property Name="festividad_id" Type="Int32" Nullable="false" />
+    <Property Name="tag_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="noticia_tag">
+    <Key>
+      <PropertyRef Name="noticia_id" />
+      <PropertyRef Name="tag_id" />
+    </Key>
+    <Property Name="noticia_id" Type="Int32" Nullable="false" />
+    <Property Name="tag_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="page_como_llegar">
+    <Key>
+      <PropertyRef Name="page_id" />
+      <PropertyRef Name="como_llegar_id" />
+    </Key>
+    <Property Name="page_id" Type="Int32" Nullable="false" />
+    <Property Name="como_llegar_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="page_marcas">
+    <Key>
+      <PropertyRef Name="page_id" />
+    </Key>
+    <Property Name="page_id" Type="Int32" Nullable="false" />
+    <Property Name="marca_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="page_red_sociales">
+    <Key>
+      <PropertyRef Name="page_id" />
+      <PropertyRef Name="red_social_id" />
+    </Key>
+    <Property Name="page_id" Type="Int32" Nullable="false" />
+    <Property Name="red_social_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="page_seo">
+    <Key>
+      <PropertyRef Name="page_id" />
+      <PropertyRef Name="seo_id" />
+    </Key>
+    <Property Name="page_id" Type="Int32" Nullable="false" />
+    <Property Name="seo_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="page_sliders">
+    <Key>
+      <PropertyRef Name="page_id" />
+      <PropertyRef Name="slider_id" />
+    </Key>
+    <Property Name="page_id" Type="Int32" Nullable="false" />
+    <Property Name="slider_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="post_seo">
+    <Key>
+      <PropertyRef Name="post_id" />
+      <PropertyRef Name="seo_id" />
+    </Key>
+    <Property Name="post_id" Type="Int32" Nullable="false" />
+    <Property Name="seo_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="post_tag">
+    <Key>
+      <PropertyRef Name="post_id" />
+      <PropertyRef Name="tag_id" />
+    </Key>
+    <Property Name="post_id" Type="Int32" Nullable="false" />
+    <Property Name="tag_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="rutas_seo">
+    <Key>
+      <PropertyRef Name="ruta_id" />
+      <PropertyRef Name="seo_id" />
+    </Key>
+    <Property Name="ruta_id" Type="Int32" Nullable="false" />
+    <Property Name="seo_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__actividad__ruta___4BAC3F29">
+    <End Role="rutas" Type="Self.ruta" Multiplicity="1" />
+    <End Role="actividades" Type="Self.actividade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rutas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="actividades">
+        <PropertyRef Name="ruta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__atractivo__desti__4CA06362">
+    <End Role="destinos" Type="Self.destino" Multiplicity="0..1" />
+    <End Role="atractivos" Type="Self.atractivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="destinos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="atractivos">
+        <PropertyRef Name="destino_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ofertas__categor__534D60F1">
+    <End Role="categorias" Type="Self.categoria" Multiplicity="1" />
+    <End Role="ofertas" Type="Self.oferta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ofertas">
+        <PropertyRef Name="categoria_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__destinos__provin__4D94879B">
+    <End Role="provincias" Type="Self.provincia" Multiplicity="1" />
+    <End Role="destinos" Type="Self.destino" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provincias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="destinos">
+        <PropertyRef Name="provincia_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__experienc__desti__4E88ABD4">
+    <End Role="destinos" Type="Self.destino" Multiplicity="1" />
+    <End Role="experiencias" Type="Self.experiencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="destinos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="experiencias">
+        <PropertyRef Name="destino_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__festivida__mes_i__4F7CD00D">
+    <End Role="meses" Type="Self.mes" Multiplicity="0..1" />
+    <End Role="festividades" Type="Self.festividade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="meses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="festividades">
+        <PropertyRef Name="mes_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__festivida__provi__5070F446">
+    <End Role="provincias" Type="Self.provincia" Multiplicity="1" />
+    <End Role="festividades" Type="Self.festividade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provincias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="festividades">
+        <PropertyRef Name="provincia_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__iconos__mapa_id__5165187F">
+    <End Role="mapas" Type="Self.mapa" Multiplicity="1" />
+    <End Role="iconos" Type="Self.icono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mapas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="iconos">
+        <PropertyRef Name="mapa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__mapas__ruta_id__52593CB8">
+    <End Role="rutas" Type="Self.ruta" Multiplicity="1" />
+    <End Role="mapas" Type="Self.mapa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rutas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="mapas">
+        <PropertyRef Name="ruta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ofertas__provinc__5441852A">
+    <End Role="provincias" Type="Self.provincia" Multiplicity="1" />
+    <End Role="ofertas" Type="Self.oferta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provincias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ofertas">
+        <PropertyRef Name="provincia_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_opciones_oferta">
+    <End Role="ofertas" Type="Self.oferta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="opciones" Type="Self.opcione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ofertas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="opciones">
+        <PropertyRef Name="oferta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__provincia__regio__5812160E">
+    <End Role="region" Type="Self.region" Multiplicity="0..1" />
+    <End Role="provincias" Type="Self.provincia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="region">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="provincias">
+        <PropertyRef Name="region_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_rol_fk">
+    <End Role="roles" Type="Self.role" Multiplicity="0..1" />
+    <End Role="users" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="idrol" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="idrol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rutas__rutascort__5AEE82B9">
+    <End Role="rutascortas" Type="Self.rutascorta" Multiplicity="1" />
+    <End Role="rutas" Type="Self.ruta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rutascortas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rutas">
+        <PropertyRef Name="rutascortas_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ytuqueplanesDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="actividades" EntityType="Self.actividade" />
+    <EntitySet Name="alertas" EntityType="Self.alerta" />
+    <EntitySet Name="atractivos" EntityType="Self.atractivo" />
+    <EntitySet Name="categoria_noticia" EntityType="Self.categoria_noticia" />
+    <EntitySet Name="categoria_ruta" EntityType="Self.categoria_ruta" />
+    <EntitySet Name="categorias" EntityType="Self.categoria" />
+    <EntitySet Name="categorias_blog" EntityType="Self.categorias_blog" />
+    <EntitySet Name="como_llegar" EntityType="Self.como_llegar" />
+    <EntitySet Name="destinos" EntityType="Self.destino" />
+    <EntitySet Name="experiencias" EntityType="Self.experiencia" />
+    <EntitySet Name="festividades" EntityType="Self.festividade" />
+    <EntitySet Name="iconos" EntityType="Self.icono" />
+    <EntitySet Name="mapas" EntityType="Self.mapa" />
+    <EntitySet Name="marcas" EntityType="Self.marca" />
+    <EntitySet Name="meses" EntityType="Self.mes" />
+    <EntitySet Name="noticias" EntityType="Self.noticia" />
+    <EntitySet Name="ofertas" EntityType="Self.oferta" />
+    <EntitySet Name="opciones" EntityType="Self.opcione" />
+    <EntitySet Name="pages" EntityType="Self.page" />
+    <EntitySet Name="posts" EntityType="Self.post" />
+    <EntitySet Name="preferencias_destino" EntityType="Self.preferencias_destino" />
+    <EntitySet Name="provincias" EntityType="Self.provincia" />
+    <EntitySet Name="ratings" EntityType="Self.rating" />
+    <EntitySet Name="redes_soclaies" EntityType="Self.redes_soclaies" />
+    <EntitySet Name="regions" EntityType="Self.region" />
+    <EntitySet Name="roles" EntityType="Self.role" />
+    <EntitySet Name="rutas" EntityType="Self.ruta" />
+    <EntitySet Name="rutascortas" EntityType="Self.rutascorta" />
+    <EntitySet Name="seos" EntityType="Self.seo" />
+    <EntitySet Name="slider_item" EntityType="Self.slider_item" />
+    <EntitySet Name="sliders" EntityType="Self.slider" />
+    <EntitySet Name="suscripcions" EntityType="Self.suscripcion" />
+    <EntitySet Name="tags" EntityType="Self.tag" />
+    <EntitySet Name="tipo_oferta" EntityType="Self.tipo_oferta" />
+    <EntitySet Name="tipo_suscripcion" EntityType="Self.tipo_suscripcion" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="destino_como_llegar" EntityType="Self.destino_como_llegar" />
+    <EntitySet Name="destino_seo" EntityType="Self.destino_seo" />
+    <EntitySet Name="festividad_tag" EntityType="Self.festividad_tag" />
+    <EntitySet Name="noticia_tag" EntityType="Self.noticia_tag" />
+    <EntitySet Name="page_como_llegar" EntityType="Self.page_como_llegar" />
+    <EntitySet Name="page_marcas" EntityType="Self.page_marcas" />
+    <EntitySet Name="page_red_sociales" EntityType="Self.page_red_sociales" />
+    <EntitySet Name="page_seo" EntityType="Self.page_seo" />
+    <EntitySet Name="page_sliders" EntityType="Self.page_sliders" />
+    <EntitySet Name="post_seo" EntityType="Self.post_seo" />
+    <EntitySet Name="post_tag" EntityType="Self.post_tag" />
+    <EntitySet Name="rutas_seo" EntityType="Self.rutas_seo" />
+    <AssociationSet Name="FK__actividad__ruta___4BAC3F29" Association="Self.FK__actividad__ruta___4BAC3F29">
+      <End Role="rutas" EntitySet="rutas" />
+      <End Role="actividades" EntitySet="actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK__atractivo__desti__4CA06362" Association="Self.FK__atractivo__desti__4CA06362">
+      <End Role="destinos" EntitySet="destinos" />
+      <End Role="atractivos" EntitySet="atractivos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ofertas__categor__534D60F1" Association="Self.FK__ofertas__categor__534D60F1">
+      <End Role="categorias" EntitySet="categorias" />
+      <End Role="ofertas" EntitySet="ofertas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__destinos__provin__4D94879B" Association="Self.FK__destinos__provin__4D94879B">
+      <End Role="provincias" EntitySet="provincias" />
+      <End Role="destinos" EntitySet="destinos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__experienc__desti__4E88ABD4" Association="Self.FK__experienc__desti__4E88ABD4">
+      <End Role="destinos" EntitySet="destinos" />
+      <End Role="experiencias" EntitySet="experiencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK__festivida__mes_i__4F7CD00D" Association="Self.FK__festivida__mes_i__4F7CD00D">
+      <End Role="meses" EntitySet="meses" />
+      <End Role="festividades" EntitySet="festividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK__festivida__provi__5070F446" Association="Self.FK__festivida__provi__5070F446">
+      <End Role="provincias" EntitySet="provincias" />
+      <End Role="festividades" EntitySet="festividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK__iconos__mapa_id__5165187F" Association="Self.FK__iconos__mapa_id__5165187F">
+      <End Role="mapas" EntitySet="mapas" />
+      <End Role="iconos" EntitySet="iconos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__mapas__ruta_id__52593CB8" Association="Self.FK__mapas__ruta_id__52593CB8">
+      <End Role="rutas" EntitySet="rutas" />
+      <End Role="mapas" EntitySet="mapas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ofertas__provinc__5441852A" Association="Self.FK__ofertas__provinc__5441852A">
+      <End Role="provincias" EntitySet="provincias" />
+      <End Role="ofertas" EntitySet="ofertas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_opciones_oferta" Association="Self.fk_opciones_oferta">
+      <End Role="ofertas" EntitySet="ofertas" />
+      <End Role="opciones" EntitySet="opciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__provincia__regio__5812160E" Association="Self.FK__provincia__regio__5812160E">
+      <End Role="region" EntitySet="regions" />
+      <End Role="provincias" EntitySet="provincias" />
+    </AssociationSet>
+    <AssociationSet Name="user_rol_fk" Association="Self.user_rol_fk">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rutas__rutascort__5AEE82B9" Association="Self.FK__rutas__rutascort__5AEE82B9">
+      <End Role="rutascortas" EntitySet="rutascortas" />
+      <End Role="rutas" EntitySet="rutas" />
+    </AssociationSet>
+    <AssociationSet Name="categoria_noticia_noticia_fk" Association="ytuqueplanesDBModel.categoria_noticia_noticia_fk">
+      <End Role="categoria_noticia" EntitySet="categoria_noticia" />
+      <End Role="noticia" EntitySet="noticias" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="categoria_noticia_noticia_fk">
+    <End Type="ytuqueplanesDBModel.categoria_noticia" Role="categoria_noticia" Multiplicity="1" />
+    <End Type="ytuqueplanesDBModel.noticia" Role="noticia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria_noticia">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="noticia">
+        <PropertyRef Name="categoria_noticia_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
