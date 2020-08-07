@@ -101,6 +101,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.destino_seo' no tiene def
     <Property Name="titulo" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="contenido" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="provincia_Id" Type="int" Nullable="false" />
+    <Property Name="imagen" Type="varchar" MaxLength="255" />
+    <Property Name="slug" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="experiencias">
     <Key>
@@ -343,6 +345,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_tag' no tiene defini
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="200" />
     <Property Name="region_id" Type="int" />
+    <Property Name="imagen" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="ratings">
     <Key>

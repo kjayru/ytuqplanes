@@ -89,6 +89,8 @@
     <NavigationProperty Name="atractivos" Relationship="Self.FK__atractivo__desti__4CA06362" FromRole="destinos" ToRole="atractivos" />
     <NavigationProperty Name="provincia" Relationship="Self.FK__destinos__provin__4D94879B" FromRole="destinos" ToRole="provincias" />
     <NavigationProperty Name="experiencias" Relationship="Self.FK__experienc__desti__4E88ABD4" FromRole="destinos" ToRole="experiencias" />
+    <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="experiencia">
     <Key>

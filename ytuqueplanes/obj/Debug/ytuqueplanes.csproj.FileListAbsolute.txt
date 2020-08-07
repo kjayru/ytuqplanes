@@ -91,6 +91,8 @@ C:\Users\Wile\source\repos\ytuqueplanes\ytuqueplanes\obj\Debug\ytuqueplanes.cspr
 C:\Users\Wile\source\repos\ytuqueplanes\ytuqueplanes\obj\Debug\ytuqueplanes.csproj.CopyComplete
 C:\Users\Wile\source\repos\ytuqueplanes\ytuqueplanes\obj\Debug\ytuqueplanes.dll
 C:\Users\Wile\source\repos\ytuqueplanes\ytuqueplanes\obj\Debug\ytuqueplanes.pdb
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\ytuqueplanes\obj\Debug\ytuqueplanes.csprojAssemblyReference.cache
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\ytuqueplanes\obj\Debug\ytuqueplanes.csproj.CoreCompileInputs.cache
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\ytuqueplanes\bin\ytuqueplanes.dll.config
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\ytuqueplanes\bin\ytuqueplanes.dll
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\ytuqueplanes\bin\ytuqueplanes.pdb
@@ -179,8 +181,6 @@ C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\ytuqueplanes\bin\es\System.Web.
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\ytuqueplanes\bin\es\System.Web.WebPages.resources.dll
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\ytuqueplanes\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\ytuqueplanes\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\ytuqueplanes\obj\Debug\ytuqueplanes.csprojAssemblyReference.cache
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\ytuqueplanes\obj\Debug\ytuqueplanes.csproj.CoreCompileInputs.cache
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\ytuqueplanes\obj\Debug\ytuqueplanes.csproj.CopyComplete
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\ytuqueplanes\obj\Debug\ytuqueplanes.dll
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\ytuqueplanes\obj\Debug\ytuqueplanes.pdb

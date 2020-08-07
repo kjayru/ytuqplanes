@@ -25,6 +25,8 @@ namespace EntidadesData
         public string titulo { get; set; }
         public string contenido { get; set; }
         public int provincia_Id { get; set; }
+        public string imagen { get; set; }
+        public string slug { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<atractivo> atractivos { get; set; }

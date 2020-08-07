@@ -86,6 +86,8 @@
     <EntitySetMapping Name="destinos">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.destino">
         <MappingFragment StoreEntitySet="destinos">
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="titulo" ColumnName="titulo" />
           <ScalarProperty Name="contenido" ColumnName="contenido" />
@@ -253,6 +255,7 @@
     <EntitySetMapping Name="provincias">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.provincia">
         <MappingFragment StoreEntitySet="provincias">
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="region_id" ColumnName="region_id" />

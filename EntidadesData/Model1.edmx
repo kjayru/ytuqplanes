@@ -106,6 +106,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.destino_seo' no tiene def
           <Property Name="titulo" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="contenido" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="provincia_Id" Type="int" Nullable="false" />
+          <Property Name="imagen" Type="varchar" MaxLength="255" />
+          <Property Name="slug" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="experiencias">
           <Key>
@@ -965,6 +967,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <NavigationProperty Name="atractivos" Relationship="Self.FK__atractivo__desti__4CA06362" FromRole="destinos" ToRole="atractivos" />
           <NavigationProperty Name="provincia" Relationship="Self.FK__destinos__provin__4D94879B" FromRole="destinos" ToRole="provincias" />
           <NavigationProperty Name="experiencias" Relationship="Self.FK__experienc__desti__4E88ABD4" FromRole="destinos" ToRole="experiencias" />
+          <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="experiencia">
           <Key>
@@ -1780,6 +1784,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="destinos">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.destino">
               <MappingFragment StoreEntitySet="destinos">
+                <ScalarProperty Name="slug" ColumnName="slug" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="contenido" ColumnName="contenido" />

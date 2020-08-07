@@ -10,3 +10,15 @@ C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Release\EntidadesData.
 C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Release\EntidadesData.csproj.CopyComplete
 C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Release\EntidadesData.dll
 C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Release\EntidadesData.pdb
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntidadesData.dll.config
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntidadesData.dll
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntidadesData.pdb
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntityFramework.dll
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntityFramework.xml
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.csprojAssemblyReference.cache
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.csproj.CoreCompileInputs.cache
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.csproj.CopyComplete
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.dll
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.pdb

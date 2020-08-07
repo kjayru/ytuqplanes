@@ -1,4 +1,5 @@
 ﻿using EntidadesData;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -31,12 +32,69 @@ namespace ytuqueplanes.Controllers
        /**detalle de provincia**/
         public ActionResult Detalle(string id) {
 
-            return View();
+            dynamic datosDestinoModel = new ExpandoObject();
+
+
+
+            ViewBag.nombreProvincia = id;
+
+            var prov = db.provincias.Where(c => c.nombre == id).Select(d => d.id).FirstOrDefault();
+
+
+            /* var destinos = db.destinos.Where(c => c.provincia_Id == prov).Select(d => new {
+                 d.id,
+                 d.titulo,
+                 d.contenido,
+                 d.imagen,
+                 d.slug
+             }).ToList();*/
+
+            var dt = from t1 in db.destinos
+                       join  t2 in db.experiencias
+                       on t1.id equals t2.destino_id into DestinoFil
+                       from t3 in DestinoFil.DefaultIfEmpty()
+                       select new
+                       {
+                           id = t1.id,
+                           titulo = t1.titulo,
+                           contenido = t1.contenido,
+                           imagen = t1.imagen,
+                           slug = t1.slug,
+                           filtro = t3.nombre
+                           
+
+                       };
+
+            var destinos = dt.ToList();
+
+            //return Json(destinos, JsonRequestBehavior.AllowGet);
+
+            List<DestinosProvincia> ddatos = new List<DestinosProvincia>();
+            for (var k = 0; k < destinos.Count(); k++)
+            {
+                ddatos.Add(
+                    new DestinosProvincia
+                    {
+                        id = destinos[k].id,
+                        titulo = destinos[k].titulo,
+                        contenido = destinos[k].contenido,
+                        imagen = destinos[k].imagen,
+                        slug = destinos[k].slug,
+                        filtro = destinos[k].filtro
+                    });
+
+            }
+
+            datosDestinoModel.destinos = ddatos;
+
+            return View(datosDestinoModel);
         }
 
         /**detalle de destinos de cada  provincia*/
 
         public ActionResult DestinoProvincia(string id) {
+
+
 
             return View();
         }
@@ -122,5 +180,6 @@ namespace ytuqueplanes.Controllers
             return providatos;
         }
 
+       
     }
 }

@@ -16,7 +16,6 @@ C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Debug\EntityF
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Debug\EntityFramework.xml
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.csprojAssemblyReference.cache
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.csproj.CoreCompileInputs.cache
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.csproj.CopyComplete
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.dll
