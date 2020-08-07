@@ -6,16 +6,15 @@ using System.Web.Mvc;
 
 namespace ytuqueplanes.Controllers
 {
-    public class BlogViajeroController : Controller
+    public class ExperienciasController : Controller
     {
-        // GET: BlogViajero
-      
+        // GET: Experiencias
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Detalle(string id) {
+        public ActionResult Detalle() {
             return View();
         }
     }

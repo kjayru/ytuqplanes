@@ -258,6 +258,7 @@
     <NavigationProperty Name="festividades" Relationship="Self.FK__festivida__provi__5070F446" FromRole="provincias" ToRole="festividades" />
     <NavigationProperty Name="ofertas" Relationship="Self.FK__ofertas__provinc__5441852A" FromRole="provincias" ToRole="ofertas" />
     <NavigationProperty Name="region" Relationship="Self.FK__provincia__regio__5812160E" FromRole="provincias" ToRole="region" />
+    <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="rating">
     <Key>

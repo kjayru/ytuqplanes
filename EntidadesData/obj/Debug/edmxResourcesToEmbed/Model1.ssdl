@@ -343,6 +343,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_tag' no tiene defini
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="200" />
     <Property Name="region_id" Type="int" />
+    <Property Name="imagen" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="ratings">
     <Key>

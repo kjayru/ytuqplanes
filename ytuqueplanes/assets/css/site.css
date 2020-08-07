@@ -274,6 +274,21 @@ address {
   width: 148px;
   padding: 0 10px;
 }
+.boton.m--camara {
+  vertical-align: middle;
+  margin-left: 10px;
+}
+.boton.m--camara strong {
+  font-size: 0.9rem;
+}
+.boton.m--camara i {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-right: 5px;
+  vertical-align: bottom;
+  position: relative;
+  z-index: 2;
+}
 .boton.m--padding-pequeno {
   padding: 0 30px;
 }
@@ -619,6 +634,10 @@ address {
   width: 100%;
   object-fit: cover;
 }
+.card-info__estrellas {
+  color: #f2b30c;
+  font-size: 1.3rem;
+}
 .card-info__header {
   display: flex;
   flex-wrap: wrap;
@@ -715,6 +734,120 @@ address {
   font-family: 'ClanOffc-Bold';
   text-transform: uppercase;
   margin-top: 20px;
+}
+.card-info.m--tipo4 {
+  max-width: 264px;
+}
+.card-info.m--tipo4 .card-info__imagen {
+  height: 128px;
+}
+.card-info.m--tipo4 .card-info__header {
+  padding: 12px 15px;
+}
+.card-info.m--tipo4 .card-info__titulo {
+  font-size: 0.75rem;
+  font-family: 'ClanOffc-Bold';
+  padding-top: 10px;
+  height: 55px;
+}
+.card-info.m--tipo4 .card-info__fecha {
+  font-size: 0.625rem;
+  padding-top: 15px;
+}
+.card-info.m--tipo5 {
+  width: 100%;
+  max-width: 846px;
+  box-shadow: 0 0 10px 0 rgba(212,212,212,0.5);
+  display: flex;
+  align-items: center;
+}
+.card-info.m--tipo5 .card-info__imagen {
+  width: 320px;
+  height: 212px;
+}
+.card-info.m--tipo5 .card-info__contenido {
+  padding: 35px;
+}
+.card-info.m--tipo5 .card-info__titulo {
+  font-size: 1.25rem;
+  line-height: 1.05;
+  font-family: 'BreePeru-Bold';
+  color: #787878;
+  padding-top: 0;
+}
+.card-info.m--tipo5 .card-info__resumen {
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  font-family: 'ClanOffc-Book';
+  color: #636363;
+  padding: 15px 0 30px;
+}
+.card-info.m--tipo5 .card-info__leer-mas {
+  font-size: 0.8125rem;
+  font-family: 'ClanOffc-News';
+  color: #33aba0;
+}
+.card-info.m--tipo5 .card-info__leer-mas:hover {
+  text-decoration: underline;
+}
+@media (max-width: 760px) {
+  .card-info.m--tipo5 .card-info__contenido {
+    padding: 15px 20px;
+  }
+}
+@media (max-width: 660px) {
+  .card-info.m--tipo5 {
+    max-width: 290px;
+    flex-direction: column;
+  }
+  .card-info.m--tipo5 .card-info__imagen {
+    width: 100%;
+    height: 180px;
+  }
+  .card-info.m--tipo5 .card-info__contenido {
+    padding: 20px 15px;
+  }
+  .card-info.m--tipo5 .card-info__resumen {
+    padding: 10px 0 20px;
+  }
+}
+.card-info.m--tipo6 {
+  max-width: 260px;
+  height: 273px;
+  padding: 34px 25px;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.card-info.m--tipo6 .card-info__estrellas {
+  order: 0;
+  color: #fed118;
+  padding-bottom: 22px;
+}
+.card-info.m--tipo6 .card-info__resumen {
+  order: 1;
+  font-size: 0.75rem;
+  font-family: 'ClanOffc-News';
+  color: #787878;
+  line-height: 1.3;
+  margin-bottom: auto;
+}
+.card-info.m--tipo6 .card-info__header {
+  order: 2;
+  display: flex;
+  align-items: center;
+}
+.card-info.m--tipo6 .card-info__imagen {
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+}
+.card-info.m--tipo6 .card-info__nombre {
+  font-size: 0.8125rem;
+  font-family: 'ClanOffc-Bold';
+  padding-left: 15px;
 }
 .card-poster {
   background-color: #bbb;
@@ -939,6 +1072,109 @@ address {
     padding: 5px 0 12px;
   }
 }
+.card-transporte {
+  width: 265px;
+  height: 292px;
+  border-bottom-right-radius: 24px;
+  border: 1px solid #a9a9a9;
+  padding: 30px;
+  position: relative;
+}
+.card-transporte__imagen {
+  height: 116px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-transporte__titulo {
+  font-size: 1.3rem;
+  text-align: center;
+  display: block;
+  font-family: 'BreePeru-Bold';
+  color: #47b3a9;
+  padding: 5px 0 15px;
+}
+.card-transporte__titulo.m--morado {
+  color: #811062;
+}
+.card-transporte__titulo.m--azul {
+  color: #2783bd;
+}
+.card-transporte__titulo.m--verdehoja {
+  color: #90c745;
+}
+.card-transporte__lista {
+  font-size: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1.5;
+}
+.card-transporte__lista dt {
+  flex: 90px;
+  font-family: 'ClanOffc-Bold';
+  padding: 2px 0;
+}
+.card-transporte__lista dd {
+  flex: calc(100% - 90px);
+  font-family: 'ClanOffc-News';
+  padding: 2px 0;
+}
+.card-transporte__lista a {
+  color: #0091ff;
+}
+.card-transporte__lista a:hover {
+  text-decoration: underline;
+}
+.card-transporte__enlace-inferior {
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: #0091ff;
+  font-size: 0.75rem;
+  font-family: 'ClanOffc-News';
+}
+.card-transporte__enlace-inferior:hover {
+  text-decoration: underline;
+}
+.card-transporte__recomendado {
+  background-color: #fed118;
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 32px;
+  text-transform: uppercase;
+  height: 30px;
+  width: 170px;
+  display: block;
+  text-align: center;
+  border-radius: 15px;
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  margin-left: -85px;
+}
+.card-transporte__recomendado:before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: #fed118;
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translate(-50%, 0) rotate(45deg);
+}
+.card-transporte__recomendado:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border: 2px solid #fff;
+  border-radius: 15px;
+}
 .seccion {
   padding: 40px 0;
 }
@@ -948,8 +1184,38 @@ address {
   text-align: center;
   padding-bottom: 40px;
 }
+.seccion__titulo.m--left {
+  text-align: left;
+}
 .seccion__resumen {
   font-family: 'ClanOffc-Book';
+}
+.seccion__texto-inferior {
+  font-size: 0.75rem;
+  font-family: 'ClanOffc-Book';
+  padding-top: 10px;
+}
+.seccion__texto-inferior strong {
+  font-family: 'ClanOffc-Bold';
+}
+.seccion__recomendarias {
+  display: block;
+  font-size: 1.5rem;
+  text-align: center;
+  padding-top: 30px;
+}
+.seccion__recomendarias .card-info__estrellas {
+  margin-left: 10px;
+  color: #fed118;
+  display: inline-flex;
+  font-size: 1.7rem;
+}
+.seccion__recomendarias .card-info__estrellas i {
+  margin-right: 5px;
+  cursor: pointer;
+}
+.seccion.m--no-top {
+  padding-top: 0;
 }
 .seccion.m--bg-tramado {
   background: #eee url("../images/seccion-bg.jpg") no-repeat center center/cover;
@@ -1064,6 +1330,7 @@ address {
 }
 .seccion.m--slider-standard .seccion__slider {
   height: auto;
+  padding-top: 5px;
 }
 .seccion.m--slider-standard .seccion__slider .swiper-wrapper {
   height: auto;
@@ -1078,8 +1345,17 @@ address {
 .seccion.m--slider-standard.m--tipo2 .seccion__titulo {
   text-align: left;
 }
+.seccion.m--slider-standard.m--tipo2 .seccion__titulo.m--center {
+  text-align: center;
+}
 .seccion.m--slider-standard.m--tipo2 .seccion__slider .swiper-slide {
   width: 220px;
+}
+.seccion.m--slider-standard.m--transporte .seccion__slider .swiper-slide {
+  padding-top: 45px;
+}
+.seccion.m--slider-standard.m--transporte .card-transporte {
+  width: 262px;
 }
 @media (max-width: 1114px) {
   .seccion.m--slider-grilla .seccion__slider {
@@ -1197,6 +1473,16 @@ address {
     width: 260px;
   }
 }
+@media (max-width: 560px) {
+  .seccion__recomendarias {
+    font-size: 1.3rem;
+  }
+  .seccion__recomendarias .card-info__estrellas {
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+  }
+}
 @media (max-width: 480px) {
   .seccion__titulo {
     font-size: 1.35rem;
@@ -1298,6 +1584,135 @@ address {
   }
   .box .boton {
     margin-top: 25px;
+  }
+}
+.calendario {
+  font-size: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.calendario__selector-mes {
+  display: inline-flex;
+  font-size: 1.4375rem;
+  color: #811062;
+  font-family: 'ClanOffc-Bold';
+  margin-left: auto;
+}
+.calendario__selector-mes span {
+  padding-right: 5px;
+}
+.calendario__selector-mes i {
+  cursor: pointer;
+  margin-left: 10px;
+}
+.calendario__item {
+  flex: 0 0 14.28%;
+  padding: 0px 4px 40px 4px;
+}
+.calendario__article {
+  position: relative;
+}
+.calendario__fecha {
+  color: #149bff;
+  font-family: 'ClanOffc-Bold';
+  padding: 0 2px 3px;
+  display: flex;
+  justify-content: space-between;
+}
+.calendario__festividad {
+  padding: 10px;
+  color: #636363;
+  background-color: #f5f5f5;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  position: relative;
+  transition: all ease 0.25s;
+}
+.calendario__festividad:hover {
+  background-color: #f2b30c;
+  color: #fff;
+}
+.calendario__hora {
+  color: #ee2124;
+  font-family: 'ClanOffc-News';
+  margin-bottom: 12px;
+  display: block;
+  font-size: 0.625rem;
+}
+.calendario__resumen {
+  font-family: 'ClanOffc-News';
+  font-size: 0.6875rem;
+}
+.calendario__lugar {
+  margin-top: 20px;
+  display: block;
+  font-size: 0.625rem;
+}
+.calendario__enlace {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #149bff;
+  opacity: 0;
+}
+@media (max-width: 900px) {
+  .calendario__selector-mes {
+    order: 0;
+    margin: 0 auto 20px;
+  }
+}
+@media (max-width: 810px) {
+  .calendario__item {
+    flex: 0 0 20%;
+  }
+}
+@media (max-width: 600px) {
+  .calendario__item {
+    flex: 0 0 25%;
+  }
+}
+@media (max-width: 500px) {
+  .calendario__item {
+    flex: 0 0 33.3%;
+  }
+}
+@media (max-width: 400px) {
+  .calendario__article {
+    padding-left: 50px;
+  }
+  .calendario__fecha {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.15rem;
+    z-index: 3;
+    padding-top: 5px;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .calendario__fecha span {
+    display: block;
+  }
+  .calendario__item {
+    flex: 0 0 100%;
+    min-height: 75px;
+    padding: 0 0 20px;
+  }
+}
+.filtro-selector.m--calendario {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .filtro-selector.m--calendario {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .filtro-selector.m--calendario .filtro-selector__select-ui {
+    order: 1;
   }
 }
 @keyframes sliderContenidoIn {
@@ -2598,6 +3013,7 @@ address {
   font-family: 'ClanOffc-Bold';
   padding: 0 0 15px;
   text-shadow: 0 3px 5px rgba(0,0,0,0.25);
+  text-align: center;
 }
 .page__header__resumen {
   max-width: 570px;
@@ -2655,6 +3071,32 @@ address {
   font-size: 2.3rem;
   text-align: left;
 }
+.page__header.m--destinos-nivel-4 .page__header__titulo {
+  font-size: 2.25rem;
+}
+.page__header.m--blog .page__header__titulo {
+  font-size: 2.625rem;
+}
+.page__header.m--blog .page__header__subtitulo {
+  font-size: 1.25rem;
+  font-family: 'ClanOffc-Bold';
+  text-transform: uppercase;
+  padding: 20px 0 15px;
+  text-align: center;
+}
+.page__header.m--blog .filtro-selector__select-ui {
+  display: flex;
+}
+.page__header.m--limpio {
+  background-color: #fff;
+  height: 140px;
+}
+.page__header.m--limpio .page__header__miga-de-pan {
+  color: #33aba0;
+}
+.page__header.m--limpio .page__header__miga-de-pan span {
+  text-shadow: none;
+}
 @media (max-width: 810px) {
   .page__header {
     padding-top: 65px;
@@ -2663,14 +3105,26 @@ address {
   .page__header.m--ofertas .page__header__titulo {
     font-size: 2rem;
   }
+  .page__header.m--limpio {
+    height: 70px;
+  }
 }
 @media (max-width: 680px) {
   .page__header__titulo {
     font-size: 2.5rem;
   }
+  .page__header.m--destinos-nivel-4 .page__header__titulo {
+    font-size: 1.85rem;
+  }
 }
 @media (max-width: 500px) {
+  .page__header__titulo {
+    font-size: 2rem;
+  }
   .page__header.m--ofertas .page__header__titulo {
+    font-size: 1.6rem;
+  }
+  .page__header.m--destinos-nivel-4 .page__header__titulo {
     font-size: 1.6rem;
   }
 }
@@ -2728,5 +3182,288 @@ address {
   }
   .rutas-cortas__buscador__form {
     margin-bottom: 40px;
+  }
+}
+.destinos-nivel3__listado .card-info {
+  margin: 0 auto 20px;
+}
+.destinos-nivel3__listado .boton-contenedor {
+  padding-top: 25px;
+}
+.destinos__festividad-detalle {
+  display: flex;
+  align-items: flex-start;
+}
+.destinos__festividad-detalle__imagen {
+  width: 510px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.destinos__festividad-detalle__contenido {
+  padding-left: 35px;
+}
+.destinos__festividad-detalle .destinos__detalle__tags {
+  padding-top: 10px;
+}
+.destinos__festividad-detalle .destinos__detalle__footer {
+  padding: 20px 0;
+}
+.destinos__detalle {
+  color: #636363;
+  font-family: 'ClanOffc-Book';
+  max-width: 820px;
+  margin: 0 auto;
+}
+.destinos__detalle p {
+  line-height: 1.4;
+  padding: 10px 0;
+}
+.destinos__detalle a {
+  color: #149bff;
+  font-weight: bold;
+}
+.destinos__detalle a:hover {
+  text-decoration: underline;
+}
+.destinos__detalle__header {
+  padding-bottom: 15px;
+}
+.destinos__detalle__lugar {
+  color: #33aba0;
+  font-family: 'ClanOffc-Bold';
+  font-size: 0.85rem;
+}
+.destinos__detalle__titulo {
+  font-family: 'BreePeru-Bold';
+  font-size: 1.75rem;
+  padding: 3px 0;
+  color: #787878;
+}
+.destinos__detalle__fecha {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+.destinos__detalle__slider {
+  margin: 20px 0;
+  position: relative;
+}
+.destinos__detalle__slider .swiper-container {
+  width: 100%;
+  height: 366px;
+  box-shadow: 8px 10px 35px 0 rgba(0,0,0,0.22);
+  border-radius: 12px;
+}
+.destinos__detalle__slider .swiper-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.destinos__detalle__slider .swiper-pagination {
+  position: static;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  padding-top: 15px;
+}
+.destinos__detalle__slider .swiper-pagination-bullet {
+  margin: 0 5px;
+  width: 11px;
+  height: 11px;
+  background-color: #d8d8d8;
+  opacity: 1;
+  cursor: pointer;
+  outline: none;
+}
+.destinos__detalle__slider .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #636363;
+}
+.destinos__detalle__slider__flecha {
+  width: 10px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  cursor: pointer;
+  outline: none;
+}
+.destinos__detalle__slider__flecha:before,
+.destinos__detalle__slider__flecha:after {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 20px;
+  background-color: #fed118;
+  position: absolute;
+  left: 5px;
+}
+.destinos__detalle__slider__flecha:before {
+  top: 1px;
+  transform: rotate(25deg);
+}
+.destinos__detalle__slider__flecha:after {
+  bottom: 1px;
+  transform: rotate(-25deg);
+}
+.destinos__detalle__slider__flecha.m--left {
+  left: -30px;
+}
+.destinos__detalle__slider__flecha.m--right {
+  right: -30px;
+  transform: rotate(-180deg);
+}
+.destinos__detalle__tags {
+  padding-top: 30px;
+}
+.destinos__detalle__tags strong,
+.destinos__detalle__tags a {
+  font-family: 'ClanOffc-Medium';
+  display: inline-block;
+  background-color: #fed118;
+  color: #fff;
+  line-height: 1;
+  margin: 0 5px 7px 0;
+  font-size: 0.875rem;
+  padding: 10px 25px;
+  border-radius: 8px;
+}
+.destinos__detalle__footer {
+  color: #636363;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  padding-top: 50px;
+}
+.destinos__detalle__me-gusta {
+  margin-right: auto;
+  font-size: 1.3rem;
+  font-family: 'ClanOffc-Book';
+  cursor: pointer;
+}
+.destinos__detalle__me-gusta span {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #636363;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: scaleX(-1);
+}
+.destinos__detalle__redes {
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  transition: all ease 0.25s;
+}
+.destinos__detalle__redes:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 3px rgba(0,0,0,0.4);
+}
+.destinos__detalle__redes.m--facebook {
+  background-color: #4d82c8;
+}
+.destinos__detalle__redes.m--twitter {
+  background-color: #00bef1;
+}
+.destinos__detalle__redes.m--wsp {
+  background-color: #00b27e;
+  font-size: 1.4rem;
+}
+.destinos__detalle__redes.m--wsp i {
+  margin-right: -2.5px;
+}
+.destinos__subtitulo,
+.destinos__subtitulo-mobile {
+  color: #fed118;
+  font-size: 1.875rem;
+  font-family: 'ClanOffc-Bold';
+  display: block;
+  text-align: center;
+  padding-bottom: 30px;
+}
+.destinos__subtitulo-mobile {
+  display: none;
+}
+@media (max-width: 900px) {
+  .destinos__festividad-detalle__imagen {
+    width: 400px;
+  }
+  .destinos__festividad-detalle__contenido {
+    padding-left: 20px;
+  }
+}
+@media (max-width: 810px) {
+  .destinos__festividad-detalle__imagen {
+    width: 320px;
+  }
+  .destinos__subtitulo {
+    display: none;
+  }
+  .destinos__subtitulo-mobile {
+    display: block;
+    padding-bottom: 20px;
+  }
+}
+@media (max-width: 700px) {
+  .destinos__festividad-detalle {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .destinos__festividad-detalle__imagen {
+    width: 100%;
+    max-width: 510px;
+    margin: 0 auto 20px;
+  }
+  .destinos__festividad-detalle__contenido {
+    padding: 0;
+  }
+  .destinos__festividad-detalle .destinos__detalle {
+    text-align: left;
+  }
+  .destinos__festividad-detalle .destinos__detalle__header {
+    padding-bottom: 3px;
+  }
+  .destinos__festividad-detalle .destinos__detalle__titulo {
+    font-size: 1.5rem;
+  }
+  .destinos__festividad-detalle .destinos__detalle__fecha {
+    font-size: 1.05rem;
+  }
+  .destinos__festividad-detalle .boton {
+    display: inline-flex;
+  }
+}
+@media (max-width: 600px) {
+  .destinos__detalle__slider .swiper-container {
+    height: 300px;
+  }
+  .destinos__detalle__tags {
+    padding-top: 20px;
+  }
+  .destinos__detalle__tags strong,
+  .destinos__detalle__tags a {
+    padding: 9px 15px 7px;
+  }
+  .destinos__detalle__footer {
+    padding-top: 25px;
+  }
+  .destinos__detalle__me-gusta span {
+    width: 40px;
+    height: 40px;
+  }
+  .destinos__detalle__redes {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+  .destinos__detalle__redes.m--wsp {
+    font-size: 1.2rem;
   }
 }

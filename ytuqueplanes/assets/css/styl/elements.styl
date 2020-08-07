@@ -66,6 +66,19 @@
 		width 148px
 		padding 0 10px
 
+	&.m--camara
+		vertical-align middle
+		margin-left 10px
+		strong
+			font-size 0.9rem
+		i
+			color #fff
+			font-size 1.3rem
+			margin-right 5px
+			vertical-align bottom
+			position relative
+			z-index 2
+
 	&.m--padding-pequeno
 		padding 0 30px
 
@@ -139,7 +152,6 @@
 	@media (max-width 600px)
 		&.m--grande
 			font-size 1rem
-
 
 /* Filtro selector */
 .filtro-selector
@@ -384,6 +396,10 @@
 			width 100%
 			object-fit cover
 
+		&__estrellas
+			color crema
+			font-size 1.3rem
+
 		&__header
 			display flex
 			flex-wrap wrap
@@ -487,6 +503,105 @@
 					font-family f-bold
 					text-transform uppercase
 					margin-top 20px
+
+		&.m--tipo4
+			max-width 264px
+
+			.card-info
+				&__imagen
+					height 128px
+				&__header
+					padding 12px 15px
+				&__titulo
+					font-size 0.75rem
+					font-family f-bold
+					padding-top 10px
+					height 55px
+				&__fecha
+					font-size 0.625rem
+					padding-top 15px
+
+		&.m--tipo5
+			width 100%
+			max-width 846px
+			box-shadow 0 0 10px 0 rgba(212, 212, 212, 0.5)
+
+			display flex
+			align-items center
+
+			.card-info
+				&__imagen
+					width 320px
+					height 212px
+				&__contenido
+					padding 35px
+				&__titulo
+					font-size 1.25rem
+					line-height 1.05
+					font-family f-bbold
+					color #787878
+					padding-top 0
+				&__resumen
+					font-size 0.8125rem
+					line-height 1.3
+					font-family f-book
+					color #636363
+					padding 15px 0 30px
+				&__leer-mas
+					font-size 0.8125rem
+					font-family f-news
+					color verde
+					&:hover
+						text-decoration underline
+			@media (max-width 760px)
+				.card-info
+					&__contenido
+						padding 15px 20px
+			@media (max-width 660px)
+				max-width 290px
+				flex-direction column
+				.card-info
+					&__imagen
+						width 100%
+						height 180px
+					&__contenido
+						padding 20px 15px
+					&__resumen
+						padding 10px 0 20px
+
+		&.m--tipo6
+			max-width 260px
+			height 273px
+			padding 34px 25px
+			border-top-left-radius 0
+			border-bottom-right-radius 0
+			margin auto
+			display flex
+			flex-direction column
+			.card-info
+				&__estrellas
+					order 0
+					color amarillo
+					padding-bottom 22px
+				&__resumen
+					order 1
+					font-size 0.75rem
+					font-family f-news
+					color #787878
+					line-height 1.3
+					margin-bottom auto
+				&__header
+					order 2
+					display flex
+					align-items center
+				&__imagen
+					width 47px
+					height 47px
+					border-radius 50%
+				&__nombre
+					font-size 0.8125rem
+					font-family f-bold
+					padding-left 15px
 
 	&-poster
 		background-color #bbb
@@ -715,6 +830,95 @@
 				font-size 1.2rem
 				padding 5px 0 12px
 
+	&-transporte
+		width 265px
+		height 292px
+		border-bottom-right-radius 24px
+		border 1px solid #a9a9a9
+		padding 30px
+		position relative
+		&__imagen
+			height 116px
+			display flex
+			align-items center
+			justify-content center
+		&__titulo
+			font-size 1.3rem
+			text-align center
+			display block
+			font-family f-bbold
+			color #47B3A9
+			padding 5px 0 15px
+			&.m--morado
+				color morado
+			&.m--azul
+				color #2783bd
+			&.m--verdehoja
+				color #90c745
+		&__lista
+			font-size 0.75rem
+			display flex
+			flex-wrap wrap
+			line-height 1.5
+			dt
+				flex 90px
+				font-family f-bold
+				padding 2px 0
+			dd
+				flex calc(100% - 90px)
+				font-family f-news
+				padding 2px 0
+			a
+				color #0091ff
+				&:hover
+					text-decoration  underline
+		&__enlace-inferior
+			position absolute
+			bottom 7px
+			left 50%
+			transform translate(-50%, 0)
+			color #0091ff
+			font-size 0.75rem
+			font-family f-news
+			&:hover
+				text-decoration  underline
+		&__recomendado
+			background-color amarillo
+			color #fff
+			font-size 0.75rem
+			line-height 32px
+			text-transform uppercase
+			height 30px
+			width 170px
+			display block
+			text-align center
+			border-radius 15px
+			position absolute
+			top -45px
+			left 50%
+			margin-left -85px
+			&:before
+				content ''
+				display block
+				width 12px
+				height 12px
+				background-color amarillo
+				position absolute
+				bottom -6px
+				left 50%
+				transform translate(-50%,0) rotate(45deg)
+			&:after
+				content ''
+				display block
+				width 100%
+				height 100%
+				position absolute
+				bottom 0
+				left 0
+				border 2px solid #fff
+				border-radius 15px
+
+
 /* secciones de paginas */
 .seccion
 	padding 40px 0
@@ -724,9 +928,35 @@
 		font-family f-bold
 		text-align center
 		padding-bottom 40px
+		&.m--left
+			text-align left
 
 	&__resumen
 		font-family f-book
+
+	&__texto-inferior
+			font-size 0.75rem
+			font-family f-book
+			padding-top 10px
+			strong
+				font-family f-bold
+
+	&__recomendarias
+		display block
+		font-size 1.5rem
+		text-align center
+		padding-top 30px
+		.card-info__estrellas
+			margin-left 10px
+			color amarillo
+			display inline-flex
+			font-size 1.7rem
+			i
+				margin-right 5px
+				cursor pointer
+
+	&.m--no-top
+		padding-top 0
 
 	&.m--bg-tramado
 		background #eee url('../images/seccion-bg.jpg') no-repeat center center / cover
@@ -848,6 +1078,7 @@
 		.seccion
 			&__slider
 				height auto
+				padding-top 5px
 				.swiper-wrapper
 					height auto
 					padding 0 0 10px
@@ -859,9 +1090,19 @@
 			.seccion
 				&__titulo
 					text-align left
+					&.m--center
+						text-align center
 				&__slider
 					.swiper-slide
 						width 220px
+		&.m--transporte
+			.seccion
+				&__slider
+					.swiper-slide
+						padding-top 45px
+			.card-transporte
+				width 262px
+
 
 	@media (max-width 1114px)
 		&.m--slider-grilla
@@ -1017,6 +1258,16 @@
 		// 				&:nth-child(4) ~ .card-poster
 		// 					display  none
 
+	@media (max-width 560px)
+
+		&__recomendarias
+			font-size 1.3rem
+			.card-info__estrellas
+				display flex
+				justify-content center
+				padding-top 5px
+
+
 	@media (max-width 480px)
 
 		&__titulo
@@ -1140,3 +1391,133 @@
 	100%
 		opacity 1
 		transform translate(0,0)
+
+
+/* Calendario */
+
+.calendario
+	font-size 0.75rem
+
+	display flex
+	flex-wrap wrap
+
+	&__selector-mes
+		display inline-flex
+		font-size 1.4375rem
+		color morado
+		font-family f-bold
+		margin-left auto
+
+		span
+			padding-right 5px
+
+		i
+			cursor pointer
+			margin-left 10px
+
+	&__item
+		flex 0 0 14.28%
+		padding 0px 4px 40px 4px
+
+	&__article
+		position relative
+
+	&__fecha
+		color celeste
+		font-family f-bold
+		padding 0 2px 3px
+
+		display flex
+		justify-content space-between
+
+	&__festividad
+		padding 10px
+		color #636363
+		background-color #f5f5f5
+		border-radius 3px
+		margin-bottom 8px
+		position relative
+		transition all ease .25s
+
+		&:hover
+			background-color crema
+			color #fff
+
+	&__hora
+		color rojo
+		font-family f-news
+		margin-bottom 12px
+		display block
+		font-size 0.625rem
+
+	&__resumen
+		font-family f-news
+		font-size 0.6875rem
+
+	&__lugar
+		margin-top 20px
+		display block
+		font-size 0.625rem
+
+	&__enlace
+		position absolute
+		top 0
+		left 0
+		width 100%
+		height 100%
+		color celeste
+		opacity 0
+
+	@media (max-width 900px)
+
+		&__selector-mes
+			order 0
+			margin 0 auto 20px
+
+	@media (max-width 810px)
+
+		&__item
+			flex 0 0 20%
+
+	@media (max-width 600px)
+
+		&__item
+			flex 0 0 25%
+
+	@media (max-width 500px)
+
+		&__item
+			flex 0 0 33.3%
+
+	@media (max-width 400px)
+
+		&__article
+			padding-left 50px
+
+		&__fecha
+			position absolute
+			top 0
+			left 0
+			font-size 1.15rem
+			z-index 3
+			padding-top 5px
+			display block
+			text-align center
+			text-transform uppercase
+			span
+				display block
+
+		&__item
+			flex 0 0 100%
+			min-height 75px
+			padding 0 0 20px
+
+.filtro-selector
+	&.m--calendario
+		display flex
+		align-items center
+		@media (max-width 900px)
+			flex-direction column
+			justify-content center
+			.filtro-selector__select-ui
+				order 1

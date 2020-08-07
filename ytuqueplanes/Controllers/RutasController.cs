@@ -13,5 +13,10 @@ namespace ytuqueplanes.Controllers
         {
             return View();
         }
+
+        public ActionResult DetalleRuta(String id)
+        {
+            return View();
+        }
     }
 }

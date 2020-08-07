@@ -1,0 +1,253 @@
+﻿
+@{
+    ViewBag.Title = "DetalleRuta";
+}
+
+<section class="page__header" style="background-image: url('assets/images/rutas-cortas-10.jpg');">
+    <div class="limit page__header__inset">
+        <a href="#" class="page__header__miga-de-pan"><img src="assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
+        <h2 class="page__header__titulo">Desde Lima</h2>
+    </div>
+</section>
+
+<main class="seccion">
+
+    <section class="seccion m--grilla-poster">
+        <div class="limit">
+            <div class="filtro-selector" data-target="#fnTargetFiltroGrilla">
+                <div class="boton m--filtro m--grande filtro-selector__boton -activo- fnFiltrarGrilla" data-filtro="">
+                    <strong>Todos</strong>
+                </div>
+                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Vivencial">
+                    <strong>Vivencial</strong>
+                </div>
+                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Descanso">
+                    <strong>Descanso</strong>
+                </div>
+                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Naturaleza">
+                    <strong>Naturaleza</strong>
+                </div>
+                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Aventura">
+                    <strong>Aventura</strong>
+                </div>
+                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Historia">
+                    <strong>Historia</strong>
+                </div>
+                <div class="boton m--verde m--grande filtro-selector__select-ui">
+                    <strong class="filtro-selector__select-ui__contenido fnTargetSelect">Todos</strong>
+                    <select class="filtro-selector__select-ui__select fnSelect fnFiltrarGrilla">
+                        <option value="">Todos</option>
+                        <option value="Vivencial" data-filtro="Vivencial">Vivencial</option>
+                        <option value="Descanso" data-filtro="Descanso">Descanso</option>
+                        <option value="Naturaleza" data-filtro="Naturaleza">Naturaleza</option>
+                        <option value="Aventura" data-filtro="Aventura">Aventura</option>
+                        <option value="Historia" data-filtro="Historia">Historia</option>
+                    </select>
+                </div>
+            </div>
+            <div id="fnTargetFiltroGrilla" class="seccion__grilla -mostrar-todos- -mas-8-">
+                <div class="seccion__grilla__bloques">
+                    <article class="card-poster m--tipo5" data-filtro="Naturaleza">
+                        <img src="assets/images/rutas-cortas-2.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Naturaleza</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 3 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Naturaleza">
+                        <img src="assets/images/rutas-cortas-9.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Naturaleza</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 6 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Aventura">
+                        <img src="assets/images/rutas-cortas-6.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Aventura</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 9 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Descanso">
+                        <img src="assets/images/rutas-cortas-2.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Descanso</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 12 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Aventura">
+                        <img src="assets/images/rutas-cortas-6.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Aventura</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 15 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Vivencial">
+                        <img src="assets/images/rutas-cortas-7.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Vivencial</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 18 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Naturaleza">
+                        <img src="assets/images/rutas-cortas-10.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Naturaleza</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 21 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Historia">
+                        <img src="assets/images/rutas-cortas-3.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Historia</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 24 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Aventura">
+                        <img src="assets/images/rutas-cortas-9.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Aventura</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 27 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Naturaleza">
+                        <img src="assets/images/rutas-cortas-10.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Naturaleza</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 30 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Vivencial">
+                        <img src="assets/images/rutas-cortas-6.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Vivencial</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 33 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Aventura">
+                        <img src="assets/images/rutas-cortas-6.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Aventura</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 36 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Vivencial">
+                        <img src="assets/images/rutas-cortas-4.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Vivencial</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 39 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Historia">
+                        <img src="assets/images/rutas-cortas-10.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Historia</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 42 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Historia">
+                        <img src="assets/images/rutas-cortas-4.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Historia</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 45 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Vivencial">
+                        <img src="assets/images/rutas-cortas-1.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Vivencial</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 48 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Descanso">
+                        <img src="assets/images/rutas-cortas-10.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Descanso</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 51 lugares</strong></a>
+                        </header>
+                    </article>
+                    <article class="card-poster m--tipo5" data-filtro="Historia">
+                        <img src="assets/images/rutas-cortas-4.jpg" alt="" class="card-poster__imagen">
+                        <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                        <header class="card-poster__header">
+                            <h1 class="card-poster__titulo">Historia</h1>
+                            <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 54 lugares</strong></a>
+                        </header>
+                    </article>
+                </div>
+                <div class="boton-contenedor">
+                    <div class="boton m--amarillo m--grande fnFiltrarGrillaTodo" data-target="#fnTargetFiltroGrilla"><strong>Ver más</strong></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion m--slider-standard">
+        <div class="limit">
+            <h3 class="seccion__titulo">Mira las rutas destacadas del mes</h3>
+            <div class="swiper-container seccion__slider fnSliderFree">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <article class="card-poster m--tipo5">
+                            <img src="assets/images/rutas-cortas-8.jpg" alt="" class="card-poster__imagen">
+                            <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                            <header class="card-poster__header">
+                                <h1 class="card-poster__titulo">Barranca <br>Ciudad Sagrada Caral</h1>
+                                <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 3 lugares</strong></a>
+                            </header>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="card-poster m--tipo5">
+                            <img src="assets/images/rutas-cortas-9.jpg" alt="" class="card-poster__imagen">
+                            <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                            <header class="card-poster__header">
+                                <h1 class="card-poster__titulo">Barranca <br>Ciudad Sagrada Caral</h1>
+                                <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 6 lugares</strong></a>
+                            </header>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="card-poster m--tipo5">
+                            <img src="assets/images/rutas-cortas-8.jpg" alt="" class="card-poster__imagen">
+                            <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                            <header class="card-poster__header">
+                                <h1 class="card-poster__titulo">Barranca <br>Ciudad Sagrada Caral</h1>
+                                <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 9 lugares</strong></a>
+                            </header>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="card-poster m--tipo5">
+                            <img src="assets/images/rutas-cortas-7.jpg" alt="" class="card-poster__imagen">
+                            <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
+                            <header class="card-poster__header">
+                                <h1 class="card-poster__titulo">Barranca <br>Ciudad Sagrada Caral</h1>
+                                <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 12 lugares</strong></a>
+                            </header>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+

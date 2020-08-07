@@ -1,17 +1,20 @@
-﻿
+﻿@model dynamic
 @{
     ViewBag.Title = "Index";
 }
 
 
-<section class="page__header" style="background-image: url('assets/images/rutas-cortas-3.jpg');">
-    <div class="limit page__header__inset">
-        <a href="#" class="page__header__miga-de-pan"><img src="assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
-        <h2 class="page__header__titulo">Destinos</h2>
-        <p class="page__header__resumen">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
-    </div>
-</section>
-
+@foreach (ytuqueplanes.Models.Slide slide in Model.sliders)
+{
+    
+    <section class="page__header" style="background-image: url('/assets/images/@slide.imagen_lg');">
+        <div class="limit page__header__inset">
+            <a href="/" class="page__header__miga-de-pan"><img src="assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
+            <h2 class="page__header__titulo">@slide.titulo</h2>
+            <p class="page__header__resumen">@slide.descripcion</p>
+        </div>
+    </section>
+}
 <main class="seccion">
 
     <section class="seccion m--grilla-poster">
@@ -41,102 +44,24 @@
             </div>
             <div id="fnTargetFiltroGrilla" class="seccion__grilla -mostrar-todos- -mas-8-">
                 <div class="seccion__grilla__bloques">
-                    <article class="card-poster m--tipo3" data-filtro="Centro">
-                        <img src="assets/images/rutas-cortas-4.jpg" alt="" class="card-poster__imagen">
-                        <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>0</aside>
+
+                    @foreach (ytuqueplanes.Models.Provincias provincia in Model.provincias)
+                    { 
+
+                    <article class="card-poster m--tipo3" data-filtro="@provincia.region">
+                        <img src="@provincia.imagen" alt="" class="card-poster__imagen">
+
+                        <!--<aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>0</aside>-->
                         <header class="card-poster__header">
-                            <h1 class="card-poster__titulo">Centro</h1>
+                            <h1 class="card-poster__titulo">@provincia.nombre</h1>
                         </header>
-                        <a href="destinos-interna.html" class="card-poster__mas-informacion">Más información</a>
+                        <a href="/destinos/@provincia.nombre" class="card-poster__mas-informacion">Más información</a>
                     </article>
-                    <article class="card-poster m--tipo3" data-filtro="Norte">
-                        <img src="assets/images/rutas-cortas-2.jpg" alt="" class="card-poster__imagen">
-                        <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>1</aside>
-                        <header class="card-poster__header">
-                            <h1 class="card-poster__titulo">Norte</h1>
-                        </header>
-                        <a href="destinos-interna.html" class="card-poster__mas-informacion">Más información</a>
-                    </article>
-                    <article class="card-poster m--tipo3" data-filtro="Centro">
-                        <img src="assets/images/rutas-cortas-2.jpg" alt="" class="card-poster__imagen">
-                        <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>2</aside>
-                        <header class="card-poster__header">
-                            <h1 class="card-poster__titulo">Centro</h1>
-                        </header>
-                        <a href="destinos-interna.html" class="card-poster__mas-informacion">Más información</a>
-                    </article>
-                    <article class="card-poster m--tipo3" data-filtro="Norte">
-                        <img src="assets/images/rutas-cortas-2.jpg" alt="" class="card-poster__imagen">
-                        <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>3</aside>
-                        <header class="card-poster__header">
-                            <h1 class="card-poster__titulo">Norte</h1>
-                        </header>
-                        <a href="destinos-interna.html" class="card-poster__mas-informacion">Más información</a>
-                    </article>
-                    <article class="card-poster m--tipo3" data-filtro="Norte">
-                        <img src="assets/images/rutas-cortas-5.jpg" alt="" class="card-poster__imagen">
-                        <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>4</aside>
-                        <header class="card-poster__header">
-                            <h1 class="card-poster__titulo">Norte</h1>
-                        </header>
-                        <a href="destinos-interna.html" class="card-poster__mas-informacion">Más información</a>
-                    </article>
-                    <article class="card-poster m--tipo3" data-filtro="Sur">
-                        <img src="assets/images/rutas-cortas-10.jpg" alt="" class="card-poster__imagen">
-                        <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>5</aside>
-                        <header class="card-poster__header">
-                            <h1 class="card-poster__titulo">Sur</h1>
-                        </header>
-                        <a href="destinos-interna.html" class="card-poster__mas-informacion">Más información</a>
-                    </article>
-                    <article class="card-poster m--tipo3" data-filtro="Sur">
-                        <img src="assets/images/rutas-cortas-8.jpg" alt="" class="card-poster__imagen">
-                        <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>6</aside>
-                        <header class="card-poster__header">
-                            <h1 class="card-poster__titulo">Sur</h1>
-                        </header>
-                        <a href="destinos-interna.html" class="card-poster__mas-informacion">Más información</a>
-                    </article>
-                    <article class="card-poster m--tipo3" data-filtro="Norte">
-                        <img src="assets/images/rutas-cortas-3.jpg" alt="" class="card-poster__imagen">
-                        <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>7</aside>
-                        <header class="card-poster__header">
-                            <h1 class="card-poster__titulo">Norte</h1>
-                        </header>
-                        <a href="destinos-interna.html" class="card-poster__mas-informacion">Más información</a>
-                    </article>
-                    <article class="card-poster m--tipo3" data-filtro="Sur">
-                        <img src="assets/images/rutas-cortas-7.jpg" alt="" class="card-poster__imagen">
-                        <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>8</aside>
-                        <header class="card-poster__header">
-                            <h1 class="card-poster__titulo">Sur</h1>
-                        </header>
-                        <a href="destinos-interna.html" class="card-poster__mas-informacion">Más información</a>
-                    </article>
-                    <article class="card-poster m--tipo3" data-filtro="Centro">
-                        <img src="assets/images/rutas-cortas-5.jpg" alt="" class="card-poster__imagen">
-                        <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>9</aside>
-                        <header class="card-poster__header">
-                            <h1 class="card-poster__titulo">Centro</h1>
-                        </header>
-                        <a href="destinos-interna.html" class="card-poster__mas-informacion">Más información</a>
-                    </article>
-                    <article class="card-poster m--tipo3" data-filtro="Norte">
-                        <img src="assets/images/rutas-cortas-9.jpg" alt="" class="card-poster__imagen">
-                        <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                        <header class="card-poster__header">
-                            <h1 class="card-poster__titulo">Norte</h1>
-                        </header>
-                        <a href="destinos-interna.html" class="card-poster__mas-informacion">Más información</a>
-                    </article>
-                    <article class="card-poster m--tipo3" data-filtro="Norte">
-                        <img src="assets/images/rutas-cortas-9.jpg" alt="" class="card-poster__imagen">
-                        <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>11</aside>
-                        <header class="card-poster__header">
-                            <h1 class="card-poster__titulo">Norte</h1>
-                        </header>
-                        <a href="destinos-interna.html" class="card-poster__mas-informacion">Más información</a>
-                    </article>
+
+                    }
+                   
+
+
                 </div>
                 <div class="boton-contenedor">
                     <div class="boton m--amarillo m--grande fnFiltrarGrillaTodo" data-target="#fnTargetFiltroGrilla"><strong>Ver más</strong></div>

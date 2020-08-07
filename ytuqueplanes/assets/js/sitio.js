@@ -72,6 +72,18 @@ const site = (function(){
 				}
 		    });
 
+		    let swiperDestinoDetalle = new Swiper('.fnSliderDestinosDetalle', {
+		    	speed: 1500, autoplay: true, loop: true,
+		    	pagination: {
+		        	el: '.destinos__detalle__slider__pagination',
+		        	clickable: true
+		     	},
+		     	navigation: {
+		     		nextEl: '.fnSliderDestinosDetalle__left',
+        			prevEl: '.fnSliderDestinosDetalle__right'
+		     	}
+		    });
+
 		},
 
 		clicks : function(){
