@@ -7,7 +7,7 @@
 @foreach (ytuqueplanes.Models.Slide slide in Model.sliders)
 {
     
-    <section class="page__header" style="background-image: url('/assets/images/@slide.imagen_lg');">
+    <section class="page__header" style="background-image: url('@slide.imagen_lg');">
         <div class="limit page__header__inset">
             <a href="/" class="page__header__miga-de-pan"><img src="assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
             <h2 class="page__header__titulo">@slide.titulo</h2>
