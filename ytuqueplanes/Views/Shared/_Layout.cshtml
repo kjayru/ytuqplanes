@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string SetNavActive(string page) => ViewBag.pageInNav == @page ? "-activo-" : string.Empty;
+}
+<!DOCTYPE html>
 <html class="no-js" lang="es-PE">
 
 <head prefix="og: http://ogp.me/ns#">
@@ -23,10 +26,10 @@
             <nav class="header__nav">
                 <ul class="header__nav__lista">
                     <li class="header__nav__item">
-                        <a href="/ofertas" class="header__nav__enlace -activo-"><strong>Ofertas</strong></a>
+                        <a href="/ofertas" class="header__nav__enlace @SetNavActive("ofertas")"><strong>Ofertas</strong></a>
                     </li>
                     <li class="header__nav__item">
-                        <a href="/destinos" class="header__nav__enlace">
+                        <a href="/destinos" class="header__nav__enlace @SetNavActive("destinos")">
                             <strong>Destinos</strong>
                         </a>
                         <ul class="header__nav__interno header__nav__destinos -norte-">
@@ -67,16 +70,16 @@
                               data-targets=".header__nav__item__ver-mas, .header__nav__destinos"></span>
                     </li>
                     <li class="header__nav__item">
-                        <a href="/experiencias" class="header__nav__enlace"><strong>Experiencias</strong></a>
+                        <a href="/experiencias" class="header__nav__enlace @SetNavActive("experiencias")"><strong>Experiencias</strong></a>
                     </li>
                     <span class="header__nav__item m--logo">
-                        <a href="/"><img src="assets/images/y-tu-que-planes.png" alt=""></a>
+                        <a href="/"><img src="/assets/images/y-tu-que-planes.png" alt=""></a>
                     </span>
                     <li class="header__nav__item">
-                        <a href="/rutas-cortas" class="header__nav__enlace"><strong>Rutas cortas</strong></a>
+                        <a href="/rutas-cortas" class="header__nav__enlace @SetNavActive("rutas-cortas")"><strong>Rutas cortas</strong></a>
                     </li>
                     <li class="header__nav__item">
-                        <a href="/blog-viajero" class="header__nav__enlace"><strong>Blog viajero</strong></a>
+                        <a href="/blog-viajero" class="header__nav__enlace @SetNavActive("blog")"><strong>Blog viajero</strong></a>
                     </li>
                     <aside id="buscador-principal" class="header__nav__interno buscador-principal -no-focus-">
                         <form class="buscador-principal__form">
@@ -138,7 +141,7 @@
                                     <a href="#">Ver todo ></a>
                                 </strong>
                                 <article class="header__nav__submenu__menu-noticias__articulo">
-                                    <img src="/assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                    <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
                                     <div class="header__nav__submenu__menu-noticias__articulo___contenido">
                                         <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
                                         <header class="header__nav__submenu__menu-noticias__articulo__header">
@@ -148,7 +151,7 @@
                                     </div>
                                 </article>
                                 <article class="header__nav__submenu__menu-noticias__articulo">
-                                    <img src="/assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                    <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
                                     <div class="header__nav__submenu__menu-noticias__articulo___contenido">
                                         <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
                                         <header class="header__nav__submenu__menu-noticias__articulo__header">
@@ -164,7 +167,7 @@
                                     <a href="#">Ver todo ></a>
                                 </strong>
                                 <article class="header__nav__submenu__menu-noticias__articulo">
-                                    <img src="/assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                    <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
                                     <div class="header__nav__submenu__menu-noticias__articulo___contenido">
                                         <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
                                         <header class="header__nav__submenu__menu-noticias__articulo__header">
@@ -175,7 +178,7 @@
                                     </div>
                                 </article>
                                 <article class="header__nav__submenu__menu-noticias__articulo">
-                                    <img src="/assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                    <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
                                     <div class="header__nav__submenu__menu-noticias__articulo___contenido">
                                         <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
                                         <header class="header__nav__submenu__menu-noticias__articulo__header">
@@ -186,7 +189,7 @@
                                     </div>
                                 </article>
                                 <article class="header__nav__submenu__menu-noticias__articulo">
-                                    <img src="/assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                    <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
                                     <div class="header__nav__submenu__menu-noticias__articulo___contenido">
                                         <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
                                         <header class="header__nav__submenu__menu-noticias__articulo__header">
@@ -204,7 +207,6 @@
             </nav>
         </div>
     </header>
-
     @RenderBody()
 
 

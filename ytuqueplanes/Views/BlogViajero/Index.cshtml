@@ -1,4 +1,4 @@
-﻿
+﻿@model dynamic
 @{
     ViewBag.Title = "Index";
 }
@@ -46,20 +46,27 @@
             <h3 class="seccion__titulo m--left">Vive nuevas experiencias</h3>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
+
+
+                    @foreach (ytuqueplanes.Models.Blog blog in Model.notas)
+                    {
                     <div class="swiper-slide">
                         <article class="card-info m--tipo2">
-                            <img src="assets/images/rutas-cortas-2.jpg" alt="" class="card-info__imagen">
+                            <img src="@blog.imagen" alt="" class="card-info__imagen">
                             <header class="card-info__header">
                                 <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Moquegua</address>
-                                <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>
-                                <h1 class="card-info__titulo">Trekking en z - El Baúl de Antonia</h1>
+                                <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->
+                                <h1 class="card-info__titulo">@blog.titulo</h1>
                             </header>
-                            <a href="/blog-viajero/trekking-en-z-el-baul-de-antonia" class="card-info__mas-informacion">Más información</a>
+                            <a href="/blog-viajero/@blog.slug" class="card-info__mas-informacion">Más información</a>
                         </article>
                     </div>
-                   
 
-                </div>
+                    }
+                        
+
+
+                    </div>
             </div>
         </div>
     </section>

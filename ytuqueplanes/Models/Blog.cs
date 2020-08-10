@@ -15,5 +15,7 @@ namespace ytuqueplanes.Models
         public string imagen { get; set; }
         public String created_at { get; set; }
         public int? likes { get; set; }
+
+        public string slug { get; set; }
     }
 }

@@ -73,7 +73,8 @@ namespace ytuqueplanes.Controllers
                 p.titulo,
                 p.imagen,
                 p.likes,
-                p.resumen
+                p.resumen,
+                p.slug
             }).ToList();
 
             List<Blog> datonotas = new List<Blog>();
@@ -87,7 +88,8 @@ namespace ytuqueplanes.Controllers
                         titulo = notas[j].titulo,
                         imagen = notas[j].imagen,
                         likes = notas[j].likes,
-                        resumen = notas[j].resumen
+                        resumen = notas[j].resumen,
+                        slug = notas[j].slug
                     }
                     );
             }
@@ -99,18 +101,6 @@ namespace ytuqueplanes.Controllers
         {
             Festividad festividad = new Festividad();
 
-           /*  var festividades = db.festividades.Where(c => c.mes_id == 7).Select(p => new { 
-                 p.id,
-                 p.nombre,
-                 p.inicio,
-                 p.final,
-                 p.provincia_id,
-                 p.imagen,
-                 p.contenido,
-                 p.mes_id,
-                 p.likes,
-                 p.documento
-             }).ToList();*/
 
             var fest = from t1 in db.festividades
             join t2 in db.meses
@@ -132,22 +122,6 @@ namespace ytuqueplanes.Controllers
             };
 
           var festividades = fest.ToList();
-
-            /*  var festifro = from a in db.festividades.Where(a.mes_id == 7).Join (b => b.mmeses on a.mes_id equals b.id
-                             join c in db.provincias on a.provincia_id equals c.id
-                             select (new
-                             {
-                                 id = a.id,
-                                 nombre = a.nombre,
-                                 inicio = a.inicio,
-                                 final = a.final,
-                                 nombremes = b.nombre,
-                                 nombreprovincia = c.nombre,
-                                 imagen = a.imagen,
-                                 contenido = a.contenido,
-                                 likes = a.likes,
-                                 documento = a.documento
-                             });*/
 
 
             List < Festividad > festidatos = new List<Festividad>();
