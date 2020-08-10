@@ -19,6 +19,12 @@ namespace EntidadesData
         public string descripcion { get; set; }
         public string contenido { get; set; }
         public Nullable<int> destino_id { get; set; }
+        public string resumen { get; set; }
+        public Nullable<int> estado { get; set; }
+        public string banner_t { get; set; }
+        public string banner_m { get; set; }
+        public string slug { get; set; }
+        public string titulo { get; set; }
     
         public virtual destino destino { get; set; }
     }

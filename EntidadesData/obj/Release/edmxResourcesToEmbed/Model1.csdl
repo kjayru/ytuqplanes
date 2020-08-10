@@ -28,9 +28,15 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="banner" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="contenido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="destino_id" Type="Int32" />
     <NavigationProperty Name="destino" Relationship="Self.FK__atractivo__desti__4CA06362" FromRole="atractivos" ToRole="destinos" />
+    <Property Name="resumen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="banner_t" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="banner_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="slug" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="titulo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="categoria_noticia">
     <Key>
@@ -140,7 +146,7 @@
     <Property Name="latitud" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="longitud" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="ruta_id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="iconos" Relationship="Self.FK__iconos__mapa_id__5165187F" FromRole="mapas" ToRole="iconos" />
     <NavigationProperty Name="ruta" Relationship="Self.FK__mapas__ruta_id__52593CB8" FromRole="mapas" ToRole="rutas" />
@@ -240,6 +246,7 @@
     <Property Name="likes" Type="Int32" />
     <Property Name="categoria_blog_id" Type="Int32" Nullable="false" />
     <Property Name="destacado" Type="Int32" />
+    <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="preferencias_destino">
     <Key>
@@ -802,6 +809,7 @@
       <End Role="categoria_noticia" EntitySet="categoria_noticia" />
       <End Role="noticia" EntitySet="noticias" />
     </AssociationSet>
+    <EntitySet Name="atractivos_galeria" EntityType="ytuqueplanesDBModel.atractivos_galeria" />
   </EntityContainer>
   <Association Name="categoria_noticia_noticia_fk">
     <End Type="ytuqueplanesDBModel.categoria_noticia" Role="categoria_noticia" Multiplicity="1" />
@@ -815,4 +823,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="atractivos_galeria">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="atractivo_id" Type="Int32" Nullable="false" />
+    <Property Name="imagen" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

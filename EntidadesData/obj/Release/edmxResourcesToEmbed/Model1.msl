@@ -26,6 +26,12 @@
     <EntitySetMapping Name="atractivos">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.atractivo">
         <MappingFragment StoreEntitySet="atractivos">
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="banner_m" ColumnName="banner_m" />
+          <ScalarProperty Name="banner_t" ColumnName="banner_t" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="resumen" ColumnName="resumen" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="banner" ColumnName="banner" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -230,6 +236,7 @@
     <EntitySetMapping Name="posts">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.post">
         <MappingFragment StoreEntitySet="posts">
+          <ScalarProperty Name="slug" ColumnName="slug" />
           <ScalarProperty Name="destacado" ColumnName="destacado" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="titulo" ColumnName="titulo" />
@@ -529,6 +536,15 @@
         <MappingFragment StoreEntitySet="rutas_seo">
           <ScalarProperty Name="ruta_id" ColumnName="ruta_id" />
           <ScalarProperty Name="seo_id" ColumnName="seo_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="atractivos_galeria">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.atractivos_galeria">
+        <MappingFragment StoreEntitySet="atractivos_galeria">
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="atractivo_id" ColumnName="atractivo_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

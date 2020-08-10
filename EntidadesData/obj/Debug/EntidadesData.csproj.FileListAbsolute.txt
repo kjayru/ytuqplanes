@@ -9,14 +9,3 @@ C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Debug\EntidadesData.cs
 C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Debug\EntidadesData.csproj.CopyComplete
 C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Debug\EntidadesData.dll
 C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Debug\EntidadesData.pdb
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Debug\EntidadesData.dll.config
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Debug\EntidadesData.dll
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Debug\EntidadesData.pdb
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Debug\EntityFramework.dll
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Debug\EntityFramework.xml
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.csproj.CoreCompileInputs.cache
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.csproj.CopyComplete
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.dll
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.pdb

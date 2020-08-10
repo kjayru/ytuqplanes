@@ -138,6 +138,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Atractivo.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\DestinosProvincia.cs" />
     <Compile Include="Models\Festividad.cs" />
@@ -148,8 +149,15 @@
   <ItemGroup>
     <Content Include="assets\css\main.css" />
     <Content Include="assets\css\site.css" />
-    <Content Include="assets\css\site\index.php" />
-    <Content Include="assets\css\sitio.css" />
+    <Content Include="assets\css\site\footer.styl" />
+    <Content Include="assets\css\site\header.styl" />
+    <Content Include="assets\css\site\pages.styl" />
+    <Content Include="assets\css\styl\classes.styl" />
+    <Content Include="assets\css\styl\elements.styl" />
+    <Content Include="assets\css\styl\mixins.styl" />
+    <Content Include="assets\css\styl\tags.styl" />
+    <Content Include="assets\css\styl\templates.styl" />
+    <Content Include="assets\css\styl\variables.styl" />
     <Content Include="assets\fonts\BreePeru-Bold.svg" />
     <Content Include="assets\fonts\ClanOffc-Bold.svg" />
     <Content Include="assets\fonts\ClanOffc-Book.svg" />
@@ -197,16 +205,6 @@
     <Content Include=".gitignore" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="assets\css\site\footer.styl" />
-    <Content Include="assets\css\site\header.styl" />
-    <Content Include="assets\css\site\pages.styl" />
-    <Content Include="assets\css\sitio.styl" />
-    <Content Include="assets\css\styl\classes.styl" />
-    <Content Include="assets\css\styl\elements.styl" />
-    <Content Include="assets\css\styl\mixins.styl" />
-    <Content Include="assets\css\styl\tags.styl" />
-    <Content Include="assets\css\styl\templates.styl" />
-    <Content Include="assets\css\styl\variables.styl" />
     <Content Include="assets\fonts\BreePeru-Bold.eot" />
     <Content Include="assets\fonts\BreePeru-Bold.otf" />
     <Content Include="assets\fonts\BreePeru-Bold.ttf" />

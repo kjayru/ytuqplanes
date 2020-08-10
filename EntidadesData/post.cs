@@ -24,5 +24,6 @@ namespace EntidadesData
         public Nullable<int> likes { get; set; }
         public int categoria_blog_id { get; set; }
         public Nullable<int> destacado { get; set; }
+        public string slug { get; set; }
     }
 }

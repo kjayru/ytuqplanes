@@ -27,8 +27,22 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="banner" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="descripcion" Type="varchar" MaxLength="250" Nullable="false" />
-    <Property Name="contenido" Type="varchar" MaxLength="255" />
+    <Property Name="contenido" Type="text" />
     <Property Name="destino_id" Type="int" />
+    <Property Name="resumen" Type="varchar" MaxLength="255" />
+    <Property Name="estado" Type="int" />
+    <Property Name="banner_t" Type="varchar" MaxLength="255" />
+    <Property Name="banner_m" Type="varchar" MaxLength="255" />
+    <Property Name="slug" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="titulo" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="atractivos_galeria">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="atractivo_id" Type="int" Nullable="false" />
+    <Property Name="imagen" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <EntityType Name="categoria_noticia">
     <Key>
@@ -158,7 +172,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.festividad_tag' no tiene 
     <Property Name="latitud" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="longitud" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="titulo" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="descripcion" Type="text" />
     <Property Name="ruta_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="marcas">
@@ -329,6 +343,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_tag' no tiene defini
     <Property Name="likes" Type="int" />
     <Property Name="categoria_blog_id" Type="int" Nullable="false" />
     <Property Name="destacado" Type="int" />
+    <Property Name="slug" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="preferencias_destino">
     <Key>
@@ -703,6 +718,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
     <EntitySet Name="actividades" EntityType="Self.actividades" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="alertas" EntityType="Self.alertas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="atractivos" EntityType="Self.atractivos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="atractivos_galeria" EntityType="Self.atractivos_galeria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="categoria_noticia" EntityType="Self.categoria_noticia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="categoria_ruta" EntityType="Self.categoria_ruta" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="categorias" EntityType="Self.categorias" Schema="dbo" store:Type="Tables" />
