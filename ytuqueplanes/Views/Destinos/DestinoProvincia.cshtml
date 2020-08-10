@@ -4,11 +4,11 @@
         ViewBag.Title = "DestinoProvincia";
     }
 
-    <section class="page__header" style="background-image: url('assets/images/rutas-cortas-5.jpg');">
+    <section class="page__header" style="background-image: url('@ViewBag.imagen');">
         <div class="limit page__header__inset">
-            <a href="/destinos/AREQUIPA" class="page__header__miga-de-pan"><img src="assets/images/flecha-volver.svg" alt=""><span>Volver a Lima</span></a>
-            <h2 class="page__header__titulo">Ciudad de Chachapoyas</h2>
-            <p class="page__header__resumen">De estilo colonial y rodeada de hermosas casonas con balcones, es el inicio de la aventura por Amazonas. Descubre sus grandiosos y diversos atractivos.</p>
+            <a href="/destinos/@ViewBag.provincia" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a @ViewBag.provincia</span></a>
+            <h2 class="page__header__titulo">@ViewBag.titulo</h2>
+            <p class="page__header__resumen">@ViewBag.contenido</p>
         </div>
     </section>
 

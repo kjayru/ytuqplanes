@@ -99,6 +99,22 @@ namespace ytuqueplanes.Controllers
 
             var dest = db.destinos.Where(c => c.slug == id).Select(d => d.id).FirstOrDefault();
 
+            var datos = db.destinos.Where(c => c.slug == id).Select( p => new {
+                 p.titulo,
+                 p.slug,
+                 p.contenido,
+                 p.imagen,
+                 p.provincia_Id
+                }).First();
+
+            var prov = db.provincias.Where(c => c.id == datos.provincia_Id).Select(p => new { p.nombre }).First();
+
+            ViewBag.titulo = datos.titulo;
+            ViewBag.slug = datos.slug;
+            ViewBag.contenido = datos.contenido;
+            ViewBag.imagen = datos.imagen;
+
+            ViewBag.provincia = prov.nombre;
 
             var at = db.atractivos.Where(c => c.destino_id == dest).Select(p => new
             {
@@ -130,6 +146,8 @@ namespace ytuqueplanes.Controllers
         /*Detalle destino **/
         public ActionResult DetalleDestino(string id) {
 
+
+
             var detalle = db.atractivos.Where(c => c.slug == id).Select(p => new {
                 p.id,
                 p.titulo,
@@ -139,8 +157,14 @@ namespace ytuqueplanes.Controllers
                 p.resumen,
                 p.banner,
                 p.banner_m,
-                p.banner_t
+                p.banner_t,
+                p.destino_id
             }).FirstOrDefault();
+
+            var destino = db.destinos.Where(c => c.id == detalle.destino_id).Select(p => new { p.slug, p.titulo }).First();
+
+            ViewBag.destinoUrl = destino.slug;
+            ViewBag.destino = destino.titulo;
 
             Atractivo atractivo = new Atractivo {
                 id = detalle.id,
