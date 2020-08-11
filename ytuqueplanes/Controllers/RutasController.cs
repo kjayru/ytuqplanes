@@ -18,5 +18,10 @@ namespace ytuqueplanes.Controllers
         {
             return View();
         }
+
+        public ActionResult Mapa(String id) {
+
+            return View();
+        }
     }
 }

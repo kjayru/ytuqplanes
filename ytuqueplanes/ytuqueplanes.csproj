@@ -149,6 +149,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\main.css" />
+    <Content Include="assets\css\mapa\footer-route.min.css" />
+    <Content Include="assets\css\mapa\global.min.css" />
+    <Content Include="assets\css\mapa\images\layers-2x.png" />
+    <Content Include="assets\css\mapa\images\layers.png" />
+    <Content Include="assets\css\mapa\images\marker-icon-2x.png" />
+    <Content Include="assets\css\mapa\images\marker-icon.png" />
+    <Content Include="assets\css\mapa\images\marker-shadow.png" />
+    <Content Include="assets\css\mapa\img\markers_default%402x.png" />
+    <Content Include="assets\css\mapa\img\markers_default.png" />
+    <Content Include="assets\css\mapa\img\markers_shadow%402x.png" />
+    <Content Include="assets\css\mapa\img\markers_shadow.png" />
+    <Content Include="assets\css\mapa\leaflet.extra-markers.min.css" />
+    <Content Include="assets\css\mapa\leaflet.min.css" />
+    <Content Include="assets\css\mapa\loading.min.css" />
+    <Content Include="assets\css\mapa\magnific-popup.min.css" />
+    <Content Include="assets\css\mapa\mapa.css" />
+    <Content Include="assets\css\mapa\route.min.css" />
     <Content Include="assets\css\site.css" />
     <Content Include="assets\css\site\footer.styl" />
     <Content Include="assets\css\site\header.styl" />
@@ -189,6 +206,16 @@
     <Content Include="assets\images\usuario.svg" />
     <Content Include="assets\images\y-tu-que-planes-gris.svg" />
     <Content Include="assets\images\y-tu-que-planes.png" />
+    <Content Include="assets\js\mapa\jquery.waypoints.min.js" />
+    <Content Include="assets\js\mapa\leaflet.extra-markers.min.js" />
+    <Content Include="assets\js\mapa\leaflet.min.js" />
+    <Content Include="assets\js\mapa\loading.min.js" />
+    <Content Include="assets\js\mapa\lodash.min.js" />
+    <Content Include="assets\js\mapa\magnific-popup.min.js" />
+    <Content Include="assets\js\mapa\mapa-dev.js" />
+    <Content Include="assets\js\mapa\mapa.js" />
+    <Content Include="assets\js\mapa\route.js" />
+    <Content Include="assets\js\mapa\sitevar.js" />
     <Content Include="assets\js\plugins.js" />
     <Content Include="assets\js\site.js" />
     <Content Include="assets\js\sitio.js" />
@@ -223,6 +250,12 @@
     <Content Include="assets\fonts\ClanOffc-News.eot" />
     <Content Include="assets\fonts\ClanOffc-News.ttf" />
     <Content Include="assets\fonts\ClanOffc-News.woff" />
+    <Content Include="assets\css\mapa\mapa.styl" />
+    <Content Include="assets\fonts\mapa\FC_Bold.otf" />
+    <Content Include="assets\fonts\mapa\FC_Light.otf" />
+    <Content Include="assets\fonts\mapa\FC_Regular.otf" />
+    <Content Include="assets\js\mapa\region.json" />
+    <Content Include="assets\js\mapa\route.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -266,6 +299,7 @@
     <Content Include="Views\Experiencias\Index.cshtml" />
     <Content Include="Views\Experiencias\Detalle.cshtml" />
     <Content Include="Views\BlogViajero\Detalle.cshtml" />
+    <Content Include="Views\Rutas\Mapa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
