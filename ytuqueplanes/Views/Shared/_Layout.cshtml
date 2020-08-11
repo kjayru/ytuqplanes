@@ -1,6 +1,4 @@
-﻿@{
-    string SetNavActive(string page) => ViewBag.pageInNav == @page ? "-activo-" : string.Empty;
-}
+﻿@using ytuqueplanes.Models;
 <!DOCTYPE html>
 <html class="no-js" lang="es-PE">
 
@@ -26,10 +24,11 @@
             <nav class="header__nav">
                 <ul class="header__nav__lista">
                     <li class="header__nav__item">
-                        <a href="/ofertas" class="header__nav__enlace @SetNavActive("ofertas")"><strong>Ofertas</strong></a>
+                        <a href="/ofertas" class="header__nav__enlace @Html.IsActive("Ofertas", "Index")"><strong>Ofertas</strong></a>
+
                     </li>
                     <li class="header__nav__item">
-                        <a href="/destinos" class="header__nav__enlace @SetNavActive("destinos")">
+                        <a href="/destinos" class="header__nav__enlace @Html.IsActive("Destinos", "Index")">
                             <strong>Destinos</strong>
                         </a>
                         <ul class="header__nav__interno header__nav__destinos -norte-">
@@ -39,47 +38,47 @@
                                 <span class="header__nav__destinos__filtro fnVerDepartamentosPorZona" data-filtro="-centro-">Centro</span>
                                 <span class="header__nav__destinos__filtro fnVerDepartamentosPorZona" data-filtro="-sur-">Sur</span>
                             </aside>
-                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace -default-" data-mapa="amazonas">Amazonas</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="ancash">Ancash</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="apurimac">Apurimac</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="arequipa">Arequipa</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="ayacucho">Ayacucho</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="cajamarca">Cajamarca</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="callao">Callao</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="cusco">Cusco</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="" class="header__nav__destinos__enlace" data-mapa="huancavelica">Huancavelica</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="huanuco">Huánuco</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="ica">Ica</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="junin">Junín</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="la-libertad">La Libertad</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="lambayeque">Lambayeque</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="lima">Lima</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="loreto">Loreto</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="madre-de-dios">Madre De Dios</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" class="header__nav__destinos__enlace" data-mapa="moquegua">Moquegua</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="" class="header__nav__destinos__enlace" data-mapa="pasco">Pasco</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="" class="header__nav__destinos__enlace" data-mapa="piura">Piura</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="" class="header__nav__destinos__enlace" data-mapa="puno">Puno</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="" class="header__nav__destinos__enlace" data-mapa="san-martin">San Martín</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="" class="header__nav__destinos__enlace" data-mapa="tacna">Tacna</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="" class="header__nav__destinos__enlace" data-mapa="">Tumbes</a></li>
-                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="" class="header__nav__destinos__enlace" data-mapa="">Ucayali</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="/destinos/AMAZONAS" class="header__nav__destinos__enlace" data-mapa="amazonas">Amazonas</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="/destinos/ANCASH" class="header__nav__destinos__enlace" data-mapa="ancash">Ancash</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="/destinos/APURIMAC" class="header__nav__destinos__enlace" data-mapa="apurimac">Apurimac</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="/destinos/AREQUIPA" class="header__nav__destinos__enlace" data-mapa="arequipa">Arequipa</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="/destinos/AYACUCHO" class="header__nav__destinos__enlace" data-mapa="ayacucho">Ayacucho</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="/destinos/CAJAMARCA" class="header__nav__destinos__enlace" data-mapa="cajamarca">Cajamarca</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="/destinos/CALLAO" class="header__nav__destinos__enlace" data-mapa="callao">Callao</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="/destinos/CUSCO" class="header__nav__destinos__enlace" data-mapa="cusco">Cusco</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="norte"><a href="/destinos/HUANCAVELICA" class="header__nav__destinos__enlace" data-mapa="huancavelica">Huancavelica</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="/destinos/HUANUCO" class="header__nav__destinos__enlace" data-mapa="huanuco">Huánuco</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="/destinos/ICA" class="header__nav__destinos__enlace" data-mapa="ica">Ica</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="/destinos/JUNIN" class="header__nav__destinos__enlace" data-mapa="junin">Junín</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="" /destinos/LA-LIBERTAD class="header__nav__destinos__enlace" data-mapa="la-libertad">La Libertad</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="/destinos/LAMBAYEQUE" class="header__nav__destinos__enlace" data-mapa="lambayeque">Lambayeque</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="/destinos/LIMA" class="header__nav__destinos__enlace" data-mapa="lima">Lima</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="/destinos/LORETO" class="header__nav__destinos__enlace" data-mapa="loreto">Loreto</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="/destinos/MADRE-DE-DIOS" class="header__nav__destinos__enlace" data-mapa="madre-de-dios">Madre De Dios</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="centro"><a href="/destinos/MOQUEGUA" class="header__nav__destinos__enlace" data-mapa="moquegua">Moquegua</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="/destinos/PASCO" class="header__nav__destinos__enlace" data-mapa="pasco">Pasco</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="/destinos/PIURA" class="header__nav__destinos__enlace" data-mapa="piura">Piura</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="/destinos/PUNO" class="header__nav__destinos__enlace" data-mapa="puno">Puno</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="/destinos/SAN-MARTIN" class="header__nav__destinos__enlace" data-mapa="san-martin">San Martín</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="/destinos/TACNA" class="header__nav__destinos__enlace" data-mapa="tacna">Tacna</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="/destinos/TUMBES" class="header__nav__destinos__enlace" data-mapa="">Tumbes</a></li>
+                            <li class="header__nav__destinos__item" data-filtro="sur"><a href="/destinos/UCAYALI" class="header__nav__destinos__enlace" data-mapa="">Ucayali</a></li>
                         </ul>
                         <span class="header__nav__enlace__bg"></span>
                         <span class="header__nav__item__ver-mas fnToggleClass"
                               data-targets=".header__nav__item__ver-mas, .header__nav__destinos"></span>
                     </li>
                     <li class="header__nav__item">
-                        <a href="/experiencias" class="header__nav__enlace @SetNavActive("experiencias")"><strong>Experiencias</strong></a>
+                        <a href="/experiencias" class="header__nav__enlace @Html.IsActive("Experiencias", "Index")"><strong>Experiencias</strong></a>
                     </li>
                     <span class="header__nav__item m--logo">
                         <a href="/"><img src="/assets/images/y-tu-que-planes.png" alt=""></a>
                     </span>
                     <li class="header__nav__item">
-                        <a href="/rutas-cortas" class="header__nav__enlace @SetNavActive("rutas-cortas")"><strong>Rutas cortas</strong></a>
+                        <a href="/rutas-cortas" class="header__nav__enlace @Html.IsActive("Rutas", "Index")"><strong>Rutas cortas</strong></a>
                     </li>
                     <li class="header__nav__item">
-                        <a href="/blog-viajero" class="header__nav__enlace @SetNavActive("blog")"><strong>Blog viajero</strong></a>
+                        <a href="/blog-viajero" class="header__nav__enlace @Html.IsActive("BlogViajero", "Index")"><strong>Blog viajero</strong></a>
                     </li>
                     <aside id="buscador-principal" class="header__nav__interno buscador-principal -no-focus-">
                         <form class="buscador-principal__form">

@@ -17,5 +17,7 @@ namespace ytuqueplanes.Models
         public int? likes { get; set; }
 
         public string slug { get; set; }
+
+        public string categoria { get; set; }
     }
 }

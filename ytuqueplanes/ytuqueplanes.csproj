@@ -142,6 +142,7 @@
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\DestinosProvincia.cs" />
     <Compile Include="Models\Festividad.cs" />
+    <Compile Include="Models\HtmlUtility.cs" />
     <Compile Include="Models\Provincias.cs" />
     <Compile Include="Models\Slide.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

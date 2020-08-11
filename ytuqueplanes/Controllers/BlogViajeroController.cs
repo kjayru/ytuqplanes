@@ -23,6 +23,32 @@ namespace ytuqueplanes.Controllers
         }
 
         public ActionResult Detalle(string id) {
+
+
+
+            var detalle = db.posts.Where(c => c.slug == id).Select(p => new {
+                p.id,
+                p.titulo,
+                p.slug,
+                p.contenido,
+                p.resumen,
+                p.imagen,
+                p.categoria_blog_id
+                
+            }).FirstOrDefault();
+
+
+
+
+            ViewBag.titulo = detalle.titulo;
+                ViewBag.slug = detalle.slug;
+                ViewBag.contenido = detalle.contenido;
+                ViewBag.imagen = detalle.imagen;
+                ViewBag.resumen = detalle.resumen;
+                
+            
+
+
             return View();
         }
 
