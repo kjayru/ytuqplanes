@@ -11,5 +11,7 @@ namespace ytuqueplanes.Models
         public string nombre { get; set; }
         public string region { get; set; }
         public string imagen { get; set; }
+
+        public string slug { get; set; }
     }
 }

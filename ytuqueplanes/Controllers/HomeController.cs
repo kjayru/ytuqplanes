@@ -65,7 +65,7 @@ namespace ytuqueplanes.Controllers
 
         private List<Blog> getNotas() {
             
-
+        /*
             Blog blog = new Blog();
 
             var notas = db.posts.Where(c => c.destacado == 1).Select(p => new {
@@ -92,6 +92,59 @@ namespace ytuqueplanes.Controllers
                         slug = notas[j].slug
                     }
                     );
+            }
+
+            return datonotas;*/
+
+
+            var dt = (from pd in db.posts
+                      join od in db.provincias on pd.provincia_id equals od.id
+                      join ct in db.categorias on pd.categoria_blog_id equals ct.id
+                      where pd.destacado == 1
+                      orderby pd.id descending
+                      select new
+                      {
+                          id = pd.id,
+                          titulo = pd.titulo,
+                          slug = pd.slug,
+                          contenido = pd.contenido,
+                          resumen = pd.resumen,
+                          imagen = pd.imagen,
+                          categoria_id = pd.categoria_blog_id,
+                          categoria = ct.nombre,
+                          tipo = pd.tipo_id,
+                          provincia_id = pd.provincia_id,
+                          provincia = od.nombre,
+                          provincia_slug = od.slug
+                      }).ToList();
+
+
+            var notas = dt.ToList();
+
+
+
+
+            List<Blog> datonotas = new List<Blog>();
+
+            for (var j = 0; j < notas.Count(); j++)
+            {
+                datonotas.Add(
+                    new Blog
+                    {
+                        id = notas[j].id,
+                        titulo = notas[j].titulo,
+                        imagen = notas[j].imagen,
+                        resumen = notas[j].resumen,
+                        slug = notas[j].slug,
+                        categoria_id = notas[j].categoria_id,
+                        categoria = notas[j].categoria,
+
+                        provincia_id = notas[j].provincia_id,
+                        provincia = notas[j].provincia,
+                        tipo = notas[j].tipo,
+                        provincia_slug = notas[j].provincia_slug
+
+                    });
             }
 
             return datonotas;
@@ -147,5 +200,7 @@ namespace ytuqueplanes.Controllers
         
 
         }
+
+
     }
 }

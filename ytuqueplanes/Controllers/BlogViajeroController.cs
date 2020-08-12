@@ -18,7 +18,7 @@ namespace ytuqueplanes.Controllers
             dynamic datosNotasModel = new ExpandoObject();
 
             datosNotasModel.notas = getNotas();
-
+            datosNotasModel.provincias = getProvincias();
             return View(datosNotasModel);
         }
 
@@ -26,24 +26,28 @@ namespace ytuqueplanes.Controllers
 
             dynamic datosNotasModel = new ExpandoObject();
 
-           
+            var prov = db.provincias.Where(c => c.slug == id).Select(p => new { p.id , p.imagen, p.nombre }).First();
 
-            
+            ViewBag.provincia = prov.nombre;
+            ViewBag.provincia_imagen = prov.imagen;
 
-            var prov_id = db.provincias.Where(c => c.slug == id).Select(p => p.id).First();
-
-            var notas = db.posts.Where(c => c.provincia_id == prov_id).Select(p => new
+            var notas = db.posts.Where(c => c.provincia_id == prov.id).Select(p => new
             {
                 p.id,
                 p.titulo,
                 p.slug,
-                p.contenido,
+               p.contenido,
                 p.resumen,
                 p.imagen,
                 p.categoria_blog_id,
                 p.tipo_id,
                 p.provincia_id
+               
             }).ToList();
+
+            var cat1 = db.posts.Where(c => c.provincia_id == prov.id).Where(d => d.categoria_blog_id == 1).Select(p => p.id).Count();
+            var cat2= db.posts.Where(c => c.provincia_id == prov.id).Where(d => d.categoria_blog_id == 2).Select(p => p.id).Count();
+            var cat3 = db.posts.Where(c => c.provincia_id == prov.id).Where(d => d.categoria_blog_id == 3).Select(p => p.id).Count();
 
 
             List<Blog> datonotas = new List<Blog>();
@@ -61,12 +65,17 @@ namespace ytuqueplanes.Controllers
                         categoria_id = notas[j].categoria_blog_id,
                         provincia_id = notas[j].provincia_id,
                         tipo = notas[j].tipo_id,
-                        provincia = id
+                        provincia = prov.nombre,
+                        provincia_imagen = prov.imagen
                     }
                     );
             }
 
             datosNotasModel.notas = datonotas;
+
+            ViewBag.NumVivencial = cat1;
+            ViewBag.NumGastronomia = cat2;
+            ViewBag.NumFestividades = cat3;
 
             return View(datosNotasModel);
 
@@ -123,7 +132,8 @@ namespace ytuqueplanes.Controllers
                          categoria = ct.nombre,
                         tipo =  pd.tipo_id,
                         provincia_id =  pd.provincia_id,
-                        provincia = od.nombre
+                        provincia = od.nombre,
+                        provincia_slug = od.slug
                      }).ToList();
 
 
@@ -149,13 +159,59 @@ namespace ytuqueplanes.Controllers
 
                         provincia_id = notas[j].provincia_id,
                         provincia = notas[j].provincia,
-                        tipo = notas[j].tipo
+                        tipo = notas[j].tipo,
+                        provincia_slug = notas[j].provincia_slug
                         
                     }
                     );
             }
 
             return datonotas;
+        }
+
+
+
+
+        private List<Provincias> getProvincias()
+        {
+            var prov = from t1 in db.provincias
+                       join t2 in db.regions
+                       
+                       on t1.region_id equals t2.id
+                       where t1.estado == 1
+                       select new
+                       {
+                           id = t1.id,
+                           nombre = t1.nombre,
+                           region = t2.nombre,
+                           imagen = t1.imagen,
+                           slug = t1.slug
+
+                       };
+
+            var provs = prov.ToList();
+
+
+
+
+            List<Provincias> providatos = new List<Provincias>();
+            for (var k = 0; k < provs.Count(); k++)
+            {
+                providatos.Add(
+                    new Provincias
+                    {
+                        id = provs[k].id,
+                        nombre = provs[k].nombre,
+                        region = provs[k].region,
+                        imagen = provs[k].imagen,
+                        slug = provs[k].slug
+
+                    });
+
+            }
+
+            return providatos;
+
         }
     }
 }

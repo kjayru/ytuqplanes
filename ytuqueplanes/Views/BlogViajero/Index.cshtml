@@ -12,9 +12,13 @@
         <div class="boton m--amarillo m--grande filtro-selector__select-ui">
             <strong class="filtro-selector__select-ui__contenido">Amazonas</strong>
             <select class="filtro-selector__select-ui__select fnSelect">
-                <option value="Amazonas">Amazonas</option>
-                <option value="Lima">Lima</option>
-            </select>
+                <option>Seleccionar</option>
+                @foreach (ytuqueplanes.Models.Provincias prov in Model.provincias)
+                {
+                    <option value="@prov.slug">@prov.nombre</option>
+                    
+                }
+                </select>
         </div>
     </div>
 </section>
@@ -61,7 +65,7 @@
                                         <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->
                                         <h1 class="card-info__titulo">@blog.titulo</h1>
                                     </header>
-                                    <a href="/blog-viajero/@blog.provincia/@blog.slug" class="card-info__mas-informacion">Más información</a>
+                                    <a href="/blog-viajero/@blog.provincia_slug/@blog.slug" class="card-info__mas-informacion">Más información</a>
                                 </article>
                             </div>
                         }
@@ -97,7 +101,7 @@
                                         <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->
                                         <h1 class="card-info__titulo">@blog.titulo</h1>
                                     </header>
-                                    <a href="/blog-viajero/@blog.provincia/@blog.slug" class="card-info__mas-informacion">Más información</a>
+                                    <a href="/blog-viajero/@blog.provincia_slug/@blog.slug" class="card-info__mas-informacion">Más información</a>
                                 </article>
                             </div>
                         }
@@ -127,7 +131,7 @@
                                         <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->
                                         <h1 class="card-info__titulo">@blog.titulo</h1>
                                     </header>
-                                    <a href="/blog-viajero/@blog.provincia/@blog.slug" class="card-info__mas-informacion">Más información</a>
+                                    <a href="/blog-viajero/@blog.provincia_slug/@blog.slug" class="card-info__mas-informacion">Más información</a>
                                 </article>
                             </div>
                         }

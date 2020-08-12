@@ -20,7 +20,9 @@ namespace ytuqueplanes.Models
         public string categoria { get; set; }
 
         public string provincia { get; set; }
+        public string provincia_imagen { get; set; }
 
+        public string provincia_slug { get; set; }
         public int? categoria_id { get; set; }
         public int? tipo { get; set; }
         public int? provincia_id { get; set; }
