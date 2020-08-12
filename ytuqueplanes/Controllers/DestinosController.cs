@@ -38,7 +38,7 @@ namespace ytuqueplanes.Controllers
 
             ViewBag.nombreProvincia = id;
 
-            var prov = db.provincias.Where(c => c.nombre == id).Select(d => d.id).FirstOrDefault();
+            var prov = db.provincias.Where(c => c.nombre == id).Select(d => d.id).First();
 
 
             /* var destinos = db.destinos.Where(c => c.provincia_Id == prov).Select(d => new {
@@ -52,6 +52,7 @@ namespace ytuqueplanes.Controllers
             var dt = from t1 in db.destinos
                      join t2 in db.experiencias
                      on t1.id equals t2.destino_id into DestinoFil
+                     where t1.provincia_Id == prov
                      from t3 in DestinoFil.DefaultIfEmpty()
                      select new
                      {
