@@ -8,6 +8,11 @@ $(document).ready(function() {
 		window.location.href = $(this).attr("data-href");
 	});
 
+	$(".wrapper-navbar").on("click", ".fnBackToUrl", function(e) {
+		e.preventDefault();
+		window.history.back();
+	});
+
 	/* Cada vez que cambie el ancho de la ventana del navegador,
 	llama a la función "waypointItems", esto se hace para refrescar el scrolleo y que los marcadores te sigan */
 	$(window).on("resize", function() {
@@ -66,7 +71,7 @@ $(document).ready(function() {
 	});
 
 	/* En esta parte cargamos la data del archivo json, el cual contiene la info de las rutas y los atractivos */
-	$.getJSON("assets/js/mapa/route.json", function(data) {
+	$.getJSON("/assets/js/mapa/route.json", function(data) {
 		var grep_route = $.grep(data, function(n, i) {
 			/* Aquí solo traemos la data que nos sirve, en este caso filtro de acuerdo a la región y ruta */
 			return n.url == getRoute() && n.urlRegion == getRegion();
@@ -78,7 +83,7 @@ $(document).ready(function() {
 	});
 
 	/* En esta parte cargamos la data del archivo json, el cual contiene solo la info de las regiones */
-	$.getJSON("assets/js/mapa/region.json", function(data) {
+	$.getJSON("/assets/js/mapa/region.json", function(data) {
 		var grep_region = $.grep(data, function(n, i) {
 			/* Aquí solo traemos la data que nos sirve, en este caso filtro de acuerdo a la región */
 			return n.url == getRegion();
@@ -91,12 +96,12 @@ $(document).ready(function() {
 		var contenido = "";
 		contenido += "<div class='wrapper-navbar-container'>";
 		contenido += "<div class='wrapper-navbar-left'>";
-		contenido += "<div class='wrapper-navbar-link' data-href='rutas-cortas-interna.html'>";
+		contenido += "<div class='wrapper-navbar-link fnBackToUrl'>";
 		contenido += "<i class='fa fa-long-arrow-left'></i>Rutas cortas desde " + data[0].region + "";
 		contenido += "</div>";
 		contenido += "</div>";
 		contenido += "<div class='wrapper-navbar-right'>";
-		contenido += "<div class='wrapper-navbar-link' data-href='rutas-cortas-interna.html'>";
+		contenido += "<div class='wrapper-navbar-link fnBackToUrl'>";
 		contenido += "<i class='fa fa-times'></i>";
 		contenido += "</div>";
 		contenido += "</div>";
@@ -164,7 +169,7 @@ $(document).ready(function() {
 					contenido += "<ul class='wflitem-activity-list'>";
 					for(var k in data_places[i].activity) {
 						contenido += "<li>";
-						contenido += "<img src='" + data_places[i].activity[k].icon + "' />";
+						contenido += "<img src='/" + data_places[i].activity[k].icon + "' />";
 						contenido += "<span>" + data_places[i].activity[k].name + "</span>";
 						contenido += "</li>";
 					}
@@ -184,7 +189,7 @@ $(document).ready(function() {
 				if(data_places[i].image != "") {
 					// cambio de imagen por rafctorizar
 					// contenido += "<div class='wflitem-image' style='background-image: url(../../" + data_places[i].image + ");'></div>";
-					contenido += "<div class='wflitem-image' style='background-image: url(assets/images/rutas-cortas-1.jpg);'></div>";
+					contenido += "<div class='wflitem-image' style='background-image: url(/assets/images/rutas-cortas-1.jpg);'></div>";
 				}
 				contenido += "</div>";
 			};
@@ -226,7 +231,7 @@ $(document).ready(function() {
 			if(data[0].car.length > 0) {
 				contenido += "<div class='wc-popup-first-item'>";
 				contenido += "<div class='wc-popup-first-item-left'>";
-				contenido += "<img src='assets/images/mapa/etc/car.png' />";
+				contenido += "<img src='/assets/images/mapa/etc/car.png' />";
 				contenido += "</div>";
 				contenido += "<div class='wc-popup-first-item-right'>";
 				contenido += "<ul>";
@@ -240,7 +245,7 @@ $(document).ready(function() {
 			if(data[0].bus.length > 0) {
 				contenido += "<div class='wc-popup-first-item'>";
 				contenido += "<div class='wc-popup-first-item-left'>";
-				contenido += "<img src='assets/images/mapa/etc/bus.png' />";
+				contenido += "<img src='/assets/images/mapa/etc/bus.png' />";
 				contenido += "</div>";
 				contenido += "<div class='wc-popup-first-item-right'>";
 				contenido += "<ul>";
@@ -254,7 +259,7 @@ $(document).ready(function() {
 			if(data[0].train.length > 0) {
 				contenido += "<div class='wc-popup-first-item'>";
 				contenido += "<div class='wc-popup-first-item-left'>";
-				contenido += "<img src='assets/images/mapa/etc/train.png' />";
+				contenido += "<img src='/assets/images/mapa/etc/train.png' />";
 				contenido += "</div>";
 				contenido += "<div class='wc-popup-first-item-right'>";
 				contenido += "<ul>";
@@ -268,7 +273,7 @@ $(document).ready(function() {
 			if(data[0].ship.length > 0) {
 				contenido += "<div class='wc-popup-first-item'>";
 				contenido += "<div class='wc-popup-first-item-left'>";
-				contenido += "<img src='assets/images/mapa/etc/ship.png' />";
+				contenido += "<img src='/assets/images/mapa/etc/ship.png' />";
 				contenido += "</div>";
 				contenido += "<div class='wc-popup-first-item-right'>";
 				contenido += "<ul>";
@@ -282,7 +287,7 @@ $(document).ready(function() {
 			if(data[0].airplane.length > 0) {
 				contenido += "<div class='wc-popup-first-item'>";
 				contenido += "<div class='wc-popup-first-item-left'>";
-				contenido += "<img src='assets/images/mapa/etc/plane.png' />";
+				contenido += "<img src='/assets/images/mapa/etc/plane.png' />";
 				contenido += "</div>";
 				contenido += "<div class='wc-popup-first-item-right'>";
 				contenido += "<ul>";
@@ -305,7 +310,7 @@ $(document).ready(function() {
 			contenido += "</div>";
 			contenido += "<div class='wc-popup-second-left-right'>";
 			contenido += "<div class='wc-popup-second-left-right-icon'>";
-			contenido += "<img src='assets/images/mapa/etc/thermometer.png' />";
+			contenido += "<img src='/assets/images/mapa/etc/thermometer.png' />";
 			contenido += "</div>";
 			contenido += "<div class='wc-popup-second-left-right-text'>";
 			if(data[0].maximumWeather != "") {

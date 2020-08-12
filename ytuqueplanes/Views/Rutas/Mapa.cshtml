@@ -1,8 +1,9 @@
 ﻿
 @{
     ViewBag.Title = "Mapa";
+    ViewBag.pageMapa = true;
 }
-<link type="text/css" rel="stylesheet" href="/assets/css/mapa/mapa.css" />
+
 <div class="page-loader">
     <div class="page-loader-spinner">
         <div class="page-loader-spinner-bounce1"></div>
@@ -22,8 +23,54 @@
                         <div class="wrapper-first-right-header"></div>
                         <div class="wrapper-first-right-body"></div>
                         <div class="wrapper-first-right-deals"></div>
-
-
+                        <div class="wrapper-first-right-footer">
+                            <footer class="footer m--mapa">
+                                <div class="limit footer__contenido">
+                                    <div class="footer__bloque m--enlaces">
+                                        <div class="footer__titulo">Información para tu viaje</div>
+                                        <ul class="footer__lista">
+                                            <li><a href="" class="footer__lista__enlace">Lista de Feriados 2020</a></li>
+                                            <li><a href="" class="footer__lista__enlace">Clima y Pronóstico del Tiempo</a></li>
+                                            <li><a href="" class="footer__lista__enlace">Áreas Naturales Protegidas</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="footer__bloque m--botones">
+                                        <div class="footer__titulo">Asistencia al viajero 24 horas</div>
+                                        <a href="#" class="boton m--mediano m--235 m--wsp"><strong><i class="fa fa-whatsapp" aria-hidden="true"></i>944492314</strong></a>
+                                        <img src="/assets/images/i-peru-gris.png" alt="" class="footer__peru">
+                                        <div class="footer__titulo m--top">Recibe nuevas ofertas y novedades</div>
+                                        <a href="#" class="boton m--mediano m--235 m--morado"><strong>Suscribirme</strong></a>
+                                    </div>
+                                    <div class="footer__bloque m--redes">
+                                        <div class="footer__titulo">Siguenos</div>
+                                        <div class="footer__redes-wrap">
+                                            <div class="footer__redes">
+                                                <a href="#" class="footer__redes__enlace m--facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                                <a href="#" class="footer__redes__enlace m--twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                                <a href="#" class="footer__redes__enlace m--instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                                <a href="#" class="footer__redes__enlace m--youtube"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                                                <a href="#" class="footer__redes__enlace m--spotify"><i class="fa fa-spotify" aria-hidden="true"></i></a>
+                                            </div>
+                                            <div class="footer__logos">
+                                                <img src="/assets/images/promperu.png" alt="" width="66" height="29" />
+                                                <img src="/assets/images/logo-ministerio.png" alt="" width="152" height="31">
+                                                <div class="footer__logos__separador"></div>
+                                                <img src="/assets/images/perumarca.png" alt="" width="44" height="29">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="footer__separador">
+                                <div class="limit footer__inferior">
+                                    <ul class="footer__inferior__lista">
+                                        <li><a href="#" class="footer__inferior__enlace">Mapa de sitio</a></li>
+                                        <li><a href="#" class="footer__inferior__enlace fnToggleClass" data-targets="#aviso-legal">Aviso legal</a></li>
+                                        <li><a href="#" class="footer__inferior__enlace">Términos y Condiciones</a></li>
+                                    </ul>
+                                    <p class="footer__inferior__copyright">Todos los derechos reservados, <span>ytuqueplanes 2020</span></p>
+                                </div>
+                            </footer>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -32,6 +79,3 @@
     <div id="datos-utiles"></div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
-<script type="text/javascript" src="/assets/js/mapa/mapa.js?v=3"></script>

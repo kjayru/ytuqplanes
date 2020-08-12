@@ -612,6 +612,7 @@ address {
 .corazon {
   font-size: 0.81rem;
   font-family: 'ClanOffc-News';
+  display: none;
 }
 .corazon i {
   margin-right: 5px;
@@ -2164,13 +2165,6 @@ address {
   .header__nav__submenu__boton-noticias:hover ~ .header__nav__enlace__bg {
     animation: menuBg ease 0.25s forwards;
   }
-  .header__nav__submenu__boton-usuario:hover ~ .header__nav__submenu__menu-usuario {
-    display: block;
-    animation: navInternoIn ease 0.25s 0.1s forwards;
-  }
-  .header__nav__submenu__boton-usuario:hover ~ .header__nav__enlace__bg {
-    animation: menuBg ease 0.25s forwards;
-  }
 }
 .header__nav__submenu__menu-usuario {
   position: absolute;
@@ -2244,7 +2238,7 @@ address {
   position: absolute;
   top: 36px;
   right: 15px;
-  width: 500px;
+  width: 255px;
   display: none;
   padding-top: 18px;
   font-size: 0.7rem;
@@ -2290,11 +2284,12 @@ address {
   flex: 1;
 }
 .header__nav__submenu__menu-noticias__bloque.m--alertas {
-  padding-right: 15px;
+  padding-right: 0;
   border-right: 1px solid #f7f7f7;
 }
 .header__nav__submenu__menu-noticias__bloque.m--noticias {
   padding-left: 15px;
+  display: none;
 }
 .header__nav__submenu__menu-noticias__cabecera {
   display: flex;
@@ -2306,6 +2301,7 @@ address {
   color: #149bff;
   text-decoration: underline;
   font-size: 0.6rem;
+  display: none;
 }
 .header__nav__submenu__menu-noticias__cabecera a:hover {
   text-decoration: none;
@@ -3028,6 +3024,9 @@ address {
     font-size: 0.7rem;
   }
 }
+.wrapper-first-right-list-item .wflitem-activity-list li img {
+  margin: auto;
+}
 @media (max-width: 979px) {
   .wrapper-navbar-container {
     padding: 20px 15px;
@@ -3379,6 +3378,7 @@ address {
 }
 .destinos__detalle__tags {
   padding-top: 30px;
+  display: none;
 }
 .destinos__detalle__tags strong,
 .destinos__detalle__tags a {
@@ -3396,14 +3396,16 @@ address {
   color: #636363;
   max-width: 820px;
   margin: 0 auto;
-  display: flex;
   padding-top: 50px;
+  display: flex;
+  justify-content: flex-end;
 }
 .destinos__detalle__me-gusta {
   margin-right: auto;
   font-size: 1.3rem;
   font-family: 'ClanOffc-Book';
   cursor: pointer;
+  display: none;
 }
 .destinos__detalle__me-gusta span {
   width: 50px;
