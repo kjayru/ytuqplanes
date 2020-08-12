@@ -368,12 +368,12 @@
 					&:hover ~ .header__nav__enlace__bg
 						animation menuBg ease .25s forwards
 
-				&__boton-usuario
-					&:hover ~ .header__nav__submenu__menu-usuario
-						display block
-						animation navInternoIn ease .25s .1s forwards
-					&:hover ~ .header__nav__enlace__bg
-						animation menuBg ease .25s forwards
+				// &__boton-usuario
+				// 	&:hover ~ .header__nav__submenu__menu-usuario
+				// 		display block
+				// 		animation navInternoIn ease .25s .1s forwards
+				// 	&:hover ~ .header__nav__enlace__bg
+				// 		animation menuBg ease .25s forwards
 
 			&__menu-usuario
 				position absolute
@@ -381,7 +381,6 @@
 				right 15px
 				width 150px
 				display none
-				// background-color red
 				padding-top 18px
 				opacity 0
 
@@ -441,7 +440,8 @@
 				position absolute
 				top 36px
 				right 15px
-				width 500px
+				// width 500px -- Reponer al habilitar noticias
+				width 255px
 				display none
 				padding-top 18px
 				font-size 0.7rem
@@ -485,10 +485,12 @@
 				&__bloque
 					flex 1
 					&.m--alertas
-						padding-right 15px
+						// padding-right 15px -- Reponer al habilitar noticias
+						padding-right 0
 						border-right 1px solid #F7F7F7
 					&.m--noticias
 						padding-left 15px
+						display none
 
 				&__cabecera
 					display flex
@@ -499,6 +501,7 @@
 						color celeste
 						text-decoration underline
 						font-size 0.6rem
+						display none // Cambio temporal debido a que no hay listado de noticias
 						&:hover
 							text-decoration none
 
