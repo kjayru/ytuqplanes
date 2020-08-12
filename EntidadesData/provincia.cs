@@ -26,6 +26,12 @@ namespace EntidadesData
         public string nombre { get; set; }
         public Nullable<int> region_id { get; set; }
         public string imagen { get; set; }
+        public string thumb { get; set; }
+        public Nullable<double> latitud { get; set; }
+        public Nullable<double> longitud { get; set; }
+        public Nullable<int> estado { get; set; }
+        public string descripcion { get; set; }
+        public string slug { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<destino> destinos { get; set; }

@@ -19,10 +19,16 @@ namespace ytuqueplanes
              new { controller = "BlogViajero", action = "Index" }
          );
 
+        routes.MapRoute(
+            "BlogProvincia",
+            "blog-viajero/{id}",
+            new { controller = "BlogViajero", action = "Provincia", id = UrlParameter.Optional }
+        );
+
             routes.MapRoute(
             "BlogDetalle",
-            "blog-viajero/{id}",
-            new { controller = "BlogViajero", action = "Detalle", id =  UrlParameter.Optional  }
+            "blog-viajero/{provincia}/{id}",
+            new { controller = "BlogViajero", action = "Detalle",provincia = UrlParameter.Optional, id =  UrlParameter.Optional  }
         );
 
             routes.MapRoute(

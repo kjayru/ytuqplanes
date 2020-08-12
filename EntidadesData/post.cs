@@ -25,5 +25,8 @@ namespace EntidadesData
         public int categoria_blog_id { get; set; }
         public Nullable<int> destacado { get; set; }
         public string slug { get; set; }
+        public Nullable<int> estado { get; set; }
+        public Nullable<int> tipo_id { get; set; }
+        public Nullable<int> provincia_id { get; set; }
     }
 }

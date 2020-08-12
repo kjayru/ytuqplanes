@@ -239,7 +239,7 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="titulo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="resumen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="contenido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="imagen" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="created_at" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="updated_at" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -247,6 +247,9 @@
     <Property Name="categoria_blog_id" Type="Int32" Nullable="false" />
     <Property Name="destacado" Type="Int32" />
     <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="tipo_id" Type="Int32" />
+    <Property Name="provincia_id" Type="Int32" />
   </EntityType>
   <EntityType Name="preferencias_destino">
     <Key>
@@ -268,6 +271,12 @@
     <NavigationProperty Name="ofertas" Relationship="Self.FK__ofertas__provinc__5441852A" FromRole="provincias" ToRole="ofertas" />
     <NavigationProperty Name="region" Relationship="Self.FK__provincia__regio__5812160E" FromRole="provincias" ToRole="region" />
     <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="latitud" Type="Double" />
+    <Property Name="longitud" Type="Double" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="rating">
     <Key>

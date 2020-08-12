@@ -1,6 +1,6 @@
 ﻿@model dynamic
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Provincia";
 }
 
 <section class="page__header m--blog" style="background-image: url('assets/images/rutas-cortas-4.jpg');">
@@ -41,7 +41,6 @@
         </div>
     </div>
 
-
     <section class="seccion m--slider-standard">
         <div class="limit">
             <h3 class="seccion__titulo m--left">Vive nuevas experiencias</h3>
@@ -51,19 +50,18 @@
 
                     @foreach (ytuqueplanes.Models.Blog blog in Model.notas)
                     {
-                        if (blog.categoria_id == 1)
-                        {
-                            <div class="swiper-slide">
-                                <article class="card-info m--tipo2" data-tipo="@blog.tipo">
-                                    <img src="@blog.imagen" alt="" class="card-info__imagen">
-                                    <header class="card-info__header">
-                                        <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@blog.provincia</address>
-                                        <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->
-                                        <h1 class="card-info__titulo">@blog.titulo</h1>
-                                    </header>
-                                    <a href="/blog-viajero/@blog.provincia/@blog.slug" class="card-info__mas-informacion">Más información</a>
-                                </article>
-                            </div>
+                        if (blog.categoria_id == 1) { 
+                        <div class="swiper-slide">
+                            <article class="card-info m--tipo2" data-tipo="@blog.tipo">
+                                <img src="@blog.imagen" alt="" class="card-info__imagen">
+                                <header class="card-info__header">
+                                    <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@blog.provincia</address>
+                                    <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->
+                                    <h1 class="card-info__titulo">@blog.titulo</h1>
+                                </header>
+                                <a href="/blog-viajero/@blog.provincia/@blog.slug" class="card-info__mas-informacion">Más información</a>
+                            </article>
+                        </div>
                         }
                     }
 
