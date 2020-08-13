@@ -57,7 +57,9 @@
             </article>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
-                    @foreach (ytuqueplanes.Models.Blog blog in Model.notas) { 
+                
+                    
+             @foreach (ytuqueplanes.Models.Blog blog in Model.notas) { 
                 <div class="swiper-slide">
                     <article class="card-info m--tipo1">
                         <img src="@blog.imagen" alt="" class="card-info__imagen">
@@ -69,10 +71,15 @@
                         <a href="/blog-viajero/@blog.provincia_slug/@blog.slug" class="card-info__mas-informacion">Más información</a>
                     </article>
                 </div>
-                    }
+              }
                 </div>
             </div>
+
+
             <a href="/blog-viajero" class="boton m--verde-hoja m--grande seccion__boton-mobile"><strong>Ir al Blog</strong></a>
+
+
+
         </div>
     </section>
 

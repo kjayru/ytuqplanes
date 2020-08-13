@@ -72,6 +72,7 @@ namespace ytuqueplanes.Controllers
             }
 
             datosNotasModel.notas = datonotas;
+            datosNotasModel.provincias = getProvincias();
 
             ViewBag.NumVivencial = cat1;
             ViewBag.NumGastronomia = cat2;
