@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "Provincia";
 }
-
 <section class="page__header m--bg-black m--blog" style="background-image: url('@ViewBag.provincia_imagen');">
     <div class="limit page__header__inset">
         <a href="/blog-viajero" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a Blog viajero</span></a>
@@ -10,14 +9,14 @@
         <p class="page__header__resumen">Descubre de los impresionantes atractivos que puedes visitar en Perú</p>
         <strong class="page__header__subtitulo">¿Que destinos quieres conocer?</strong>
         <div class="boton m--amarillo m--grande filtro-selector__select-ui">
-            <strong class="filtro-selector__select-ui__contenido">Ver todos</strong>
+            <strong class="filtro-selector__select-ui__contenido">@ViewBag.provincia</strong>
             <select class="filtro-selector__select-ui__select fnSelect fnSelectCityBlog">
                 <option value="">Ver todos</option>
                 @foreach (ytuqueplanes.Models.Provincias prov in Model.provincias)
                 {
-                    <option value="@prov.slug">@prov.nombre</option>
+                    <option value="@prov.slug" @(ViewBag.provincia.ToLower()==prov.slug ? "selected" : "") >@prov.nombre</option>
 
-                } 
+                }
             </select>
         </div>
     </div>
@@ -71,6 +70,8 @@
                     </div>
                 </div>
                 <aside class="seccion__slider__sin-resultados">No se hallaron resultados</aside>
+                <div class="destinos__detalle__slider__flecha m--left fnSliderDestinosDetalle__left"></div>
+                <div class="destinos__detalle__slider__flecha m--right fnSliderDestinosDetalle__right"></div>
             </div>
         </section>
     }
@@ -105,6 +106,8 @@
                     </div>
                 </div>
                 <aside class="seccion__slider__sin-resultados">No se hallaron resultados</aside>
+                <div class="destinos__detalle__slider__flecha m--left fnSliderDestinosDetalle__left"></div>
+                <div class="destinos__detalle__slider__flecha m--right fnSliderDestinosDetalle__right"></div>
             </div>
         </section>
     }
@@ -137,6 +140,8 @@
                 </div>
             </div>
             <aside class="seccion__slider__sin-resultados">No se hallaron resultados</aside>
+            <div class="destinos__detalle__slider__flecha m--left fnSliderDestinosDetalle__left"></div>
+            <div class="destinos__detalle__slider__flecha m--right fnSliderDestinosDetalle__right"></div>
         </div>
     </section>
     }

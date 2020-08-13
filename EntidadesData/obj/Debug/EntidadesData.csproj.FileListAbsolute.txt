@@ -21,3 +21,15 @@ C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Debug\Entidad
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.csproj.CopyComplete
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.dll
 C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.pdb
+C:\laragon\www\ytuqplanes\EntidadesData\bin\Debug\EntidadesData.dll.config
+C:\laragon\www\ytuqplanes\EntidadesData\bin\Debug\EntidadesData.dll
+C:\laragon\www\ytuqplanes\EntidadesData\bin\Debug\EntidadesData.pdb
+C:\laragon\www\ytuqplanes\EntidadesData\bin\Debug\EntityFramework.dll
+C:\laragon\www\ytuqplanes\EntidadesData\bin\Debug\EntityFramework.SqlServer.dll
+C:\laragon\www\ytuqplanes\EntidadesData\bin\Debug\EntityFramework.xml
+C:\laragon\www\ytuqplanes\EntidadesData\bin\Debug\EntityFramework.SqlServer.xml
+C:\laragon\www\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.csprojAssemblyReference.cache
+C:\laragon\www\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.csproj.CoreCompileInputs.cache
+C:\laragon\www\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.csproj.CopyComplete
+C:\laragon\www\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.dll
+C:\laragon\www\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.pdb
