@@ -60,7 +60,7 @@
                         <header class="card-poster__header">
                             <h1 class="card-poster__titulo">@destino.titulo</h1>
                         </header>
-                        <a href="/destinos/lugares/@destino.slug" class="card-poster__mas-informacion">Más información</a>
+                        <a href="/destinos/@ViewBag.slugProvincia/@destino.slug" class="card-poster__mas-informacion">Más información</a>
                     </article>
 
                     }
@@ -78,10 +78,12 @@
             <article class="card-full" style="background-image: url('/assets/images/rutas-cortas-6.jpg');">
                 <header><h1 class="card-full__titulo">Rutas cortas</h1></header>
                 <p class="card-full__contenido">Una buena experiencia turística puede estar cerca de ti.</p>
-                <a href="#" class="boton m--grande m--morado m--padding-pequeno"><strong>Ver rutas</strong></a>
+                <a href="/rutas-cortas" class="boton m--grande m--morado m--padding-pequeno"><strong>Ver rutas</strong></a>
             </article>
         </div>
     </section>
+
+
 
     <section class="seccion m--slider-horizontal">
         <div class="limit seccion__inset">
@@ -142,183 +144,14 @@
                     </div>
                 </div>
             </div>
-            <a href="#" class="boton m--amarillo m--grande m--235 seccion__boton-mobile"><strong>Ir al Blog</strong></a>
+
+
+            <a href="/blog-viajero" class="boton m--amarillo m--grande m--235 seccion__boton-mobile"><strong>Ir al Blog</strong></a>
         </div>
     </section>
 
-    <section class="seccion m--slider-standard">
-        <div class="limit">
-            <h3 class="seccion__titulo">Noticias de Lima</h3>
-            <div class="swiper-container seccion__slider fnSliderFree">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo4">
-                            <img src="/assets/images/rutas-cortas-1.jpg" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <div class="card-info__estrellas">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </div>
-                                <h1 class="card-info__titulo">
-                                    Pucallpa sera sede del<br>
-                                    “Amazon birding festival”…<br>
-                                    1er festival de aviturismo en el peru
-                                </h1>
-                                <aside class="card-info__fecha">14 noviembre, 2019</aside>
-                            </header>
-                            <a href="#" class="card-info__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo4">
-                            <img src="/assets/images/rutas-cortas-1.jpg" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <div class="card-info__estrellas">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </div>
-                                <h1 class="card-info__titulo">
-                                    Pucallpa sera sede del<br>
-                                    “Amazon birding festival”…<br>
-                                    1er festival de aviturismo en el peru
-                                </h1>
-                                <aside class="card-info__fecha">14 noviembre, 2019</aside>
-                            </header>
-                            <a href="#" class="card-info__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo4">
-                            <img src="/assets/images/rutas-cortas-1.jpg" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <div class="card-info__estrellas">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </div>
-                                <h1 class="card-info__titulo">
-                                    Pucallpa sera sede del<br>
-                                    “Amazon birding festival”…<br>
-                                    1er festival de aviturismo en el peru
-                                </h1>
-                                <aside class="card-info__fecha">14 noviembre, 2019</aside>
-                            </header>
-                            <a href="#" class="card-info__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo4">
-                            <img src="/assets/images/rutas-cortas-1.jpg" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <div class="card-info__estrellas">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </div>
-                                <h1 class="card-info__titulo">
-                                    Pucallpa sera sede del<br>
-                                    “Amazon birding festival”…<br>
-                                    1er festival de aviturismo en el peru
-                                </h1>
-                                <aside class="card-info__fecha">14 noviembre, 2019</aside>
-                            </header>
-                            <a href="#" class="card-info__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="seccion m--slider-standard m--transporte">
-        <div class="limit">
-            <h3 class="seccion__titulo">¿No sabes como llegar? Mira las siguientes opciones de transporte disponibles</h3>
-            <div class="swiper-container seccion__slider fnSliderFree">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <article class="card-transporte">
-                            <header class="card-transporte__header">
-                                <figure class="card-transporte__imagen">
-                                    <img src="/assets/images/avion-svg.svg" alt="" />
-                                </figure>
-                                <strong class="card-transporte__titulo">Avión</strong>
-                            </header>
-                            <dl class="card-transporte__lista">
-                                <dt>Duración:</dt>
-                                <dd>2hrs</dd>
-                                <dt>Aerolíneas:</dt>
-                                <dd><a href="#">Latam</a>, <a href="#">Viva Air</a>, <a href="#">JetSmart</a>.</dd>
-                            </dl>
-                            <span class="card-transporte__recomendado">Recomendado</span>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-transporte">
-                            <header class="card-transporte__header">
-                                <figure class="card-transporte__imagen">
-                                    <img src="/assets/images/bus-svg.svg" alt="" />
-                                </figure>
-                                <strong class="card-transporte__titulo m--morado">Bus Interprovincial</strong>
-                            </header>
-                            <dl class="card-transporte__lista">
-                                <dt>Duración:</dt>
-                                <dd>16hrs - 18hrs</dd>
-                                <dt>Aerolíneas:</dt>
-                                <dd><a href="#">Oltursa</a>, <a href="#">Cruz del Sur</a>, <a href="#">Móvil Bus</a>.</dd>
-                            </dl>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-transporte">
-                            <header class="card-transporte__header">
-                                <figure class="card-transporte__imagen">
-                                    <img src="/assets/images/auto-svg.svg" alt="" />
-                                </figure>
-                                <strong class="card-transporte__titulo m--azul">Auto particular</strong>
-                            </header>
-                            <dl class="card-transporte__lista">
-                                <dt>Distacia:</dt>
-                                <dd>350km aprox.</dd>
-                                <dt>Duración:</dt>
-                                <dd>16hrs - 18hrs</dd>
-                            </dl>
-                            <a href="#" class="card-transporte__enlace-inferior">Abrir ruta en Waze</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-transporte">
-                            <header class="card-transporte__header">
-                                <figure class="card-transporte__imagen">
-                                    <img src="/assets/images/tren-svg.svg" alt="" />
-                                </figure>
-                                <strong class="card-transporte__titulo m--verdehoja">Tren</strong>
-                            </header>
-                            <dl class="card-transporte__lista">
-                                <dt>Duración:</dt>
-                                <dd>14hrs</dd>
-                                <dt>Aerolíneas:</dt>
-                                <dd><a href="#">Lima Rail</a>.</dd>
-                            </dl>
-                        </article>
-                    </div>
-                </div>
-            </div>
-            <p class="seccion__texto-inferior">
-                <strong>Ten en cuenta:</strong> Los precios suelen variar en días festivos. Precio por persona. Duración apróximada, puede variar por factores externos.
-            </p>
-        </div>
-    </section>
-
+   
+   
     <section class="seccion m--bg-tramado m--slider-grilla">
         <div class="limit section__inset">
             <h4 class="seccion__titulo">Festivales y eventos</h4>
@@ -428,11 +261,14 @@
         </div>
     </section>
 
+
+
     <section class="seccion m--slider-standard">
         <div class="limit">
             <h3 class="seccion__titulo">Te puede interesar</h3>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
+                   
                     <div class="swiper-slide">
                         <article class="card-info m--tipo2">
                             <img src="/assets/images/rutas-cortas-9.jpg" alt="" class="card-info__imagen">
@@ -477,6 +313,8 @@
                             <a href="#" class="card-info__mas-informacion">Más información</a>
                         </article>
                     </div>
+
+
                 </div>
             </div>
         </div>

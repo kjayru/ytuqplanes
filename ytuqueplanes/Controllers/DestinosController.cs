@@ -37,22 +37,15 @@ namespace ytuqueplanes.Controllers
 
 
             ViewBag.nombreProvincia = id;
+            
+            var prov = db.provincias.Where(c => c.nombre == id).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).First();
 
-            var prov = db.provincias.Where(c => c.nombre == id).Select(d => d.id).First();
-
-
-            /* var destinos = db.destinos.Where(c => c.provincia_Id == prov).Select(d => new {
-                 d.id,
-                 d.titulo,
-                 d.contenido,
-                 d.imagen,
-                 d.slug
-             }).ToList();*/
+            ViewBag.slugProvincia = prov.slug;
 
             var dt = from t1 in db.destinos
                      join t2 in db.experiencias
                      on t1.id equals t2.destino_id into DestinoFil
-                     where t1.provincia_Id == prov
+                     where t1.provincia_Id == prov.id
                      from t3 in DestinoFil.DefaultIfEmpty()
                      select new
                      {
@@ -88,6 +81,14 @@ namespace ytuqueplanes.Controllers
 
             datosDestinoModel.destinos = ddatos;
 
+            //festividades
+
+          //  var festividades = db.festividades.Where( d => d.provincia_id == id)
+
+
+
+
+
             return View(datosDestinoModel);
         }
 
@@ -108,7 +109,7 @@ namespace ytuqueplanes.Controllers
                  p.provincia_Id
                 }).First();
 
-            var prov = db.provincias.Where(c => c.id == datos.provincia_Id).Select(p => new { p.nombre }).First();
+            var prov = db.provincias.Where(c => c.id == datos.provincia_Id).Select(p => new { p.nombre,p.slug }).First();
 
             ViewBag.titulo = datos.titulo;
             ViewBag.slug = datos.slug;
@@ -116,6 +117,7 @@ namespace ytuqueplanes.Controllers
             ViewBag.imagen = datos.imagen;
 
             ViewBag.provincia = prov.nombre;
+            ViewBag.provinciaSlug = prov.slug;
 
             var at = db.atractivos.Where(c => c.destino_id == dest).Select(p => new
             {
@@ -222,18 +224,18 @@ namespace ytuqueplanes.Controllers
         {
             Provincias provincias = new Provincias();
 
-
-
             var prov = from t1 in db.provincias
                        join t2 in db.regions
                        on t1.region_id equals t2.id
-
+                       where t1.estado == 1
                        select new
                        {
                            id = t1.id,
                            nombre = t1.nombre,
                            region = t2.nombre,
                            imagen = t1.imagen,
+                           slug = t1.slug,
+                           thumb = t1.thumb
 
                        };
 
@@ -251,7 +253,9 @@ namespace ytuqueplanes.Controllers
                         id = provs[k].id,
                         nombre = provs[k].nombre,
                         region = provs[k].region,
-                        imagen = provs[k].imagen
+                        imagen = provs[k].imagen,
+                        slug = provs[k].slug,
+                        thumb = provs[k].thumb
 
                     });
 

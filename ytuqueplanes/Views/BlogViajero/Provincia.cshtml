@@ -15,7 +15,7 @@
                 <option value="">Ver todos</option>
                 @foreach (ytuqueplanes.Models.Provincias prov in Model.provincias)
                 {
-                    <option value="@prov.slug">@prov.nombre</option>
+                    <option value="@prov.slug"  @( prov.slug == ViewBag.provincia_slug   ? "selected" : "" ) >@prov.nombre</option>
 
                 } 
             </select>
@@ -63,7 +63,7 @@
                                             <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->
                                             <h1 class="card-info__titulo">@blog.titulo</h1>
                                         </header>
-                                        <a href="/blog-viajero/@blog.provincia_slug/@blog.slug" class="card-info__mas-informacion">Más información</a>
+                                        <a href="/blog-viajero/@ViewBag.provincia_slug/@blog.slug" class="card-info__mas-informacion">Más información</a>
                                     </article>
                                 </div>
                             }
@@ -95,7 +95,7 @@
                                             <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->
                                             <h1 class="card-info__titulo">@blog.titulo</h1>
                                         </header>
-                                        <a href="/blog-viajero/@blog.provincia_slug/@blog.slug" class="card-info__mas-informacion">Más información</a>
+                                        <a href="/blog-viajero/@ViewBag.provincia_slug/@blog.slug" class="card-info__mas-informacion">Más información</a>
                                     </article>
                                 </div>
                             }
@@ -127,7 +127,7 @@
                                         <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->
                                         <h1 class="card-info__titulo">@blog.titulo</h1>
                                     </header>
-                                    <a href="/blog-viajero/@blog.provincia_slug/@blog.slug" class="card-info__mas-informacion">Más información</a>
+                                    <a href="/blog-viajero/@ViewBag.provincia_slug/@blog.slug" class="card-info__mas-informacion">Más información</a>
                                 </article>
                             </div>
                         }

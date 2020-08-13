@@ -6,7 +6,7 @@
 
     <section class="page__header" style="background-image: url('@ViewBag.imagen');">
         <div class="limit page__header__inset">
-            <a href="/destinos/@ViewBag.provincia" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a @ViewBag.provincia</span></a>
+            <a href="/destinos/@ViewBag.provinciaSlug" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a @ViewBag.provincia</span></a>
             <h2 class="page__header__titulo">@ViewBag.titulo</h2>
             <p class="page__header__resumen">@ViewBag.contenido</p>
         </div>
@@ -27,7 +27,7 @@
                             <h1 class="card-info__titulo">@atractivo.titulo</h1>
                         </header>
                         <p class="card-info__resumen">@atractivo.resumen</p>
-                        <a href="/destinos/lugares/detalle/@atractivo.slug" class="card-info__leer-mas">[+] Leer más</a>
+                        <a href="/destinos/@ViewBag.provinciaSlug/@ViewBag.slug/@atractivo.slug" class="card-info__leer-mas">[+] Leer más</a>
                     </div>
                 </article>
             }

@@ -45,14 +45,14 @@ namespace ytuqueplanes
 
             routes.MapRoute(
              name: "DestinoProvinciaDetalle",
-             url: "Destinos/lugares/{id}",
-             defaults: new { controller = "Destinos", action = "DestinoProvincia", id = UrlParameter.Optional }
+             url: "Destinos/{provincia}/{id}",
+             defaults: new { controller = "Destinos", action = "DestinoProvincia", provincia = UrlParameter.Optional, id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
             name: "DestinoLugarDetalle",
-            url: "Destinos/lugares/detalle/{id}",
-            defaults: new { controller = "Destinos", action = "DetalleDestino", id = UrlParameter.Optional }
+            url: "Destinos/{provincia}/{destino}/{id}",
+            defaults: new { controller = "Destinos", action = "DetalleDestino", destino = UrlParameter.Optional, provincia = UrlParameter.Optional,id = UrlParameter.Optional }
           );
 
             routes.MapRoute(

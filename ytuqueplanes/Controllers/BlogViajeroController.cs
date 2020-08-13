@@ -26,10 +26,11 @@ namespace ytuqueplanes.Controllers
 
             dynamic datosNotasModel = new ExpandoObject();
 
-            var prov = db.provincias.Where(c => c.slug == id).Select(p => new { p.id , p.imagen, p.nombre }).First();
+            var prov = db.provincias.Where(c => c.slug == id).Select(p => new { p.id , p.imagen, p.nombre, p.slug }).First();
 
             ViewBag.provincia = prov.nombre;
             ViewBag.provincia_imagen = prov.imagen;
+            ViewBag.provincia_slug = prov.slug;
 
             var notas = db.posts.Where(c => c.provincia_id == prov.id).Select(p => new
             {
@@ -42,6 +43,7 @@ namespace ytuqueplanes.Controllers
                 p.categoria_blog_id,
                 p.tipo_id,
                 p.provincia_id
+                
                
             }).ToList();
 
