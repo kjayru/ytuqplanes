@@ -69,6 +69,7 @@
         <AssociationConnector Association="ytuqueplanesDBModel.FK__rutas__rutascort__5AEE82B9" ManuallyRouted="false" />
         <AssociationConnector Association="ytuqueplanesDBModel.categoria_noticia_noticia_fk" />
         <EntityTypeShape EntityType="ytuqueplanesDBModel.atractivos_galeria" Width="1.5" PointX="20.375" PointY="15.75" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.agencia" Width="1.5" PointX="17.375" PointY="20.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

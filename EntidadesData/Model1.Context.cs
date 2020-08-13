@@ -74,5 +74,6 @@ namespace EntidadesData
         public virtual DbSet<post_tag> post_tag { get; set; }
         public virtual DbSet<rutas_seo> rutas_seo { get; set; }
         public virtual DbSet<atractivos_galeria> atractivos_galeria { get; set; }
+        public virtual DbSet<agencia> agencias { get; set; }
     }
 }

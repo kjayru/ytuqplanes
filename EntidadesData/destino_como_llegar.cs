@@ -16,5 +16,8 @@ namespace EntidadesData
     {
         public int destino_id { get; set; }
         public Nullable<int> como_llegar_id { get; set; }
+        public string distancia { get; set; }
+        public string tiempo_viaje { get; set; }
+        public string waze { get; set; }
     }
 }

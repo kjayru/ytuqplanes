@@ -12,21 +12,12 @@ namespace EntidadesData
     using System;
     using System.Collections.Generic;
     
-    public partial class post
+    public partial class agencia
     {
         public int id { get; set; }
-        public string titulo { get; set; }
-        public string resumen { get; set; }
-        public string contenido { get; set; }
+        public int destino_como_llegar_id { get; set; }
+        public string nombre { get; set; }
+        public string url { get; set; }
         public string imagen { get; set; }
-        public string created_at { get; set; }
-        public string updated_at { get; set; }
-        public Nullable<int> likes { get; set; }
-        public Nullable<int> categoria_blog_id { get; set; }
-        public Nullable<int> destacado { get; set; }
-        public string slug { get; set; }
-        public Nullable<int> estado { get; set; }
-        public Nullable<int> tipo_id { get; set; }
-        public Nullable<int> provincia_id { get; set; }
     }
 }

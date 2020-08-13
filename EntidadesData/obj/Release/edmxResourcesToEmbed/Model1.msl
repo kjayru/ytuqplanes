@@ -455,6 +455,9 @@
     <EntitySetMapping Name="destino_como_llegar">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.destino_como_llegar">
         <MappingFragment StoreEntitySet="destino_como_llegar">
+          <ScalarProperty Name="waze" ColumnName="waze" />
+          <ScalarProperty Name="tiempo_viaje" ColumnName="tiempo_viaje" />
+          <ScalarProperty Name="distancia" ColumnName="distancia" />
           <ScalarProperty Name="destino_id" ColumnName="destino_id" />
           <ScalarProperty Name="como_llegar_id" ColumnName="como_llegar_id" />
         </MappingFragment>
@@ -553,6 +556,17 @@
         <MappingFragment StoreEntitySet="atractivos_galeria">
           <ScalarProperty Name="imagen" ColumnName="imagen" />
           <ScalarProperty Name="atractivo_id" ColumnName="atractivo_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="agencias">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.agencia">
+        <MappingFragment StoreEntitySet="agencias">
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="destino_como_llegar_id" ColumnName="destino_como_llegar_id" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

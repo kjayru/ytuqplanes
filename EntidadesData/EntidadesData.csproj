@@ -53,6 +53,9 @@
     <Compile Include="actividade.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="agencia.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="alerta.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
