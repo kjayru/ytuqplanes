@@ -9,8 +9,6 @@ const site = (function(){
 	};
 
 	const siteFunctions = function(){
-
-		// events.name();
 		events.printers();
 		events.swipers();
 		events.clicks();
@@ -21,6 +19,14 @@ const site = (function(){
 		printers : function(){
 			$('.header__mapa').html(headerMapa);
 			$('.header__mapa__fuente').html(mapaSVG);
+			window.fbAsyncInit = function() {
+			    FB.init({
+					appId            : '2613846985498810',
+					autoLogAppEvents : true,
+					xfbml            : true,
+					version          : 'v8.0'
+				});
+			};
 		},
 
 		swipers : function(){
@@ -48,8 +54,35 @@ const site = (function(){
 			// 	});
 
 			let swiperFreeMode = new Swiper('.fnSliderFree', {
-				slidesPerView: 'auto', freeMode: true
+				slidesPerView: 'auto', freeMode: true,
+		     	navigation: {
+		     		nextEl: '.fnSliderDestinosDetalle__left',
+        			prevEl: '.fnSliderDestinosDetalle__right'
+		     	}
 			});
+			$('.fnFiltroSliderFree')
+				.on('change click', function(e){
+					e.preventDefault();
+					const tipo = $(this).data('tipo')!=undefined ? $(this).data('tipo') : $(this).find('option:selected').data('tipo') ;
+					let slider = $('.fnSliderFree');
+					$('.fnFiltroSliderFree').removeClass(dom.active);
+					$(this).addClass(dom.active);
+					$.each(slider, function() {
+						if( $(this).find('.swiper-slide[data-tipo='+tipo+']').length==0 )
+						{
+							$(this).addClass('-sin-resultados-');
+						} else {
+							$(this)
+								.removeClass('-sin-resultados-')
+								.find('.swiper-slide')
+									.removeClass('-inactivo-')
+								.end()
+								.find('.swiper-slide[data-tipo!='+tipo+']')
+									.addClass('-inactivo-');
+						}
+					});
+					swiperFreeMode.init();
+				});
 
 			let swiperGrilla = new Swiper('.fnSliderGrilla', {
 				spaceBetween: 0,
@@ -125,7 +158,6 @@ const site = (function(){
 				});
 			$('.fnSelect')
 				.on('change', function(e){
-					console.log('5a4d65as');
 					$(this).parent().find('.fnTargetSelect').text($(this).find('option:selected').text());
 				});
 			$('.fnFiltrarGrilla')
@@ -171,6 +203,23 @@ const site = (function(){
 				.on('click', function(){
 					$( $(this).data('target') )
 						.addClass('-mostrar-ocultos-');
+				});
+			// cambia el estado del filtro ciduda en el blog
+			$('.fnSelectCityBlog')
+				.on('change', function(e){
+					const val = $(this).val();
+					const url = $.trim(val)!='' ? '/'+$(this).val() : '' ;
+					window.location.href = '/blog-viajero'+url;
+				});
+
+			// compartir en facebook
+			$('.fnShareFacebook')
+				.on('click', function(e){
+					e.preventDefault();
+					FB.ui({
+					  method: 'share',
+					  href: 'https://ytuqueplanes.com'
+					}, function(response){});
 				});
 		},
 

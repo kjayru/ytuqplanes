@@ -8,10 +8,11 @@ $(document).ready(function() {
 		window.location.href = $(this).attr("data-href");
 	});
 
-	$(".wrapper-navbar").on("click", ".fnBackToUrl", function(e) {
-		e.preventDefault();
-		window.history.back();
-	});
+	$(".wrapper-navbar")
+		.on("click", ".fnBackToUrl", function(e) {
+			e.preventDefault();
+			window.history.back();
+		});
 
 	/* Cada vez que cambie el ancho de la ventana del navegador,
 	llama a la función "waypointItems", esto se hace para refrescar el scrolleo y que los marcadores te sigan */

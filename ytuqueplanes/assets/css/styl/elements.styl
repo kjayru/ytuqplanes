@@ -956,6 +956,18 @@
 				margin-right 5px
 				cursor pointer
 
+	&__slider
+		&__sin-resultados
+			font-size 2rem
+			text-align center
+			font-family f-book
+			color #aaa
+			display none
+		&.-sin-resultados-
+			display none
+			+ .seccion__slider__sin-resultados
+				display block
+
 	&.m--no-top
 		padding-top 0
 
@@ -1087,6 +1099,8 @@
 					width 274px
 					&:last-of-type
 						width 263px
+					&.-inactivo-
+						display none
 		&.m--tipo2
 			.seccion
 				&__titulo

@@ -3,9 +3,9 @@
     ViewBag.Title = "Detalle";
 }
 
-<section class="page__header m--destinos-nivel-4" style="background-image: url('@ViewBag.imagen');">
+<section class="page__header m--bg-black m--destinos-nivel-4" style="background-image: url('@ViewBag.imagen');">
     <div class="limit page__header__inset">
-        <a href="destinos-interna-2.html" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a blog viajero</span></a>
+        <a href="/blog-viajero" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a blog viajero</span></a>
         <h2 class="page__header__titulo">@ViewBag.titulo</h2>
         <p class="page__header__resumen">@ViewBag.resumen</p>
     </div>
@@ -25,9 +25,9 @@
                     </span>
                     120
                 </strong>
-                <a href="#" class="destinos__detalle__redes m--facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="#" class="destinos__detalle__redes m--twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a href="#" class="destinos__detalle__redes m--wsp"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                <a href="#" class="destinos__detalle__redes m--facebook fnShareFacebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/intent/tweet?text=Ytuqueplanes&url=https%3A%2F%2Fytuqueplanes.com&hashtags=Viajes,tours" target="_blank" class="destinos__detalle__redes m--twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="https://api.whatsapp.com/send?text=https://ytuqueplanes.com" target="_blank" class="destinos__detalle__redes m--wsp"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
             </div>
         </div>
     </section>

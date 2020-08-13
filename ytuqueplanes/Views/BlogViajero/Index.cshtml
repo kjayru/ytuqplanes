@@ -3,42 +3,41 @@
     ViewBag.Title = "Index";
 }
 
-<section class="page__header m--blog" style="background-image: url('assets/images/rutas-cortas-4.jpg');">
+<section class="page__header m--bg-black m--blog" style="background-image: url('/assets/images/rutas-cortas-4.jpg');">
     <div class="limit page__header__inset">
-        <a href="#" class="page__header__miga-de-pan"><img src="assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
+        <a href="/" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
         <h2 class="page__header__titulo">Blog viajero</h2>
-        <p class="page__header__resumen">Descubre de los impresionantes atractivos que puedes visitar en Perú</p>
+        <p class="page__header__resumen">Descubre los impresionantes atractivos que puedes visitar en Perú</p>
         <strong class="page__header__subtitulo">¿Que destinos quieres conocer?</strong>
         <div class="boton m--amarillo m--grande filtro-selector__select-ui">
-            <strong class="filtro-selector__select-ui__contenido">Amazonas</strong>
-            <select class="filtro-selector__select-ui__select fnSelect">
-                <option>Seleccionar</option>
+            <strong class="filtro-selector__select-ui__contenido">Ver Todos</strong>
+            <select class="filtro-selector__select-ui__select fnSelect fnSelectCityBlog">
+                <option value="">Ver todos</option>
                 @foreach (ytuqueplanes.Models.Provincias prov in Model.provincias)
                 {
                     <option value="@prov.slug">@prov.nombre</option>
-                    
+
                 }
-                </select>
+            </select>
         </div>
     </div>
 </section>
 
 <main class="seccion">
-
     <div class="seccion m--contenedor-selector">
         <div class="limit">
             <div class="filtro-selector">
-                <div class="boton m--filtro m--morado m--grande filtro-selector__boton -activo-" data-filtro="Notas">
+                <div class="boton m--filtro m--morado m--grande filtro-selector__boton -activo- fnFiltroSliderFree" data-tipo="1">
                     <strong>Notas</strong>
                 </div>
-                <div class="boton m--filtro m--morado m--grande filtro-selector__boton" data-filtro="Videos">
+                <div class="boton m--filtro m--morado m--grande filtro-selector__boton fnFiltroSliderFree" data-tipo="2">
                     <strong>Videos</strong>
                 </div>
                 <div class="boton m--morado m--grande filtro-selector__select-ui">
-                    <strong class="filtro-selector__select-ui__contenido">Todas las ofertas</strong>
-                    <select class="filtro-selector__select-ui__select fnSelect">
-                        <option value="Notas">Notas</option>
-                        <option value="Paquetes">Videos</option>
+                    <strong class="filtro-selector__select-ui__contenido fnTargetSelect">Todas las ofertas</strong>
+                    <select class="filtro-selector__select-ui__select fnSelect fnFiltroSliderFree">
+                        <option value="Notas" data-tipo="1">Notas</option>
+                        <option value="Paquetes" data-tipo="2">Videos</option>
                     </select>
                 </div>
             </div>
@@ -51,15 +50,13 @@
             <h3 class="seccion__titulo m--left">Vive nuevas experiencias</h3>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
-
-
                     @foreach (ytuqueplanes.Models.Blog blog in Model.notas)
                     {
                         if (blog.categoria_id == 1)
                         {
-                            <div class="swiper-slide">
+                            <div class="swiper-slide" data-tipo="@blog.tipo">
                                 <article class="card-info m--tipo2" data-tipo="@blog.tipo">
-                                    <img src="@blog.imagen" alt="" class="card-info__imagen">
+                                    <img src="@blog.imagen" alt="" class="card-info__imagen" loading="lazy">
                                     <header class="card-info__header">
                                         <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@blog.provincia</address>
                                         <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->
@@ -70,32 +67,26 @@
                             </div>
                         }
                     }
-
-
-
                 </div>
             </div>
+            <aside class="seccion__slider__sin-resultados">No se hallaron resultados</aside>
+            <div class="destinos__detalle__slider__flecha m--left fnSliderDestinosDetalle__left"></div>
+            <div class="destinos__detalle__slider__flecha m--right fnSliderDestinosDetalle__right"></div>
         </div>
     </section>
-
-
-
-
-
 
     <section class="seccion m--slider-standard">
         <div class="limit">
             <h3 class="seccion__titulo m--left">Gastronomía</h3>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
-
                     @foreach (ytuqueplanes.Models.Blog blog in Model.notas)
                     {
                         if (blog.categoria_id == 2)
                         {
-                            <div class="swiper-slide">
+                            <div class="swiper-slide" data-tipo="@blog.tipo">
                                 <article class="card-info m--tipo2" data-tipo="@blog.tipo">
-                                    <img src="@blog.imagen" alt="" class="card-info__imagen">
+                                    <img src="@blog.imagen" alt="" class="card-info__imagen" loading="lazy">
                                     <header class="card-info__header">
                                         <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@blog.provincia</address>
                                         <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->
@@ -106,10 +97,11 @@
                             </div>
                         }
                     }
-
-
                 </div>
             </div>
+            <aside class="seccion__slider__sin-resultados">No se hallaron resultados</aside>
+            <div class="destinos__detalle__slider__flecha m--left fnSliderDestinosDetalle__left"></div>
+            <div class="destinos__detalle__slider__flecha m--right fnSliderDestinosDetalle__right"></div>
         </div>
     </section>
 
@@ -118,14 +110,13 @@
             <h3 class="seccion__titulo m--left">Festividades</h3>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
-
                     @foreach (ytuqueplanes.Models.Blog blog in Model.notas)
                     {
                         if (blog.categoria_id == 3)
                         {
-                            <div class="swiper-slide">
+                            <div class="swiper-slide" data-tipo="@blog.tipo">
                                 <article class="card-info m--tipo2" data-tipo="@blog.tipo">
-                                    <img src="@blog.imagen" alt="" class="card-info__imagen">
+                                    <img src="@blog.imagen" alt="" class="card-info__imagen" loading="lazy">
                                     <header class="card-info__header">
                                         <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@blog.provincia</address>
                                         <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->
@@ -136,10 +127,11 @@
                             </div>
                         }
                     }
-
-
                 </div>
             </div>
+            <aside class="seccion__slider__sin-resultados">No se hallaron resultados</aside>
+            <div class="destinos__detalle__slider__flecha m--left fnSliderDestinosDetalle__left"></div>
+            <div class="destinos__detalle__slider__flecha m--right fnSliderDestinosDetalle__right"></div>
         </div>
     </section>
 
