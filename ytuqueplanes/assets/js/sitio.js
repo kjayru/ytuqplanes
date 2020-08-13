@@ -5,13 +5,16 @@ const site = (function(){
 
 	const dom = {
 	    // set your own vals
-	    active : '-activo-'
+	    active : '-activo-',
+	    rotadores : document.querySelectorAll('.fnSliderFree'),
+	    swiperrotadores: new Array()
 	};
 
 	const siteFunctions = function(){
 		events.printers();
 		events.swipers();
 		events.clicks();
+		events.setRotadores();
 	};
 
 	const events = {
@@ -28,6 +31,30 @@ const site = (function(){
 				});
 			};
 		},
+
+		setRotadores: function () {
+            dom.rotadores.length &&
+                dom.rotadores.forEach(function (el, index) {
+                    dom.swiperrotadores.push({ clase: el, swiper: null });
+                });
+            dom.swiperrotadores.length &&
+                dom.swiperrotadores.forEach(function (el, index) {
+                    var ar = "";
+                    switch (el.clase.classList[2]) {
+                        default:
+                            ar = {
+									slidesPerView: 'auto',
+									freeMode: true,
+		     						navigation: {
+							     		nextEl: el.clase.parentElement.querySelector('.fnSliderDestinosDetalle__left'),
+					        			prevEl: el.clase.parentElement.querySelector('.fnSliderDestinosDetalle__right')
+							     	}
+							     };
+                            break;
+                    }
+                    el.swiper = new Swiper(el.clase, ar);
+                });
+        },
 
 		swipers : function(){
 
@@ -47,19 +74,7 @@ const site = (function(){
 					$(this).toggleClass('-active-');
 					$(this).hasClass('-active-') ? swiperHome.autoplay.stop() : swiperHome.autoplay.start() ;
 				});
-			// document.querySelector('#fnSliderPlayPause')
-			// 	.addEventListener('click', function() {
-			// 		this.classList.toggle('-active-');
-			// 		this.classList.contains('-active-') ? swiperHome.autoplay.stop() : swiperHome.autoplay.start() ;
-			// 	});
 
-			let swiperFreeMode = new Swiper('.fnSliderFree', {
-				slidesPerView: 'auto', freeMode: true,
-		     	navigation: {
-		     		nextEl: '.fnSliderDestinosDetalle__left',
-        			prevEl: '.fnSliderDestinosDetalle__right'
-		     	}
-			});
 			$('.fnFiltroSliderFree')
 				.on('change click', function(e){
 					e.preventDefault();
@@ -81,7 +96,9 @@ const site = (function(){
 									.addClass('-inactivo-');
 						}
 					});
-					swiperFreeMode.init();
+					$.each(dom.swiperrotadores, function(index, val) {
+						val.swiper.update();
+					});
 				});
 
 			let swiperGrilla = new Swiper('.fnSliderGrilla', {
