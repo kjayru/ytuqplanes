@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Web;
 using System.Web.Mvc;
 using ytuqueplanes.Models;
@@ -23,6 +24,7 @@ namespace ytuqueplanes.Controllers
             datosDestinoModel.sliders = GetSliders();
             datosDestinoModel.provincias = getProvincia();
 
+            datosDestinoModel.destacados = getDestacados();
 
             return View(datosDestinoModel);
         }
@@ -83,11 +85,49 @@ namespace ytuqueplanes.Controllers
 
             //festividades
 
-          //  var festividades = db.festividades.Where( d => d.provincia_id == id)
 
+            var fs = db.festividades.Where(d => d.provincia_id == prov.id).Select(p => new
+            {
+                p.id,
+                p.nombre,
+                p.inicio,
+                p.final,
+                p.slug,
+                p.mes_id,
+                p.imagen
 
+            }).ToList();
 
+              var mesid = fs[0].mes_id;
 
+           // return Json(mesid, JsonRequestBehavior.AllowGet);
+
+            var m = db.meses.Where(d => d.id == mesid).Select(p => new { p.nombre }).First();
+
+            List<Festividad> fests = new List<Festividad>();
+
+            for (var i = 0; i < fs.Count(); i++) {
+
+                fests.Add(
+                    new Festividad
+                    {
+                        id = fs[i].id,
+                        nombre = fs[i].nombre,
+                        inicio = fs[i].inicio,
+                        final = fs[i].final,
+                        provincia = prov.nombre,
+                        imagen = fs[i].imagen,
+                        mes = m.nombre,
+                        mes_id = fs[i].mes_id,
+                        slug = fs[i].slug
+                    }
+
+                );
+            }
+
+            datosDestinoModel.festividades = fests;
+
+            datosDestinoModel.destacados = getDestacados();
 
             return View(datosDestinoModel);
         }
@@ -142,6 +182,7 @@ namespace ytuqueplanes.Controllers
             }
 
             datosAtractivosModel.atractivos = atractivos;
+            datosAtractivosModel.destacados = getDestacados();
 
             return View(datosAtractivosModel);
         }
@@ -149,7 +190,7 @@ namespace ytuqueplanes.Controllers
         /*Detalle destino **/
         public ActionResult DetalleDestino(string id) {
 
-
+            dynamic datosAtractivosModel = new ExpandoObject();
 
             var detalle = db.atractivos.Where(c => c.slug == id).Select(p => new {
                 p.id,
@@ -164,26 +205,32 @@ namespace ytuqueplanes.Controllers
                 p.destino_id
             }).FirstOrDefault();
 
-            var destino = db.destinos.Where(c => c.id == detalle.destino_id).Select(p => new { p.slug, p.titulo }).First();
+            var destino = db.destinos.Where(c => c.id == detalle.destino_id).Select(p => new { p.id, p.slug, p.titulo }).First();
+
+            var pv = db.provincias.Where(c => c.id == destino.id).Select(p => new { p.nombre, p.slug }).First();
+
+            ViewBag.provincia_slug = pv.slug;
 
             ViewBag.destinoUrl = destino.slug;
             ViewBag.destino = destino.titulo;
 
-            Atractivo atractivo = new Atractivo {
-                id = detalle.id,
-                titulo = detalle.titulo,
-                slug = detalle.slug,
-                contenido = detalle.contenido,
-                descripcion = detalle.descripcion,
-                resumen = detalle.resumen,
-                banner = detalle.banner,
-                banner_m = detalle.banner_m,
-                banner_t = detalle.banner_t
 
-            };
+            ViewBag.id = detalle.id;
+                ViewBag.titulo = detalle.titulo;
+                ViewBag.slug = detalle.slug;
+                ViewBag.contenido = detalle.contenido;
+                ViewBag.descripcion = detalle.descripcion;
+                ViewBag.resumen = detalle.resumen;
+                ViewBag.banner = detalle.banner;
+                ViewBag.banner_m = detalle.banner_m;
+            ViewBag.banner_t = detalle.banner_t;
 
-           
-            return View(atractivo);
+            
+
+            datosAtractivosModel.destacados = getDestacados();
+          
+
+            return View(datosAtractivosModel);
         }
 
 
@@ -264,6 +311,60 @@ namespace ytuqueplanes.Controllers
             return providatos;
         }
 
-       
+
+         private List<Destacado> getDestacados()
+          {
+
+
+
+
+              var dt = from t1 in db.atractivos
+                       join t2 in db.destinos
+                      
+                       on t1.destino_id equals t2.id 
+
+                       where t1.destacado == 1 
+                     
+                       select new
+                       {
+                           id = t1.id,
+                           titulo = t1.titulo,
+                           contenido = t1.contenido,
+                           destino_id =  t2.id,
+                           slug = t1.slug,
+                           imagen = t1.banner,
+                           destino_slug = t2.slug
+                           
+                       };
+
+              var destacados = dt.ToList();
+
+            List<Destacado> dtdo = new List<Destacado>();
+
+            for (var i = 0; i < destacados.Count; i++) {
+                var destinoId = destacados[i].destino_id;
+                var pvId = db.destinos.Where(d => d.id == destinoId).Select(p => new { p.provincia_Id }).First();
+                var prov = db.provincias.Where(d => d.id == pvId.provincia_Id).Select(p => new { p.slug, p.nombre }).First();
+
+                dtdo.Add(
+                    new Destacado
+                    {
+                        titulo = destacados[i].titulo,
+                        provincia = prov.nombre,
+                        slug = destacados[i].slug,
+                        imagen = destacados[i].imagen,
+                        provincia_slug = prov.slug,
+                        destino_slug = destacados[i].destino_slug
+                    }
+                );
+
+               
+            }
+
+            return dtdo;
+
+        }
+
+
     }
 }

@@ -24,6 +24,7 @@ namespace EntidadesData
         public Nullable<int> mes_id { get; set; }
         public Nullable<int> likes { get; set; }
         public string documento { get; set; }
+        public string slug { get; set; }
     
         public virtual mes mes { get; set; }
         public virtual provincia provincia { get; set; }

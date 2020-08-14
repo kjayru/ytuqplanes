@@ -16,7 +16,9 @@ namespace ytuqueplanes.Models
         public string contenido { get; set; }
         public string mes { get; set; }
         public int? likes { get; set; }
+        public int? mes_id { get; set; }
         public string documento { get; set; }
+        public string slug { get; set; }
 
     }
 }

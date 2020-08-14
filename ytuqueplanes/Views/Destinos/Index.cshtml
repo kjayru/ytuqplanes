@@ -139,50 +139,24 @@
             <h3 class="seccion__titulo">Te puede interesar</h3>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo2">
-                            <img src="/assets/images/rutas-cortas-4.jpg" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Moquegua</address>
-                                <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                                <h1 class="card-info__titulo">Trekking en z - El Baúl de Antonia</h1>
-                            </header>
-                            <a href="#" class="card-info__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo2">
-                            <img src="/assets/images/rutas-cortas-5.jpg" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Moquegua</address>
-                                <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                                <h1 class="card-info__titulo">Trekking en z - El Baúl de Antonia</h1>
-                            </header>
-                            <a href="#" class="card-info__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo2">
-                            <img src="/assets/images/rutas-cortas-4.jpg" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Moquegua</address>
-                                <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                                <h1 class="card-info__titulo">Trekking en z - El Baúl de Antonia</h1>
-                            </header>
-                            <a href="#" class="card-info__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo2">
-                            <img src="/assets/images/rutas-cortas-1.jpg" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Moquegua</address>
-                                <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                                <h1 class="card-info__titulo">Trekking en z - El Baúl de Antonia</h1>
-                            </header>
-                            <a href="#" class="card-info__mas-informacion">Más información</a>
-                        </article>
-                    </div>
+
+                    @foreach (ytuqueplanes.Models.Destacado destacado in Model.destacados)
+                    {
+
+                        <div class="swiper-slide">
+                            <article class="card-info m--tipo2">
+                                <img src="@destacado.imagen" alt="@destacado.titulo" class="card-info__imagen">
+                                <header class="card-info__header">
+                                    <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@destacado.provincia</address>
+                                    <!--<aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>-->
+                                    <h1 class="card-info__titulo">@destacado.titulo</h1>
+                                </header>
+                                <a href="/destinos/@destacado.provincia_slug/@destacado.destino_slug/@destacado.slug" class="card-info__mas-informacion">Más información</a>
+                            </article>
+                        </div>
+
+                    }
+
                 </div>
             </div>
         </div>

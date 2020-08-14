@@ -37,6 +37,7 @@
     <Property Name="banner_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="slug" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="titulo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="destacado" Type="Int32" />
   </EntityType>
   <EntityType Name="categoria_noticia">
     <Key>
@@ -124,6 +125,7 @@
     <Property Name="documento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="mes" Relationship="Self.FK__festivida__mes_i__4F7CD00D" FromRole="festividades" ToRole="meses" />
     <NavigationProperty Name="provincia" Relationship="Self.FK__festivida__provi__5070F446" FromRole="festividades" ToRole="provincias" />
+    <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="icono">
     <Key>
@@ -237,14 +239,14 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="titulo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="titulo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="resumen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="imagen" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="created_at" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="updated_at" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="likes" Type="Int32" />
-    <Property Name="categoria_blog_id" Type="Int32" Nullable="false" />
+    <Property Name="categoria_blog_id" Type="Int32" />
     <Property Name="destacado" Type="Int32" />
     <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="estado" Type="Int32" />
@@ -451,6 +453,9 @@
     </Key>
     <Property Name="destino_id" Type="Int32" Nullable="false" />
     <Property Name="como_llegar_id" Type="Int32" />
+    <Property Name="distancia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tiempo_viaje" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="waze" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="destino_seo">
     <Key>
@@ -819,6 +824,7 @@
       <End Role="noticia" EntitySet="noticias" />
     </AssociationSet>
     <EntitySet Name="atractivos_galeria" EntityType="ytuqueplanesDBModel.atractivos_galeria" />
+    <EntitySet Name="agencias" EntityType="ytuqueplanesDBModel.agencia" />
   </EntityContainer>
   <Association Name="categoria_noticia_noticia_fk">
     <End Type="ytuqueplanesDBModel.categoria_noticia" Role="categoria_noticia" Multiplicity="1" />
@@ -839,5 +845,15 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="atractivo_id" Type="Int32" Nullable="false" />
     <Property Name="imagen" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="agencia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="destino_como_llegar_id" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

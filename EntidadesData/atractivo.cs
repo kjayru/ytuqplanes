@@ -25,6 +25,7 @@ namespace EntidadesData
         public string banner_m { get; set; }
         public string slug { get; set; }
         public string titulo { get; set; }
+        public Nullable<int> destacado { get; set; }
     
         public virtual destino destino { get; set; }
     }

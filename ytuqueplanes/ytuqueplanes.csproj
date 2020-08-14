@@ -140,6 +140,7 @@
     </Compile>
     <Compile Include="Models\Atractivo.cs" />
     <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\Destacado.cs" />
     <Compile Include="Models\DestinosProvincia.cs" />
     <Compile Include="Models\Festividad.cs" />
     <Compile Include="Models\HtmlUtility.cs" />
