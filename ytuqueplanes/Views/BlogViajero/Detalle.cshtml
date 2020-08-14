@@ -1,4 +1,4 @@
-﻿
+﻿@model dynamic
 @{
     ViewBag.Title = "Detalle";
 }
@@ -32,60 +32,35 @@
         </div>
     </section>
 
+    @if (ViewBag.total > 0) { 
     <section class="seccion m--slider-standard">
         <div class="limit">
             <h3 class="seccion__titulo">Recomendaciones</h3>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo2">
-                            <img src="/assets/images/rutas-cortas-4.jpg" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Moquegua</address>
-                                <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                                <h1 class="card-info__titulo">Trekking en z - El Baúl de Antonia</h1>
-                            </header>
-                            <a href="#" class="card-info__mas-informacion">Más información</a>
-                        </article>
+
+                    @foreach (ytuqueplanes.Models.Relacionados nota in Model.relacionados)
+                    {
+                        if (nota.slug != ViewBag.slug)
+                        {
+                        <div class="swiper-slide">
+                            <article class="card-info m--tipo2">
+                                <img src="@nota.imagen" alt="" class="card-info__imagen">
+                                <header class="card-info__header">
+                                    <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@ViewBag.provincia</address>
+                                    <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
+                                    <h1 class="card-info__titulo">@nota.titulo</h1>
+                                </header>
+                                <a href="/blog-viajero/@ViewBag.provinciaSlug/@nota.slug" class="card-info__mas-informacion">Más información</a>
+                            </article>
+                        </div>
+                        }
+                    }
                     </div>
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo2">
-                            <img src="/assets/images/rutas-cortas-2.jpg" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Moquegua</address>
-                                <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                                <h1 class="card-info__titulo">Trekking en z - El Baúl de Antonia</h1>
-                            </header>
-                            <a href="#" class="card-info__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo2">
-                            <img src="/assets/images/rutas-cortas-4.jpg" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Moquegua</address>
-                                <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                                <h1 class="card-info__titulo">Trekking en z - El Baúl de Antonia</h1>
-                            </header>
-                            <a href="#" class="card-info__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo2">
-                            <img src="/assets/images/rutas-cortas-1.jpg" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Moquegua</address>
-                                <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                                <h1 class="card-info__titulo">Trekking en z - El Baúl de Antonia</h1>
-                            </header>
-                            <a href="#" class="card-info__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
-
+    }
     <section class="seccion m--slider-standard m--tipo2">
         <div class="limit">
             <h3 class="seccion__titulo">Te puede interesar</h3>

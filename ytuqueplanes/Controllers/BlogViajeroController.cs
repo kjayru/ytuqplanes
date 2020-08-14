@@ -85,7 +85,7 @@ namespace ytuqueplanes.Controllers
         }
         public ActionResult Detalle(string provincia, string id) {
 
-
+            dynamic datosRelacionadoModel = new ExpandoObject();
 
             var detalle = db.posts.Where(c => c.slug == id).Select(p => new {
                 p.id,
@@ -94,23 +94,53 @@ namespace ytuqueplanes.Controllers
                 p.contenido,
                 p.resumen,
                 p.imagen,
-                p.categoria_blog_id
+                p.categoria_blog_id,
+                p.provincia_id
                 
-            }).FirstOrDefault();
+            }).First();
+
+            var prov = db.provincias.Where(d => d.id == detalle.provincia_id).Select(p => new { p.id, p.nombre, p.slug }).First();
 
 
 
 
-            ViewBag.titulo = detalle.titulo;
+                ViewBag.titulo = detalle.titulo;
                 ViewBag.slug = detalle.slug;
                 ViewBag.contenido = detalle.contenido;
                 ViewBag.imagen = detalle.imagen;
                 ViewBag.resumen = detalle.resumen;
+                ViewBag.provinciaSlug = prov.slug;
+                ViewBag.provincia = prov.nombre;
+
+            var rl = db.posts.Where(d => d.provincia_id == prov.id).Where(c => c.slug != id ).Select(p => new
+            {
+                p.titulo,
+                p.resumen,
+                p.imagen,
+                p.slug
+            });
+
+            var rltotal = rl.Count();
+            var relacionados = rl.ToList();
+
+            ViewBag.total = rltotal;
+
+            List<Relacionados> rels = new List<Relacionados>();
+
+            for (var j = 0; j < rltotal; j++) {
+
+                rels.Add(new Relacionados { 
                 
-            
+                    titulo = relacionados[j].titulo,
+                    resumen = relacionados[j].resumen,
+                    imagen = relacionados[j].imagen,
+                    slug = relacionados[j].slug
+                });
+            }
 
+            datosRelacionadoModel.relacionados = rels;
 
-            return View();
+            return View(datosRelacionadoModel);
         }
 
 
@@ -216,5 +246,8 @@ namespace ytuqueplanes.Controllers
             return providatos;
 
         }
+
+
+       
     }
 }
