@@ -157,21 +157,7 @@
             <h4 class="seccion__titulo">Festivales y eventos</h4>
             <div class="swiper-container seccion__slider fnSliderGrilla">
                 <div class="swiper-wrapper">
-                    @foreach (ytuqueplanes.Models.Festividad festivo in Model.festividades)
-                    {
-                        <div class="swiper-slide">
-                            <article class="card-info m--tipo3">
-                                <img src="@festivo.imagen" alt="@festivo.nombre" class="card-info__imagen">
-                                <header class="card-info__header">
-                                    <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@festivo.provincia</address>
-                                    <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>1</aside>
-                                    <h1 class="card-info__titulo">@festivo.nombre</h1>
-                                    <aside class="card-info__fecha">@festivo.mes_id @festivo.mes</aside>
-                                </header>
-                                <a href="/experiencias/detalle/@festivo.slug" class="card-info__mas-informacion">Más información</a>
-                            </article>
-                        </div>
-                    }
+                  
                     @foreach (ytuqueplanes.Models.Festividad festivo in Model.festividades)
                     {
                         <div class="swiper-slide">

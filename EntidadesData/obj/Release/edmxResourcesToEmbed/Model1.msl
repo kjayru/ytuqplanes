@@ -26,6 +26,7 @@
     <EntitySetMapping Name="atractivos">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.atractivo">
         <MappingFragment StoreEntitySet="atractivos">
+          <ScalarProperty Name="destacado" ColumnName="destacado" />
           <ScalarProperty Name="titulo" ColumnName="titulo" />
           <ScalarProperty Name="slug" ColumnName="slug" />
           <ScalarProperty Name="banner_m" ColumnName="banner_m" />
@@ -114,6 +115,7 @@
     <EntitySetMapping Name="festividades">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.festividade">
         <MappingFragment StoreEntitySet="festividades">
+          <ScalarProperty Name="slug" ColumnName="slug" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="inicio" ColumnName="inicio" />

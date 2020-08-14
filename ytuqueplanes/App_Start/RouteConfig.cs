@@ -73,11 +73,30 @@ namespace ytuqueplanes
          defaults: new { controller = "Rutas", action = "Mapa", id = UrlParameter.Optional }
          );
 
-            routes.MapRoute(
+        routes.MapRoute(
            "Experiencias",
            "experiencias",
            new { controller = "Experiencias", action = "Index" }
-       );
+        );
+
+            routes.MapRoute(
+              "ExperienciaProvincia",
+              "experiencias/{id}",
+              new { controller = "Experiencias", action = "Provincia", id = UrlParameter.Optional }
+           );
+
+           routes.MapRoute(
+             "ExperienciaDetalle",
+             "experiencias/{provincia}/{id}",
+             new { controller = "Experiencias", action = "Detalle", provincia = UrlParameter.Optional, id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
+            "ExperienciaApi",
+            "api/festividades",
+            new { controller = "Experiencias", action = "AllResult" }
+         );
+            
 
             routes.MapRoute(
            "Ofertas",
@@ -86,11 +105,6 @@ namespace ytuqueplanes
        );
 
 
-            routes.MapRoute(
-          "ExperienciaDetalle",
-          "experiencias/{id}",
-          new { controller = "Experiencias", action = "Detalle", id= UrlParameter.Optional }
-      );
 
             routes.MapRoute(
                 name: "Default",

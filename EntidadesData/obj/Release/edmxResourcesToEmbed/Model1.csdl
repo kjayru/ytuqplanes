@@ -37,6 +37,7 @@
     <Property Name="banner_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="slug" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="titulo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="destacado" Type="Int32" />
   </EntityType>
   <EntityType Name="categoria_noticia">
     <Key>
@@ -124,6 +125,7 @@
     <Property Name="documento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="mes" Relationship="Self.FK__festivida__mes_i__4F7CD00D" FromRole="festividades" ToRole="meses" />
     <NavigationProperty Name="provincia" Relationship="Self.FK__festivida__provi__5070F446" FromRole="festividades" ToRole="provincias" />
+    <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="icono">
     <Key>
