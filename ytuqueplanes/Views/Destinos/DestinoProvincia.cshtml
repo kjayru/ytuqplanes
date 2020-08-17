@@ -14,7 +14,7 @@
 
     <main class="seccion">
 
-        <section class="seccion destinos-nivel3__listado">
+        <section id="destinosNivel3" class="seccion destinos-nivel3__listado @(Model.atractivos.Count>4?"-activo-":"")">
             @foreach (ytuqueplanes.Models.Atractivo atractivo in Model.atractivos)
             {
 
@@ -32,9 +32,8 @@
                 </article>
             }
             <div class="boton-contenedor">
-                <div class="boton m--amarillo m--grande"><strong>Ver más</strong></div>
+                <div class="boton m--amarillo m--grande fnToggleClass" data-targets="#destinosNivel3"><strong>Ver más</strong></div>
             </div>
-
 
         </section>
 
