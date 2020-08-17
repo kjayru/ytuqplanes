@@ -6,10 +6,13 @@
     <div class="limit page__header__inset">
         <a href="/" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
         <h2 class="page__header__titulo">Blog viajero</h2>
-        <p class="page__header__resumen">Descubre los impresionantes atractivos que puedes visitar en Perú</p>
+        <p class="page__header__resumen">
+            <strong>¡Asegúrate de no perderte de nada en tu próximo viaje por el Perú!</strong><br>
+            Echa un vistazo por nuestras recomendaciones y conoce los mejores destinos y actividades de cada región de nuestro país.
+        </p>
         <strong class="page__header__subtitulo">¿Qué destinos quieres conocer?</strong>
         <div class="boton m--amarillo m--grande filtro-selector__select-ui">
-            <strong class="filtro-selector__select-ui__contenido">Ver Todos</strong>
+            <strong class="filtro-selector__select-ui__contenido">Ver todos</strong>
             <select class="filtro-selector__select-ui__select fnSelect fnSelectCityBlog">
                 <option value="">Ver todos</option>
                 @foreach (ytuqueplanes.Models.Provincias prov in Model.provincias)
@@ -33,7 +36,7 @@
                     <strong>Videos</strong>
                 </div>
                 <div class="boton m--morado m--grande filtro-selector__select-ui">
-                    <strong class="filtro-selector__select-ui__contenido fnTargetSelect">Todas las ofertas</strong>
+                    <strong class="filtro-selector__select-ui__contenido fnTargetSelect">Notas</strong>
                     <select class="filtro-selector__select-ui__select fnSelect fnFiltroSliderFree">
                         <option value="Notas" data-tipo="1">Notas</option>
                         <option value="Paquetes" data-tipo="2">Videos</option>
@@ -46,7 +49,7 @@
 
     <section class="seccion m--slider-standard">
         <div class="limit">
-            <h3 class="seccion__titulo m--left">Vive nuevas experiencias</h3>
+            <h3 class="seccion__titulo m--left">El Dato - Información para tu próximo viaje</h3>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
                     @foreach (ytuqueplanes.Models.Blog blog in Model.notas)
@@ -76,7 +79,7 @@
 
     <section class="seccion m--slider-standard">
         <div class="limit">
-            <h3 class="seccion__titulo m--left">Gastronomía</h3>
+            <h3 class="seccion__titulo m--left">Gastronomía - Contenidos llenos de sabor</h3>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
                     @foreach (ytuqueplanes.Models.Blog blog in Model.notas)
@@ -106,7 +109,7 @@
 
     <section class="seccion m--slider-standard">
         <div class="limit">
-            <h3 class="seccion__titulo m--left">Festividades</h3>
+            <h3 class="seccion__titulo m--left">Festividades - ¡Así festeja Perú!</h3>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
                     @foreach (ytuqueplanes.Models.Blog blog in Model.notas)

@@ -32,10 +32,10 @@
         </div>
     </section>
 
-    @if (ViewBag.total > 0) { 
+    @if (ViewBag.total > 0) {
     <section class="seccion m--slider-standard">
         <div class="limit">
-            <h3 class="seccion__titulo">Recomendaciones</h3>
+            <h3 class="seccion__titulo">Recomendaciones - Descubre más contenidos sobre el Perús</h3>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
 
@@ -61,92 +61,12 @@
         </div>
     </section>
     }
+
     <section class="seccion m--slider-standard m--tipo2">
         <div class="limit">
             <h3 class="seccion__titulo">Te puede interesar</h3>
-            <div class="swiper-container seccion__slider fnSliderFree">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo2">
-                            <img src="/assets/images/rutas-cortas-10.jpg" alt="" class="card-poster__imagen">
-                            <strong class="card-poster__precio">
-                                S/ 99
-                                <span class="card-poster__precio-anterior">Antes S/ 130</span>
-                            </strong>
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <span class="card-poster__compra">Compra online</span>
-                                <strong class="card-poster__subtitulo">Full Day</strong>
-                                <h1 class="card-poster__titulo">TINGO MARÍA Y SU PARAÍSO MÍSTICO</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo2">
-                            <img src="/assets/images/rutas-cortas-3.jpg" alt="" class="card-poster__imagen">
-                            <strong class="card-poster__precio">
-                                S/ 99
-                                <span class="card-poster__precio-anterior">Antes S/ 130</span>
-                            </strong>
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <span class="card-poster__compra">Compra online</span>
-                                <strong class="card-poster__subtitulo">Full Day</strong>
-                                <h1 class="card-poster__titulo">TINGO MARÍA Y SU PARAÍSO MÍSTICO</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo2">
-                            <img src="/assets/images/rutas-cortas-1.jpg" alt="" class="card-poster__imagen">
-                            <strong class="card-poster__precio">
-                                S/ 99
-                                <span class="card-poster__precio-anterior">Antes S/ 130</span>
-                            </strong>
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <span class="card-poster__compra">Compra online</span>
-                                <strong class="card-poster__subtitulo">Full Day</strong>
-                                <h1 class="card-poster__titulo">TINGO MARÍA Y SU PARAÍSO MÍSTICO</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo2">
-                            <img src="/assets/images/rutas-cortas-4.jpg" alt="" class="card-poster__imagen">
-                            <strong class="card-poster__precio">
-                                S/ 99
-                                <span class="card-poster__precio-anterior">Antes S/ 130</span>
-                            </strong>
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <span class="card-poster__compra">Compra online</span>
-                                <strong class="card-poster__subtitulo">Full Day</strong>
-                                <h1 class="card-poster__titulo">TINGO MARÍA Y SU PARAÍSO MÍSTICO</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo2">
-                            <img src="/assets/images/rutas-cortas-10.jpg" alt="" class="card-poster__imagen">
-                            <strong class="card-poster__precio">
-                                S/ 99
-                                <span class="card-poster__precio-anterior">Antes S/ 130</span>
-                            </strong>
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <span class="card-poster__compra">Compra online</span>
-                                <strong class="card-poster__subtitulo">Full Day</strong>
-                                <h1 class="card-poster__titulo">TINGO MARÍA Y SU PARAÍSO MÍSTICO</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                </div>
+            <div class="swiper-container seccion__slider fnSliderFree" data-api-tipo="card-poster-tipo-2" data-api-data="{'type[]': 'package', 'limit': '5'}">
+                <div class="swiper-wrapper"></div>
             </div>
         </div>
     </section>
