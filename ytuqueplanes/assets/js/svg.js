@@ -4,7 +4,7 @@ const headerMapa = `<svg class="header__mapa__tumbes"><use xlink:href="#map-tumb
                     <svg class="header__mapa__lambayeque"><use xlink:href="#map-lambayeque" /></svg>
                     <svg class="header__mapa__la-libertad"><use xlink:href="#map-la-libertad" /></svg>
                     <svg class="header__mapa__cajamarca"><use xlink:href="#map-cajamarca" /></svg>
-                    <svg class="header__mapa__amazonas -default-"><use xlink:href="#map-amazonas" /></svg>
+                    <svg class="header__mapa__amazonas"><use xlink:href="#map-amazonas" /></svg>
                     <svg class="header__mapa__san-martin"><use xlink:href="#map-san-martin" /></svg>
                     <svg class="header__mapa__loreto"><use xlink:href="#map-loreto" /></svg>
                     <svg class="header__mapa__ancash"><use xlink:href="#map-ancash" /></svg>

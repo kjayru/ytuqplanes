@@ -8,12 +8,8 @@
 
 <section class="all swiper-container sliders fnSliderHome">
     <div class="swiper-wrapper">
-
         @foreach (ytuqueplanes.Models.Slide slide in Model.sliders)
         {
-
-
-
             <article class="swiper-slide slider" style="background-image: url('/assets/images/@slide.imagen_lg');">
                 <div class="limit">
                     <div class="slider__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Amazonas</div>
@@ -29,14 +25,11 @@
         <div class="sliders__nav">
             <div class="sliders__nav__items">
                 @{
-
                     int i = 1;
                     foreach (ytuqueplanes.Models.Slide slide in Model.sliders)
                     {
                         <div class="sliders__nav__item ">i</div>
-
                         i++;
-
                     }
                 }
             </div>
@@ -57,29 +50,22 @@
             </article>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
-                
-                    
-             @foreach (ytuqueplanes.Models.Blog blog in Model.notas) { 
-                <div class="swiper-slide">
-                    <article class="card-info m--tipo1">
-                        <img src="@blog.imagen" alt="" class="card-info__imagen">
-                        <header class="card-info__header">
-                            <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@blog.provincia</address>
-                           <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>-->
-                            <h1 class="card-info__titulo">@blog.titulo</h1>
-                        </header>
-                        <a href="/blog-viajero/@blog.provincia_slug/@blog.slug" class="card-info__mas-informacion">Más información</a>
-                    </article>
-                </div>
-              }
+                 @foreach (ytuqueplanes.Models.Blog blog in Model.notas) {
+                    <div class="swiper-slide">
+                        <article class="card-info m--tipo1">
+                            <img src="@blog.imagen" alt="" class="card-info__imagen">
+                            <header class="card-info__header">
+                                <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@blog.provincia</address>
+                               <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>-->
+                                <h1 class="card-info__titulo">@blog.titulo</h1>
+                            </header>
+                            <a href="/blog-viajero/@blog.provincia_slug/@blog.slug" class="card-info__mas-informacion">Más información</a>
+                        </article>
+                    </div>
+                  }
                 </div>
             </div>
-
-
             <a href="/blog-viajero" class="boton m--verde-hoja m--grande seccion__boton-mobile"><strong>Ir al Blog</strong></a>
-
-
-
         </div>
     </section>
 
@@ -88,61 +74,12 @@
             <article class="seccion__contenido">
                 <h2 class="seccion__titulo">¡No hay excusas!</h2>
                 <p class="seccion__resumen">Encuentra las mejores ofertas para tu próximo viaje.</p>
-                <a href="#" class="boton m--amarillo m--grande m--235"><strong>Ver todas las ofertas</strong></a>
+                <a href="/ofertas" class="boton m--amarillo m--grande m--235"><strong>Ver todas las ofertas</strong></a>
             </article>
-            <div class="swiper-container seccion__slider fnSliderFree">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo1">
-                            <img src="/assets/images/rutas-cortas-9.jpg" alt="" class="card-poster__imagen">
-                            <strong class="card-poster__precio">
-                                S/ 280
-                                <span class="card-poster__precio-anterior">Antes S/ 340</span>
-                            </strong>
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <span class="card-poster__compra">Compra online</span>
-                                <strong class="card-poster__subtitulo">Full Day</strong>
-                                <h1 class="card-poster__titulo">TINGO MARÍA Y SU PARAÍSO MÍSTICO</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo1">
-                            <img src="/assets/images/rutas-cortas-5.jpg" alt="" class="card-poster__imagen">
-                            <strong class="card-poster__precio">
-                                S/ 280
-                                <span class="card-poster__precio-anterior">Antes S/ 340</span>
-                            </strong>
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <span class="card-poster__compra">Compra online</span>
-                                <strong class="card-poster__subtitulo">Full Day</strong>
-                                <h1 class="card-poster__titulo">TINGO MARÍA Y SU PARAÍSO MÍSTICO</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo1">
-                            <img src="/assets/images/rutas-cortas-10.jpg" alt="" class="card-poster__imagen">
-                            <strong class="card-poster__precio">
-                                S/ 280
-                                <span class="card-poster__precio-anterior">Antes S/ 340</span>
-                            </strong>
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <span class="card-poster__compra">Compra online</span>
-                                <strong class="card-poster__subtitulo">Full Day</strong>
-                                <h1 class="card-poster__titulo">TINGO MARÍA Y SU PARAÍSO MÍSTICO</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                </div>
+            <div class="swiper-container seccion__slider fnSliderFree" data-api-tipo="card-poster-tipo-1" data-api-data="{'type[]': 'package', 'limit': '3'}">
+                <div class="swiper-wrapper"></div>
             </div>
-            <a href="#" class="boton m--amarillo m--grande m--235 seccion__boton-mobile"><strong>Ir al Blog</strong></a>
+            <a href="/ofertas" class="boton m--amarillo m--grande m--235 seccion__boton-mobile"><strong>Ver todas las ofertas</strong></a>
         </div>
     </section>
 
@@ -164,7 +101,7 @@
                     @foreach (ytuqueplanes.Models.Festividad festividad in Model.festividades) {
                     <div class="swiper-slide">
                         <article class="card-info m--tipo3">
-                            <img src="/assets/images/@festividad.imagen" alt="" class="card-info__imagen">
+                            <img src="@festividad.imagen" alt="" class="card-info__imagen">
                             <header class="card-info__header">
                                 <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@festividad.provincia</address>
                                 <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>1</aside>

@@ -22,6 +22,11 @@ const site = (function(){
 		printers : function(){
 			$('.header__mapa').html(headerMapa);
 			$('.header__mapa__fuente').html(mapaSVG);
+			if( $('.header__nav__destinos__enlace.-activo-').length )
+			{
+				const dep = $('.header__nav__destinos__enlace.-activo-').data('mapa');
+				$('.header__mapa__'+dep).addClass('-default-');
+			}
 			window.fbAsyncInit = function() {
 			    FB.init({
 					appId            : '2613846985498810',
@@ -40,16 +45,43 @@ const site = (function(){
             dom.swiperrotadores.length &&
                 dom.swiperrotadores.forEach(function (el, index) {
                     var ar = "";
+                    let api = el.clase.getAttribute('data-api-tipo');
+                    if( api ) {
+                    	$.ajax({
+							url: 'https://devapi.joinnus.com/v2/search',
+							headers: { 'brand': 'ytqp', 'Content-Type': 'application/json' },
+							type: 'GET',
+							dataType: 'json',
+							data: el.clase.getAttribute('data-api-data')
+						})
+						.done(function(response) {
+							var slides = '';
+							switch (api) {
+	                    		case 'card-poster-tipo-1':
+										$.each(response.data, function(index, val) {
+											slides += cardPosterTipo1(val);
+										});
+	                    			break;
+	                    		case 'card-poster-tipo-2':
+										$.each(response.data, function(index, val) {
+											slides += cardPosterTipo2(val);
+										});
+	                    			break;
+	                    	}
+							el.clase.querySelector('.swiper-wrapper').innerHTML = slides;
+						});
+
+                    }
                     switch (el.clase.classList[2]) {
                         default:
-                            ar = {
-									slidesPerView: 'auto',
-									freeMode: true,
-		     						navigation: {
-							     		nextEl: el.clase.parentElement.querySelector('.fnSliderDestinosDetalle__left'),
-					        			prevEl: el.clase.parentElement.querySelector('.fnSliderDestinosDetalle__right')
-							     	}
-							     };
+	                            ar = {
+										slidesPerView: 'auto',
+										freeMode: true,
+			     						navigation: {
+								     		nextEl: el.clase.parentElement.querySelector('.fnSliderDestinosDetalle__left'),
+						        			prevEl: el.clase.parentElement.querySelector('.fnSliderDestinosDetalle__right')
+								     	}
+								    };
                             break;
                     }
                     el.swiper = new Swiper(el.clase, ar);
@@ -312,10 +344,48 @@ const site = (function(){
 
 	};
 
+	function cardPosterTipo1(val) {
+		return `<div class="swiper-slide">
+                    <article class="card-poster m--tipo1">
+                        <img src="${val.images.activityImage.full.url}" alt="" class="card-poster__imagen">
+                        <strong class="card-poster__precio">
+                            S/ ${val.pricing.amountSale}
+                            <span class="card-poster__precio-anterior">Antes S/ ${val.pricing.amount}</span>
+                        </strong>
+                        <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
+                        <header class="card-poster__header">
+                            <span class="card-poster__compra">Compra online</span>
+                            <strong class="card-poster__subtitulo">${val.activityType}</strong>
+                            <h1 class="card-poster__titulo">${val.title}</h1>
+                        </header>
+                        <a href="${val.url}" target="_blank" class="card-poster__mas-informacion">Más información</a>
+                    </article>
+                </div>`;
+	}
+
+	function cardPosterTipo2(val) {
+		return `<div class="swiper-slide">
+                    <article class="card-poster m--tipo2">
+                        <img src="${val.images.activityImage.full.url}" alt="" class="card-poster__imagen">
+                        <strong class="card-poster__precio">
+                            S/ ${val.pricing.amountSale}
+                            <span class="card-poster__precio-anterior">Antes S/ ${val.pricing.amount}</span>
+                        </strong>
+                        <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
+                        <header class="card-poster__header">
+                            <span class="card-poster__compra">Compra online</span>
+                            <strong class="card-poster__subtitulo">${val.activityType}</strong>
+                            <h1 class="card-poster__titulo">${val.title}</h1>
+                        </header>
+                        <a href="${val.url}" target="_blank" class="card-poster__mas-informacion">Más información</a>
+                    </article>
+                </div>`;
+	}
+
 	// set Google Recaptha
 	function setNewRecaptcha(){
 		grecaptcha.ready(function() {
-			grecaptcha.execute('Define your own key code', {action: 'futurismogroup'}).then(function(token) {
+			grecaptcha.execute('Define your own key code', {action: 'nameofweb'}).then(function(token) {
 				if(!$('input[name="tokengoogle"]').length) {
 					$('form').append('<input type="hidden" name="tokengoogle" value="'+token+'" />');
 				} else {
@@ -349,3 +419,20 @@ const site = (function(){
 })();
 
 site.init();
+
+$.ajax({
+	url: 'https://devapi.joinnus.com/v2/search',
+	headers: { 'brand': 'ytqp', 'Content-Type': 'application/json' },
+	type: 'GET',
+	dataType: 'json',
+	data: {'type[]': 'package', 'limit': '3'}
+})
+.done(function(response) {
+	console.log(response.data);
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});

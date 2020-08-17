@@ -1,12 +1,15 @@
 ﻿@model dynamic
 @{
     ViewBag.Title = "Index";
+    string grillaInicial = Model.provincias.Count>4?"-mas-4-":"";
+    grillaInicial = Model.provincias.Count>6?"-mas-4- -mas-6-":grillaInicial;
+    grillaInicial = Model.provincias.Count>8?"-mas-4- -mas-6- -mas-8-":grillaInicial;
+    @* @ObjectInfo.Print(grillaInicial); *@
 }
-
 
 @foreach (ytuqueplanes.Models.Slide slide in Model.sliders)
 {
-    
+
     <section class="page__header" style="background-image: url('@slide.imagen_lg');">
         <div class="limit page__header__inset">
             <a href="/" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
@@ -42,15 +45,15 @@
                     </select>
                 </div>
             </div>
-            <div id="fnTargetFiltroGrilla" class="seccion__grilla -mostrar-todos- -mas-8-">
+
+            <div id="fnTargetFiltroGrilla" class="seccion__grilla -mostrar-todos- @grillaInicial">
                 <div class="seccion__grilla__bloques">
 
                     @foreach (ytuqueplanes.Models.Provincias provincia in Model.provincias)
-                    { 
+                    {
 
                     <article class="card-poster m--tipo3" data-filtro="@provincia.region">
                         <img src="@provincia.thumb" alt="" class="card-poster__imagen">
-
                         <!--<aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>0</aside>-->
                         <header class="card-poster__header">
                             <h1 class="card-poster__titulo">@provincia.nombre</h1>
@@ -59,8 +62,6 @@
                     </article>
 
                     }
-                   
-
 
                 </div>
                 <div class="boton-contenedor">
@@ -76,61 +77,12 @@
             <article class="seccion__contenido">
                 <h2 class="seccion__titulo">¡No hay excusas!</h2>
                 <p class="seccion__resumen">Encuentra las mejores ofertas para tu próximo viaje.</p>
-                <a href="#" class="boton m--amarillo m--grande m--235"><strong>Ver todas las ofertas</strong></a>
+                <a href="/ofertas" class="boton m--amarillo m--grande m--235"><strong>Ver todas las ofertas</strong></a>
             </article>
-            <div class="swiper-container seccion__slider fnSliderFree">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo1">
-                            <img src="/assets/images/rutas-cortas-1.jpg" alt="" class="card-poster__imagen">
-                            <strong class="card-poster__precio">
-                                S/ 280
-                                <span class="card-poster__precio-anterior">Antes S/ 340</span>
-                            </strong>
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <span class="card-poster__compra">Compra online</span>
-                                <strong class="card-poster__subtitulo">Full Day</strong>
-                                <h1 class="card-poster__titulo">TINGO MARÍA Y SU PARAÍSO MÍSTICO</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo1">
-                            <img src="/assets/images/rutas-cortas-4.jpg" alt="" class="card-poster__imagen">
-                            <strong class="card-poster__precio">
-                                S/ 280
-                                <span class="card-poster__precio-anterior">Antes S/ 340</span>
-                            </strong>
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <span class="card-poster__compra">Compra online</span>
-                                <strong class="card-poster__subtitulo">Full Day</strong>
-                                <h1 class="card-poster__titulo">TINGO MARÍA Y SU PARAÍSO MÍSTICO</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo1">
-                            <img src="/assets/images/rutas-cortas-1.jpg" alt="" class="card-poster__imagen">
-                            <strong class="card-poster__precio">
-                                S/ 280
-                                <span class="card-poster__precio-anterior">Antes S/ 340</span>
-                            </strong>
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <span class="card-poster__compra">Compra online</span>
-                                <strong class="card-poster__subtitulo">Full Day</strong>
-                                <h1 class="card-poster__titulo">TINGO MARÍA Y SU PARAÍSO MÍSTICO</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                </div>
+            <div class="swiper-container seccion__slider fnSliderFree" data-api-tipo="card-poster-tipo-1" data-api-data="{'type[]': 'package', 'limit': '3'}">
+                <div class="swiper-wrapper"></div>
             </div>
-            <a href="/blog-viajero" class="boton m--amarillo m--grande m--235 seccion__boton-mobile"><strong>Ir al Blog</strong></a>
+            <a href="/ofertas" class="boton m--amarillo m--grande m--235 seccion__boton-mobile"><strong>Ver todas las ofertas</strong></a>
         </div>
     </section>
 

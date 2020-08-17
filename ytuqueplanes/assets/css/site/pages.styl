@@ -240,7 +240,13 @@
 			.card-info
 				margin 0 auto 20px
 			.boton-contenedor
+				display none
 				padding-top 25px
+			&.-activo-
+				.card-info:nth-of-type(4) ~ .card-info
+					display none
+				.boton-contenedor
+					display flex
 
 	&__festividad-detalle
 		display flex
