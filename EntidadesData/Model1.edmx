@@ -442,7 +442,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_tag' no tiene defini
           <Property Name="descripcion" Type="varchar" MaxLength="255" />
           <Property Name="estado" Type="bit" />
           <Property Name="destacar" Type="bit" />
-          <Property Name="rutascortas_id" Type="int" Nullable="false" />
+          <Property Name="provincia_id" Type="int" Nullable="false" />
           <Property Name="categoria_ruta_id" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
@@ -454,16 +454,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           </Key>
           <Property Name="ruta_id" Type="int" Nullable="false" />
           <Property Name="seo_id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="rutascortas">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="banner" Type="varchar(max)" />
-          <Property Name="titulo" Type="varchar(max)" Nullable="false" />
-          <Property Name="contenido" Type="varchar(max)" />
-          <Property Name="provincia_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="seo">
           <Key>
@@ -657,18 +647,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__rutas__rutascort__5AEE82B9">
-          <End Role="rutascortas" Type="Self.rutascortas" Multiplicity="1" />
-          <End Role="rutas" Type="Self.rutas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="rutascortas">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="rutas">
-              <PropertyRef Name="rutascortas_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_opciones_oferta">
           <End Role="ofertas" Type="Self.ofertas" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -725,7 +703,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySet Name="region" EntityType="Self.region" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rutas" EntityType="Self.rutas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="rutascortas" EntityType="Self.rutascortas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="seo" EntityType="Self.seo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="slider_item" EntityType="Self.slider_item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sliders" EntityType="Self.sliders" Schema="dbo" store:Type="Tables" />
@@ -840,10 +817,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <AssociationSet Name="FK__ofertas__categor__534D60F1" Association="Self.FK__ofertas__categor__534D60F1">
             <End Role="categorias" EntitySet="categorias" />
             <End Role="ofertas" EntitySet="ofertas" />
-          </AssociationSet>
-          <AssociationSet Name="FK__rutas__rutascort__5AEE82B9" Association="Self.FK__rutas__rutascort__5AEE82B9">
-            <End Role="rutascortas" EntitySet="rutascortas" />
-            <End Role="rutas" EntitySet="rutas" />
           </AssociationSet>
           <AssociationSet Name="fk_opciones_oferta" Association="Self.fk_opciones_oferta">
             <End Role="ofertas" EntitySet="ofertas" />
@@ -1191,22 +1164,10 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="estado" Type="Boolean" />
           <Property Name="destacar" Type="Boolean" />
-          <Property Name="rutascortas_id" Type="Int32" Nullable="false" />
           <Property Name="categoria_ruta_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="actividades" Relationship="Self.FK__actividad__ruta___4BAC3F29" FromRole="rutas" ToRole="actividades" />
           <NavigationProperty Name="mapas" Relationship="Self.FK__mapas__ruta_id__52593CB8" FromRole="rutas" ToRole="mapas" />
-          <NavigationProperty Name="rutascorta" Relationship="Self.FK__rutas__rutascort__5AEE82B9" FromRole="rutas" ToRole="rutascortas" />
-        </EntityType>
-        <EntityType Name="rutascorta">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="banner" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="provincia_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="rutas" Relationship="Self.FK__rutas__rutascort__5AEE82B9" FromRole="rutascortas" ToRole="rutas" />
         </EntityType>
         <EntityType Name="seo">
           <Key>
@@ -1560,18 +1521,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__rutas__rutascort__5AEE82B9">
-          <End Role="rutascortas" Type="Self.rutascorta" Multiplicity="1" />
-          <End Role="rutas" Type="Self.ruta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="rutascortas">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="rutas">
-              <PropertyRef Name="rutascortas_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ytuqueplanesDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="actividades" EntityType="Self.actividade" />
           <EntitySet Name="alertas" EntityType="Self.alerta" />
@@ -1600,7 +1549,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySet Name="regions" EntityType="Self.region" />
           <EntitySet Name="roles" EntityType="Self.role" />
           <EntitySet Name="rutas" EntityType="Self.ruta" />
-          <EntitySet Name="rutascortas" EntityType="Self.rutascorta" />
           <EntitySet Name="seos" EntityType="Self.seo" />
           <EntitySet Name="slider_item" EntityType="Self.slider_item" />
           <EntitySet Name="sliders" EntityType="Self.slider" />
@@ -1672,10 +1620,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <AssociationSet Name="user_rol_fk" Association="Self.user_rol_fk">
             <End Role="roles" EntitySet="roles" />
             <End Role="users" EntitySet="users" />
-          </AssociationSet>
-          <AssociationSet Name="FK__rutas__rutascort__5AEE82B9" Association="Self.FK__rutas__rutascort__5AEE82B9">
-            <End Role="rutascortas" EntitySet="rutascortas" />
-            <End Role="rutas" EntitySet="rutas" />
           </AssociationSet>
           <AssociationSet Name="categoria_noticia_noticia_fk" Association="ytuqueplanesDBModel.categoria_noticia_noticia_fk">
             <End Role="categoria_noticia" EntitySet="categoria_noticia" />
@@ -2046,6 +1990,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="rutas">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.ruta">
               <MappingFragment StoreEntitySet="rutas">
+                <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="tiempo_recorrido" ColumnName="tiempo_recorrido" />
@@ -2053,19 +1998,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="destacar" ColumnName="destacar" />
-                <ScalarProperty Name="rutascortas_id" ColumnName="rutascortas_id" />
                 <ScalarProperty Name="categoria_ruta_id" ColumnName="categoria_ruta_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="rutascortas">
-            <EntityTypeMapping TypeName="ytuqueplanesDBModel.rutascorta">
-              <MappingFragment StoreEntitySet="rutascortas">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="banner" ColumnName="banner" />
-                <ScalarProperty Name="titulo" ColumnName="titulo" />
-                <ScalarProperty Name="contenido" ColumnName="contenido" />
-                <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

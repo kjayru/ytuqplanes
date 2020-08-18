@@ -38,11 +38,12 @@ namespace ytuqueplanes.Controllers
 
 
 
-            ViewBag.nombreProvincia = id;
             
-            var prov = db.provincias.Where(c => c.nombre == id).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).First();
+            var prov = db.provincias.Where(c => c.slug == id).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).First();
 
             ViewBag.slugProvincia = prov.slug;
+            ViewBag.nombreProvincia = prov.nombre;
+            ViewBag.imagenProvincia = prov.imagen;
 
             var dt = from t1 in db.destinos
                      join t2 in db.experiencias
@@ -98,8 +99,26 @@ namespace ytuqueplanes.Controllers
 
             }).ToList();
 
-              var mesid = fs[0].mes_id;
+            var fscount = db.festividades.Where(d => d.provincia_id == prov.id).Select(p => new
+            {
+                p.id,
+                p.nombre,
+                p.inicio,
+                p.final,
+                p.slug,
+                p.mes_id,
+                p.imagen
 
+            }).Count();
+            var mesid = 1;
+
+            if (fscount > 0)
+            {
+                 mesid = 8;
+            }
+            else {
+                mesid = 8;
+            }
            // return Json(mesid, JsonRequestBehavior.AllowGet);
 
             var m = db.meses.Where(d => d.id == mesid).Select(p => new { p.nombre }).First();
@@ -205,9 +224,9 @@ namespace ytuqueplanes.Controllers
                 p.destino_id
             }).FirstOrDefault();
 
-            var destino = db.destinos.Where(c => c.id == detalle.destino_id).Select(p => new { p.id, p.slug, p.titulo }).First();
+            var destino = db.destinos.Where(c => c.id == detalle.destino_id).Select(p => new { p.id, p.slug, p.titulo, p.provincia_Id }).First();
 
-            var pv = db.provincias.Where(c => c.id == destino.id).Select(p => new { p.nombre, p.slug }).First();
+            var pv = db.provincias.Where(c => c.id == destino.provincia_Id).Select(p => new { p.id, p.nombre, p.slug }).First();
 
             ViewBag.provincia_slug = pv.slug;
 
@@ -227,8 +246,60 @@ namespace ytuqueplanes.Controllers
 
             
 
-            datosAtractivosModel.destacados = getDestacados();
-          
+            
+
+
+            ///relacionados provincia
+            ///
+
+
+            var dt = from t1 in db.atractivos
+                     join t2 in db.destinos
+
+                     on t1.destino_id equals t2.id
+
+                     where t2.provincia_Id == pv.id
+
+                     select new
+                     {
+                         id = t1.id,
+                         titulo = t1.titulo,
+                         contenido = t1.contenido,
+                         destino_id = t2.id,
+                         slug = t1.slug,
+                         imagen = t1.banner,
+                         destino_slug = t2.slug
+
+                     };
+
+            var destacados = dt.ToList();
+
+            List<Destacado> dtdo = new List<Destacado>();
+
+            for (var i = 0; i < destacados.Count; i++)
+            {
+                var destinoId = destacados[i].destino_id;
+                var pvId = db.destinos.Where(d => d.id == destinoId).Select(p => new { p.provincia_Id }).First();
+                var prov = db.provincias.Where(d => d.id == pvId.provincia_Id).Select(p => new { p.slug, p.nombre }).First();
+
+                dtdo.Add(
+                    new Destacado
+                    {
+                        titulo = destacados[i].titulo,
+                        provincia = prov.nombre,
+                        slug = destacados[i].slug,
+                        imagen = destacados[i].imagen,
+                        provincia_slug = prov.slug,
+                        destino_slug = destacados[i].destino_slug
+                    }
+                );
+
+
+            }
+
+
+            datosAtractivosModel.destacados = dtdo;
+
 
             return View(datosAtractivosModel);
         }

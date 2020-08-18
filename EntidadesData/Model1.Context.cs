@@ -52,7 +52,6 @@ namespace EntidadesData
         public virtual DbSet<region> regions { get; set; }
         public virtual DbSet<role> roles { get; set; }
         public virtual DbSet<ruta> rutas { get; set; }
-        public virtual DbSet<rutascorta> rutascortas { get; set; }
         public virtual DbSet<seo> seos { get; set; }
         public virtual DbSet<slider_item> slider_item { get; set; }
         public virtual DbSet<slider> sliders { get; set; }

@@ -327,6 +327,7 @@
     <EntitySetMapping Name="rutas">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.ruta">
         <MappingFragment StoreEntitySet="rutas">
+          <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="titulo" ColumnName="titulo" />
           <ScalarProperty Name="tiempo_recorrido" ColumnName="tiempo_recorrido" />
@@ -334,19 +335,7 @@
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="destacar" ColumnName="destacar" />
-          <ScalarProperty Name="rutascortas_id" ColumnName="rutascortas_id" />
           <ScalarProperty Name="categoria_ruta_id" ColumnName="categoria_ruta_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="rutascortas">
-      <EntityTypeMapping TypeName="ytuqueplanesDBModel.rutascorta">
-        <MappingFragment StoreEntitySet="rutascortas">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="banner" ColumnName="banner" />
-          <ScalarProperty Name="titulo" ColumnName="titulo" />
-          <ScalarProperty Name="contenido" ColumnName="contenido" />
-          <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

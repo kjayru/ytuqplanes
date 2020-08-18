@@ -7,7 +7,7 @@
     @* @ObjectInfo.Print(ViewBag); *@
 }
 
-<section class="page__header" style="background-image: url('/assets/images/rutas-cortas-2.jpg');">
+<section class="page__header  m--bg-black" style="background-image: url(@ViewBag.imagenProvincia);">
     <div class="limit page__header__inset">
         <a href="/destinos" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a destinos</span></a>
         <h2 class="page__header__titulo">@ViewBag.nombreProvincia</h2>
@@ -57,14 +57,14 @@
                 <div class="seccion__grilla__bloques">
                     @foreach (ytuqueplanes.Models.DestinosProvincia destino in Model.destinos)
                     {
-                    <article class="card-poster m--tipo3" data-filtro="@destino.filtro">
-                        <img src="@destino.imagen" alt="" class="card-poster__imagen">
-                        <!--<aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>1</aside>-->
-                        <header class="card-poster__header">
-                            <h1 class="card-poster__titulo">@destino.titulo</h1>
-                        </header>
-                        <a href="/destinos/@ViewBag.slugProvincia/@destino.slug" class="card-poster__mas-informacion">Más información</a>
-                    </article>
+                        <article class="card-poster m--tipo3" data-filtro="@destino.filtro">
+                            <img src="@destino.imagen" alt="" class="card-poster__imagen">
+                            <!--<aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>1</aside>-->
+                            <header class="card-poster__header">
+                                <h1 class="card-poster__titulo">@destino.titulo</h1>
+                            </header>
+                            <a href="/destinos/@ViewBag.slugProvincia/@destino.slug" class="card-poster__mas-informacion">Más información</a>
+                        </article>
                     }
                 </div>
                 <div class="boton-contenedor">
@@ -73,6 +73,86 @@
             </div>
         </div>
     </section>
+
+    <section class="seccion m--slider-standard m--transporte">
+        <div class="limit">
+            <h3 class="seccion__titulo">¿No sabes como llegar? Mira las siguientes opciones de transporte disponibles</h3>
+            <div class="swiper-container seccion__slider fnSliderFree">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <article class="card-transporte">
+                            <header class="card-transporte__header">
+                                <figure class="card-transporte__imagen">
+                                    <img src="/assets/images/avion-svg.svg" alt="" />
+                                </figure>
+                                <strong class="card-transporte__titulo">Avión</strong>
+                            </header>
+                            <dl class="card-transporte__lista">
+                                <dt>Duración:</dt>
+                                <dd>2hrs</dd>
+                                <dt>Aerolíneas:</dt>
+                                <dd><a href="#">Latam</a>, <a href="#">Viva Air</a>, <a href="#">JetSmart</a>.</dd>
+                            </dl>
+                            <span class="card-transporte__recomendado">Recomendado</span>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="card-transporte">
+                            <header class="card-transporte__header">
+                                <figure class="card-transporte__imagen">
+                                    <img src="/assets/images/bus-svg.svg" alt="" />
+                                </figure>
+                                <strong class="card-transporte__titulo m--morado">Bus Interprovincial</strong>
+                            </header>
+                            <dl class="card-transporte__lista">
+                                <dt>Duración:</dt>
+                                <dd>16hrs - 18hrs</dd>
+                                <dt>Aerolíneas:</dt>
+                                <dd><a href="#">Oltursa</a>, <a href="#">Cruz del Sur</a>, <a href="#">Móvil Bus</a>.</dd>
+                            </dl>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="card-transporte">
+                            <header class="card-transporte__header">
+                                <figure class="card-transporte__imagen">
+                                    <img src="/assets/images/auto-svg.svg" alt="" />
+                                </figure>
+                                <strong class="card-transporte__titulo m--azul">Auto particular</strong>
+                            </header>
+                            <dl class="card-transporte__lista">
+                                <dt>Distacia:</dt>
+                                <dd>350km aprox.</dd>
+                                <dt>Duración:</dt>
+                                <dd>16hrs - 18hrs</dd>
+                            </dl>
+                            <a href="#" class="card-transporte__enlace-inferior">Abrir ruta en Waze</a>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="card-transporte">
+                            <header class="card-transporte__header">
+                                <figure class="card-transporte__imagen">
+                                    <img src="/assets/images/tren-svg.svg" alt="" />
+                                </figure>
+                                <strong class="card-transporte__titulo m--verdehoja">Tren</strong>
+                            </header>
+                            <dl class="card-transporte__lista">
+                                <dt>Duración:</dt>
+                                <dd>14hrs</dd>
+                                <dt>Aerolíneas:</dt>
+                                <dd><a href="#">Lima Rail</a>.</dd>
+                            </dl>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <p class="seccion__texto-inferior">
+                <strong>Ten en cuenta:</strong> Los precios suelen variar en días festivos. Precio por persona. Duración apróximada, puede variar por factores externos.
+            </p>
+        </div>
+    </section>
+
 
     <section class="seccion">
         <div class="limit">
@@ -127,8 +207,6 @@
         </div>
     </section>
 
-
-
     <section class="seccion m--slider-standard">
         <div class="limit">
             <h3 class="seccion__titulo">Te puede interesar</h3>
@@ -150,10 +228,12 @@
                         </div>
 
                     }
-                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+
 
 </main>
 

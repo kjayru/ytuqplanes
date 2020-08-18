@@ -333,22 +333,10 @@
     <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="estado" Type="Boolean" />
     <Property Name="destacar" Type="Boolean" />
-    <Property Name="rutascortas_id" Type="Int32" Nullable="false" />
     <Property Name="categoria_ruta_id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="actividades" Relationship="Self.FK__actividad__ruta___4BAC3F29" FromRole="rutas" ToRole="actividades" />
     <NavigationProperty Name="mapas" Relationship="Self.FK__mapas__ruta_id__52593CB8" FromRole="rutas" ToRole="mapas" />
-    <NavigationProperty Name="rutascorta" Relationship="Self.FK__rutas__rutascort__5AEE82B9" FromRole="rutas" ToRole="rutascortas" />
-  </EntityType>
-  <EntityType Name="rutascorta">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="banner" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="provincia_id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="rutas" Relationship="Self.FK__rutas__rutascort__5AEE82B9" FromRole="rutascortas" ToRole="rutas" />
   </EntityType>
   <EntityType Name="seo">
     <Key>
@@ -702,18 +690,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__rutas__rutascort__5AEE82B9">
-    <End Role="rutascortas" Type="Self.rutascorta" Multiplicity="1" />
-    <End Role="rutas" Type="Self.ruta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="rutascortas">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="rutas">
-        <PropertyRef Name="rutascortas_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="ytuqueplanesDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="actividades" EntityType="Self.actividade" />
     <EntitySet Name="alertas" EntityType="Self.alerta" />
@@ -742,7 +718,6 @@
     <EntitySet Name="regions" EntityType="Self.region" />
     <EntitySet Name="roles" EntityType="Self.role" />
     <EntitySet Name="rutas" EntityType="Self.ruta" />
-    <EntitySet Name="rutascortas" EntityType="Self.rutascorta" />
     <EntitySet Name="seos" EntityType="Self.seo" />
     <EntitySet Name="slider_item" EntityType="Self.slider_item" />
     <EntitySet Name="sliders" EntityType="Self.slider" />
@@ -814,10 +789,6 @@
     <AssociationSet Name="user_rol_fk" Association="Self.user_rol_fk">
       <End Role="roles" EntitySet="roles" />
       <End Role="users" EntitySet="users" />
-    </AssociationSet>
-    <AssociationSet Name="FK__rutas__rutascort__5AEE82B9" Association="Self.FK__rutas__rutascort__5AEE82B9">
-      <End Role="rutascortas" EntitySet="rutascortas" />
-      <End Role="rutas" EntitySet="rutas" />
     </AssociationSet>
     <AssociationSet Name="categoria_noticia_noticia_fk" Association="ytuqueplanesDBModel.categoria_noticia_noticia_fk">
       <End Role="categoria_noticia" EntitySet="categoria_noticia" />
