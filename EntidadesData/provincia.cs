@@ -14,14 +14,6 @@ namespace EntidadesData
     
     public partial class provincia
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public provincia()
-        {
-            this.destinos = new HashSet<destino>();
-            this.festividades = new HashSet<festividade>();
-            this.ofertas = new HashSet<oferta>();
-        }
-    
         public int id { get; set; }
         public string nombre { get; set; }
         public Nullable<int> region_id { get; set; }
@@ -32,13 +24,5 @@ namespace EntidadesData
         public Nullable<int> estado { get; set; }
         public string descripcion { get; set; }
         public string slug { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<destino> destinos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<festividade> festividades { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<oferta> ofertas { get; set; }
-        public virtual region region { get; set; }
     }
 }

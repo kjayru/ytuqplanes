@@ -15,7 +15,7 @@ namespace ytuqueplanes.Controllers
     {
         // GET: Destinos
 
-        ytuqueplanesDBEntities db = new ytuqueplanesDBEntities();
+        ytuqueplanesDBEntities1 db = new ytuqueplanesDBEntities1();
         public ActionResult Index()
         {
 

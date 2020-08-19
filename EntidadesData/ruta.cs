@@ -28,8 +28,13 @@ namespace EntidadesData
         public string descripcion { get; set; }
         public Nullable<bool> estado { get; set; }
         public Nullable<bool> destacar { get; set; }
-        public int categoria_ruta_id { get; set; }
         public int provincia_id { get; set; }
+        public int categoria_ruta_id { get; set; }
+        public string google { get; set; }
+        public string maxtemp { get; set; }
+        public string mintemp { get; set; }
+        public string image { get; set; }
+        public string slug { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<actividade> actividades { get; set; }

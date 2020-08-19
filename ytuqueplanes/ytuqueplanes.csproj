@@ -145,6 +145,11 @@
     <Compile Include="Models\DestinosProvincia.cs" />
     <Compile Include="Models\Festividad.cs" />
     <Compile Include="Models\HtmlUtility.cs" />
+    <Compile Include="Models\Mapa.cs" />
+    <Compile Include="Models\MapaActivity.cs" />
+    <Compile Include="Models\MapaApt.cs" />
+    <Compile Include="Models\MapaCoordinate.cs" />
+    <Compile Include="Models\MapaPlace.cs" />
     <Compile Include="Models\Provincias.cs" />
     <Compile Include="Models\Relacionados.cs" />
     <Compile Include="Models\Ruta.cs" />
@@ -310,6 +315,7 @@
     <Content Include="assets\fonts\mapa\FC_Regular.otf" />
     <Content Include="assets\js\mapa\region.json" />
     <Content Include="assets\js\mapa\route.json" />
+    <Content Include="libman.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Properties\Settings.settings">

@@ -13,10 +13,10 @@ namespace EntidadesData
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ytuqueplanesDBEntities : DbContext
+    public partial class ytuqueplanesDBEntities1 : DbContext
     {
-        public ytuqueplanesDBEntities()
-            : base("name=ytuqueplanesDBEntities")
+        public ytuqueplanesDBEntities1()
+            : base("name=ytuqueplanesDBEntities1")
         {
         }
     
@@ -26,8 +26,10 @@ namespace EntidadesData
         }
     
         public virtual DbSet<actividade> actividades { get; set; }
+        public virtual DbSet<agencia> agencias { get; set; }
         public virtual DbSet<alerta> alertas { get; set; }
         public virtual DbSet<atractivo> atractivos { get; set; }
+        public virtual DbSet<atractivos_galeria> atractivos_galeria { get; set; }
         public virtual DbSet<categoria_noticia> categoria_noticia { get; set; }
         public virtual DbSet<categoria_ruta> categoria_ruta { get; set; }
         public virtual DbSet<categoria> categorias { get; set; }
@@ -44,6 +46,10 @@ namespace EntidadesData
         public virtual DbSet<oferta> ofertas { get; set; }
         public virtual DbSet<opcione> opciones { get; set; }
         public virtual DbSet<page> pages { get; set; }
+        public virtual DbSet<place_activity> place_activity { get; set; }
+        public virtual DbSet<place_apt> place_apt { get; set; }
+        public virtual DbSet<place_coordinate> place_coordinate { get; set; }
+        public virtual DbSet<place> places { get; set; }
         public virtual DbSet<post> posts { get; set; }
         public virtual DbSet<preferencias_destino> preferencias_destino { get; set; }
         public virtual DbSet<provincia> provincias { get; set; }
@@ -59,6 +65,8 @@ namespace EntidadesData
         public virtual DbSet<tag> tags { get; set; }
         public virtual DbSet<tipo_oferta> tipo_oferta { get; set; }
         public virtual DbSet<tipo_suscripcion> tipo_suscripcion { get; set; }
+        public virtual DbSet<tipotransporte> tipotransportes { get; set; }
+        public virtual DbSet<transporte> transportes { get; set; }
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<destino_como_llegar> destino_como_llegar { get; set; }
         public virtual DbSet<destino_seo> destino_seo { get; set; }
@@ -72,7 +80,5 @@ namespace EntidadesData
         public virtual DbSet<post_seo> post_seo { get; set; }
         public virtual DbSet<post_tag> post_tag { get; set; }
         public virtual DbSet<rutas_seo> rutas_seo { get; set; }
-        public virtual DbSet<atractivos_galeria> atractivos_galeria { get; set; }
-        public virtual DbSet<agencia> agencias { get; set; }
     }
 }

@@ -14,16 +14,7 @@ namespace EntidadesData
     
     public partial class region
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public region()
-        {
-            this.provincias = new HashSet<provincia>();
-        }
-    
         public int id { get; set; }
         public string nombre { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<provincia> provincias { get; set; }
     }
 }

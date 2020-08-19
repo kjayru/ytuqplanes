@@ -2,9 +2,11 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Dynamic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using ytuqueplanes.Models;
@@ -13,35 +15,31 @@ namespace ytuqueplanes.Controllers
 {
     public class RutasController : Controller
     {
-        ytuqueplanesDBEntities db = new ytuqueplanesDBEntities();
+        ytuqueplanesDBEntities1 db = new ytuqueplanesDBEntities1();
         // GET: Rutas
         public ActionResult Index()
         {
             dynamic RutasModel = new ExpandoObject();
-            var provincias = db.provincias.Select(p => new {p.id, p.nombre, p.slug, p.thumb }).ToList();
+            var provincias = db.provincias.Where(c=> c.estado==1).Select(p => new {p.id, p.nombre, p.slug, p.thumb }).ToList();
             
 
             List<RutaProvincia> rp = new List<RutaProvincia>();
 
             for (var i = 0; i < provincias.Count; i++) {
                 var provid = provincias[i].id;
-                var conteo = (from rt in db.rutas
-                              join prov in db.provincias on rt.provincia_id equals prov.id
-                              where rt.provincia_id == provid
-                              select new { rt.id, prov.nombre, prov.slug, prov.thumb }).Count();
+                var conteo = db.rutas.Where(c => c.provincia_id == provid).Select(p => new { p.provincia_id }).Count();
 
                 if (conteo > 0)
                 {
-                    var rutas = (from rt in db.rutas
-                                 join prov in db.provincias on rt.provincia_id equals prov.id
-                                 join cat in db.categoria_ruta on rt.categoria_ruta_id equals cat.id
-                                 where rt.provincia_id == provid
+                    var rutas = (from  rt in db.provincias where rt.id == provid
+                                 
+                                 where rt.id == provid
                                  select new { 
                                      id = rt.id, 
-                                     provincia =prov.nombre,
-                                     slug = prov.slug,
-                                     thumb = prov.thumb,
-                                     categoria = cat.nombre 
+                                     provincia =rt.nombre,
+                                     slug = rt.slug,
+                                     thumb = rt.thumb
+                                     
                                  }).ToList();
 
                     for (var j = 0;j< rutas.Count; j++)
@@ -50,7 +48,7 @@ namespace ytuqueplanes.Controllers
                             new RutaProvincia
                             {
                                 conteo = conteo,
-                                categoria = rutas[j].categoria,
+                               
                                 provincia_nombre = rutas[j].provincia,
                                 provincia_slug = rutas[j].slug,
                                 provincia_thumb = rutas[j].thumb
@@ -84,19 +82,27 @@ namespace ytuqueplanes.Controllers
 
 
             RutasModel.provincias = rp;
-            //return Json(GetSliders(), JsonRequestBehavior.AllowGet);
+           // return Json(rp, JsonRequestBehavior.AllowGet);
             return View(RutasModel);
         }
 
-        public ActionResult DetalleRuta(String id)
+        public ActionResult DetalleRuta(string id)
         {
            
             var pslug = id;
-            var pv = db.provincias.Where(c => c.slug == pslug).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).FirstOrDefault();
-
+            var Coun = db.provincias.Where(c => c.slug == pslug).Select(p => p.id ).Count();
             
-            ViewData["nombreProvincia"] = pv.nombre;
-            ViewData["imagenProvincia"] = pv.imagen;
+                var pv = db.provincias.Where(c => c.slug == pslug).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).FirstOrDefault();
+            if (Coun > 0)
+            {
+
+                ViewData["nombreProvincia"] = pv.nombre;
+                ViewData["imagenProvincia"] = pv.imagen;
+            }
+            else {
+                ViewData["nombreProvincia"] = "";
+                ViewData["imagenProvincia"] = "";
+            }
 
 
             // var ruta = db.rutas.Where(c => c.provincia_id == prov.id).Select(p => new { p.id, p.titulo }).First();
@@ -117,7 +123,7 @@ namespace ytuqueplanes.Controllers
                              
                          }).ToList();
 
-            
+           //eturn Json(rutas, JsonRequestBehavior.AllowGet);
 
             for (var j = 0; j < rutas.Count; j++)
             {
@@ -127,14 +133,16 @@ namespace ytuqueplanes.Controllers
                               where rt.provincia_id == pv.id
                               select new { rt.id }).Count();
 
-                var categoria = db.categorias.Where(c => c.id == rCatId).Select(p => new { p.nombre }).First();
+                var categoria = db.categoria_ruta.Where(c => c.id == rCatId).Select(p => new { p.nombre }).First();
+                
 
                 rp.Add(
                     new RutaProvincia
                     {
                         conteo = conteo,
                         categoria = categoria.nombre,
-                        
+                        provincia_thumb = pv.imagen,
+                        provincia_slug = pv.slug
                     });
             }
 
@@ -144,8 +152,62 @@ namespace ytuqueplanes.Controllers
             return View(RutasModel);
         }
 
-        public ActionResult Mapa(String id) {
+        public ActionResult Mapa(string provincia, string id) {
 
+            var objeto = ( nombreprov : provincia, categoria: id );
+
+
+            var prov = db.provincias.Where(c => c.slug == provincia).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).FirstOrDefault();
+
+            var rutas = db.rutas.Where(c => c.provincia_id == prov.id).Select(p =>
+            new
+            {
+                p.id,
+                p.titulo,
+                p.documento,
+                p.destacar,
+                p.categoria_ruta_id,
+                p.google,
+                p.maxtemp,
+                p.mintemp,
+                p.slug,
+                p.image
+            }).ToList();
+
+            List<Mapa> mapa = new List<Mapa>();
+
+            for (var i = 0; i < rutas.Count; i++) {
+
+                var rutaId = rutas[i].id;
+                var lugares = db.places.Where(c => c.ruta_id == rutaId).Select(p => new { p.nombre, p.id, p.height, p.descripcion, p.image }).ToList();
+
+                   List<MapaPlace> lp = new List<MapaPlace>();
+                    for (var j = 0; j < lugares.Count; j++) {
+                        lp.Add(new MapaPlace { name = lugares[j].nombre, order = lugares[j].id, description = lugares[j].descripcion, height= lugares[j].height, image= lugares[j].image  });
+                    }
+
+                var arrayPlace = lp.ToArray();
+                mapa.Add(
+                    new Mapa {
+
+
+                        name = rutas[i].titulo,
+                        url = rutas[i].slug,
+                        image = rutas[i].image,
+                        region = prov.nombre,
+                        urlRegion = prov.slug,
+                        featured = 0,
+                        google = rutas[i].google,
+                        pdf = rutas[i].documento,
+                        maximumWeather = rutas[i].maxtemp,
+                        minimumWeather = rutas[i].mintemp
+                       // MapaPlace = JsonConvert.SerializeObject(lp)
+                        
+                    }); ;
+            }
+
+
+           // return Json(mapa, JsonRequestBehavior.AllowGet);
             return View();
         }
 

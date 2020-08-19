@@ -12,19 +12,13 @@ namespace EntidadesData
     using System;
     using System.Collections.Generic;
     
-    public partial class atractivo
+    public partial class place
     {
         public int id { get; set; }
-        public string banner { get; set; }
+        public string nombre { get; set; }
         public string descripcion { get; set; }
-        public string contenido { get; set; }
-        public int destino_id { get; set; }
-        public string resumen { get; set; }
-        public Nullable<int> estado { get; set; }
-        public string banner_t { get; set; }
-        public string banner_m { get; set; }
-        public string slug { get; set; }
-        public string titulo { get; set; }
-        public Nullable<int> destacado { get; set; }
+        public string height { get; set; }
+        public string image { get; set; }
+        public Nullable<int> ruta_id { get; set; }
     }
 }

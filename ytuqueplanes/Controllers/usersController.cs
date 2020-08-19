@@ -13,7 +13,7 @@ namespace ytuqueplanes.Controllers
 {
     public class usersController : Controller
     {
-        private ytuqueplanesDBEntities db = new ytuqueplanesDBEntities();
+        private ytuqueplanesDBEntities1 db = new ytuqueplanesDBEntities1();
 
         // GET: users
         public async Task<ActionResult> Index()

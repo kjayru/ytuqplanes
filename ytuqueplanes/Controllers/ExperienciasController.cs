@@ -10,7 +10,7 @@ namespace ytuqueplanes.Controllers
 {
     public class ExperienciasController : Controller
     {
-        ytuqueplanesDBEntities db = new ytuqueplanesDBEntities();
+        ytuqueplanesDBEntities1 db = new ytuqueplanesDBEntities1();
         // GET: Experiencias
         public ActionResult Index()
         {

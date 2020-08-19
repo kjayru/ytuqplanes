@@ -12,7 +12,7 @@ namespace ytuqueplanes.Controllers
     public class BlogViajeroController : Controller
     {
         // GET: BlogViajero
-        ytuqueplanesDBEntities db = new ytuqueplanesDBEntities();
+        ytuqueplanesDBEntities1 db = new ytuqueplanesDBEntities1();
         public ActionResult Index()
         {
             dynamic datosNotasModel = new ExpandoObject();

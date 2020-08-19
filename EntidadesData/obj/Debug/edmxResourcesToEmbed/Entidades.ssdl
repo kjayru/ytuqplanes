@@ -1,0 +1,873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ytuqueplanesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="actividades">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar(max)" Nullable="false" />
+    <Property Name="icono" Type="varchar(max)" Nullable="false" />
+    <Property Name="ruta_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="agencias">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="destino_como_llegar_id" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" />
+    <Property Name="url" Type="varchar" MaxLength="255" />
+    <Property Name="imagen" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="alertas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="url" Type="varchar" MaxLength="255" />
+    <Property Name="imagen" Type="varchar" MaxLength="255" />
+    <Property Name="alt_imagen" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="atractivos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="banner" Type="varchar" MaxLength="250" />
+    <Property Name="descripcion" Type="varchar" MaxLength="250" />
+    <Property Name="contenido" Type="text" />
+    <Property Name="destino_id" Type="int" Nullable="false" />
+    <Property Name="resumen" Type="varchar" MaxLength="250" />
+    <Property Name="estado" Type="int" />
+    <Property Name="banner_t" Type="varchar" MaxLength="250" />
+    <Property Name="banner_m" Type="varchar" MaxLength="250" />
+    <Property Name="slug" Type="varchar" MaxLength="250" />
+    <Property Name="titulo" Type="varchar" MaxLength="250" />
+    <Property Name="destacado" Type="int" />
+  </EntityType>
+  <EntityType Name="atractivos_galeria">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="atractivo_id" Type="int" Nullable="false" />
+    <Property Name="imagen" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="categoria_noticia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="categoria_ruta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="categorias">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="200" />
+    <Property Name="estado" Type="int" />
+  </EntityType>
+  <EntityType Name="categorias_blog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="como_llegar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="imagen" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="alt" Type="varchar" MaxLength="255" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.destino_como_llegar' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="destino_como_llegar">
+    <Key>
+      <PropertyRef Name="destino_id" />
+    </Key>
+    <Property Name="destino_id" Type="int" Nullable="false" />
+    <Property Name="como_llegar_id" Type="int" />
+    <Property Name="distancia" Type="varchar" MaxLength="255" />
+    <Property Name="tiempo_viaje" Type="varchar" MaxLength="255" />
+    <Property Name="waze" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.destino_seo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="destino_seo">
+    <Key>
+      <PropertyRef Name="destino_id" />
+      <PropertyRef Name="seo_id" />
+    </Key>
+    <Property Name="destino_id" Type="int" Nullable="false" />
+    <Property Name="seo_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="destinos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="titulo" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="contenido" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="provincia_Id" Type="int" />
+    <Property Name="imagen" Type="varchar" MaxLength="255" />
+    <Property Name="slug" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="experiencias">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar(max)" Nullable="false" />
+    <Property Name="banner" Type="varchar(max)" />
+    <Property Name="destino_id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.festividad_tag' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="festividad_tag">
+    <Key>
+      <PropertyRef Name="festividad_id" />
+      <PropertyRef Name="tag_id" />
+    </Key>
+    <Property Name="festividad_id" Type="int" Nullable="false" />
+    <Property Name="tag_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="festividades">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="inicio" Type="int" Nullable="false" />
+    <Property Name="final" Type="int" Nullable="false" />
+    <Property Name="provincia_id" Type="int" Nullable="false" />
+    <Property Name="imagen" Type="varchar" MaxLength="150" />
+    <Property Name="contenido" Type="varchar" MaxLength="255" />
+    <Property Name="mes_id" Type="int" />
+    <Property Name="likes" Type="int" />
+    <Property Name="documento" Type="varchar" MaxLength="200" />
+    <Property Name="slug" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="iconos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="titulo" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="latitud" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="longitud" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="icono" Type="varchar" MaxLength="100" />
+    <Property Name="contenido" Type="varchar" MaxLength="255" />
+    <Property Name="mapa_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mapas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="latitud" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="longitud" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="titulo" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="descripcion" Type="text" />
+    <Property Name="ruta_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="marcas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="imagen_alt" Type="varchar" MaxLength="200" />
+    <Property Name="imagen" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="meses">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.noticia_tag' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="noticia_tag">
+    <Key>
+      <PropertyRef Name="noticia_id" />
+      <PropertyRef Name="tag_id" />
+    </Key>
+    <Property Name="noticia_id" Type="int" Nullable="false" />
+    <Property Name="tag_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="noticias">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="titulo" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="contenido" Type="text" />
+    <Property Name="resumen" Type="varchar" MaxLength="255" />
+    <Property Name="imagen" Type="varchar" MaxLength="200" />
+    <Property Name="likes" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="categoria_noticia_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ofertas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="subtitulo" Type="varchar" MaxLength="200" />
+    <Property Name="imagen" Type="varchar" MaxLength="200" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="precio" Type="decimal" Precision="6" Scale="1" Nullable="false" />
+    <Property Name="oferta" Type="int" />
+    <Property Name="precio_oferta" Type="decimal" Precision="6" Scale="1" />
+    <Property Name="fecha_inicio" Type="date" Nullable="false" />
+    <Property Name="fecha_final" Type="date" Nullable="false" />
+    <Property Name="estado" Type="bit" />
+    <Property Name="estado_app" Type="bit" />
+    <Property Name="destacado" Type="bit" />
+    <Property Name="tipo_oferta_id" Type="int" />
+    <Property Name="provincia_id" Type="int" Nullable="false" />
+    <Property Name="categoria_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="opciones">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="oferta_id" Type="int" Nullable="false" />
+    <Property Name="incluye" Type="text" />
+    <Property Name="actividades" Type="text" />
+    <Property Name="condiciones" Type="text" />
+    <Property Name="nosotros" Type="text" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.page_como_llegar' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="page_como_llegar">
+    <Key>
+      <PropertyRef Name="page_id" />
+      <PropertyRef Name="como_llegar_id" />
+    </Key>
+    <Property Name="page_id" Type="int" Nullable="false" />
+    <Property Name="como_llegar_id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.page_marcas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="page_marcas">
+    <Key>
+      <PropertyRef Name="page_id" />
+    </Key>
+    <Property Name="page_id" Type="int" Nullable="false" />
+    <Property Name="marca_id" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.page_red_sociales' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="page_red_sociales">
+    <Key>
+      <PropertyRef Name="page_id" />
+      <PropertyRef Name="red_social_id" />
+    </Key>
+    <Property Name="page_id" Type="int" Nullable="false" />
+    <Property Name="red_social_id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.page_seo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="page_seo">
+    <Key>
+      <PropertyRef Name="page_id" />
+      <PropertyRef Name="seo_id" />
+    </Key>
+    <Property Name="page_id" Type="int" Nullable="false" />
+    <Property Name="seo_id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.page_sliders' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="page_sliders">
+    <Key>
+      <PropertyRef Name="page_id" />
+      <PropertyRef Name="slider_id" />
+    </Key>
+    <Property Name="page_id" Type="int" Nullable="false" />
+    <Property Name="slider_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="titulo" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="contenido" Type="text" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="place_activity">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" />
+    <Property Name="icono" Type="varchar" MaxLength="255" />
+    <Property Name="place_id" Type="int" />
+  </EntityType>
+  <EntityType Name="place_apt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="place_id" Type="int" />
+  </EntityType>
+  <EntityType Name="place_coordinate">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="latitude" Type="varchar" MaxLength="255" />
+    <Property Name="longitude" Type="varchar" MaxLength="255" />
+    <Property Name="place_id" Type="int" />
+  </EntityType>
+  <EntityType Name="places">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" />
+    <Property Name="descripcion" Type="text" />
+    <Property Name="height" Type="varchar" MaxLength="255" />
+    <Property Name="image" Type="varchar" MaxLength="255" />
+    <Property Name="ruta_id" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_seo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="post_seo">
+    <Key>
+      <PropertyRef Name="post_id" />
+      <PropertyRef Name="seo_id" />
+    </Key>
+    <Property Name="post_id" Type="int" Nullable="false" />
+    <Property Name="seo_id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_tag' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="post_tag">
+    <Key>
+      <PropertyRef Name="post_id" />
+      <PropertyRef Name="tag_id" />
+    </Key>
+    <Property Name="post_id" Type="int" Nullable="false" />
+    <Property Name="tag_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="posts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="titulo" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="resumen" Type="varchar" MaxLength="250" />
+    <Property Name="contenido" Type="text" />
+    <Property Name="imagen" Type="varchar" MaxLength="200" />
+    <Property Name="created_at" Type="varchar" MaxLength="255" />
+    <Property Name="updated_at" Type="varchar" MaxLength="255" />
+    <Property Name="likes" Type="int" />
+    <Property Name="categoria_blog_id" Type="int" />
+    <Property Name="destacado" Type="int" />
+    <Property Name="slug" Type="varchar" MaxLength="255" />
+    <Property Name="estado" Type="int" />
+    <Property Name="tipo_id" Type="int" />
+    <Property Name="provincia_id" Type="int" />
+  </EntityType>
+  <EntityType Name="preferencias_destino">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="destino_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="provincias">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="200" />
+    <Property Name="region_id" Type="int" />
+    <Property Name="imagen" Type="varchar" MaxLength="255" />
+    <Property Name="thumb" Type="varchar" MaxLength="255" />
+    <Property Name="latitud" Type="float" />
+    <Property Name="longitud" Type="float" />
+    <Property Name="estado" Type="int" />
+    <Property Name="descripcion" Type="text" />
+    <Property Name="slug" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ratings">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="destino_id" Type="int" Nullable="false" />
+    <Property Name="rating" Type="int" Nullable="false" />
+    <Property Name="comentarion" Type="varchar" MaxLength="255" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="redes_soclaies">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="icono" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="url" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="region">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="idrol" />
+    </Key>
+    <Property Name="idrol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="250" />
+    <Property Name="slug" Type="varchar" MaxLength="250" />
+    <Property Name="descripcion" Type="text" />
+    <Property Name="condicion" Type="bit" />
+  </EntityType>
+  <EntityType Name="rutas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="titulo" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="tiempo_recorrido" Type="varchar" MaxLength="200" />
+    <Property Name="documento" Type="varchar" MaxLength="200" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="estado" Type="bit" />
+    <Property Name="destacar" Type="bit" />
+    <Property Name="provincia_id" Type="int" Nullable="false" />
+    <Property Name="categoria_ruta_id" Type="int" Nullable="false" />
+    <Property Name="google" Type="varchar" MaxLength="255" />
+    <Property Name="maxtemp" Type="varchar" MaxLength="255" />
+    <Property Name="mintemp" Type="varchar" MaxLength="255" />
+    <Property Name="image" Type="varchar" MaxLength="255" />
+    <Property Name="slug" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="rutas_seo">
+    <Key>
+      <PropertyRef Name="ruta_id" />
+      <PropertyRef Name="seo_id" />
+    </Key>
+    <Property Name="ruta_id" Type="int" Nullable="false" />
+    <Property Name="seo_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="seo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="titulo" Type="varchar" MaxLength="255" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="og_title" Type="varchar" MaxLength="255" />
+    <Property Name="og_description" Type="varchar" MaxLength="255" />
+    <Property Name="og_image" Type="varchar" MaxLength="255" />
+    <Property Name="og_url" Type="varchar" MaxLength="255" />
+    <Property Name="twitter_card" Type="varchar" MaxLength="255" />
+    <Property Name="twitter_site" Type="varchar" MaxLength="255" />
+    <Property Name="twitter_creator" Type="varchar" MaxLength="255" />
+    <Property Name="twitter_domain" Type="varchar" MaxLength="255" />
+    <Property Name="twitter_title" Type="varchar" MaxLength="255" />
+    <Property Name="twitter_imagen" Type="varchar" MaxLength="255" />
+    <Property Name="twitter_account_id" Type="varchar" MaxLength="200" />
+    <Property Name="fb_app_id" Type="varchar" MaxLength="200" />
+    <Property Name="fb_admins" Type="varchar" MaxLength="200" />
+    <Property Name="scripts" Type="text" />
+  </EntityType>
+  <EntityType Name="slider_item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="slider_id" Type="int" Nullable="false" />
+    <Property Name="imagen_xl" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="imagen_lg" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="imagen_md" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="imagen_sm" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="titulo" Type="varchar" MaxLength="255" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="alt" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="sliders">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name=" created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="suscripcion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="apellidos" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="telefono" Type="varchar" MaxLength="200" />
+    <Property Name="comentario" Type="text" />
+    <Property Name="tipo_suscripcion_id" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tag">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tipo_oferta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tipo_suscripcion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tipotransporte">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="transporte">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="tipotransporte_id" Type="int" />
+    <Property Name="ruta_id" Type="int" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="idusuario" />
+    </Key>
+    <Property Name="idusuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="200" />
+    <Property Name="paterno" Type="varchar" MaxLength="200" />
+    <Property Name="materno" Type="varchar" MaxLength="200" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="idrol" Type="int" />
+    <Property Name="password_hash" Type="varbinary(max)" />
+    <Property Name="password_salt" Type="varbinary(max)" />
+    <Property Name="condicion" Type="bit" />
+  </EntityType>
+  <Association Name="categoria_noticia_noticia_fk">
+    <End Role="categoria_noticia" Type="Self.categoria_noticia" Multiplicity="1" />
+    <End Role="noticias" Type="Self.noticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria_noticia">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="noticias">
+        <PropertyRef Name="categoria_noticia_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__actividad__ruta___4BAC3F29">
+    <End Role="rutas" Type="Self.rutas" Multiplicity="1" />
+    <End Role="actividades" Type="Self.actividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rutas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="actividades">
+        <PropertyRef Name="ruta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__experienc__desti__4E88ABD4">
+    <End Role="destinos" Type="Self.destinos" Multiplicity="1" />
+    <End Role="experiencias" Type="Self.experiencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="destinos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="experiencias">
+        <PropertyRef Name="destino_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__festivida__mes_i__4F7CD00D">
+    <End Role="meses" Type="Self.meses" Multiplicity="0..1" />
+    <End Role="festividades" Type="Self.festividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="meses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="festividades">
+        <PropertyRef Name="mes_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__iconos__mapa_id__5165187F">
+    <End Role="mapas" Type="Self.mapas" Multiplicity="1" />
+    <End Role="iconos" Type="Self.iconos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mapas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="iconos">
+        <PropertyRef Name="mapa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__mapas__ruta_id__52593CB8">
+    <End Role="rutas" Type="Self.rutas" Multiplicity="1" />
+    <End Role="mapas" Type="Self.mapas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rutas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="mapas">
+        <PropertyRef Name="ruta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ofertas__categor__534D60F1">
+    <End Role="categorias" Type="Self.categorias" Multiplicity="1" />
+    <End Role="ofertas" Type="Self.ofertas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ofertas">
+        <PropertyRef Name="categoria_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_opciones_oferta">
+    <End Role="ofertas" Type="Self.ofertas" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="opciones" Type="Self.opciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ofertas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="opciones">
+        <PropertyRef Name="oferta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_rol_fk">
+    <End Role="roles" Type="Self.roles" Multiplicity="0..1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="idrol" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="idrol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ytuqueplanesDBModelStoreContainer">
+    <EntitySet Name="actividades" EntityType="Self.actividades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="agencias" EntityType="Self.agencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alertas" EntityType="Self.alertas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="atractivos" EntityType="Self.atractivos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="atractivos_galeria" EntityType="Self.atractivos_galeria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categoria_noticia" EntityType="Self.categoria_noticia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categoria_ruta" EntityType="Self.categoria_ruta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categorias" EntityType="Self.categorias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categorias_blog" EntityType="Self.categorias_blog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="como_llegar" EntityType="Self.como_llegar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="destinos" EntityType="Self.destinos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="experiencias" EntityType="Self.experiencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="festividades" EntityType="Self.festividades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="iconos" EntityType="Self.iconos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mapas" EntityType="Self.mapas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="marcas" EntityType="Self.marcas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="meses" EntityType="Self.meses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="noticias" EntityType="Self.noticias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ofertas" EntityType="Self.ofertas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="opciones" EntityType="Self.opciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pages" EntityType="Self.pages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="place_activity" EntityType="Self.place_activity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="place_apt" EntityType="Self.place_apt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="place_coordinate" EntityType="Self.place_coordinate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="places" EntityType="Self.places" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="posts" EntityType="Self.posts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="preferencias_destino" EntityType="Self.preferencias_destino" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="provincias" EntityType="Self.provincias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ratings" EntityType="Self.ratings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="redes_soclaies" EntityType="Self.redes_soclaies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="region" EntityType="Self.region" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rutas" EntityType="Self.rutas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="seo" EntityType="Self.seo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="slider_item" EntityType="Self.slider_item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sliders" EntityType="Self.sliders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="suscripcion" EntityType="Self.suscripcion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tag" EntityType="Self.tag" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_oferta" EntityType="Self.tipo_oferta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_suscripcion" EntityType="Self.tipo_suscripcion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipotransporte" EntityType="Self.tipotransporte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transporte" EntityType="Self.transporte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="destino_como_llegar" EntityType="Self.destino_como_llegar" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [destino_como_llegar].[destino_id] AS [destino_id], 
+    [destino_como_llegar].[como_llegar_id] AS [como_llegar_id], 
+    [destino_como_llegar].[distancia] AS [distancia], 
+    [destino_como_llegar].[tiempo_viaje] AS [tiempo_viaje], 
+    [destino_como_llegar].[waze] AS [waze]
+    FROM [dbo].[destino_como_llegar] AS [destino_como_llegar]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="destino_seo" EntityType="Self.destino_seo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [destino_seo].[destino_id] AS [destino_id], 
+    [destino_seo].[seo_id] AS [seo_id]
+    FROM [dbo].[destino_seo] AS [destino_seo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="festividad_tag" EntityType="Self.festividad_tag" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [festividad_tag].[festividad_id] AS [festividad_id], 
+    [festividad_tag].[tag_id] AS [tag_id]
+    FROM [dbo].[festividad_tag] AS [festividad_tag]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="noticia_tag" EntityType="Self.noticia_tag" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [noticia_tag].[noticia_id] AS [noticia_id], 
+    [noticia_tag].[tag_id] AS [tag_id]
+    FROM [dbo].[noticia_tag] AS [noticia_tag]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="page_como_llegar" EntityType="Self.page_como_llegar" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [page_como_llegar].[page_id] AS [page_id], 
+    [page_como_llegar].[como_llegar_id] AS [como_llegar_id]
+    FROM [dbo].[page_como_llegar] AS [page_como_llegar]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="page_marcas" EntityType="Self.page_marcas" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [page_marcas].[page_id] AS [page_id], 
+    [page_marcas].[marca_id] AS [marca_id]
+    FROM [dbo].[page_marcas] AS [page_marcas]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="page_red_sociales" EntityType="Self.page_red_sociales" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [page_red_sociales].[page_id] AS [page_id], 
+    [page_red_sociales].[red_social_id] AS [red_social_id]
+    FROM [dbo].[page_red_sociales] AS [page_red_sociales]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="page_seo" EntityType="Self.page_seo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [page_seo].[page_id] AS [page_id], 
+    [page_seo].[seo_id] AS [seo_id]
+    FROM [dbo].[page_seo] AS [page_seo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="page_sliders" EntityType="Self.page_sliders" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [page_sliders].[page_id] AS [page_id], 
+    [page_sliders].[slider_id] AS [slider_id]
+    FROM [dbo].[page_sliders] AS [page_sliders]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="post_seo" EntityType="Self.post_seo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [post_seo].[post_id] AS [post_id], 
+    [post_seo].[seo_id] AS [seo_id]
+    FROM [dbo].[post_seo] AS [post_seo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="post_tag" EntityType="Self.post_tag" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [post_tag].[post_id] AS [post_id], 
+    [post_tag].[tag_id] AS [tag_id]
+    FROM [dbo].[post_tag] AS [post_tag]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="rutas_seo" EntityType="Self.rutas_seo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [rutas_seo].[ruta_id] AS [ruta_id], 
+    [rutas_seo].[seo_id] AS [seo_id]
+    FROM [dbo].[rutas_seo] AS [rutas_seo]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="categoria_noticia_noticia_fk" Association="Self.categoria_noticia_noticia_fk">
+      <End Role="categoria_noticia" EntitySet="categoria_noticia" />
+      <End Role="noticias" EntitySet="noticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK__actividad__ruta___4BAC3F29" Association="Self.FK__actividad__ruta___4BAC3F29">
+      <End Role="rutas" EntitySet="rutas" />
+      <End Role="actividades" EntitySet="actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK__experienc__desti__4E88ABD4" Association="Self.FK__experienc__desti__4E88ABD4">
+      <End Role="destinos" EntitySet="destinos" />
+      <End Role="experiencias" EntitySet="experiencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK__festivida__mes_i__4F7CD00D" Association="Self.FK__festivida__mes_i__4F7CD00D">
+      <End Role="meses" EntitySet="meses" />
+      <End Role="festividades" EntitySet="festividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK__iconos__mapa_id__5165187F" Association="Self.FK__iconos__mapa_id__5165187F">
+      <End Role="mapas" EntitySet="mapas" />
+      <End Role="iconos" EntitySet="iconos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__mapas__ruta_id__52593CB8" Association="Self.FK__mapas__ruta_id__52593CB8">
+      <End Role="rutas" EntitySet="rutas" />
+      <End Role="mapas" EntitySet="mapas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ofertas__categor__534D60F1" Association="Self.FK__ofertas__categor__534D60F1">
+      <End Role="categorias" EntitySet="categorias" />
+      <End Role="ofertas" EntitySet="ofertas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_opciones_oferta" Association="Self.fk_opciones_oferta">
+      <End Role="ofertas" EntitySet="ofertas" />
+      <End Role="opciones" EntitySet="opciones" />
+    </AssociationSet>
+    <AssociationSet Name="user_rol_fk" Association="Self.user_rol_fk">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

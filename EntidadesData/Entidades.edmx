@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ytuqueplanesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ytuqueplanesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="actividades">
           <Key>
             <PropertyRef Name="id" />
@@ -40,16 +40,16 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="banner" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="banner" Type="varchar" MaxLength="250" />
+          <Property Name="descripcion" Type="varchar" MaxLength="250" />
           <Property Name="contenido" Type="text" />
-          <Property Name="destino_id" Type="int" />
-          <Property Name="resumen" Type="varchar" MaxLength="255" />
+          <Property Name="destino_id" Type="int" Nullable="false" />
+          <Property Name="resumen" Type="varchar" MaxLength="250" />
           <Property Name="estado" Type="int" />
-          <Property Name="banner_t" Type="varchar" MaxLength="255" />
-          <Property Name="banner_m" Type="varchar" MaxLength="255" />
-          <Property Name="slug" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="titulo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="banner_t" Type="varchar" MaxLength="250" />
+          <Property Name="banner_m" Type="varchar" MaxLength="250" />
+          <Property Name="slug" Type="varchar" MaxLength="250" />
+          <Property Name="titulo" Type="varchar" MaxLength="250" />
           <Property Name="destacado" Type="int" />
         </EntityType>
         <EntityType Name="atractivos_galeria">
@@ -133,7 +133,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.destino_seo' no tiene def
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="titulo" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="contenido" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="provincia_Id" Type="int" Nullable="false" />
+          <Property Name="provincia_Id" Type="int" />
           <Property Name="imagen" Type="varchar" MaxLength="255" />
           <Property Name="slug" Type="varchar" MaxLength="255" />
         </EntityType>
@@ -329,6 +329,43 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.page_sliders' no tiene de
           <Property Name="created_at" Type="datetime" />
           <Property Name="updated_at" Type="datetime" />
         </EntityType>
+        <EntityType Name="place_activity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="255" />
+          <Property Name="icono" Type="varchar" MaxLength="255" />
+          <Property Name="place_id" Type="int" />
+        </EntityType>
+        <EntityType Name="place_apt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="place_id" Type="int" />
+        </EntityType>
+        <EntityType Name="place_coordinate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="latitude" Type="varchar" MaxLength="255" />
+          <Property Name="longitude" Type="varchar" MaxLength="255" />
+          <Property Name="place_id" Type="int" />
+        </EntityType>
+        <EntityType Name="places">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="255" />
+          <Property Name="descripcion" Type="text" />
+          <Property Name="height" Type="varchar" MaxLength="255" />
+          <Property Name="image" Type="varchar" MaxLength="255" />
+          <Property Name="ruta_id" Type="int" />
+        </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_seo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="post_seo">
@@ -444,6 +481,11 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_tag' no tiene defini
           <Property Name="destacar" Type="bit" />
           <Property Name="provincia_id" Type="int" Nullable="false" />
           <Property Name="categoria_ruta_id" Type="int" Nullable="false" />
+          <Property Name="google" Type="varchar" MaxLength="255" />
+          <Property Name="maxtemp" Type="varchar" MaxLength="255" />
+          <Property Name="mintemp" Type="varchar" MaxLength="255" />
+          <Property Name="image" Type="varchar" MaxLength="255" />
+          <Property Name="slug" Type="varchar" MaxLength="255" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -537,6 +579,22 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
+        <EntityType Name="tipotransporte">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="transporte">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="tipotransporte_id" Type="int" />
+          <Property Name="ruta_id" Type="int" />
+        </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="idusuario" />
@@ -572,18 +630,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Principal>
             <Dependent Role="actividades">
               <PropertyRef Name="ruta_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__atractivo__desti__4CA06362">
-          <End Role="destinos" Type="Self.destinos" Multiplicity="0..1" />
-          <End Role="atractivos" Type="Self.atractivos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="destinos">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="atractivos">
-              <PropertyRef Name="destino_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -695,6 +741,10 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySet Name="ofertas" EntityType="Self.ofertas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="opciones" EntityType="Self.opciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pages" EntityType="Self.pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="place_activity" EntityType="Self.place_activity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="place_apt" EntityType="Self.place_apt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="place_coordinate" EntityType="Self.place_coordinate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="places" EntityType="Self.places" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="posts" EntityType="Self.posts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="preferencias_destino" EntityType="Self.preferencias_destino" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="provincias" EntityType="Self.provincias" Schema="dbo" store:Type="Tables" />
@@ -710,6 +760,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySet Name="tag" EntityType="Self.tag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_oferta" EntityType="Self.tipo_oferta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_suscripcion" EntityType="Self.tipo_suscripcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipotransporte" EntityType="Self.tipotransporte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="transporte" EntityType="Self.transporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="destino_como_llegar" EntityType="Self.destino_como_llegar" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -794,10 +846,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="rutas" EntitySet="rutas" />
             <End Role="actividades" EntitySet="actividades" />
           </AssociationSet>
-          <AssociationSet Name="FK__atractivo__desti__4CA06362" Association="Self.FK__atractivo__desti__4CA06362">
-            <End Role="destinos" EntitySet="destinos" />
-            <End Role="atractivos" EntitySet="atractivos" />
-          </AssociationSet>
           <AssociationSet Name="FK__experienc__desti__4E88ABD4" Association="Self.FK__experienc__desti__4E88ABD4">
             <End Role="destinos" EntitySet="destinos" />
             <End Role="experiencias" EntitySet="experiencias" />
@@ -827,7 +875,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="users" EntitySet="users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ytuqueplanesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -840,6 +889,16 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="icono" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ruta_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ruta" Relationship="Self.FK__actividad__ruta___4BAC3F29" FromRole="actividades" ToRole="rutas" />
+        </EntityType>
+        <EntityType Name="agencia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="destino_como_llegar_id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="alerta">
           <Key>
@@ -857,18 +916,25 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="banner" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="banner" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="destino_id" Type="Int32" />
-          <NavigationProperty Name="destino" Relationship="Self.FK__atractivo__desti__4CA06362" FromRole="atractivos" ToRole="destinos" />
-          <Property Name="resumen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="destino_id" Type="Int32" Nullable="false" />
+          <Property Name="resumen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="estado" Type="Int32" />
-          <Property Name="banner_t" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="banner_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="slug" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="titulo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="banner_t" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="banner_m" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="slug" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="titulo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="destacado" Type="Int32" />
+        </EntityType>
+        <EntityType Name="atractivos_galeria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="atractivo_id" Type="Int32" Nullable="false" />
+          <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="categoria_noticia">
           <Key>
@@ -877,7 +943,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="noticias" Relationship="ytuqueplanesDBModel.categoria_noticia_noticia_fk" FromRole="categoria_noticia" ToRole="noticia" />
+          <NavigationProperty Name="noticias" Relationship="Self.categoria_noticia_noticia_fk" FromRole="categoria_noticia" ToRole="noticias" />
         </EntityType>
         <EntityType Name="categoria_ruta">
           <Key>
@@ -923,12 +989,10 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="contenido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="provincia_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="atractivos" Relationship="Self.FK__atractivo__desti__4CA06362" FromRole="destinos" ToRole="atractivos" />
-          <NavigationProperty Name="provincia" Relationship="Self.FK__destinos__provin__4D94879B" FromRole="destinos" ToRole="provincias" />
-          <NavigationProperty Name="experiencias" Relationship="Self.FK__experienc__desti__4E88ABD4" FromRole="destinos" ToRole="experiencias" />
+          <Property Name="provincia_Id" Type="Int32" />
           <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="experiencias" Relationship="Self.FK__experienc__desti__4E88ABD4" FromRole="destinos" ToRole="experiencias" />
         </EntityType>
         <EntityType Name="experiencia">
           <Key>
@@ -954,9 +1018,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="mes_id" Type="Int32" />
           <Property Name="likes" Type="Int32" />
           <Property Name="documento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="mes" Relationship="Self.FK__festivida__mes_i__4F7CD00D" FromRole="festividades" ToRole="meses" />
-          <NavigationProperty Name="provincia" Relationship="Self.FK__festivida__provi__5070F446" FromRole="festividades" ToRole="provincias" />
           <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="mes" Relationship="Self.FK__festivida__mes_i__4F7CD00D" FromRole="festividades" ToRole="meses" />
         </EntityType>
         <EntityType Name="icono">
           <Key>
@@ -1016,7 +1079,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
           <Property Name="categoria_noticia_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="categoria_noticia" Relationship="ytuqueplanesDBModel.categoria_noticia_noticia_fk" FromRole="noticia" ToRole="categoria_noticia" />
+          <NavigationProperty Name="categoria_noticia" Relationship="Self.categoria_noticia_noticia_fk" FromRole="noticias" ToRole="categoria_noticia" />
         </EntityType>
         <EntityType Name="oferta">
           <Key>
@@ -1039,7 +1102,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="provincia_id" Type="Int32" Nullable="false" />
           <Property Name="categoria_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="categoria" Relationship="Self.FK__ofertas__categor__534D60F1" FromRole="ofertas" ToRole="categorias" />
-          <NavigationProperty Name="provincia" Relationship="Self.FK__ofertas__provinc__5441852A" FromRole="ofertas" ToRole="provincias" />
           <NavigationProperty Name="opciones" Relationship="Self.fk_opciones_oferta" FromRole="ofertas" ToRole="opciones" />
         </EntityType>
         <EntityType Name="opcione">
@@ -1064,6 +1126,43 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="place_activity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="icono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="place_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="place_apt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="place_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="place_coordinate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="latitude" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="longitude" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="place_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="place">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="height" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ruta_id" Type="Int32" />
         </EntityType>
         <EntityType Name="post">
           <Key>
@@ -1099,10 +1198,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="region_id" Type="Int32" />
-          <NavigationProperty Name="destinos" Relationship="Self.FK__destinos__provin__4D94879B" FromRole="provincias" ToRole="destinos" />
-          <NavigationProperty Name="festividades" Relationship="Self.FK__festivida__provi__5070F446" FromRole="provincias" ToRole="festividades" />
-          <NavigationProperty Name="ofertas" Relationship="Self.FK__ofertas__provinc__5441852A" FromRole="provincias" ToRole="ofertas" />
-          <NavigationProperty Name="region" Relationship="Self.FK__provincia__regio__5812160E" FromRole="provincias" ToRole="region" />
           <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="latitud" Type="Double" />
@@ -1140,7 +1235,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="provincias" Relationship="Self.FK__provincia__regio__5812160E" FromRole="region" ToRole="provincias" />
         </EntityType>
         <EntityType Name="role">
           <Key>
@@ -1164,10 +1258,15 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="estado" Type="Boolean" />
           <Property Name="destacar" Type="Boolean" />
+          <Property Name="provincia_id" Type="Int32" Nullable="false" />
           <Property Name="categoria_ruta_id" Type="Int32" Nullable="false" />
+          <Property Name="google" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="maxtemp" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mintemp" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="actividades" Relationship="Self.FK__actividad__ruta___4BAC3F29" FromRole="rutas" ToRole="actividades" />
           <NavigationProperty Name="mapas" Relationship="Self.FK__mapas__ruta_id__52593CB8" FromRole="rutas" ToRole="mapas" />
-          <Property Name="provincia_id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="seo">
           <Key>
@@ -1250,6 +1349,22 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipotransporte">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="transporte">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tipotransporte_id" Type="Int32" />
+          <Property Name="ruta_id" Type="Int32" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -1375,15 +1490,15 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__atractivo__desti__4CA06362">
-          <End Role="destinos" Type="Self.destino" Multiplicity="0..1" />
-          <End Role="atractivos" Type="Self.atractivo" Multiplicity="*" />
+        <Association Name="categoria_noticia_noticia_fk">
+          <End Role="categoria_noticia" Type="Self.categoria_noticia" Multiplicity="1" />
+          <End Role="noticias" Type="Self.noticia" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="destinos">
+            <Principal Role="categoria_noticia">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="atractivos">
-              <PropertyRef Name="destino_id" />
+            <Dependent Role="noticias">
+              <PropertyRef Name="categoria_noticia_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1396,18 +1511,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Principal>
             <Dependent Role="ofertas">
               <PropertyRef Name="categoria_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__destinos__provin__4D94879B">
-          <End Role="provincias" Type="Self.provincia" Multiplicity="1" />
-          <End Role="destinos" Type="Self.destino" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="provincias">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="destinos">
-              <PropertyRef Name="provincia_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1435,18 +1538,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__festivida__provi__5070F446">
-          <End Role="provincias" Type="Self.provincia" Multiplicity="1" />
-          <End Role="festividades" Type="Self.festividade" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="provincias">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="festividades">
-              <PropertyRef Name="provincia_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__iconos__mapa_id__5165187F">
           <End Role="mapas" Type="Self.mapa" Multiplicity="1" />
           <End Role="iconos" Type="Self.icono" Multiplicity="*" />
@@ -1471,18 +1562,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ofertas__provinc__5441852A">
-          <End Role="provincias" Type="Self.provincia" Multiplicity="1" />
-          <End Role="ofertas" Type="Self.oferta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="provincias">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ofertas">
-              <PropertyRef Name="provincia_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_opciones_oferta">
           <End Role="ofertas" Type="Self.oferta" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1494,18 +1573,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Principal>
             <Dependent Role="opciones">
               <PropertyRef Name="oferta_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__provincia__regio__5812160E">
-          <End Role="region" Type="Self.region" Multiplicity="0..1" />
-          <End Role="provincias" Type="Self.provincia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="region">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="provincias">
-              <PropertyRef Name="region_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1521,10 +1588,12 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ytuqueplanesDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ytuqueplanesDBEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="actividades" EntityType="Self.actividade" />
+          <EntitySet Name="agencias" EntityType="Self.agencia" />
           <EntitySet Name="alertas" EntityType="Self.alerta" />
           <EntitySet Name="atractivos" EntityType="Self.atractivo" />
+          <EntitySet Name="atractivos_galeria" EntityType="Self.atractivos_galeria" />
           <EntitySet Name="categoria_noticia" EntityType="Self.categoria_noticia" />
           <EntitySet Name="categoria_ruta" EntityType="Self.categoria_ruta" />
           <EntitySet Name="categorias" EntityType="Self.categoria" />
@@ -1541,6 +1610,10 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySet Name="ofertas" EntityType="Self.oferta" />
           <EntitySet Name="opciones" EntityType="Self.opcione" />
           <EntitySet Name="pages" EntityType="Self.page" />
+          <EntitySet Name="place_activity" EntityType="Self.place_activity" />
+          <EntitySet Name="place_apt" EntityType="Self.place_apt" />
+          <EntitySet Name="place_coordinate" EntityType="Self.place_coordinate" />
+          <EntitySet Name="places" EntityType="Self.place" />
           <EntitySet Name="posts" EntityType="Self.post" />
           <EntitySet Name="preferencias_destino" EntityType="Self.preferencias_destino" />
           <EntitySet Name="provincias" EntityType="Self.provincia" />
@@ -1556,6 +1629,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySet Name="tags" EntityType="Self.tag" />
           <EntitySet Name="tipo_oferta" EntityType="Self.tipo_oferta" />
           <EntitySet Name="tipo_suscripcion" EntityType="Self.tipo_suscripcion" />
+          <EntitySet Name="tipotransportes" EntityType="Self.tipotransporte" />
+          <EntitySet Name="transportes" EntityType="Self.transporte" />
           <EntitySet Name="users" EntityType="Self.user" />
           <EntitySet Name="destino_como_llegar" EntityType="Self.destino_como_llegar" />
           <EntitySet Name="destino_seo" EntityType="Self.destino_seo" />
@@ -1573,17 +1648,13 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="rutas" EntitySet="rutas" />
             <End Role="actividades" EntitySet="actividades" />
           </AssociationSet>
-          <AssociationSet Name="FK__atractivo__desti__4CA06362" Association="Self.FK__atractivo__desti__4CA06362">
-            <End Role="destinos" EntitySet="destinos" />
-            <End Role="atractivos" EntitySet="atractivos" />
+          <AssociationSet Name="categoria_noticia_noticia_fk" Association="Self.categoria_noticia_noticia_fk">
+            <End Role="categoria_noticia" EntitySet="categoria_noticia" />
+            <End Role="noticias" EntitySet="noticias" />
           </AssociationSet>
           <AssociationSet Name="FK__ofertas__categor__534D60F1" Association="Self.FK__ofertas__categor__534D60F1">
             <End Role="categorias" EntitySet="categorias" />
             <End Role="ofertas" EntitySet="ofertas" />
-          </AssociationSet>
-          <AssociationSet Name="FK__destinos__provin__4D94879B" Association="Self.FK__destinos__provin__4D94879B">
-            <End Role="provincias" EntitySet="provincias" />
-            <End Role="destinos" EntitySet="destinos" />
           </AssociationSet>
           <AssociationSet Name="FK__experienc__desti__4E88ABD4" Association="Self.FK__experienc__desti__4E88ABD4">
             <End Role="destinos" EntitySet="destinos" />
@@ -1591,10 +1662,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           </AssociationSet>
           <AssociationSet Name="FK__festivida__mes_i__4F7CD00D" Association="Self.FK__festivida__mes_i__4F7CD00D">
             <End Role="meses" EntitySet="meses" />
-            <End Role="festividades" EntitySet="festividades" />
-          </AssociationSet>
-          <AssociationSet Name="FK__festivida__provi__5070F446" Association="Self.FK__festivida__provi__5070F446">
-            <End Role="provincias" EntitySet="provincias" />
             <End Role="festividades" EntitySet="festividades" />
           </AssociationSet>
           <AssociationSet Name="FK__iconos__mapa_id__5165187F" Association="Self.FK__iconos__mapa_id__5165187F">
@@ -1605,65 +1672,21 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="rutas" EntitySet="rutas" />
             <End Role="mapas" EntitySet="mapas" />
           </AssociationSet>
-          <AssociationSet Name="FK__ofertas__provinc__5441852A" Association="Self.FK__ofertas__provinc__5441852A">
-            <End Role="provincias" EntitySet="provincias" />
-            <End Role="ofertas" EntitySet="ofertas" />
-          </AssociationSet>
           <AssociationSet Name="fk_opciones_oferta" Association="Self.fk_opciones_oferta">
             <End Role="ofertas" EntitySet="ofertas" />
             <End Role="opciones" EntitySet="opciones" />
-          </AssociationSet>
-          <AssociationSet Name="FK__provincia__regio__5812160E" Association="Self.FK__provincia__regio__5812160E">
-            <End Role="region" EntitySet="regions" />
-            <End Role="provincias" EntitySet="provincias" />
           </AssociationSet>
           <AssociationSet Name="user_rol_fk" Association="Self.user_rol_fk">
             <End Role="roles" EntitySet="roles" />
             <End Role="users" EntitySet="users" />
           </AssociationSet>
-          <AssociationSet Name="categoria_noticia_noticia_fk" Association="ytuqueplanesDBModel.categoria_noticia_noticia_fk">
-            <End Role="categoria_noticia" EntitySet="categoria_noticia" />
-            <End Role="noticia" EntitySet="noticias" />
-          </AssociationSet>
-          <EntitySet Name="atractivos_galeria" EntityType="ytuqueplanesDBModel.atractivos_galeria" />
-          <EntitySet Name="agencias" EntityType="ytuqueplanesDBModel.agencia" />
         </EntityContainer>
-        <Association Name="categoria_noticia_noticia_fk">
-          <End Type="ytuqueplanesDBModel.categoria_noticia" Role="categoria_noticia" Multiplicity="1" />
-          <End Type="ytuqueplanesDBModel.noticia" Role="noticia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="categoria_noticia">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="noticia">
-              <PropertyRef Name="categoria_noticia_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="atractivos_galeria">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="atractivo_id" Type="Int32" Nullable="false" />
-          <Property Name="imagen" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="agencia">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="destino_como_llegar_id" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ytuqueplanesDBModelStoreContainer" CdmEntityContainer="ytuqueplanesDBEntities">
+        <EntityContainerMapping StorageEntityContainer="ytuqueplanesDBModelStoreContainer" CdmEntityContainer="ytuqueplanesDBEntities1">
           <EntitySetMapping Name="actividades">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.actividade">
               <MappingFragment StoreEntitySet="actividades">
@@ -1671,6 +1694,17 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="icono" ColumnName="icono" />
                 <ScalarProperty Name="ruta_id" ColumnName="ruta_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="agencias">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.agencia">
+              <MappingFragment StoreEntitySet="agencias">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="destino_como_llegar_id" ColumnName="destino_como_llegar_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1689,18 +1723,27 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="atractivos">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.atractivo">
               <MappingFragment StoreEntitySet="atractivos">
-                <ScalarProperty Name="destacado" ColumnName="destacado" />
-                <ScalarProperty Name="titulo" ColumnName="titulo" />
-                <ScalarProperty Name="slug" ColumnName="slug" />
-                <ScalarProperty Name="banner_m" ColumnName="banner_m" />
-                <ScalarProperty Name="banner_t" ColumnName="banner_t" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="resumen" ColumnName="resumen" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="banner" ColumnName="banner" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="contenido" ColumnName="contenido" />
                 <ScalarProperty Name="destino_id" ColumnName="destino_id" />
+                <ScalarProperty Name="resumen" ColumnName="resumen" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="banner_t" ColumnName="banner_t" />
+                <ScalarProperty Name="banner_m" ColumnName="banner_m" />
+                <ScalarProperty Name="slug" ColumnName="slug" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="destacado" ColumnName="destacado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="atractivos_galeria">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.atractivos_galeria">
+              <MappingFragment StoreEntitySet="atractivos_galeria">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="atractivo_id" ColumnName="atractivo_id" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1756,12 +1799,12 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="destinos">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.destino">
               <MappingFragment StoreEntitySet="destinos">
-                <ScalarProperty Name="slug" ColumnName="slug" />
-                <ScalarProperty Name="imagen" ColumnName="imagen" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="contenido" ColumnName="contenido" />
                 <ScalarProperty Name="provincia_Id" ColumnName="provincia_Id" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="slug" ColumnName="slug" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1778,7 +1821,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="festividades">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.festividade">
               <MappingFragment StoreEntitySet="festividades">
-                <ScalarProperty Name="slug" ColumnName="slug" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="inicio" ColumnName="inicio" />
@@ -1789,6 +1831,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
                 <ScalarProperty Name="mes_id" ColumnName="mes_id" />
                 <ScalarProperty Name="likes" ColumnName="likes" />
                 <ScalarProperty Name="documento" ColumnName="documento" />
+                <ScalarProperty Name="slug" ColumnName="slug" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1898,14 +1941,50 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="place_activity">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.place_activity">
+              <MappingFragment StoreEntitySet="place_activity">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="icono" ColumnName="icono" />
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="place_apt">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.place_apt">
+              <MappingFragment StoreEntitySet="place_apt">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="place_coordinate">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.place_coordinate">
+              <MappingFragment StoreEntitySet="place_coordinate">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="places">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.place">
+              <MappingFragment StoreEntitySet="places">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="ruta_id" ColumnName="ruta_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="posts">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.post">
               <MappingFragment StoreEntitySet="posts">
-                <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
-                <ScalarProperty Name="tipo_id" ColumnName="tipo_id" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="slug" ColumnName="slug" />
-                <ScalarProperty Name="destacado" ColumnName="destacado" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="resumen" ColumnName="resumen" />
@@ -1915,6 +1994,11 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
                 <ScalarProperty Name="updated_at" ColumnName="updated_at" />
                 <ScalarProperty Name="likes" ColumnName="likes" />
                 <ScalarProperty Name="categoria_blog_id" ColumnName="categoria_blog_id" />
+                <ScalarProperty Name="destacado" ColumnName="destacado" />
+                <ScalarProperty Name="slug" ColumnName="slug" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="tipo_id" ColumnName="tipo_id" />
+                <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1930,16 +2014,16 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="provincias">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.provincia">
               <MappingFragment StoreEntitySet="provincias">
-                <ScalarProperty Name="slug" ColumnName="slug" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="longitud" ColumnName="longitud" />
-                <ScalarProperty Name="latitud" ColumnName="latitud" />
-                <ScalarProperty Name="thumb" ColumnName="thumb" />
-                <ScalarProperty Name="imagen" ColumnName="imagen" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="region_id" ColumnName="region_id" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="thumb" ColumnName="thumb" />
+                <ScalarProperty Name="latitud" ColumnName="latitud" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="slug" ColumnName="slug" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1990,7 +2074,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="rutas">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.ruta">
               <MappingFragment StoreEntitySet="rutas">
-                <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="tiempo_recorrido" ColumnName="tiempo_recorrido" />
@@ -1998,7 +2081,13 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="destacar" ColumnName="destacar" />
+                <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
                 <ScalarProperty Name="categoria_ruta_id" ColumnName="categoria_ruta_id" />
+                <ScalarProperty Name="google" ColumnName="google" />
+                <ScalarProperty Name="maxtemp" ColumnName="maxtemp" />
+                <ScalarProperty Name="mintemp" ColumnName="mintemp" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="slug" ColumnName="slug" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2091,6 +2180,24 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tipotransportes">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.tipotransporte">
+              <MappingFragment StoreEntitySet="tipotransporte">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transportes">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.transporte">
+              <MappingFragment StoreEntitySet="transporte">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipotransporte_id" ColumnName="tipotransporte_id" />
+                <ScalarProperty Name="ruta_id" ColumnName="ruta_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.user">
               <MappingFragment StoreEntitySet="users">
@@ -2109,11 +2216,11 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="destino_como_llegar">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.destino_como_llegar">
               <MappingFragment StoreEntitySet="destino_como_llegar">
-                <ScalarProperty Name="waze" ColumnName="waze" />
-                <ScalarProperty Name="tiempo_viaje" ColumnName="tiempo_viaje" />
-                <ScalarProperty Name="distancia" ColumnName="distancia" />
                 <ScalarProperty Name="destino_id" ColumnName="destino_id" />
                 <ScalarProperty Name="como_llegar_id" ColumnName="como_llegar_id" />
+                <ScalarProperty Name="distancia" ColumnName="distancia" />
+                <ScalarProperty Name="tiempo_viaje" ColumnName="tiempo_viaje" />
+                <ScalarProperty Name="waze" ColumnName="waze" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2202,26 +2309,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
               <MappingFragment StoreEntitySet="rutas_seo">
                 <ScalarProperty Name="ruta_id" ColumnName="ruta_id" />
                 <ScalarProperty Name="seo_id" ColumnName="seo_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="atractivos_galeria">
-            <EntityTypeMapping TypeName="ytuqueplanesDBModel.atractivos_galeria">
-              <MappingFragment StoreEntitySet="atractivos_galeria">
-                <ScalarProperty Name="imagen" ColumnName="imagen" />
-                <ScalarProperty Name="atractivo_id" ColumnName="atractivo_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="agencias">
-            <EntityTypeMapping TypeName="ytuqueplanesDBModel.agencia">
-              <MappingFragment StoreEntitySet="agencias">
-                <ScalarProperty Name="imagen" ColumnName="imagen" />
-                <ScalarProperty Name="url" ColumnName="url" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="destino_como_llegar_id" ColumnName="destino_como_llegar_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

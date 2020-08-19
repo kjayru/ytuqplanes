@@ -14,7 +14,7 @@ namespace ytuqueplanes.Controllers
   
     public class HomeController : Controller
     {
-        ytuqueplanesDBEntities db = new ytuqueplanesDBEntities();
+        ytuqueplanesDBEntities1 db = new ytuqueplanesDBEntities1();
         public ActionResult Index()
         {
 

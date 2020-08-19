@@ -17,20 +17,16 @@ namespace EntidadesData
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public destino()
         {
-            this.atractivos = new HashSet<atractivo>();
             this.experiencias = new HashSet<experiencia>();
         }
     
         public int id { get; set; }
         public string titulo { get; set; }
         public string contenido { get; set; }
-        public int provincia_Id { get; set; }
+        public Nullable<int> provincia_Id { get; set; }
         public string imagen { get; set; }
         public string slug { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<atractivo> atractivos { get; set; }
-        public virtual provincia provincia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<experiencia> experiencias { get; set; }
     }

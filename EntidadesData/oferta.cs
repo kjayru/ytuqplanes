@@ -38,7 +38,6 @@ namespace EntidadesData
         public int categoria_id { get; set; }
     
         public virtual categoria categoria { get; set; }
-        public virtual provincia provincia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<opcione> opciones { get; set; }
     }

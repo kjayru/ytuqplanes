@@ -27,6 +27,5 @@ namespace EntidadesData
         public string slug { get; set; }
     
         public virtual mes mes { get; set; }
-        public virtual provincia provincia { get; set; }
     }
 }
