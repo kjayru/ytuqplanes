@@ -14,11 +14,27 @@ namespace EntidadesData
     
     public partial class place
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public place()
+        {
+            this.place_activity = new HashSet<place_activity>();
+            this.place_apt = new HashSet<place_apt>();
+            this.place_coordinate = new HashSet<place_coordinate>();
+        }
+    
         public int id { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public string height { get; set; }
         public string image { get; set; }
         public Nullable<int> ruta_id { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<place_activity> place_activity { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<place_apt> place_apt { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<place_coordinate> place_coordinate { get; set; }
+        public virtual ruta ruta { get; set; }
     }
 }

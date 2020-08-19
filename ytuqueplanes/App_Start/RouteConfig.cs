@@ -102,6 +102,13 @@ namespace ytuqueplanes
             "api/festividades/{id}",
             new { controller = "Experiencias", action = "EPProvincia", id = UrlParameter.Optional }
          );
+            routes.MapRoute(
+           "RutasApiMapa",
+           "api/ApiMapa/{id}",
+           new { controller = "Rutas", action = "ApiMapa", id = UrlParameter.Optional }
+        );
+
+            
 
 
             routes.MapRoute(

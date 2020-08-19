@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ytuqueplanesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ytuqueplanesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="actividades">
           <Key>
             <PropertyRef Name="id" />
@@ -707,6 +707,88 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="foreign_place_rutas">
+          <End Role="rutas" Type="Self.rutas" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="places" Type="Self.places" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rutas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="places">
+              <PropertyRef Name="ruta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreing_activity_place">
+          <End Role="places" Type="Self.places" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="place_activity" Type="Self.place_activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="places">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="place_activity">
+              <PropertyRef Name="place_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreing_apt_place">
+          <End Role="places" Type="Self.places" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="place_apt" Type="Self.place_apt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="places">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="place_apt">
+              <PropertyRef Name="place_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreing_coordinate_place">
+          <End Role="places" Type="Self.places" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="place_coordinate" Type="Self.place_coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="places">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="place_coordinate">
+              <PropertyRef Name="place_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreing_transporte_ruta">
+          <End Role="rutas" Type="Self.rutas" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="transporte" Type="Self.transporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rutas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transporte">
+              <PropertyRef Name="ruta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreing_transporte_tipotransporte">
+          <End Role="tipotransporte" Type="Self.tipotransporte" Multiplicity="0..1" />
+          <End Role="transporte" Type="Self.transporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipotransporte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transporte">
+              <PropertyRef Name="tipotransporte_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="user_rol_fk">
           <End Role="roles" Type="Self.roles" Multiplicity="0..1" />
           <End Role="users" Type="Self.users" Multiplicity="*" />
@@ -870,13 +952,36 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="ofertas" EntitySet="ofertas" />
             <End Role="opciones" EntitySet="opciones" />
           </AssociationSet>
+          <AssociationSet Name="foreign_place_rutas" Association="Self.foreign_place_rutas">
+            <End Role="rutas" EntitySet="rutas" />
+            <End Role="places" EntitySet="places" />
+          </AssociationSet>
+          <AssociationSet Name="foreing_activity_place" Association="Self.foreing_activity_place">
+            <End Role="places" EntitySet="places" />
+            <End Role="place_activity" EntitySet="place_activity" />
+          </AssociationSet>
+          <AssociationSet Name="foreing_apt_place" Association="Self.foreing_apt_place">
+            <End Role="places" EntitySet="places" />
+            <End Role="place_apt" EntitySet="place_apt" />
+          </AssociationSet>
+          <AssociationSet Name="foreing_coordinate_place" Association="Self.foreing_coordinate_place">
+            <End Role="places" EntitySet="places" />
+            <End Role="place_coordinate" EntitySet="place_coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="foreing_transporte_ruta" Association="Self.foreing_transporte_ruta">
+            <End Role="rutas" EntitySet="rutas" />
+            <End Role="transporte" EntitySet="transporte" />
+          </AssociationSet>
+          <AssociationSet Name="foreing_transporte_tipotransporte" Association="Self.foreing_transporte_tipotransporte">
+            <End Role="tipotransporte" EntitySet="tipotransporte" />
+            <End Role="transporte" EntitySet="transporte" />
+          </AssociationSet>
           <AssociationSet Name="user_rol_fk" Association="Self.user_rol_fk">
             <End Role="roles" EntitySet="roles" />
             <End Role="users" EntitySet="users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ytuqueplanesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1135,6 +1240,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="icono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="place_id" Type="Int32" />
+          <NavigationProperty Name="place" Relationship="ytuqueplanesDBModel.foreing_activity_place" FromRole="place_activity" ToRole="place" />
         </EntityType>
         <EntityType Name="place_apt">
           <Key>
@@ -1143,6 +1249,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="place_id" Type="Int32" />
+          <NavigationProperty Name="place" Relationship="ytuqueplanesDBModel.foreing_apt_place" FromRole="place_apt" ToRole="place" />
         </EntityType>
         <EntityType Name="place_coordinate">
           <Key>
@@ -1152,6 +1259,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="latitude" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="longitude" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="place_id" Type="Int32" />
+          <NavigationProperty Name="place" Relationship="ytuqueplanesDBModel.foreing_coordinate_place" FromRole="place_coordinate" ToRole="place" />
         </EntityType>
         <EntityType Name="place">
           <Key>
@@ -1163,6 +1271,10 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="height" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ruta_id" Type="Int32" />
+          <NavigationProperty Name="place_activity" Relationship="ytuqueplanesDBModel.foreing_activity_place" FromRole="place" ToRole="place_activity" />
+          <NavigationProperty Name="place_apt" Relationship="ytuqueplanesDBModel.foreing_apt_place" FromRole="place" ToRole="place_apt" />
+          <NavigationProperty Name="place_coordinate" Relationship="ytuqueplanesDBModel.foreing_coordinate_place" FromRole="place" ToRole="place_coordinate" />
+          <NavigationProperty Name="ruta" Relationship="ytuqueplanesDBModel.foreign_place_rutas" FromRole="place" ToRole="ruta" />
         </EntityType>
         <EntityType Name="post">
           <Key>
@@ -1267,6 +1379,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="actividades" Relationship="Self.FK__actividad__ruta___4BAC3F29" FromRole="rutas" ToRole="actividades" />
           <NavigationProperty Name="mapas" Relationship="Self.FK__mapas__ruta_id__52593CB8" FromRole="rutas" ToRole="mapas" />
+          <NavigationProperty Name="places" Relationship="ytuqueplanesDBModel.foreign_place_rutas" FromRole="ruta" ToRole="place" />
+          <NavigationProperty Name="transportes" Relationship="ytuqueplanesDBModel.foreing_transporte_ruta" FromRole="ruta" ToRole="transporte" />
         </EntityType>
         <EntityType Name="seo">
           <Key>
@@ -1356,6 +1470,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="transportes" Relationship="ytuqueplanesDBModel.foreing_transporte_tipotransporte" FromRole="tipotransporte" ToRole="transporte" />
         </EntityType>
         <EntityType Name="transporte">
           <Key>
@@ -1365,6 +1480,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="tipotransporte_id" Type="Int32" />
           <Property Name="ruta_id" Type="Int32" />
+          <NavigationProperty Name="ruta" Relationship="ytuqueplanesDBModel.foreing_transporte_ruta" FromRole="transporte" ToRole="ruta" />
+          <NavigationProperty Name="tipotransporte" Relationship="ytuqueplanesDBModel.foreing_transporte_tipotransporte" FromRole="transporte" ToRole="tipotransporte" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -1680,7 +1797,113 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="roles" EntitySet="roles" />
             <End Role="users" EntitySet="users" />
           </AssociationSet>
+          <AssociationSet Name="foreing_activity_place" Association="ytuqueplanesDBModel.foreing_activity_place">
+            <End Role="place" EntitySet="places" />
+            <End Role="place_activity" EntitySet="place_activity" />
+          </AssociationSet>
+          <AssociationSet Name="foreing_apt_place" Association="ytuqueplanesDBModel.foreing_apt_place">
+            <End Role="place" EntitySet="places" />
+            <End Role="place_apt" EntitySet="place_apt" />
+          </AssociationSet>
+          <AssociationSet Name="foreing_coordinate_place" Association="ytuqueplanesDBModel.foreing_coordinate_place">
+            <End Role="place" EntitySet="places" />
+            <End Role="place_coordinate" EntitySet="place_coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="foreign_place_rutas" Association="ytuqueplanesDBModel.foreign_place_rutas">
+            <End Role="ruta" EntitySet="rutas" />
+            <End Role="place" EntitySet="places" />
+          </AssociationSet>
+          <AssociationSet Name="foreing_transporte_ruta" Association="ytuqueplanesDBModel.foreing_transporte_ruta">
+            <End Role="ruta" EntitySet="rutas" />
+            <End Role="transporte" EntitySet="transportes" />
+          </AssociationSet>
+          <AssociationSet Name="foreing_transporte_tipotransporte" Association="ytuqueplanesDBModel.foreing_transporte_tipotransporte">
+            <End Role="tipotransporte" EntitySet="tipotransportes" />
+            <End Role="transporte" EntitySet="transportes" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="foreing_activity_place">
+          <End Type="ytuqueplanesDBModel.place" Role="place" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ytuqueplanesDBModel.place_activity" Role="place_activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="place">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="place_activity">
+              <PropertyRef Name="place_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreing_apt_place">
+          <End Type="ytuqueplanesDBModel.place" Role="place" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ytuqueplanesDBModel.place_apt" Role="place_apt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="place">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="place_apt">
+              <PropertyRef Name="place_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreing_coordinate_place">
+          <End Type="ytuqueplanesDBModel.place" Role="place" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ytuqueplanesDBModel.place_coordinate" Role="place_coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="place">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="place_coordinate">
+              <PropertyRef Name="place_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreign_place_rutas">
+          <End Type="ytuqueplanesDBModel.ruta" Role="ruta" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ytuqueplanesDBModel.place" Role="place" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ruta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="place">
+              <PropertyRef Name="ruta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreing_transporte_ruta">
+          <End Type="ytuqueplanesDBModel.ruta" Role="ruta" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ytuqueplanesDBModel.transporte" Role="transporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ruta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transporte">
+              <PropertyRef Name="ruta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreing_transporte_tipotransporte">
+          <End Type="ytuqueplanesDBModel.tipotransporte" Role="tipotransporte" Multiplicity="0..1" />
+          <End Type="ytuqueplanesDBModel.transporte" Role="transporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipotransporte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transporte">
+              <PropertyRef Name="tipotransporte_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

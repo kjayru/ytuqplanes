@@ -18,5 +18,7 @@ namespace EntidadesData
         public string latitude { get; set; }
         public string longitude { get; set; }
         public Nullable<int> place_id { get; set; }
+    
+        public virtual place place { get; set; }
     }
 }

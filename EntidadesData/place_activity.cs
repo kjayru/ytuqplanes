@@ -18,5 +18,7 @@ namespace EntidadesData
         public string nombre { get; set; }
         public string icono { get; set; }
         public Nullable<int> place_id { get; set; }
+    
+        public virtual place place { get; set; }
     }
 }

@@ -154,63 +154,88 @@ namespace ytuqueplanes.Controllers
 
         public ActionResult Mapa(string provincia, string id) {
 
-            var objeto = ( nombreprov : provincia, categoria: id );
-
+          
 
             var prov = db.provincias.Where(c => c.slug == provincia).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).FirstOrDefault();
 
             var rutas = db.rutas.Where(c => c.provincia_id == prov.id).Select(p =>
             new
             {
-                p.id,
-                p.titulo,
-                p.documento,
-                p.destacar,
-                p.categoria_ruta_id,
-                p.google,
-                p.maxtemp,
-                p.mintemp,
-                p.slug,
-                p.image
+                id = p.id,
+                titulo =  p.titulo,
+                documento = p.documento,
+                destacar = p.destacar,
+                categoria_id = p.categoria_ruta_id,
+                google = p.google,
+                maxtemp = p.maxtemp,
+                mintemp = p.mintemp,
+                slug = p.slug,
+                image = p.image,
+                car = p.transportes.Where(a => a.tipotransporte_id == 1).Select(e => new { description = e.descripcion }), 
+                bus = p.transportes.Where(a => a.tipotransporte_id == 2).Select(e => new { description = e.descripcion }),
+                airplane = p.transportes.Where(a => a.tipotransporte_id == 3).Select(e => new { description = e.descripcion }),
+                train = p.transportes.Where(a => a.tipotransporte_id == 4).Select(e => new { description = e.descripcion }),
+                ship = p.transportes.Where(a => a.tipotransporte_id == 5).Select(e => new { description = e.descripcion }),
+                places = p.places.Select( d => new {
+                   description =  d.descripcion,
+                   order = d.id,
+                   height =  d.height,
+                   image =  d.image,
+                   apt = d.place_apt.Select( f => new { description = f.descripcion }),
+                   activity = d.place_activity.Select(g => new { name = g.nombre, icon = g.icono}),
+                   cordinate = d.place_coordinate.Select(h => new { latitude = h.latitude, longitude = h.longitude })
+                }),
+                
             }).ToList();
 
-            List<Mapa> mapa = new List<Mapa>();
-
-            for (var i = 0; i < rutas.Count; i++) {
-
-                var rutaId = rutas[i].id;
-                var lugares = db.places.Where(c => c.ruta_id == rutaId).Select(p => new { p.nombre, p.id, p.height, p.descripcion, p.image }).ToList();
-
-                   List<MapaPlace> lp = new List<MapaPlace>();
-                    for (var j = 0; j < lugares.Count; j++) {
-                        lp.Add(new MapaPlace { name = lugares[j].nombre, order = lugares[j].id, description = lugares[j].descripcion, height= lugares[j].height, image= lugares[j].image  });
-                    }
-
-                var arrayPlace = lp.ToArray();
-                mapa.Add(
-                    new Mapa {
-
-
-                        name = rutas[i].titulo,
-                        url = rutas[i].slug,
-                        image = rutas[i].image,
-                        region = prov.nombre,
-                        urlRegion = prov.slug,
-                        featured = 0,
-                        google = rutas[i].google,
-                        pdf = rutas[i].documento,
-                        maximumWeather = rutas[i].maxtemp,
-                        minimumWeather = rutas[i].mintemp
-                       // MapaPlace = JsonConvert.SerializeObject(lp)
-                        
-                    }); ;
-            }
-
-
-           // return Json(mapa, JsonRequestBehavior.AllowGet);
+           
             return View();
         }
 
+
+        public ActionResult ApiMapa( string id)
+        {
+
+
+
+            var prov = db.provincias.Where(c => c.slug == id).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).FirstOrDefault();
+
+            var rutas = db.rutas.Where(c => c.provincia_id == prov.id).Select(p =>
+            new
+            {
+                id = p.id,
+                titulo = p.titulo,
+                documento = p.documento,
+                destacar = p.destacar,
+                categoria_id = p.categoria_ruta_id,
+                google = p.google,
+                maxtemp = p.maxtemp,
+                mintemp = p.mintemp,
+                slug = p.slug,
+                image = p.image,
+                car = p.transportes.Where(a => a.tipotransporte_id == 1).Select(e => new { description = e.descripcion }),
+                bus = p.transportes.Where(a => a.tipotransporte_id == 2).Select(e => new { description = e.descripcion }),
+                airplane = p.transportes.Where(a => a.tipotransporte_id == 3).Select(e => new { description = e.descripcion }),
+                train = p.transportes.Where(a => a.tipotransporte_id == 4).Select(e => new { description = e.descripcion }),
+                ship = p.transportes.Where(a => a.tipotransporte_id == 5).Select(e => new { description = e.descripcion }),
+                places = p.places.Select(d => new {
+                    description = d.descripcion,
+                    order = d.id,
+                    height = d.height,
+                    image = d.image,
+                    apt = d.place_apt.Select(f => new { description = f.descripcion }),
+                    activity = d.place_activity.Select(g => new { name = g.nombre, icon = g.icono }),
+                    cordinate = d.place_coordinate.Select(h => new { latitude = h.latitude, longitude = h.longitude })
+                }),
+
+            }).ToList();
+
+            
+
+
+            return Json(rutas, JsonRequestBehavior.AllowGet);
+           
+        }
 
 
         private List<Slide> GetSliders()

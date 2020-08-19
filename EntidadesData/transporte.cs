@@ -18,5 +18,8 @@ namespace EntidadesData
         public string descripcion { get; set; }
         public Nullable<int> tipotransporte_id { get; set; }
         public Nullable<int> ruta_id { get; set; }
+    
+        public virtual ruta ruta { get; set; }
+        public virtual tipotransporte tipotransporte { get; set; }
     }
 }

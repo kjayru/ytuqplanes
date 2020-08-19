@@ -69,6 +69,12 @@
         <AssociationConnector Association="ytuqueplanesDBModel.FK__mapas__ruta_id__52593CB8" ManuallyRouted="false" />
         <AssociationConnector Association="ytuqueplanesDBModel.fk_opciones_oferta" ManuallyRouted="false" />
         <AssociationConnector Association="ytuqueplanesDBModel.user_rol_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="ytuqueplanesDBModel.foreing_activity_place" />
+        <AssociationConnector Association="ytuqueplanesDBModel.foreing_apt_place" />
+        <AssociationConnector Association="ytuqueplanesDBModel.foreing_coordinate_place" />
+        <AssociationConnector Association="ytuqueplanesDBModel.foreign_place_rutas" />
+        <AssociationConnector Association="ytuqueplanesDBModel.foreing_transporte_ruta" />
+        <AssociationConnector Association="ytuqueplanesDBModel.foreing_transporte_tipotransporte" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

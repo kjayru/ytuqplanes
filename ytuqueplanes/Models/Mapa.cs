@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntidadesData;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -22,9 +23,8 @@ namespace ytuqueplanes.Models
 		public string maximumWeather { get; set; }
 		public string minimumWeather { get; set; }
 
-		public  MapaPlace MapaPlace { get; set; }
 		
-		
+		public virtual place place { get; set; }
 	}
 
 }

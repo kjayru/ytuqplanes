@@ -14,7 +14,16 @@ namespace EntidadesData
     
     public partial class tipotransporte
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tipotransporte()
+        {
+            this.transportes = new HashSet<transporte>();
+        }
+    
         public int id { get; set; }
         public string nombre { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<transporte> transportes { get; set; }
     }
 }

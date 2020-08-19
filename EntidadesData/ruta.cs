@@ -19,6 +19,8 @@ namespace EntidadesData
         {
             this.actividades = new HashSet<actividade>();
             this.mapas = new HashSet<mapa>();
+            this.places = new HashSet<place>();
+            this.transportes = new HashSet<transporte>();
         }
     
         public int id { get; set; }
@@ -40,5 +42,9 @@ namespace EntidadesData
         public virtual ICollection<actividade> actividades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<mapa> mapas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<place> places { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<transporte> transportes { get; set; }
     }
 }
