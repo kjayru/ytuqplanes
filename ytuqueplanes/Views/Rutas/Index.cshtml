@@ -1,15 +1,13 @@
 ﻿@model dynamic
 @{
     ViewBag.Title = "Rutas";
+    @* @ObjectInfo.Print(ViewBag); *@
 }
-
-
 
     <section class="page__header" style="background-image: url('@ViewBag.imagen_lg');">
         <div class="limit page__header__inset">
             <a href="/" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
             <h2 class="page__header__titulo">@ViewBag.titulo</h2>
-           
         </div>
     </section>
 
@@ -21,14 +19,14 @@
                 <h2 class="rutas-cortas__buscador__titulo">¡Que empiece la aventura!</h2>
                 <p class="rutas-cortas__buscador__resumen">La Guía de Rutas Cortas es el primer paso para descubrir los lugares más hermosos de las 25 regiones del Perú. En esta sección encontrarás información que iremos compartiendo progresivamente para que disfrutes tu próximo viaje de forma segura y responsable, muy cerca de ti.</p>
                 <form class="rutas-cortas__buscador__form">
-                    <input type="text" class="rutas-cortas__buscador__form__input">
-                    <button type="submit" class="rutas-cortas__buscador__form__boton">Enviar</button>
+                    <input id="inputSearchRutasCortas" type="text" class="rutas-cortas__buscador__form__input">
+                    @* <button type="submit" class="rutas-cortas__buscador__form__boton">Enviar</button> *@
                     <img src="/assets/images/lupa-negra.svg" alt="" width="20" class="rutas-cortas__buscador__form__lupa">
                 </form>
             </div>
             <div id="fnTargetFiltroGrilla" class="seccion__grilla -mostrar-todos- -mas-8-">
                 <div class="seccion__grilla__bloques">
-                    @foreach (ytuqueplanes.Models.RutaProvincia prov in Model.provincias)
+                     @foreach (ytuqueplanes.Models.RutaProvincia prov in Model.provincias)
                     {
                         <article class="card-poster m--tipo4" data-filtro="Arequipa">
                             <img src="@prov.provincia_thumb" alt="" class="card-poster__imagen">
@@ -38,13 +36,13 @@
                             </header>
                             <a href="/rutas-cortas/@prov.provincia_slug" class="card-poster__mas-informacion">Más información</a>
                         </article>
-
-                    }
-
+                    } 
+                  
                 </div>
                 <div class="boton-contenedor">
                     <div class="boton m--amarillo m--grande fnFiltrarGrillaTodo" data-target="#fnTargetFiltroGrilla"><strong>Ver más</strong></div>
                 </div>
+                <aside class="seccion__slider__sin-resultados">No se hallaron resultados</aside>
             </div>
         </div>
     </section>

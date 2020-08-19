@@ -213,7 +213,7 @@ const site = (function(){
 				.on('click change', function(e){
 					const target = $( $(this).closest('.filtro-selector').data('target') );
 					const filtro = $(this).data('filtro')!==undefined ? $(this).data('filtro') : $(this).val() ;
-					const filtroClass = '.card-poster[data-filtro="'+filtro+'"]';
+					const filtroClass = '.card-poster[data-filtro*="'+filtro+'"]';
 					$(this).parent('.filtro-selector').find('.filtro-selector__boton').removeClass(dom.active);
 					$(this).addClass(dom.active);
 					if(filtro!==undefined && filtro!=='') {
@@ -269,6 +269,20 @@ const site = (function(){
 					  method: 'share',
 					  href: 'https://ytuqueplanes.com'
 					}, function(response){});
+				});
+
+			// Buscador de departamentos de rutas
+			$('#inputSearchRutasCortas')
+				.on('keyup', function(e){
+					if( $.trim($(this).val()).length>0 ) {
+						$('#fnTargetFiltroGrilla').addClass('-mostrar-resultados-')
+						$('.card-poster').removeClass('-activo-');
+						$('.card-poster[data-filtro*='+$(this).val().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")+']').addClass('-activo-');
+						$('.card-poster.-activo-').length==0 && $('#fnTargetFiltroGrilla').removeClass('-mostrar-resultados-').addClass('-sin-resultados-');
+					} else {
+						$('#fnTargetFiltroGrilla').removeClass('-mostrar-resultados- -sin-resultados-');
+						$('.card-poster').removeClass('-activo-');
+					}
 				});
 		},
 
@@ -419,20 +433,3 @@ const site = (function(){
 })();
 
 site.init();
-
-$.ajax({
-	url: 'https://devapi.joinnus.com/v2/search',
-	headers: { 'brand': 'ytqp', 'Content-Type': 'application/json' },
-	type: 'GET',
-	dataType: 'json',
-	data: {'type[]': 'package', 'limit': '3'}
-})
-.done(function(response) {
-	console.log(response.data);
-})
-.fail(function() {
-	console.log("error");
-})
-.always(function() {
-	console.log("complete");
-});
