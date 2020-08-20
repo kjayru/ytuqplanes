@@ -203,21 +203,27 @@ namespace ytuqueplanes.Controllers
             var rutas = db.rutas.Where(c => c.provincia_id == prov.id).Select(p =>
             new
             {
-                id = p.id,
-                titulo = p.titulo,
-                documento = p.documento,
-                destacar = p.destacar,
-                categoria_id = p.categoria_ruta_id,
-                google = p.google,
-                maxtemp = p.maxtemp,
-                mintemp = p.mintemp,
-                slug = p.slug,
+               
+                name = p.titulo,
+                url = p.slug,
                 image = p.image,
+                region = prov.nombre,
+                urlRegion = prov.slug,
+                destacar = p.destacar,
+                category = p.categoria_ruta_id,
+                featured = p.destacar,
+                pdf = p.documento,
+                google = p.google,
+      
                 car = p.transportes.Where(a => a.tipotransporte_id == 1).Select(e => new { description = e.descripcion }),
                 bus = p.transportes.Where(a => a.tipotransporte_id == 2).Select(e => new { description = e.descripcion }),
                 airplane = p.transportes.Where(a => a.tipotransporte_id == 3).Select(e => new { description = e.descripcion }),
                 train = p.transportes.Where(a => a.tipotransporte_id == 4).Select(e => new { description = e.descripcion }),
                 ship = p.transportes.Where(a => a.tipotransporte_id == 5).Select(e => new { description = e.descripcion }),
+
+                maximumWeather = p.maxtemp,
+                minimumWeather = p.mintemp,
+
                 places = p.places.Select(d => new {
                     description = d.descripcion,
                     order = d.id,
