@@ -113,36 +113,43 @@ namespace ytuqueplanes.Controllers
             List<RutaProvincia> rp = new List<RutaProvincia>();
 
 
-            var rutas = (from rt in db.rutas
-                         join prv in db.provincias on rt.provincia_id equals pv.id
-                         where rt.provincia_id == prv.id
-                         group rt by rt.categoria_ruta_id into g
-                         select new
-                         {
-                              catId = g.Key
-                             
-                         }).ToList();
+            /* var rutas = (from rt in db.rutas
+                          join prv in db.provincias on rt.provincia_id equals pv.id
+                          where rt.provincia_id == prv.id
+                          group rt by rt.categoria_ruta_id into g
+                          select new
+                          {
+                               catId = g.Key,
+
+
+                          }).ToList();*/
+
+            var rutas = db.rutas.Where(d => d.provincia_id == pv.id).Select( p => new {  p.titulo ,p.slug, p.id,p.categoria_ruta_id}).ToList();
 
            //eturn Json(rutas, JsonRequestBehavior.AllowGet);
 
             for (var j = 0; j < rutas.Count; j++)
             {
-                var rCatId = rutas[j].catId;
-                var conteo = (from rt in db.rutas
-                              where rt.categoria_ruta_id == rCatId
-                              where rt.provincia_id == pv.id
-                              select new { rt.id }).Count();
+                var rCatId = rutas[j].categoria_ruta_id;
+                var rutaId = rutas[j].id;
+                 var conteo = (from rt in db.places
+                       
+                               where rt.ruta_id == rutaId
+                               select new { rt.id }).Count();
 
-                var categoria = db.categoria_ruta.Where(c => c.id == rCatId).Select(p => new { p.nombre }).First();
                 
-
+                var cat = db.categoria_ruta.Where(c => c.id == rCatId).Select(p => new { p.nombre }).First();
+                
+                
                 rp.Add(
                     new RutaProvincia
                     {
                         conteo = conteo,
-                        categoria = categoria.nombre,
+                        categoria = cat.nombre,
                         provincia_thumb = pv.imagen,
-                        provincia_slug = pv.slug
+                        provincia_slug = pv.slug,
+                        nombre = rutas[j].titulo,
+                        slug = rutas[j].slug
                     });
             }
 
@@ -157,6 +164,10 @@ namespace ytuqueplanes.Controllers
           
 
             var prov = db.provincias.Where(c => c.slug == provincia).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).FirstOrDefault();
+
+            ViewBag.nombreProvincia = prov.nombre;
+            ViewBag.slugProvincia = prov.slug;
+            ViewBag.nombreRuta = id;
 
             var rutas = db.rutas.Where(c => c.provincia_id == prov.id).Select(p =>
             new
