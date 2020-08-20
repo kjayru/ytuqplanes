@@ -72,16 +72,18 @@ $(document).ready(function() {
 	});
 
 	/* En esta parte cargamos la data del archivo json, el cual contiene la info de las rutas y los atractivos */
-	$.getJSON("/assets/js/mapa/route.json", function(data) {
-		var grep_route = $.grep(data, function(n, i) {
+
+	$.getJSON('/api/ApiMapa/'+slugRegion, function(json, textStatus) {
+		var grep_route = $.grep(json, function(n, i) {
 			/* Aquí solo traemos la data que nos sirve, en este caso filtro de acuerdo a la región y ruta */
-			return n.url == getRoute() && n.urlRegion == getRegion();
+			return n.url == slugRuta;
 		});
 		loadNavbar(grep_route);/* LLamo a la función que carga los datos del menú superior */
 		loadHeader(grep_route);/* Llamo a la función que carga los datos de la cabecera */
 		loadBody(grep_route);/* Llamo a la función que carga el cuerpo de los atractivos y mapa */
 		loadUsefulData(grep_route); /* Llamo a la función que carga la info del popup de Datos útiles */
 	});
+
 
 	/* En esta parte cargamos la data del archivo json, el cual contiene solo la info de las regiones */
 	$.getJSON("/assets/js/mapa/region.json", function(data) {
@@ -158,7 +160,7 @@ $(document).ready(function() {
 			var j = 0;
 			for(var i in data_places) {/* Empiezo a recorrer cada uno de los atractivos */
 				j++;
-				contenido += "<div class='wrapper-first-right-list-item' id='map-section-" + j + "' data-name='" + data_places[i].name + "' data-lat='" + data_places[i].coordinate[0].latitude + "' data-lng='" + data_places[i].coordinate[0].longitude + "'>";
+				contenido += "<div class='wrapper-first-right-list-item' id='map-section-" + j + "' data-name='" + data_places[i].name + "' data-lat='" + data_places[i].cordinate[0].latitude + "' data-lng='" + data_places[i].cordinate[0].longitude + "'>";
 				contenido += "<h3 class='wflitem-title'>";
 				contenido += "<span>" + j + "</span><label>" + data_places[i].name + "</label>";
 				contenido += "</h3>";
@@ -340,7 +342,7 @@ $(document).ready(function() {
 		var count = 0;
       	for(var i in data) {/* Recorremos cada uno de los atractivos */
       		count++;
-      		for(var j in data[i].coordinate) { /* entramos a las coordenadas de cada atractivo */
+      		for(var j in data[i].cordinate) { /* entramos a las coordenadas de cada atractivo */
       			fontAwesomeIcon = L.ExtraMarkers.icon({/* inicializamos el marcador con su configuración personalizada */
 		      		shape: "square",
 		      		markerColor: "violet",
@@ -349,7 +351,7 @@ $(document).ready(function() {
 		      		iconColor: "#fff",
 		      		number: count.toString()
 		      	});
-		      	let lat_lng = [parseFloat(data[i].coordinate[j].latitude), parseFloat(data[i].coordinate[j].longitude)];/* agrupamos las coordenadas del atractivo */
+		      	let lat_lng = [parseFloat(data[i].cordinate[j].latitude), parseFloat(data[i].cordinate[j].longitude)];/* agrupamos las coordenadas del atractivo */
 		      	marker = new L.marker(lat_lng, {icon: fontAwesomeIcon}).addTo(map).on("click", onMarkerClick);/* creamos la instancia del marcador con las coordenadas, icono personalizado, agregamos al mapa y le habilitamos la funcionalidad onMarkerClick */
 	      		marker.dataInfoID = "#map-section-" + count;/* añadimos atributos personalizados al marcador, el cual nos servirá para ubicar el atractivo cuando le demos un click al marcador */
 	      		marker.dataInfoName = data[i].name;

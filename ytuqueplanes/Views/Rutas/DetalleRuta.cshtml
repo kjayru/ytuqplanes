@@ -1,10 +1,13 @@
 ﻿
 @{
     ViewBag.Title = "DetalleRuta";
+    string grillaInicial = Model.rutas.Count>4?"-mas-4-":"";
+    grillaInicial = Model.rutas.Count>6?"-mas-4- -mas-6-":grillaInicial;
+    grillaInicial = Model.rutas.Count>8?"-mas-4- -mas-6- -mas-8-":grillaInicial;
     @* @ObjectInfo.Print(Model.rutas); *@
 }
 
-<section class="page__header" style="background-image: url(@ViewData["imagenProvincia"]);">
+<section class="page__header m--bg-black" style="background-image: url(@ViewData["imagenProvincia"]);">
     <div class="limit page__header__inset">
         <a href="/rutas-cortas" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
         <h2 class="page__header__titulo">Desde @ViewData["nombreProvincia"]</h2>
@@ -19,22 +22,22 @@
                 <div class="boton m--filtro m--grande filtro-selector__boton -activo- fnFiltrarGrilla" data-filtro="">
                     <strong>Todos</strong>
                 </div>
-                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="vivencial">
+                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Vivencial">
                     <strong>Vivencial</strong>
                 </div>
-                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="descanso">
+                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Descanso">
                     <strong>Descanso</strong>
                 </div>
-                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="naturaleza">
+                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Naturaleza">
                     <strong>Naturaleza</strong>
                 </div>
-                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="aventura">
+                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Aventura">
                     <strong>Aventura</strong>
                 </div>
-                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="historia">
+                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Historia">
                     <strong>Historia</strong>
                 </div>
-                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="viajes">
+                <div class="boton m--filtro m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Viajes">
                     <strong>Viajes</strong>
                 </div>
                 <div class="boton m--verde m--grande filtro-selector__select-ui">
@@ -50,7 +53,7 @@
                     </select>
                 </div>
             </div>
-            <div id="fnTargetFiltroGrilla" class="seccion__grilla -mostrar-todos- -mas-8-">
+            <div id="fnTargetFiltroGrilla" class="seccion__grilla -mostrar-todos- @grillaInicial">
                 <div class="seccion__grilla__bloques">
 
                      @foreach (ytuqueplanes.Models.RutaProvincia prov in Model.rutas)
@@ -64,10 +67,7 @@
                             </header>
                         </article>
 
-                    } 
-
-                  
-                 
+                    }
 
                 </div>
                 <div class="boton-contenedor">
