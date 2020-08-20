@@ -225,8 +225,10 @@ namespace ytuqueplanes.Controllers
                 minimumWeather = p.mintemp,
 
                 places = p.places.Select(d => new {
-                    description = d.descripcion,
+                    name = d.nombre,
                     order = d.id,
+                    description = d.descripcion,
+                   
                     height = d.height,
                     image = d.image,
                     apt = d.place_apt.Select(f => new { description = f.descripcion }),
