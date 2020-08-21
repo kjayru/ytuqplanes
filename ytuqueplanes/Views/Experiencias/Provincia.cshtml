@@ -1,21 +1,50 @@
-﻿
-@{
-    ViewBag.Title = "Provincia";
+﻿@{
+    ViewBag.Title = "Amazonas";
+    ViewBag.slug = "amazonas";
 }
 
-
-<section class="page__header m--ofertas" style="background-image: url('assets/images/rutas-cortas-2.jpg');">
+<section class="page__header m--ofertas" style="background-image: url('/assets/images/rutas-cortas-2.jpg');">
     <div class="limit page__header__inset">
-        <a href="/" class="page__header__miga-de-pan"><img src="assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
+        <a href="/" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
         <h2 class="page__header__titulo">Festividades</h2>
         <form action="" class="page__header__form">
             <input type="text" class="page__header__form__input" placeholder="Departamento" readonly>
             <div class="page__header__form__selector">
-                <div class="page__header__form__selector__contenido fnTargetSelect">San Martín</div>
-                <select class="page__header__form__selector__select fnSelect">
-                    <option value="Lima">Lima</option>
-                    <option value="San Martín" selected>San Martín</option>
-                    <option value="Los olivos">Los olivos</option>
+                <div class="page__header__form__selector__contenido fnTargetSelect">@ViewBag.Title</div>
+                <select class="page__header__form__selector__select fnSelect fnSelectUrlReload">
+                    <option value="/experiencias">Todos</option>
+                    @{
+                        var deps= new string[,] {
+                            {"Amazonas", "amazonas"},
+                            {"Áncash", "ancash"},
+                            {"Apurímac", "apurimac"},
+                            {"Arequipa", "arequipa"},
+                            {"Ayacucho", "ayacucho"},
+                            {"Cajamarca", "cajamarca"},
+                            {"Cusco", "cusco"},
+                            {"Huancavelíca", "huancavelica"},
+                            {"Huánuco", "huanuco"},
+                            {"Ica", "ica"},
+                            {"Junín", "junin"},
+                            {"La Libertad", "la-libertad"},
+                            {"Lambayeque", "lambayeque"},
+                            {"Lima", "lima"},
+                            {"Loreto", "loreto"},
+                            {"Madre De Dios", "madre-de-dios"},
+                            {"Moquegua", "moquegua"},
+                            {"Pasco", "pasco"},
+                            {"Piura", "piura"},
+                            {"Puno", "puno"},
+                            {"San Martín", "san-martin"},
+                            {"Tacna", "tacna"},
+                            {"Tumbes", "tumbes"},
+                            {"Ucayali", "ucayali"}
+                        };
+                        var depsSize = (deps.Length/2)-1;
+                    }
+                    @for(var i=0; i<=depsSize; i++){
+                        <option value="/experiencias/@deps[i,1]" @(ViewBag.slug==deps[i,1]?"selected":"")>@deps[i,0]</option>
+                    }
                 </select>
             </div>
             <button type="submit" class="page__header__form__selector__boton">Enviar</button>
@@ -28,27 +57,27 @@
     <div class="seccion m--contenedor-selector">
         <div class="limit">
             <div class="filtro-selector m--calendario">
-                <div class="boton m--filtro m--morado m--grande filtro-selector__boton -activo-" data-filtro="">
+                <div class="boton m--filtro m--morado m--grande filtro-selector__boton -activo- fnFiltroCalendario" data-filtro="">
                     <strong>Todas las festividades</strong>
                 </div>
-                <div class="boton m--filtro m--morado m--grande filtro-selector__boton" data-filtro="Norte">
+                <div class="boton m--filtro m--morado m--grande filtro-selector__boton fnFiltroCalendario" data-filtro="feriado">
                     <strong>Solo feriados</strong>
                 </div>
-                <div class="boton m--filtro m--morado m--grande filtro-selector__boton" data-filtro="Centro">
+                <div class="boton m--filtro m--morado m--grande filtro-selector__boton fnFiltroCalendario" data-filtro="fin">
                     <strong>Fines de semana</strong>
                 </div>
                 <div class="boton m--morado m--grande filtro-selector__select-ui">
                     <strong class="filtro-selector__select-ui__contenido">Todas las festividades</strong>
-                    <select class="filtro-selector__select-ui__select fnSelect">
+                    <select class="filtro-selector__select-ui__select fnSelect fnFiltroCalendario">
                         <option value="">Todas las festividades</option>
                         <option value="Solo feriados">Solo feriados</option>
                         <option value="Fines de semana">Fines de semana</option>
                     </select>
                 </div>
                 <div class="calendario__selector-mes">
-                    <span>Noviembre 2020</span>
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    <span id="calendario_mes_titulo"></span>
+                    <i id="calendario_mes_anterior" class="fa fa-chevron-left fnCambiarMes" aria-hidden="true"></i>
+                    <i id="calendario_mes_siguiente" class="fa fa-chevron-right fnCambiarMes" aria-hidden="true"></i>
                 </div>
             </div>
 
@@ -57,552 +86,7 @@
 
     <section class="seccion">
         <div class="limit">
-            <ul class="calendario">
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>1</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>2</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>3</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>4</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>5</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>6</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>7</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>8</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>9</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>10</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>11</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>12</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>13</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>14</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>15</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>16</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>17</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>18</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>19</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>20</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>21</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>22</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>23</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>24</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>25</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>26</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>27</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>28</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>29</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>30</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-                <li class="calendario__item">
-                    <div class="calendario__article">
-                        <time class="calendario__fecha">
-                            <span>Sab</span>
-                            <span>31</span>
-                        </time>
-                        <article class="calendario__festividad">
-                            <time class="calendario__hora"><i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 am</time>
-                            <strong class="calendario__resumen">Día de todos los santos</strong>
-                            <!-- <span class="calendario__lugar">Ayacucho</span> -->
-                            <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Fiestas patrías</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                        <article class="calendario__festividad">
-                            <strong class="calendario__resumen">Virgen del Pilar de Zaragoza y ...</strong>
-                            <a href="/experiencias/detalle/fiestas" class="calendario__enlace">Más información</a>
-                        </article>
-                    </div>
-                </li>
-            </ul>
+            <ul id="calendario" class="calendario"></ul>
             <div class="boton-contenedor">
                 <a href="#" download="download" class="boton m--grande m--morado m--padding-pequeno"><strong>Descargar el calendario en PDF</strong></a>
             </div>
@@ -610,4 +94,4 @@
     </section>
 
 </main>
-
+<script>const calendario_provincia = 'amazonas';</script>
