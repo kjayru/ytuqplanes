@@ -1435,6 +1435,14 @@
 	display flex
 	flex-wrap wrap
 
+	&.-filtrar-
+		.calendario
+			&__festividad
+				opacity 0.2
+				transition opacity ease 0.25s
+				&.-activo-
+					opacity 1
+
 	&__selector-mes
 		display inline-flex
 		font-size 1.4375rem
@@ -1451,7 +1459,7 @@
 
 	&__item
 		flex 0 0 14.28%
-		padding 0px 4px 40px 4px
+		padding 0px 4px 30px 4px
 
 	&__article
 		position relative
@@ -1465,6 +1473,7 @@
 		justify-content space-between
 
 	&__festividad
+		min-height 80px
 		padding 10px
 		color #636363
 		background-color #f5f5f5
@@ -1473,7 +1482,7 @@
 		position relative
 		transition all ease .25s
 
-		&:hover
+		&.full:hover
 			background-color crema
 			color #fff
 
@@ -1484,12 +1493,16 @@
 		display block
 		font-size 0.625rem
 
+	&__imagen
+		width 100%
+		margin-bottom 5px
+
 	&__resumen
 		font-family f-news
 		font-size 0.6875rem
 
 	&__lugar
-		margin-top 20px
+		margin-top 10px
 		display block
 		font-size 0.625rem
 

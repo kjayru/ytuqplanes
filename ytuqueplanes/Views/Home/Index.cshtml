@@ -1,10 +1,7 @@
 ﻿@model dynamic
 @{
     ViewBag.Title = "Inicio";
-
 }
-
-
 
 <section class="all swiper-container sliders fnSliderHome">
     <div class="swiper-wrapper">
@@ -74,12 +71,12 @@
             <article class="seccion__contenido">
                 <h2 class="seccion__titulo">¡No hay excusas!</h2>
                 <p class="seccion__resumen">Encuentra las mejores ofertas para tu próximo viaje.</p>
-                <a href="/ofertas" class="boton m--amarillo m--grande m--235"><strong>Ver todas las ofertas</strong></a>
+                <a href="https://ytuqueplanes-9c1b7.web.app/" target="_blank" class="boton m--amarillo m--grande m--235"><strong>Ver todas las ofertas</strong></a>
             </article>
             <div class="swiper-container seccion__slider fnSliderFree" data-api-tipo="card-poster-tipo-1" data-api-data="{'type[]': 'package', 'limit': '3'}">
                 <div class="swiper-wrapper"></div>
             </div>
-            <a href="/ofertas" class="boton m--amarillo m--grande m--235 seccion__boton-mobile"><strong>Ver todas las ofertas</strong></a>
+            <a href="https://ytuqueplanes-9c1b7.web.app/" target="_blank" class="boton m--amarillo m--grande m--235 seccion__boton-mobile"><strong>Ver todas las ofertas</strong></a>
         </div>
     </section>
 
@@ -88,12 +85,12 @@
             <article class="card-full" style="background-image: url('/assets/images/rutas-cortas-1.jpg');">
                 <header><h1 class="card-full__titulo">Rutas cortas</h1></header>
                 <p class="card-full__contenido">Una buena experiencia turística puede estar cerca de ti.</p>
-                <a href="#" class="boton m--grande m--morado m--padding-pequeno"><strong>Ver rutas</strong></a>
+                <a href="/rutas-cortas" class="boton m--grande m--morado m--padding-pequeno"><strong>Ver rutas</strong></a>
             </article>
         </div>
     </section>
 
-    <section class="seccion m--bg-tramado m--slider-grilla">
+    <section class="seccion m--slider-grilla">
         <div class="limit section__inset">
             <h4 class="seccion__titulo">Festivales y eventos</h4>
             <div class="swiper-container seccion__slider fnSliderGrilla">
@@ -108,19 +105,19 @@
                                 <h1 class="card-info__titulo">Fiesta de <br>@festividad.nombre</h1>
                                 <aside class="card-info__fecha">@festividad.inicio @festividad.mes</aside>
                             </header>
-                            <a href="#" class="card-info__mas-informacion">Más información</a>
+                            <a href="/experiencias/@festividad.slug" class="card-info__mas-informacion">Más información</a>
                         </article>
                     </div>
                     }
                 </div>
             </div>
             <div class="boton-contenedor">
-                <a href="#" class="boton m--morado m--grande m--padding-pequeno"><strong>Ver calendario de festividades</strong></a>
+                <a href="/experiencias" class="boton m--morado m--grande m--padding-pequeno"><strong>Ver calendario de festividades</strong></a>
             </div>
         </div>
     </section>
 
-    <section class="seccion">
+    @* <section class="seccion">
         <div class="limit">
             <article class="card-full m--centrado" style="background-image: url('/assets/images/bg_card-servicios.jpg');">
                 <header><h1 class="card-full__titulo">Servicios complementarios</h1></header>
@@ -128,6 +125,6 @@
                 <a href="#" class="boton m--grande m--morado m--padding-pequeno"><strong>Ver servicios</strong></a>
             </article>
         </div>
-    </section>
+    </section> *@
 
 </main>
