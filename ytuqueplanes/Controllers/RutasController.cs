@@ -158,6 +158,8 @@ namespace ytuqueplanes.Controllers
             //return Json(rp, JsonRequestBehavior.AllowGet);
            
             RutasModel.rutas = rp;
+            RutasModel.destacados = getDestacados();
+
             return View(RutasModel);
         }
 
@@ -291,10 +293,52 @@ namespace ytuqueplanes.Controllers
             return datos;
         }
 
-        private List<Destacado> getDestacados() {
+        private List<RutaProvincia> getDestacados() {
 
-           var rutas =  db.rutas.Where(c => c.destacar == true).Select(p => new { p.id }).ToList();
-            return null;
+           
+            List<RutaProvincia> rp = new List<RutaProvincia>();
+
+
+            var rutas = db.rutas.Where(c => c.destacar == true).Select(p => new {
+                p.titulo,
+                p.slug,
+                p.id,
+                p.categoria_ruta_id,
+                p.image,
+                p.provincia_id
+            }).ToList();
+
+          
+            for (var j = 0; j < rutas.Count; j++)
+            {
+                var rCatId = rutas[j].categoria_ruta_id;
+                var rutaId = rutas[j].id;
+                var provId = rutas[j].provincia_id;
+
+                var conteo = (from rt in db.places
+
+                              where rt.ruta_id == rutaId
+                              select new { rt.id }).Count();
+
+
+                var cat = db.categoria_ruta.Where(c => c.id == rCatId).Select(p => new { p.nombre }).First();
+                var prov = db.provincias.Where(c => c.id == provId).Select(p => new { p.nombre, p.slug, p.thumb }).FirstOrDefault();
+
+                rp.Add(
+                    new RutaProvincia
+                    {
+                        conteo = conteo,
+                        categoria = cat.nombre,
+                        provincia_thumb = prov.thumb,
+                        provincia_slug = prov.slug,
+                        nombre = rutas[j].titulo,
+                        slug = rutas[j].slug,
+                        imagen = rutas[j].image
+
+                    });
+            }
+
+            return rp;
         }
     }
 }
