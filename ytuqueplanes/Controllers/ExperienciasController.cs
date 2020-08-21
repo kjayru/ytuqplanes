@@ -42,7 +42,44 @@ namespace ytuqueplanes.Controllers
             return View();
         }
 
-        public ActionResult Detalle() {
+        public ActionResult Detalle(string provincia, string id) {
+
+            var festividad = db.festividades.Where(c => c.slug == id).Select(
+               p => new {
+                   p.id,
+                   p.nombre,
+                   p.inicio,
+                   p.final,
+                   p.provincia_id,
+                   p.imagen,
+                   p.contenido,
+                   p.mes_id,
+                   p.documento,
+                   p.slug,
+                   p.tipo_festividad
+                   
+                    }).FirstOrDefault();
+
+            var prov = db.provincias.Where(c => c.id == festividad.provincia_id).Select(p => new { p.slug, p.nombre }).FirstOrDefault();
+            var month = db.meses.Where(c => c.id == festividad.mes_id).Select(p => new { p.nombre }).FirstOrDefault();
+
+            ViewBag.id = festividad.id;
+            ViewBag.nombre = festividad.nombre;
+            ViewBag.inicio = festividad.inicio;
+            ViewBag.final = festividad.final;
+            ViewBag.provincia_id = festividad.provincia_id;
+            ViewBag.imagen = festividad.imagen;
+            ViewBag.contenido = festividad.contenido;
+            ViewBag.mes = month.nombre;
+            ViewBag.mes_id = festividad.mes_id;
+            ViewBag.documento = festividad.documento;
+            ViewBag.slug = festividad.slug;
+            ViewBag.tipo_festividad = festividad.tipo_festividad;
+            ViewBag.provincia_slug = id;
+            ViewBag.provincia = prov.nombre;
+            
+
+
             return View();
         }
 

@@ -14,33 +14,33 @@
     <section class="seccion">
         <div class="limit">
             <div class="destinos__festividad-detalle">
-                <img src="/assets/images/festividad.jpg" alt="" class="destinos__festividad-detalle__imagen">
+                <img src="@ViewBag.imagen" alt="" class="destinos__festividad-detalle__imagen">
                 <div class="destinos__festividad-detalle__contenido">
                     <article class="destinos__detalle">
                         <header class="destinos__detalle__header">
-                            <address class="destinos__detalle__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> Ayacucho</address>
-                            <h2 class="destinos__detalle__titulo">Todos los Santos</h2>
-                            <time class="destinos__detalle__fecha">1 de nov</time>
+                            <address class="destinos__detalle__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> @ViewBag.provincia</address>
+                            <h2 class="destinos__detalle__titulo">@ViewBag.nombre</h2>
+                            <time class="destinos__detalle__fecha">@ViewBag.mes_id de @ViewBag.mes</time>
                         </header>
-                        <p>Tradicional visita a los cementerios. En algunos recintos se permite la celebración de tradiciones ancestrales y el ingreso de comida, bebida y música para compartir en presencia de los difuntos. En la Plaza se elabora una guagua de pan muy grande, que se comparte entre los asistentes.</p>
-                        <aside class="destinos__detalle__tags">
-                            <strong>Tag 1</strong>
-                            <strong>Tag 2</strong>
-                            <strong>Tag 3</strong>
-                            <strong>Tag 4</strong>
-                        </aside>
+                        @Html.Raw(ViewBag.contenido)
+                        <!--<aside class="destinos__detalle__tags">
+        <strong>Tag 1</strong>
+        <strong>Tag 2</strong>
+        <strong>Tag 3</strong>
+        <strong>Tag 4</strong>
+    </aside>-->
                     </article>
                     <div class="destinos__detalle__footer">
-                        <strong class="destinos__detalle__me-gusta">
+                        <!--<strong class="destinos__detalle__me-gusta">
                             <span>
                                 <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                             </span>
-                        </strong>
+                        </strong>-->
                         <a href="#" class="destinos__detalle__redes m--facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         <a href="#" class="destinos__detalle__redes m--twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                         <a href="#" class="destinos__detalle__redes m--wsp"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
                     </div>
-                    <a href="#" download="download" class="boton m--grande m--morado m--padding-pequeno"><strong>Descargar cronograma</strong></a>
+                    <a href="@ViewBag.documento" download="download" class="boton m--grande m--morado m--padding-pequeno"><strong>Descargar cronograma</strong></a>
                 </div>
             </div>
         </div>
