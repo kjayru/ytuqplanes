@@ -59,7 +59,7 @@
                      @foreach (ytuqueplanes.Models.RutaProvincia prov in Model.rutas)
                     {
                         <article class="card-poster m--tipo5" data-filtro="@prov.categoria">
-                            <img src="@prov.provincia_thumb" alt="" class="card-poster__imagen">
+                            <img src="/@prov.imagen" alt="" class="card-poster__imagen">
                             <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@prov.provincia_nombre</aside>
                             <header class="card-poster__header">
                                 <h1 class="card-poster__titulo">@prov.nombre</h1>

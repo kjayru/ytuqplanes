@@ -124,7 +124,7 @@ namespace ytuqueplanes.Controllers
 
                           }).ToList();*/
 
-            var rutas = db.rutas.Where(d => d.provincia_id == pv.id).Select( p => new {  p.titulo ,p.slug, p.id,p.categoria_ruta_id}).ToList();
+            var rutas = db.rutas.Where(d => d.provincia_id == pv.id).Select( p => new {  p.titulo ,p.slug, p.id,p.categoria_ruta_id, p.image}).ToList();
 
            //eturn Json(rutas, JsonRequestBehavior.AllowGet);
 
@@ -149,7 +149,9 @@ namespace ytuqueplanes.Controllers
                         provincia_thumb = pv.imagen,
                         provincia_slug = pv.slug,
                         nombre = rutas[j].titulo,
-                        slug = rutas[j].slug
+                        slug = rutas[j].slug,
+                        imagen = rutas[j].image
+
                     });
             }
 
@@ -289,6 +291,10 @@ namespace ytuqueplanes.Controllers
             return datos;
         }
 
+        private List<Destacado> getDestacados() {
 
+           var rutas =  db.rutas.Where(c => c.destacar == true).Select(p => new { p.id }).ToList();
+            return null;
+        }
     }
 }
