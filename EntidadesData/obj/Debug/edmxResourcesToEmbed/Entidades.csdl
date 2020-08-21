@@ -140,6 +140,7 @@
     <Property Name="documento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="mes" Relationship="Self.FK__festivida__mes_i__4F7CD00D" FromRole="festividades" ToRole="meses" />
+    <Property Name="tipo_festividad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="icono">
     <Key>
@@ -332,6 +333,7 @@
     <Property Name="estado" Type="Int32" />
     <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="festivida_pdf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="rating">
     <Key>

@@ -14,10 +14,30 @@ namespace ytuqueplanes.Controllers
         // GET: Experiencias
         public ActionResult Index()
         {
+            var fest = db.provincias.Where(c => c.id == 26).Select(p => new { p.festivida_pdf }).FirstOrDefault();
+
+            ViewBag.festividadesPdf = fest.festivida_pdf;
+
             return View();
         }
 
         public ActionResult Provincia(string id) {
+
+            var festPdf = db.provincias.Where(c => c.slug == id).Select(p => new { p.festivida_pdf, p.slug }).FirstOrDefault();
+            var festividadPdf = "";
+            if (festPdf !=null)
+            {
+               
+                 festividadPdf = festPdf.festivida_pdf;
+            }
+            else
+            {
+                var nac = db.provincias.Where(c => c.id == 26).Select(p => new { p.festivida_pdf }).FirstOrDefault();
+                 festividadPdf = nac.festivida_pdf;
+            }
+
+            ViewBag.festividadesPdf = festividadPdf;
+            ViewBag.provinciaSlug = id;
 
             return View();
         }
@@ -28,7 +48,9 @@ namespace ytuqueplanes.Controllers
 
         public ActionResult AllResult() {
 
-
+            DateTime localDate = DateTime.Now;
+            var year = localDate.Year;
+                
 
             var ft = from t1 in db.festividades
             join t2 in db.provincias
@@ -46,7 +68,9 @@ namespace ytuqueplanes.Controllers
                 provincia_slug = t2.slug,
                 imagen  = t1.imagen,
                 mes = t1.mes_id,
-                slug = t1.slug
+                slug = t1.slug,
+                tipo_de_festividad = t1.tipo_festividad
+               
 
             };
 
@@ -67,7 +91,9 @@ namespace ytuqueplanes.Controllers
                         imagen = fest[i].imagen,
                         mes_id = fest[i].mes,
                         slug = fest[i].slug,
-                        provincia_slug = fest[i].provincia_slug
+                        provincia_slug = fest[i].provincia_slug,
+                        tipo_de_festividad = fest[i].tipo_de_festividad,
+                        anio = year.ToString()
                     });
             }
 
@@ -79,6 +105,10 @@ namespace ytuqueplanes.Controllers
 
         public ActionResult EPProvincia(string id)
         {
+            DateTime localDate = DateTime.Now;
+            var year = localDate.Year;
+
+
             var prov = db.provincias.Where(d => d.slug == id).Select(p => new { p.id, p.nombre, p.slug }).First();
 
 
@@ -98,7 +128,8 @@ namespace ytuqueplanes.Controllers
                          provincia_slug = t2.slug,
                          imagen = t1.imagen,
                          mes = t1.mes_id,
-                         slug = t1.slug
+                         slug = t1.slug,
+                         tipo_de_festividad = t1.tipo_festividad
 
                      };
 
@@ -120,7 +151,9 @@ namespace ytuqueplanes.Controllers
                         imagen = fest[i].imagen,
                         mes_id = fest[i].mes,
                         slug = fest[i].slug,
-                        provincia_slug = fest[i].provincia_slug
+                        provincia_slug = fest[i].provincia_slug,
+                        tipo_de_festividad = fest[i].tipo_de_festividad,
+                        anio = year.ToString()
                     });
             }
 

@@ -166,6 +166,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.festividad_tag' no tiene 
     <Property Name="likes" Type="int" />
     <Property Name="documento" Type="varchar" MaxLength="200" />
     <Property Name="slug" Type="varchar" MaxLength="255" />
+    <Property Name="tipo_festividad" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="iconos">
     <Key>
@@ -422,6 +423,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_tag' no tiene defini
     <Property Name="estado" Type="int" />
     <Property Name="descripcion" Type="text" />
     <Property Name="slug" Type="varchar" MaxLength="255" />
+    <Property Name="festivida_pdf" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="ratings">
     <Key>

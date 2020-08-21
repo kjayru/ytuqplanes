@@ -82,7 +82,8 @@ namespace ytuqueplanes.Controllers
 
 
             RutasModel.provincias = rp;
-           // return Json(rp, JsonRequestBehavior.AllowGet);
+            RutasModel.destacados = getDestacados();
+            // return Json(rp, JsonRequestBehavior.AllowGet);
             return View(RutasModel);
         }
 
@@ -113,16 +114,6 @@ namespace ytuqueplanes.Controllers
             List<RutaProvincia> rp = new List<RutaProvincia>();
 
 
-            /* var rutas = (from rt in db.rutas
-                          join prv in db.provincias on rt.provincia_id equals pv.id
-                          where rt.provincia_id == prv.id
-                          group rt by rt.categoria_ruta_id into g
-                          select new
-                          {
-                               catId = g.Key,
-
-
-                          }).ToList();*/
 
             var rutas = db.rutas.Where(d => d.provincia_id == pv.id).Select( p => new {  p.titulo ,p.slug, p.id,p.categoria_ruta_id, p.image}).ToList();
 

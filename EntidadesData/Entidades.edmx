@@ -171,6 +171,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.festividad_tag' no tiene 
           <Property Name="likes" Type="int" />
           <Property Name="documento" Type="varchar" MaxLength="200" />
           <Property Name="slug" Type="varchar" MaxLength="255" />
+          <Property Name="tipo_festividad" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="iconos">
           <Key>
@@ -427,6 +428,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_tag' no tiene defini
           <Property Name="estado" Type="int" />
           <Property Name="descripcion" Type="text" />
           <Property Name="slug" Type="varchar" MaxLength="255" />
+          <Property Name="festivida_pdf" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="ratings">
           <Key>
@@ -1125,6 +1127,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="documento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="mes" Relationship="Self.FK__festivida__mes_i__4F7CD00D" FromRole="festividades" ToRole="meses" />
+          <Property Name="tipo_festividad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="icono">
           <Key>
@@ -1317,6 +1320,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="estado" Type="Int32" />
           <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="festivida_pdf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="rating">
           <Key>
@@ -2044,6 +2048,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="festividades">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.festividade">
               <MappingFragment StoreEntitySet="festividades">
+                <ScalarProperty Name="tipo_festividad" ColumnName="tipo_festividad" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="inicio" ColumnName="inicio" />
@@ -2237,6 +2242,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="provincias">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.provincia">
               <MappingFragment StoreEntitySet="provincias">
+                <ScalarProperty Name="festivida_pdf" ColumnName="festivida_pdf" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="region_id" ColumnName="region_id" />

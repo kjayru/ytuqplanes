@@ -54,46 +54,26 @@
             <h3 class="seccion__titulo">Mira las rutas destacadas del mes</h3>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo5">
-                            <img src="/assets/images/rutas-cortas-5.jpg" alt="" class="card-poster__imagen">
-                            <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
-                            <header class="card-poster__header">
-                                <h1 class="card-poster__titulo">Barranca <br>Ciudad Sagrada Caral</h1>
-                                <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 3 lugares</strong></a>
-                            </header>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo5">
-                            <img src="/assets/images/rutas-cortas-10.jpg" alt="" class="card-poster__imagen">
-                            <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
-                            <header class="card-poster__header">
-                                <h1 class="card-poster__titulo">Barranca <br>Ciudad Sagrada Caral</h1>
-                                <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 6 lugares</strong></a>
-                            </header>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo5">
-                            <img src="/assets/images/rutas-cortas-3.jpg" alt="" class="card-poster__imagen">
-                            <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
-                            <header class="card-poster__header">
-                                <h1 class="card-poster__titulo">Barranca <br>Ciudad Sagrada Caral</h1>
-                                <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 9 lugares</strong></a>
-                            </header>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo5">
-                            <img src="/assets/images/rutas-cortas-9.jpg" alt="" class="card-poster__imagen">
-                            <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</aside>
-                            <header class="card-poster__header">
-                                <h1 class="card-poster__titulo">Barranca <br>Ciudad Sagrada Caral</h1>
-                                <a href="#" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver 12 lugares</strong></a>
-                            </header>
-                        </article>
-                    </div>
+
+
+                    @foreach (ytuqueplanes.Models.RutaProvincia dest in Model.destacados)
+                    {
+
+                        <div class="swiper-slide">
+                            <article class="card-poster m--tipo5">
+                                <img src="/@dest.imagen" alt="" class="card-poster__imagen">
+                                <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@dest.provincia_nombre</aside>
+                                <header class="card-poster__header">
+                                    <h1 class="card-poster__titulo">Barranca <br>@dest.nombre</h1>
+                                    <a href="/rutas-cortas/@dest.provincia_slug/@dest.slug" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver @dest.conteo lugares</strong></a>
+                                </header>
+                            </article>
+                        </div>
+
+                    }
+                   
+
+
                 </div>
             </div>
         </div>

@@ -24,5 +24,6 @@ namespace EntidadesData
         public Nullable<int> estado { get; set; }
         public string descripcion { get; set; }
         public string slug { get; set; }
+        public string festivida_pdf { get; set; }
     }
 }
