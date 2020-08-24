@@ -444,6 +444,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_tag' no tiene defini
           <Property Name="descripcion" Type="text" />
           <Property Name="slug" Type="varchar" MaxLength="255" />
           <Property Name="festivida_pdf" Type="varchar" MaxLength="255" />
+          <Property Name="tenencuenta" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="ratings">
           <Key>
@@ -1373,6 +1374,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="festivida_pdf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="provincia_comollegar" Relationship="ytuqueplanesDBModel.fk_comollegarprovincia_provincia" FromRole="provincia" ToRole="provincia_comollegar" />
+          <Property Name="tenencuenta" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="rating">
           <Key>
@@ -2344,6 +2346,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="provincias">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.provincia">
               <MappingFragment StoreEntitySet="provincias">
+                <ScalarProperty Name="tenencuenta" ColumnName="tenencuenta" />
                 <ScalarProperty Name="festivida_pdf" ColumnName="festivida_pdf" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />

@@ -141,9 +141,12 @@
                     }
                     </div>
             </div>
+            @if (ViewBag.tenencuenta!=null)
+            {
             <p class="seccion__texto-inferior">
-                <strong>Ten en cuenta:</strong> Los precios suelen variar en días festivos. Precio por persona. Duración apróximada, puede variar por factores externos.
+                <strong>Ten en cuenta:</strong> @ViewBag.tenencuenta
             </p>
+            }
         </div>
     </section>
 

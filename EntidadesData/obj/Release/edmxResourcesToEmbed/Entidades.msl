@@ -330,6 +330,7 @@
     <EntitySetMapping Name="provincias">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.provincia">
         <MappingFragment StoreEntitySet="provincias">
+          <ScalarProperty Name="tenencuenta" ColumnName="tenencuenta" />
           <ScalarProperty Name="festivida_pdf" ColumnName="festivida_pdf" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />

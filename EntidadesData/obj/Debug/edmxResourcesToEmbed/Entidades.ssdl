@@ -439,6 +439,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_tag' no tiene defini
     <Property Name="descripcion" Type="text" />
     <Property Name="slug" Type="varchar" MaxLength="255" />
     <Property Name="festivida_pdf" Type="varchar" MaxLength="255" />
+    <Property Name="tenencuenta" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="ratings">
     <Key>

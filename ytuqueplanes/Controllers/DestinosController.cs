@@ -36,11 +36,12 @@ namespace ytuqueplanes.Controllers
 
             dynamic datosDestinoModel = new ExpandoObject();
             
-            var prov = db.provincias.Where(c => c.slug == id).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).First();
+            var prov = db.provincias.Where(c => c.slug == id).Select(p => new { p.id, p.nombre, p.slug, p.imagen, p.tenencuenta }).First();
 
             ViewBag.slugProvincia = prov.slug;
             ViewBag.nombreProvincia = prov.nombre;
             ViewBag.imagenProvincia = prov.imagen;
+            ViewBag.tenencuenta = prov.tenencuenta;
 
             var dt = from t1 in db.destinos
                      join t2 in db.experiencias
