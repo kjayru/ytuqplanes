@@ -23,7 +23,7 @@ namespace ytuqueplanes.Controllers
 
         public ActionResult Provincia(string id) {
 
-            var festPdf = db.provincias.Where(c => c.slug == id).Select(p => new { p.festivida_pdf, p.slug }).FirstOrDefault();
+            var festPdf = db.provincias.Where(c => c.slug == id).Select(p => new { p.festivida_pdf, p.slug,p.id }).FirstOrDefault();
             var festividadPdf = "";
             if (festPdf !=null)
             {
@@ -38,6 +38,10 @@ namespace ytuqueplanes.Controllers
 
             ViewBag.festividadesPdf = festividadPdf;
             ViewBag.provinciaSlug = id;
+
+
+
+         
 
             return View();
         }

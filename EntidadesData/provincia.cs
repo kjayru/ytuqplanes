@@ -14,6 +14,12 @@ namespace EntidadesData
     
     public partial class provincia
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public provincia()
+        {
+            this.provincia_comollegar = new HashSet<provincia_comollegar>();
+        }
+    
         public int id { get; set; }
         public string nombre { get; set; }
         public Nullable<int> region_id { get; set; }
@@ -25,5 +31,8 @@ namespace EntidadesData
         public string descripcion { get; set; }
         public string slug { get; set; }
         public string festivida_pdf { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<provincia_comollegar> provincia_comollegar { get; set; }
     }
 }

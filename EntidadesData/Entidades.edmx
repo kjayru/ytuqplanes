@@ -103,6 +103,7 @@
           <Property Name="alt" Type="varchar" MaxLength="255" />
           <Property Name="created_at" Type="datetime" />
           <Property Name="updated_at" Type="datetime" />
+          <Property Name="recomendar" Type="int" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.destino_como_llegar' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -115,6 +116,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.destino_como_llegar' no t
           <Property Name="distancia" Type="varchar" MaxLength="255" />
           <Property Name="tiempo_viaje" Type="varchar" MaxLength="255" />
           <Property Name="waze" Type="varchar" MaxLength="255" />
+          <Property Name="recomendar" Type="int" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.destino_seo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -166,7 +168,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.festividad_tag' no tiene 
           <Property Name="final" Type="int" Nullable="false" />
           <Property Name="provincia_id" Type="int" Nullable="false" />
           <Property Name="imagen" Type="varchar" MaxLength="150" />
-          <Property Name="contenido" Type="varchar" MaxLength="255" />
+          <Property Name="contenido" Type="text" />
           <Property Name="mes_id" Type="int" />
           <Property Name="likes" Type="int" />
           <Property Name="documento" Type="varchar" MaxLength="200" />
@@ -413,6 +415,19 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_tag' no tiene defini
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="destino_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="provincia_comollegar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="como_llegar_id" Type="int" Nullable="false" />
+          <Property Name="duracion" Type="varchar" MaxLength="200" />
+          <Property Name="distancia" Type="varchar" MaxLength="200" />
+          <Property Name="empresa" Type="varchar" MaxLength="200" />
+          <Property Name="waze" Type="varchar" MaxLength="200" />
+          <Property Name="provincia_id" Type="int" Nullable="false" />
+          <Property Name="recomendar" Type="int" />
         </EntityType>
         <EntityType Name="provincias">
           <Key>
@@ -695,6 +710,30 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_comollegarprovincia_comollegar">
+          <End Role="como_llegar" Type="Self.como_llegar" Multiplicity="1" />
+          <End Role="provincia_comollegar" Type="Self.provincia_comollegar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="como_llegar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="provincia_comollegar">
+              <PropertyRef Name="como_llegar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_comollegarprovincia_provincia">
+          <End Role="provincias" Type="Self.provincias" Multiplicity="1" />
+          <End Role="provincia_comollegar" Type="Self.provincia_comollegar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="provincia_comollegar">
+              <PropertyRef Name="provincia_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_opciones_oferta">
           <End Role="ofertas" Type="Self.ofertas" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -831,6 +870,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySet Name="places" EntityType="Self.places" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="posts" EntityType="Self.posts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="preferencias_destino" EntityType="Self.preferencias_destino" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="provincia_comollegar" EntityType="Self.provincia_comollegar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="provincias" EntityType="Self.provincias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ratings" EntityType="Self.ratings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="redes_soclaies" EntityType="Self.redes_soclaies" Schema="dbo" store:Type="Tables" />
@@ -853,7 +893,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
     [destino_como_llegar].[como_llegar_id] AS [como_llegar_id], 
     [destino_como_llegar].[distancia] AS [distancia], 
     [destino_como_llegar].[tiempo_viaje] AS [tiempo_viaje], 
-    [destino_como_llegar].[waze] AS [waze]
+    [destino_como_llegar].[waze] AS [waze], 
+    [destino_como_llegar].[recomendar] AS [recomendar]
     FROM [dbo].[destino_como_llegar] AS [destino_como_llegar]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="destino_seo" EntityType="Self.destino_seo" store:Type="Tables" store:Schema="dbo">
@@ -949,6 +990,14 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <AssociationSet Name="FK__ofertas__categor__534D60F1" Association="Self.FK__ofertas__categor__534D60F1">
             <End Role="categorias" EntitySet="categorias" />
             <End Role="ofertas" EntitySet="ofertas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_comollegarprovincia_comollegar" Association="Self.fk_comollegarprovincia_comollegar">
+            <End Role="como_llegar" EntitySet="como_llegar" />
+            <End Role="provincia_comollegar" EntitySet="provincia_comollegar" />
+          </AssociationSet>
+          <AssociationSet Name="fk_comollegarprovincia_provincia" Association="Self.fk_comollegarprovincia_provincia">
+            <End Role="provincias" EntitySet="provincias" />
+            <End Role="provincia_comollegar" EntitySet="provincia_comollegar" />
           </AssociationSet>
           <AssociationSet Name="fk_opciones_oferta" Association="Self.fk_opciones_oferta">
             <End Role="ofertas" EntitySet="ofertas" />
@@ -1088,6 +1137,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="alt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="provincia_comollegar" Relationship="ytuqueplanesDBModel.fk_comollegarprovincia_comollegar" FromRole="como_llegar" ToRole="provincia_comollegar" />
+          <Property Name="recomendar" Type="Int32" />
         </EntityType>
         <EntityType Name="destino">
           <Key>
@@ -1121,7 +1172,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="final" Type="Int32" Nullable="false" />
           <Property Name="provincia_id" Type="Int32" Nullable="false" />
           <Property Name="imagen" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="contenido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="mes_id" Type="Int32" />
           <Property Name="likes" Type="Int32" />
           <Property Name="documento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -1321,6 +1372,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="festivida_pdf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="provincia_comollegar" Relationship="ytuqueplanesDBModel.fk_comollegarprovincia_provincia" FromRole="provincia" ToRole="provincia_comollegar" />
         </EntityType>
         <EntityType Name="rating">
           <Key>
@@ -1511,6 +1563,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="distancia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="tiempo_viaje" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="waze" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="recomendar" Type="Int32" />
         </EntityType>
         <EntityType Name="destino_seo">
           <Key>
@@ -1825,6 +1878,15 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="tipotransporte" EntitySet="tipotransportes" />
             <End Role="transporte" EntitySet="transportes" />
           </AssociationSet>
+          <EntitySet Name="provincia_comollegar" EntityType="ytuqueplanesDBModel.provincia_comollegar" />
+          <AssociationSet Name="fk_comollegarprovincia_comollegar" Association="ytuqueplanesDBModel.fk_comollegarprovincia_comollegar">
+            <End Role="como_llegar" EntitySet="como_llegar" />
+            <End Role="provincia_comollegar" EntitySet="provincia_comollegar" />
+          </AssociationSet>
+          <AssociationSet Name="fk_comollegarprovincia_provincia" Association="ytuqueplanesDBModel.fk_comollegarprovincia_provincia">
+            <End Role="provincia" EntitySet="provincias" />
+            <End Role="provincia_comollegar" EntitySet="provincia_comollegar" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="foreing_activity_place">
           <End Type="ytuqueplanesDBModel.place" Role="place" Multiplicity="0..1">
@@ -1905,6 +1967,45 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Principal>
             <Dependent Role="transporte">
               <PropertyRef Name="tipotransporte_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="provincia_comollegar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="como_llegar_id" Type="Int32" Nullable="false" />
+          <Property Name="duracion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="distancia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="empresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="waze" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="provincia_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="como_llegar" Relationship="ytuqueplanesDBModel.fk_comollegarprovincia_comollegar" FromRole="provincia_comollegar" ToRole="como_llegar" />
+          <NavigationProperty Name="provincia" Relationship="ytuqueplanesDBModel.fk_comollegarprovincia_provincia" FromRole="provincia_comollegar" ToRole="provincia" />
+          <Property Name="recomendar" Type="Int32" />
+        </EntityType>
+        <Association Name="fk_comollegarprovincia_comollegar">
+          <End Type="ytuqueplanesDBModel.como_llegar" Role="como_llegar" Multiplicity="1" />
+          <End Type="ytuqueplanesDBModel.provincia_comollegar" Role="provincia_comollegar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="como_llegar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="provincia_comollegar">
+              <PropertyRef Name="como_llegar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_comollegarprovincia_provincia">
+          <End Type="ytuqueplanesDBModel.provincia" Role="provincia" Multiplicity="1" />
+          <End Type="ytuqueplanesDBModel.provincia_comollegar" Role="provincia_comollegar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="provincia_comollegar">
+              <PropertyRef Name="provincia_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2013,6 +2114,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="como_llegar">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.como_llegar">
               <MappingFragment StoreEntitySet="como_llegar">
+                <ScalarProperty Name="recomendar" ColumnName="recomendar" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -2445,6 +2547,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="destino_como_llegar">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.destino_como_llegar">
               <MappingFragment StoreEntitySet="destino_como_llegar">
+                <ScalarProperty Name="recomendar" ColumnName="recomendar" />
                 <ScalarProperty Name="destino_id" ColumnName="destino_id" />
                 <ScalarProperty Name="como_llegar_id" ColumnName="como_llegar_id" />
                 <ScalarProperty Name="distancia" ColumnName="distancia" />
@@ -2538,6 +2641,20 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
               <MappingFragment StoreEntitySet="rutas_seo">
                 <ScalarProperty Name="ruta_id" ColumnName="ruta_id" />
                 <ScalarProperty Name="seo_id" ColumnName="seo_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provincia_comollegar">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.provincia_comollegar">
+              <MappingFragment StoreEntitySet="provincia_comollegar">
+                <ScalarProperty Name="recomendar" ColumnName="recomendar" />
+                <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
+                <ScalarProperty Name="waze" ColumnName="waze" />
+                <ScalarProperty Name="empresa" ColumnName="empresa" />
+                <ScalarProperty Name="distancia" ColumnName="distancia" />
+                <ScalarProperty Name="duracion" ColumnName="duracion" />
+                <ScalarProperty Name="como_llegar_id" ColumnName="como_llegar_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

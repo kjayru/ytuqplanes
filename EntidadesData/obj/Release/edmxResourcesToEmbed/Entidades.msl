@@ -100,6 +100,7 @@
     <EntitySetMapping Name="como_llegar">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.como_llegar">
         <MappingFragment StoreEntitySet="como_llegar">
+          <ScalarProperty Name="recomendar" ColumnName="recomendar" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -532,6 +533,7 @@
     <EntitySetMapping Name="destino_como_llegar">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.destino_como_llegar">
         <MappingFragment StoreEntitySet="destino_como_llegar">
+          <ScalarProperty Name="recomendar" ColumnName="recomendar" />
           <ScalarProperty Name="destino_id" ColumnName="destino_id" />
           <ScalarProperty Name="como_llegar_id" ColumnName="como_llegar_id" />
           <ScalarProperty Name="distancia" ColumnName="distancia" />
@@ -625,6 +627,20 @@
         <MappingFragment StoreEntitySet="rutas_seo">
           <ScalarProperty Name="ruta_id" ColumnName="ruta_id" />
           <ScalarProperty Name="seo_id" ColumnName="seo_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="provincia_comollegar">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.provincia_comollegar">
+        <MappingFragment StoreEntitySet="provincia_comollegar">
+          <ScalarProperty Name="recomendar" ColumnName="recomendar" />
+          <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
+          <ScalarProperty Name="waze" ColumnName="waze" />
+          <ScalarProperty Name="empresa" ColumnName="empresa" />
+          <ScalarProperty Name="distancia" ColumnName="distancia" />
+          <ScalarProperty Name="duracion" ColumnName="duracion" />
+          <ScalarProperty Name="como_llegar_id" ColumnName="como_llegar_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

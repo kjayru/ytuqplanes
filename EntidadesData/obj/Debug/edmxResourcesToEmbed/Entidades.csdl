@@ -101,6 +101,8 @@
     <Property Name="alt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="created_at" Type="DateTime" Precision="3" />
     <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="provincia_comollegar" Relationship="ytuqueplanesDBModel.fk_comollegarprovincia_comollegar" FromRole="como_llegar" ToRole="provincia_comollegar" />
+    <Property Name="recomendar" Type="Int32" />
   </EntityType>
   <EntityType Name="destino">
     <Key>
@@ -134,7 +136,7 @@
     <Property Name="final" Type="Int32" Nullable="false" />
     <Property Name="provincia_id" Type="Int32" Nullable="false" />
     <Property Name="imagen" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="contenido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="mes_id" Type="Int32" />
     <Property Name="likes" Type="Int32" />
     <Property Name="documento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -334,6 +336,7 @@
     <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="festivida_pdf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="provincia_comollegar" Relationship="ytuqueplanesDBModel.fk_comollegarprovincia_provincia" FromRole="provincia" ToRole="provincia_comollegar" />
   </EntityType>
   <EntityType Name="rating">
     <Key>
@@ -524,6 +527,7 @@
     <Property Name="distancia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="tiempo_viaje" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="waze" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="recomendar" Type="Int32" />
   </EntityType>
   <EntityType Name="destino_seo">
     <Key>
@@ -838,6 +842,15 @@
       <End Role="tipotransporte" EntitySet="tipotransportes" />
       <End Role="transporte" EntitySet="transportes" />
     </AssociationSet>
+    <EntitySet Name="provincia_comollegar" EntityType="ytuqueplanesDBModel.provincia_comollegar" />
+    <AssociationSet Name="fk_comollegarprovincia_comollegar" Association="ytuqueplanesDBModel.fk_comollegarprovincia_comollegar">
+      <End Role="como_llegar" EntitySet="como_llegar" />
+      <End Role="provincia_comollegar" EntitySet="provincia_comollegar" />
+    </AssociationSet>
+    <AssociationSet Name="fk_comollegarprovincia_provincia" Association="ytuqueplanesDBModel.fk_comollegarprovincia_provincia">
+      <End Role="provincia" EntitySet="provincias" />
+      <End Role="provincia_comollegar" EntitySet="provincia_comollegar" />
+    </AssociationSet>
   </EntityContainer>
   <Association Name="foreing_activity_place">
     <End Type="ytuqueplanesDBModel.place" Role="place" Multiplicity="0..1">
@@ -918,6 +931,45 @@
       </Principal>
       <Dependent Role="transporte">
         <PropertyRef Name="tipotransporte_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="provincia_comollegar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="como_llegar_id" Type="Int32" Nullable="false" />
+    <Property Name="duracion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="distancia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="empresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="waze" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="provincia_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="como_llegar" Relationship="ytuqueplanesDBModel.fk_comollegarprovincia_comollegar" FromRole="provincia_comollegar" ToRole="como_llegar" />
+    <NavigationProperty Name="provincia" Relationship="ytuqueplanesDBModel.fk_comollegarprovincia_provincia" FromRole="provincia_comollegar" ToRole="provincia" />
+    <Property Name="recomendar" Type="Int32" />
+  </EntityType>
+  <Association Name="fk_comollegarprovincia_comollegar">
+    <End Type="ytuqueplanesDBModel.como_llegar" Role="como_llegar" Multiplicity="1" />
+    <End Type="ytuqueplanesDBModel.provincia_comollegar" Role="provincia_comollegar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="como_llegar">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="provincia_comollegar">
+        <PropertyRef Name="como_llegar_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_comollegarprovincia_provincia">
+    <End Type="ytuqueplanesDBModel.provincia" Role="provincia" Multiplicity="1" />
+    <End Type="ytuqueplanesDBModel.provincia_comollegar" Role="provincia_comollegar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provincia">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="provincia_comollegar">
+        <PropertyRef Name="provincia_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

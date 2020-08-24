@@ -73,79 +73,73 @@
             </div>
         </div>
     </section>
-
+    @if (ViewBag.countComollegar > 0)
+    {
     <section class="seccion m--slider-standard m--transporte">
         <div class="limit">
             <h3 class="seccion__titulo">¿No sabes como llegar? Mira las siguientes opciones de transporte disponibles</h3>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <article class="card-transporte">
-                            <header class="card-transporte__header">
-                                <figure class="card-transporte__imagen">
-                                    <img src="/assets/images/avion-svg.svg" alt="" />
-                                </figure>
-                                <strong class="card-transporte__titulo">Avión</strong>
-                            </header>
-                            <dl class="card-transporte__lista">
-                                <dt>Duración:</dt>
-                                <dd>2hrs</dd>
-                                <dt>Aerolíneas:</dt>
-                                <dd><a href="#">Latam</a>, <a href="#">Viva Air</a>, <a href="#">JetSmart</a>.</dd>
-                            </dl>
-                            <span class="card-transporte__recomendado">Recomendado</span>
-                        </article>
+
+                    @foreach (ytuqueplanes.Models.Comollegar como in Model.comollegar)
+                    {
+
+                        <div class="swiper-slide">
+                            <article class="card-transporte">
+                                <header class="card-transporte__header">
+                                    <figure class="card-transporte__imagen">
+                                        <img src="@como.comollegarIcon" alt="@como.comollegarAlt" />
+                                    </figure>
+                                    <strong class="card-transporte__titulo">@como.comollegarNombre</strong>
+                                </header>
+                                <dl class="card-transporte__lista">
+                                    <dt>Duración:</dt>
+                                    <dd> @como.duracion</dd>
+
+                                    @if (como.comollegarID == 1)
+                                    {
+                                        <dt>Aerolíneas:</dt>
+                                        <dd>@como.empresa</dd>
+                                    }
+                                    @if (como.comollegarID == 2)
+                                    {
+                                        <dt>Empresas:</dt>
+                                        <dd>@como.empresa</dd>
+                                    }
+                                    @if (como.comollegarID == 3)
+                                    {
+                                        <dt>Distancia:</dt>
+                                        <dd>@como.distancia</dd>
+                                    }
+
+                                    @if (como.comollegarID == 4)
+                                    {
+                                        <dt>Empresas:</dt>
+                                        <dd>@como.empresa</dd>
+                                    }
+                                    @if (como.comollegarID == 7)
+                                    {
+                                        <dt>Empresas:</dt>
+                                        <dd>@como.empresa</dd>
+                                    }
+                                    @if (como.comollegarID == 8)
+                                    {
+                                        <dt>Empresas:</dt>
+                                        <dd>@como.empresa</dd>
+                                    }
+                                </dl>
+                                @if (como.waze != null)
+                                {
+                                <a href="@como.waze" class="card-transporte__enlace-inferior">Abrir ruta en Waze</a>
+                                }
+                                @if (como.recomendar == 1)
+                                {
+                                    <span class="card-transporte__recomendado">Recomendado</span>
+                                }
+                            </article>
+                        </div>
+                    }
                     </div>
-                    <div class="swiper-slide">
-                        <article class="card-transporte">
-                            <header class="card-transporte__header">
-                                <figure class="card-transporte__imagen">
-                                    <img src="/assets/images/bus-svg.svg" alt="" />
-                                </figure>
-                                <strong class="card-transporte__titulo m--morado">Bus Interprovincial</strong>
-                            </header>
-                            <dl class="card-transporte__lista">
-                                <dt>Duración:</dt>
-                                <dd>16hrs - 18hrs</dd>
-                                <dt>Aerolíneas:</dt>
-                                <dd><a href="#">Oltursa</a>, <a href="#">Cruz del Sur</a>, <a href="#">Móvil Bus</a>.</dd>
-                            </dl>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-transporte">
-                            <header class="card-transporte__header">
-                                <figure class="card-transporte__imagen">
-                                    <img src="/assets/images/auto-svg.svg" alt="" />
-                                </figure>
-                                <strong class="card-transporte__titulo m--azul">Auto particular</strong>
-                            </header>
-                            <dl class="card-transporte__lista">
-                                <dt>Distacia:</dt>
-                                <dd>350km aprox.</dd>
-                                <dt>Duración:</dt>
-                                <dd>16hrs - 18hrs</dd>
-                            </dl>
-                            <a href="#" class="card-transporte__enlace-inferior">Abrir ruta en Waze</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-transporte">
-                            <header class="card-transporte__header">
-                                <figure class="card-transporte__imagen">
-                                    <img src="/assets/images/tren-svg.svg" alt="" />
-                                </figure>
-                                <strong class="card-transporte__titulo m--verdehoja">Tren</strong>
-                            </header>
-                            <dl class="card-transporte__lista">
-                                <dt>Duración:</dt>
-                                <dd>14hrs</dd>
-                                <dt>Aerolíneas:</dt>
-                                <dd><a href="#">Lima Rail</a>.</dd>
-                            </dl>
-                        </article>
-                    </div>
-                </div>
             </div>
             <p class="seccion__texto-inferior">
                 <strong>Ten en cuenta:</strong> Los precios suelen variar en días festivos. Precio por persona. Duración apróximada, puede variar por factores externos.
@@ -153,7 +147,7 @@
         </div>
     </section>
 
-
+    }
     <section class="seccion">
         <div class="limit">
             <article class="card-full" style="background-image: url('/assets/images/rutas-cortas-6.jpg');">

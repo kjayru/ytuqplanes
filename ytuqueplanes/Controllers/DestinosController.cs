@@ -35,9 +35,6 @@ namespace ytuqueplanes.Controllers
         public ActionResult Detalle(string id) {
 
             dynamic datosDestinoModel = new ExpandoObject();
-
-
-
             
             var prov = db.provincias.Where(c => c.slug == id).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).First();
 
@@ -147,6 +144,50 @@ namespace ytuqueplanes.Controllers
             datosDestinoModel.festividades = fests;
 
             datosDestinoModel.destacados = getDestacados();
+
+
+
+            var comollegar = db.provincia_comollegar.Where(c => c.provincia_id == prov.id).Select(p => new
+            {
+                distancia = p.distancia,
+                duracion = p.duracion,
+                empresa = p.empresa,
+                waze = p.waze,
+                comollegarID = p.como_llegar_id,
+                comollegarIcon = p.como_llegar.imagen,
+                comollegarNombre = p.como_llegar.nombre,
+                comollegarAlt = p.como_llegar.alt,
+                recomendar = p.recomendar
+            });
+
+            var listado = comollegar.ToList();
+            var contador = comollegar.Count();
+
+            ViewBag.countComollegar = contador;
+
+            List<Comollegar> comolls = new List<Comollegar>();
+
+            for (var k = 0; k < listado.Count(); k++)
+            {
+                comolls.Add(
+                    new Comollegar
+                    {
+
+                        distancia = listado[k].distancia,
+                        duracion = listado[k].duracion,
+                        empresa = listado[k].empresa,
+                        waze = listado[k].waze,
+                        comollegarID = listado[k].comollegarID,
+                        comollegarIcon = listado[k].comollegarIcon,
+                        comollegarNombre = listado[k].comollegarNombre,
+                        comollegarAlt = listado[k].comollegarAlt,
+                        recomendar = listado[k].recomendar
+                    });
+
+            }
+
+            datosDestinoModel.comollegar = comolls;
+
 
             return View(datosDestinoModel);
         }

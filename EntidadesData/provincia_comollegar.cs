@@ -12,13 +12,18 @@ namespace EntidadesData
     using System;
     using System.Collections.Generic;
     
-    public partial class destino_como_llegar
+    public partial class provincia_comollegar
     {
-        public int destino_id { get; set; }
-        public Nullable<int> como_llegar_id { get; set; }
+        public int id { get; set; }
+        public int como_llegar_id { get; set; }
+        public string duracion { get; set; }
         public string distancia { get; set; }
-        public string tiempo_viaje { get; set; }
+        public string empresa { get; set; }
         public string waze { get; set; }
+        public int provincia_id { get; set; }
         public Nullable<int> recomendar { get; set; }
+    
+        public virtual como_llegar como_llegar { get; set; }
+        public virtual provincia provincia { get; set; }
     }
 }

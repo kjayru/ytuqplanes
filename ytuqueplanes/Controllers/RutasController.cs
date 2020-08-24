@@ -146,11 +146,15 @@ namespace ytuqueplanes.Controllers
                     });
             }
 
-            //return Json(rp, JsonRequestBehavior.AllowGet);
+
+
            
+
+            //return Json(rp, JsonRequestBehavior.AllowGet);
+
             RutasModel.rutas = rp;
             RutasModel.destacados = getDestacados();
-
+           
             return View(RutasModel);
         }
 

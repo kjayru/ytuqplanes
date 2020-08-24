@@ -184,6 +184,9 @@
     <Compile Include="provincia.cs">
       <DependentUpon>Entidades.tt</DependentUpon>
     </Compile>
+    <Compile Include="provincia_comollegar.cs">
+      <DependentUpon>Entidades.tt</DependentUpon>
+    </Compile>
     <Compile Include="rating.cs">
       <DependentUpon>Entidades.tt</DependentUpon>
     </Compile>
