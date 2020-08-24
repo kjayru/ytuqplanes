@@ -1,6 +1,6 @@
 ﻿@{
-    ViewBag.Title = "Amazonas";
-    ViewBag.slug = "amazonas";
+    @* ViewBag.Title = "Amazonas";
+    ViewBag.slug = "amazonas"; *@
 }
 
 <section class="page__header m--ofertas" style="background-image: url('/assets/images/rutas-cortas-2.jpg');">
@@ -10,40 +10,45 @@
         <form action="" class="page__header__form">
             <input type="text" class="page__header__form__input" placeholder="Departamento" readonly>
             <div class="page__header__form__selector">
-                <div class="page__header__form__selector__contenido fnTargetSelect">@ViewBag.Title</div>
+                @{
+                    var deps= new string[,] {
+                        {"Amazonas", "amazonas"},
+                        {"Áncash", "ancash"},
+                        {"Apurímac", "apurimac"},
+                        {"Arequipa", "arequipa"},
+                        {"Ayacucho", "ayacucho"},
+                        {"Cajamarca", "cajamarca"},
+                        {"Cusco", "cusco"},
+                        {"Huancavelíca", "huancavelica"},
+                        {"Huánuco", "huanuco"},
+                        {"Ica", "ica"},
+                        {"Junín", "junin"},
+                        {"La Libertad", "la-libertad"},
+                        {"Lambayeque", "lambayeque"},
+                        {"Lima", "lima"},
+                        {"Loreto", "loreto"},
+                        {"Madre De Dios", "madre-de-dios"},
+                        {"Moquegua", "moquegua"},
+                        {"Pasco", "pasco"},
+                        {"Piura", "piura"},
+                        {"Puno", "puno"},
+                        {"San Martín", "san-martin"},
+                        {"Tacna", "tacna"},
+                        {"Tumbes", "tumbes"},
+                        {"Ucayali", "ucayali"}
+                    };
+                    var depsSize = (deps.Length/2)-1;
+                }
+                <div class="page__header__form__selector__contenido fnTargetSelect">
+                    @for(var i=0; i<=depsSize; i++){
+                        @(ViewBag.provinciaSlug==deps[i,1]?@deps[i,0]:"")
+                    }
+                </div>
                 <select class="page__header__form__selector__select fnSelect fnSelectUrlReload">
                     <option value="/experiencias">Todos</option>
-                    @{
-                        var deps= new string[,] {
-                            {"Amazonas", "amazonas"},
-                            {"Áncash", "ancash"},
-                            {"Apurímac", "apurimac"},
-                            {"Arequipa", "arequipa"},
-                            {"Ayacucho", "ayacucho"},
-                            {"Cajamarca", "cajamarca"},
-                            {"Cusco", "cusco"},
-                            {"Huancavelíca", "huancavelica"},
-                            {"Huánuco", "huanuco"},
-                            {"Ica", "ica"},
-                            {"Junín", "junin"},
-                            {"La Libertad", "la-libertad"},
-                            {"Lambayeque", "lambayeque"},
-                            {"Lima", "lima"},
-                            {"Loreto", "loreto"},
-                            {"Madre De Dios", "madre-de-dios"},
-                            {"Moquegua", "moquegua"},
-                            {"Pasco", "pasco"},
-                            {"Piura", "piura"},
-                            {"Puno", "puno"},
-                            {"San Martín", "san-martin"},
-                            {"Tacna", "tacna"},
-                            {"Tumbes", "tumbes"},
-                            {"Ucayali", "ucayali"}
-                        };
-                        var depsSize = (deps.Length/2)-1;
-                    }
+
                     @for(var i=0; i<=depsSize; i++){
-                        <option value="/experiencias/@deps[i,1]" @(ViewBag.slug==deps[i,1]?"selected":"")>@deps[i,0]</option>
+                        <option value="/experiencias/@deps[i,1]" @(ViewBag.provinciaSlug==deps[i,1]?"selected":"")>@deps[i,0]</option>
                     }
                 </select>
             </div>
@@ -67,31 +72,30 @@
                     <strong>Fines de semana</strong>
                 </div>
                 <div class="boton m--morado m--grande filtro-selector__select-ui">
-                    <strong class="filtro-selector__select-ui__contenido">Todas las festividades</strong>
+                    <strong class="filtro-selector__select-ui__contenido fnTargetSelect">Todas las festividades</strong>
                     <select class="filtro-selector__select-ui__select fnSelect fnFiltroCalendario">
                         <option value="">Todas las festividades</option>
-                        <option value="Solo feriados">Solo feriados</option>
-                        <option value="Fines de semana">Fines de semana</option>
+                        <option value="feriado">Solo feriados</option>
+                        <option value="fin">Fines de semana</option>
                     </select>
                 </div>
                 <div class="calendario__selector-mes">
                     <span id="calendario_mes_titulo"></span>
-                    <i id="calendario_mes_anterior" class="fa fa-chevron-left fnCambiarMes" aria-hidden="true"></i>
-                    <i id="calendario_mes_siguiente" class="fa fa-chevron-right fnCambiarMes" aria-hidden="true"></i>
+                    <i id="calendario_mes_anterior" class="fa fa-chevron-left fnCambiarMes" aria-hidden="true" data-direccion="menos"></i>
+                    <i id="calendario_mes_siguiente" class="fa fa-chevron-right fnCambiarMes" aria-hidden="true" data-direccion="mas"></i>
                 </div>
             </div>
-
         </div>
     </div>
 
     <section class="seccion">
         <div class="limit">
             <ul id="calendario" class="calendario"></ul>
-            <div class="boton-contenedor">
+            @* <div class="boton-contenedor">
                 <a href="#" download="download" class="boton m--grande m--morado m--padding-pequeno"><strong>Descargar el calendario en PDF</strong></a>
-            </div>
+            </div> *@
         </div>
     </section>
 
 </main>
-<script>const calendario_provincia = 'amazonas';</script>
+<script>const calendario_provincia = '@ViewBag.provinciaSlug';</script>

@@ -8,7 +8,11 @@ const site = (function(){
 	    active : '-activo-',
 	    rotadores : document.querySelectorAll('.fnSliderFree'),
 	    swiperrotadores: new Array(),
-	    calendarioFiltro : ''
+	    calendarioFiltro : '',
+	    calendarioFecha : {
+			mes : new Date().getMonth(),
+			anio : new Date().getFullYear()
+	    }
 	};
 
 	const siteFunctions = function(){
@@ -24,7 +28,7 @@ const site = (function(){
 		calendario : function(){
 			Array.from(document.querySelectorAll('.fnCambiarMes')).forEach( function(element, index) {
 				element.addEventListener('click', function(){
-					setCalendario(this.getAttribute('data-mes'));
+					setCalendario(this.getAttribute('data-direccion'));
 				});
 			});
 			setCalendario();
@@ -299,9 +303,9 @@ const site = (function(){
 			// Filtro de calendario
 			$('.fnFiltroCalendario')
 				.on('click change', function(){
-					dom.calendarioFiltro = $(this).data('filtro');
+					dom.calendarioFiltro = $(this).data('filtro') || $(this).val();
 					$('.calendario__festividad, .filtro-selector__boton').removeClass(dom.active)
-					if($(this).data('filtro')!='') {
+					if(dom.calendarioFiltro!='') {
 						$('#calendario').addClass('-filtrar-');
 						$('.calendario__festividad[data-filtro*="'+dom.calendarioFiltro+'"]').addClass(dom.active);
 					} else {
@@ -388,19 +392,32 @@ const site = (function(){
 
 	};
 
-	function setCalendario(cambiarFecha){
+	function setCalendario(direccion){
 		const urlApi = calendario_provincia ? '/api/festividades/'+calendario_provincia : '/api/festividades';
 		$.getJSON(urlApi, function(data, textStatus) {
+			console.log(data);
 			const json = data;
 			const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 			const dia = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sáb'];
-			const fecha = !cambiarFecha ? new Date() : new Date(2020, cambiarFecha);
+			let fecha;
+			switch (direccion) {
+				case 'mas':
+						if(dom.calendarioFecha.mes==11) { dom.calendarioFecha.anio = dom.calendarioFecha.anio+1; dom.calendarioFecha.mes = 0; }
+							else { dom.calendarioFecha.mes++; }
+					break;
+				case 'menos':
+						if(dom.calendarioFecha.mes==0) { dom.calendarioFecha.anio = dom.calendarioFecha.anio-1; dom.calendarioFecha.mes = 11; }
+							else { dom.calendarioFecha.mes--; }
+					break;
+			}
+			fecha = new Date(dom.calendarioFecha.anio, dom.calendarioFecha.mes, 1)
 			const MesAnioTitulo = meses[fecha.getMonth()]+' '+fecha.getFullYear();
 			const mesIdJson = fecha.getMonth()+1;
 			const diasTotal = new Date(fecha.getFullYear(), fecha.getMonth() + 1, 0).getDate();
 			let diasHtml = '';
 			for(let i=1; i<=diasTotal; i++) {
-				diasHtml += `<li class="calendario__item">
+				inMobile = data.find( (uni) => uni.inicio === i && uni.mes_id===mesIdJson ) ? 'm--mobile':'' ;
+				diasHtml += `<li class="calendario__item ${inMobile}">
 			                    <div class="calendario__article">
 			                        <time class="calendario__fecha">
 			                            <span>${dia[new Date(fecha.getFullYear(), fecha.getMonth(), i).getDay()]}</span>
@@ -412,22 +429,20 @@ const site = (function(){
 			}
 			document.getElementById('calendario').innerHTML = diasHtml;
 			document.getElementById('calendario_mes_titulo').innerHTML = MesAnioTitulo;
-			document.getElementById('calendario_mes_anterior').setAttribute('data-mes', fecha.getMonth()-1 );
-			document.getElementById('calendario_mes_siguiente').setAttribute('data-mes', fecha.getMonth()+1 );
 		});
 	}
 
 	function printDia(json, diaId, mesIdJson) {
 		let festividades = '';
 		json.forEach(function(dia, index){
-			if(dia.inicio==diaId&&dia.mes_id==mesIdJson){
-				let filtro = ['feriado', 'fin'][Math.floor(Math.random() * 2)];
+			if(dia.inicio==diaId&&dia.mes_id==mesIdJson&&dia.anio==dom.calendarioFecha.anio) {
+				let filtro = dia.tipo_de_festividad=='fin' || dia.tipo_de_festividad=='feriado' ? dia.tipo_de_festividad : ['feriado', 'fin'][Math.floor(Math.random() * 2)];
 				let activo = dom.calendarioFiltro==filtro?'-activo-':'';
 				festividades += `<article class="calendario__festividad full ${activo}" data-filtro="${filtro}">
 									<img src="${dia.imagen}" class="calendario__imagen" />
 			                        <strong class="calendario__resumen">${dia.nombre}</strong>
 			                        <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> ${dia.provincia}</address>
-			                        <a href="http://dev.mmsolutions.com.pe/experiencias/detalle/${dia.slug}" class="calendario__enlace">Más información</a>
+			                        <a href="/experiencias/${dia.provincia_slug}/${dia.slug}" class="calendario__enlace">Más información</a>
 			                    </article>`;
 			}
 		});
@@ -494,14 +509,6 @@ const site = (function(){
 		key.addClass(dom.active);
 	}
 
-	// Set value on change event in selects
-	function selectChange() {
-		$('.fnSelect').on('change', function(){
-			let value = $(this).find('option:selected').text();
-			$(this).parent().find('strong').html(value);
-		});
-	}
-
 	let initialize = siteFunctions;
 
 	return { init: initialize }
@@ -509,3 +516,46 @@ const site = (function(){
 })();
 
 site.init();
+
+// var now = new Date();
+// var current;
+// if (now.getMonth() == 11) {
+// 	console.log(1);
+//     current = new Date(now.getFullYear() + 1, 0, 1);
+// } else {
+// 	console.log(2);
+//     current = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+// }
+// console.log( current );
+var direccion = 'menos';
+var date = new Date();
+var mes = date.getMonth();
+var anio = date.getFullYear();
+
+function setDateCalendario() {
+	switch (direccion) {
+		case 'mas':
+				if(mes==11) {
+					anio = anio+1;
+					mes = 0;
+				} else {
+					mes++;
+				}
+				date = new Date(anio, mes, 1)
+			break;
+		case 'menos':
+				if(mes==0) {
+					anio = anio-1;
+					mes = 11;
+				} else {
+					mes--;
+				}
+				date = new Date(anio, mes, 1)
+			break;
+	}
+	console.log(date);
+}
+
+// setInterval(function(){
+// 	setDateCalendario();
+// }, 1000);

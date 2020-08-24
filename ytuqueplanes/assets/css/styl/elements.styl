@@ -833,7 +833,8 @@
 
 	&-transporte
 		width 265px
-		height 292px
+		min-height 292px
+		height 100%
 		border-bottom-right-radius 24px
 		border 1px solid #a9a9a9
 		padding 30px
@@ -881,8 +882,11 @@
 			color #0091ff
 			font-size 0.75rem
 			font-family f-news
+			display none
 			&:hover
 				text-decoration  underline
+			@media (max-width: 800px)
+					display block
 		&__recomendado
 			background-color amarillo
 			color #fff
@@ -1131,6 +1135,7 @@
 				&__slider
 					.swiper-slide
 						padding-top 45px
+						height auto
 			.card-transporte
 				width 262px
 
@@ -1558,6 +1563,11 @@
 			flex 0 0 100%
 			min-height 75px
 			padding 0 0 20px
+
+		&__item
+			display none
+			&.m--mobile
+				display block
 
 .filtro-selector
 	&.m--calendario
