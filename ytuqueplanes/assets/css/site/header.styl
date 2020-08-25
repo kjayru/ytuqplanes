@@ -868,11 +868,12 @@
 			border-top 1px solid #d8d8d8
 			padding-top 15px
 
-			span
+			span, a
 				padding 9px 15px 7px
 				margin 4px
 				border-radius 15px
 				display inline-block
+				color #fff
 				&:nth-child(1n)
 					background-color crema
 				&:nth-child(2n)
@@ -891,6 +892,18 @@
 		&.-activo-
 			display block
 			animation navInternoIn ease-out .25s .1s forwards
+		&.m--resultados
+			width 100%
+			opacity 1
+			padding 70px 0 25px
+			.buscador-principal
+				&__form, &__tags
+					max-width 800px
+			@media (max-width 810px)
+				padding 40px 0 15px
+				.buscador-principal
+					&__subtitulo
+						color morado
 
 	@media (max-width 810px)
 

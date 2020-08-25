@@ -87,6 +87,8 @@
 				&__boton
 					display none
 
+
+
 		&.m--ofertas
 			.page__header
 				&__inset
@@ -119,6 +121,10 @@
 				color verde
 				span
 					text-shadow none
+			&.m--resultados
+				height fit-content
+			&.m--404
+				background none
 
 		&.m--bg-black
 			position relative
@@ -492,4 +498,125 @@
 
 
 
-/* Blog */
+/* 404 */
+.page-404
+	background url('/assets/images/bg-404.jpg') no-repeat center center / cover
+
+	&__titulo
+		color morado
+		font-size 8rem
+		font-family f-bbold
+
+	&__subtitulo
+		color morado
+		font-size 1.75rem
+		max-width 600px
+		padding 20px 0 30px
+
+	&__codigo
+		color #636363
+		font-family f-bold
+		font-size 1.375rem
+		text-transform uppercase
+
+	&__texto
+		font-family f-news
+		font-size 1.125rem
+		display block
+		padding 50px 0 40px
+
+	&__enlaces
+		display flex
+		justify-content space-between
+		flex-wrap wrap
+		.__tres
+		.__dos
+			width 100%
+		.__dos
+			display none
+
+		@media (max-width 1000px)
+			justify-content space-around
+			.__tres
+				display none
+			.__dos
+				display block
+		@media (max-width 700px)
+			flex-direction column
+			justify-content center
+			align-items center
+			.__tres, .__dos
+				display none
+
+	&__enlace
+		background-color #fff
+		box-shadow 2px 2px 8px 0 rgba(202, 202, 202, 0.5)
+		border-top-right-radius 22px
+		border-bottom-left-radius 22px
+		height 98px
+		max-width 310px
+		color #999
+		margin 17px 0
+		padding 0 20px
+
+		flex 1 1 auto
+		display flex
+		align-items center
+		justify-content space-bettwen
+		strong
+			font-size 1.3rem
+			font-family f-bold
+			padding-left 15px
+
+		img:last-of-type
+			margin-left auto
+			width 50px
+
+		&.m--celeste
+			color #3caea3
+		&.m--verde
+			color #4fb700
+		&.m--azul
+			color #0071bc
+		&.m--amarillo
+			color #f2b30c
+		&.m--naranja
+			color #ff5600
+		&.m--rojo
+			color #e03b3d
+
+		@media (max-width 700px)
+			flex auto
+			width 100%
+
+	@media (max-width 810px)
+
+		&__titulo
+			font-size 5rem
+		&__subtitulo
+			font-size 1.5rem
+			max-width 100%
+			padding 15px 0 20px
+		&__codigo
+			font-size 1.2rem
+		&__texto
+			padding 30px 0 20px
+
+
+	@media (max-width 500px)
+
+		&__titulo
+			font-size 3.5rem
+		&__subtitulo
+			font-size 1.1rem
+			max-width 100%
+			padding 15px 0 20px
+		&__codigo
+			font-size 1rem
+		&__texto
+			padding 30px 0 15px
+			font-size 0.95rem
+		&__enlace
+			margin 7.5px 0
+			strong
+				font-size 1.15rem
