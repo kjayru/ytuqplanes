@@ -33,7 +33,7 @@ namespace ytuqueplanes.Controllers
 
             Slide slider = new Slide();
 
-            var sliders = db.slider_item.Where(c => c.slider_id == 1).Select(p => new {
+            var sliders = db.slider_item.Where(c => c.slider_id == 1).Where(d => d.estado==1).Select(p => new {
                 p.imagen_lg,
                 p.imagen_md,
                 p.imagen_sm,
@@ -170,10 +170,10 @@ namespace ytuqueplanes.Controllers
                nombre = t1.nombre,
                inicio = t1.inicio,
                final = t1.final,
-               provincia = t2.nombre ,
+               provincia = t3.nombre ,
                imagen = t1.imagen,
                contenido = t1.contenido,
-               mes =  t3.nombre,
+               mes =  t2.nombre,
                likes = t1.likes,
               documento =  t1.documento
             };

@@ -131,7 +131,7 @@
                             <a href="/blog-viajero" class="header__nav__enlace @Html.IsActive("BlogViajero", "Index")"><strong>Blog viajero</strong></a>
                         </li>
                         <aside id="buscador-principal" class="header__nav__interno buscador-principal -no-focus-">
-                            <form class="buscador-principal__form">
+                            <form class="buscador-principal__form" action="/buscador" method="get">
                                 <input type="text" placeholder="Busca en Y tu Qué planes…." class="buscador-principal__input">
                                 <button type="submit" class="buscador-principal__boton">></button>
                             </form>
