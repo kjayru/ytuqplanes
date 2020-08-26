@@ -23,5 +23,7 @@ namespace EntidadesData
         public string titulo { get; set; }
         public string descripcion { get; set; }
         public string alt { get; set; }
+        public string url { get; set; }
+        public Nullable<int> estado { get; set; }
     }
 }

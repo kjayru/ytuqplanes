@@ -40,7 +40,9 @@ namespace ytuqueplanes.Controllers
                 p.imagen_xl,
                 p.titulo,
                 p.alt,
-                p.descripcion
+                p.descripcion,
+                p.estado,
+                p.url
             }).ToList();
 
             List<Slide> datos = new List<Slide>();
@@ -55,7 +57,9 @@ namespace ytuqueplanes.Controllers
                        imagen_sm = sliders[i].imagen_sm,
                        imagen_xl = sliders[i].imagen_xl,
                        titulo = sliders[i].titulo,
-                       descripcion = sliders[i].descripcion
+                       descripcion = sliders[i].descripcion,
+                       estado = sliders[i].estado,
+                       url = sliders[i].url
                    });
             }
 

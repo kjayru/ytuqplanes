@@ -78,6 +78,14 @@
         <EntityTypeShape EntityType="ytuqueplanesDBModel.provincia_comollegar" Width="1.5" PointX="23" PointY="2.125" />
         <AssociationConnector Association="ytuqueplanesDBModel.fk_comollegarprovincia_comollegar" />
         <AssociationConnector Association="ytuqueplanesDBModel.fk_comollegarprovincia_provincia" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.C__MigrationHistory" Width="1.5" PointX="9.375" PointY="21.75" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.AspNetRole" Width="1.5" PointX="18.375" PointY="23.5" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.AspNetUserClaim" Width="1.5" PointX="22.875" PointY="24.625" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.AspNetUserLogin" Width="1.5" PointX="22.875" PointY="22" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.AspNetUser" Width="1.5" PointX="20.625" PointY="22.375" />
+        <AssociationConnector Association="ytuqueplanesDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ytuqueplanesDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ytuqueplanesDBModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

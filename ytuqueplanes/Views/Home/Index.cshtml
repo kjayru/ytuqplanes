@@ -7,12 +7,12 @@
     <div class="swiper-wrapper">
         @foreach (ytuqueplanes.Models.Slide slide in Model.sliders)
         {
-            <article class="swiper-slide slider" style="background-image: url('/assets/images/@slide.imagen_lg');">
+            <article class="swiper-slide slider" style="background-image: url('@slide.imagen_xl');">
                 <div class="limit">
                     <div class="slider__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Amazonas</div>
                     <h2 class="slider__titulo">@slide.titulo</h2>
                     <p class="slider__contenido">@slide.descripcion</p>
-                    <a href="" title="" class="boton m--grande m--verde"><strong>Más información</strong></a>
+                    <a href="@slide.url" title="" class="boton m--grande m--verde"><strong>Más información</strong></a>
                 </div>
             </article>
         }

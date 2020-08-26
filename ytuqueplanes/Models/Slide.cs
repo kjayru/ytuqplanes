@@ -15,6 +15,8 @@ namespace ytuqueplanes.Models
         public string imagen_xl { get; set; }
         public string titulo { get; set; }
         public string alt { get; set; } 
-    public string descripcion { get; set; }
+        public string descripcion { get; set; }
+        public int? estado { get; set; }
+        public string url { get; set; }
     }
 }

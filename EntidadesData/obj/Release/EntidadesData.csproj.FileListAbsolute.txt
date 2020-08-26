@@ -34,3 +34,5 @@ C:\laragon\www\ytuqplanes\EntidadesData\obj\Release\EntidadesData.csproj.CoreCom
 C:\laragon\www\ytuqplanes\EntidadesData\obj\Release\EntidadesData.csproj.CopyComplete
 C:\laragon\www\ytuqplanes\EntidadesData\obj\Release\EntidadesData.dll
 C:\laragon\www\ytuqplanes\EntidadesData\obj\Release\EntidadesData.pdb
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\es\EntityFramework.resources.dll
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\es\EntityFramework.SqlServer.resources.dll

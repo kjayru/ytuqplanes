@@ -26,6 +26,7 @@ namespace EntidadesData
         public string documento { get; set; }
         public string slug { get; set; }
         public string tipo_festividad { get; set; }
+        public Nullable<int> estado { get; set; }
     
         public virtual mes mes { get; set; }
     }
