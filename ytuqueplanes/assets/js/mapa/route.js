@@ -86,13 +86,7 @@ $(document).ready(function() {
 
 
 	/* En esta parte cargamos la data del archivo json, el cual contiene solo la info de las regiones */
-	$.getJSON("/assets/js/mapa/region.json", function(data) {
-		var grep_region = $.grep(data, function(n, i) {
-			/* Aquí solo traemos la data que nos sirve, en este caso filtro de acuerdo a la región */
-			return n.url == getRegion();
-		});
-		loadDeals(grep_region);/* Llamo a la función que carga la data de las ofertas */
-	});
+	loadDeals([nombreProvincia, urlOfertas]);
 
 	/* Esta función arma la estructura del menú superior y la carga en el contenedor "wrapper-navbar" */
 	function loadNavbar(data) {
@@ -207,10 +201,10 @@ $(document).ready(function() {
 
 	/* Esta función estructura y carga al contenedor la sección de ofertas */
 	function loadDeals(data) {
-		if(data[0].deals != "") {
+		if(data) {
 			var contenido = "";
-			contenido += "<h2>¡Descubre " + data[0].name + "!</h2>";
-			contenido += "<div class='wrapper-first-right-deals-link' data-href='" + data[0].deals + "'>Ver ofertas</div>";
+			contenido += "<h2>¡Descubre " + data[0] + "!</h2>";
+			contenido += "<div class='wrapper-first-right-deals-link' data-href='" + data[1] + "'>Ver ofertas</div>";
 			$(".wrapper-first-right-deals").append(contenido);
 		} else {
 			$(".wrapper-first-right-deals").hide();
@@ -414,7 +408,7 @@ $(document).ready(function() {
 	function getRegion() {
 		// var pathname = window.location.pathname.split("/");
 		// return pathname[pathname.length-3];
-		return 'arequipa';
+		return nombreProvincia;
 	}
 
 	function getRoute() {

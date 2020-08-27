@@ -4,7 +4,7 @@
     string grillaInicial = Model.destinos.Count>4?"-mas-4-":"";
     grillaInicial = Model.destinos.Count>6?"-mas-4- -mas-6-":grillaInicial;
     grillaInicial = Model.destinos.Count>8?"-mas-4- -mas-6- -mas-8-":grillaInicial;
-    @* @ObjectInfo.Print(ViewBag); *@
+    @* @ObjectInfo.Print( Model.destinos ); *@
 }
 
 <section class="page__header  m--bg-black" style="background-image: url(@ViewBag.imagenProvincia);">
@@ -21,7 +21,7 @@
         <div class="limit">
             <strong class="destinos__subtitulo">Vive nuevas experiencias conociendo los mejores lugares turísticos</strong>
             <strong class="destinos__subtitulo-mobile">Mostrar destinos</strong>
-            <div class="filtro-selector" data-target="#fnTargetFiltroGrilla">
+            <div class="filtro-selector fnFiltroSelectorValidar" data-target="#fnTargetFiltroGrilla">
                 <div class="boton m--filtro m--grande filtro-selector__boton -activo- fnFiltrarGrilla" data-filtro="">
                     <strong>Todos</strong>
                 </div>
@@ -73,6 +73,7 @@
             </div>
         </div>
     </section>
+
     @if (ViewBag.countComollegar > 0)
     {
     <section class="seccion m--slider-standard m--transporte">
@@ -231,7 +232,4 @@
         </div>
     </section>
 
-
-
 </main>
-

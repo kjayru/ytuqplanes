@@ -433,6 +433,8 @@
 		display block
 		text-align center
 		padding-bottom 30px
+		&.m--gris
+			color gris
 	&__subtitulo-mobile
 		display none
 
@@ -620,3 +622,970 @@
 			margin 7.5px 0
 			strong
 				font-size 1.15rem
+
+
+/* turismo comunitario */
+.turismo-comunitario-detalle__resumen {
+    font-size: 14px;
+    padding: 0 0 55px;
+    color: #636363;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.turismo-comunitario-detalle__bloque {
+    width: 100%;
+    position: relative;
+}
+
+.turismo-comunitario-detalle__bloque-wrapper {
+	width: 100%;
+    position: relative;
+    font-size: 0;
+}
+
+.turismo-comunitario-detalle__bloque-left {
+    width: 455px;
+    margin-right: 45px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: initial;
+}
+
+.turismo-comunitario-detalle__bloque-slider-bg {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 315px;
+    border-radius: 12px;
+}
+
+.turismo-comunitario-detalle__bloque-slider-overlay {
+    background: linear-gradient(rgba(255,255,255,0), rgba(0,0,0,0.3));
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+}
+
+.turismo-comunitario-detalle__bloque-left .swiper-container, .turismo-comunitario-detalle__bloque-left .swiper-wrapper, .turismo-comunitario-detalle__bloque-left .swiper-slide {
+    width: 100%;
+    height: 315px;
+    position: relative;
+    border-radius: 12px;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+	content: none;
+}
+
+.SliderBloqueTCD__right, .SliderBloqueTCD__left {
+	width: 35px;
+}
+
+.SliderBloqueTCD__right img, .SliderBloqueTCD__left img {
+	width: 100%;
+}
+
+.fnSliderBloqueTCD .swiper-pagination-bullet {
+    width: 9px;
+    height: 9px;
+    background: #fff;
+    opacity: .45;
+    margin: 0 7px !important;
+}
+
+.fnSliderBloqueTCD .swiper-pagination-bullet-active {
+	color: #fff;
+	opacity: 1;
+}
+
+.turismo-comunitario-detalle__bloque-right {
+    width: calc(100% - 500px);
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.turismo-comunitario-detalle__bloque-right-item {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.turismo-comunitario-detalle__bloque-right-item:first-child {
+	padding-bottom: 25px;
+}
+
+.turismo-comunitario-detalle__bloque-right-item h4 {
+    font-family: 'ClanOffc-Bold';
+    padding-bottom: 20px;
+    font-size: 18px;
+    color: #990564;
+    text-align: left;
+    line-height: 1.3;
+    display: block;
+}
+
+.turismo-comunitario-detalle__bloque-right-item-list ul {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+}
+
+.turismo-comunitario-detalle__bloque-right-item-list ul li {
+    color: #979797;
+    font-size: 12px;
+    padding-bottom: 15px;
+    text-align: left;
+    line-height: 1.3;
+}
+
+.turismo-comunitario-detalle__bloque-right-item-list ul:first-child li {
+    padding-right: 20px;
+}
+
+.turismo-comunitario-detalle__bloque-right-item-list ul li:last-child {
+    padding-bottom: 0;
+}
+
+.turismo-comunitario-detalle__bloque-right-item-list ul li::before {
+  content: "\2022";
+  color: #990564;
+  font-weight: bold;
+  display: inline-block;
+  width: 18px;
+}
+
+.turismo-comunitario-detalle__iconos {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-top: 80px;
+    font-size: 0;
+    text-align: center;
+}
+
+.turismo-comunitario-detalle__iconos-item {
+    display: inline-block;
+    width: calc(100% / 5);
+    vertical-align: top;
+    position: relative;
+}
+
+.turismo-comunitario-detalle__iconos-item::before {
+	position: absolute;
+	content: " ";
+	width: 1px;
+	height: 145px;
+	background: #d5d5d5;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+}
+
+.turismo-comunitario-detalle__iconos-item:last-child::before {
+	content: none;
+}
+
+.turismo-comunitario-detalle__iconos-item-wrapper {
+    padding: 0 30px;
+    position: relative;
+    display: block;
+}
+
+.turismo-comunitario-detalle__iconos-item-wrapper img {
+    width: 60px;
+    height: 80px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+.turismo-comunitario-detalle__iconos-item-wrapper p {
+    font-size: 14px;
+    padding-bottom: 12px;
+    color: #636363;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.turismo-comunitario-detalle__iconos-item-wrapper .p--amarillo {
+	color: #f0b126;
+}
+
+.turismo-comunitario-detalle__iconos-item-wrapper .p--azul {
+	color: #0094d1;
+}
+
+.turismo-comunitario-detalle__iconos-item-wrapper .p--verde {
+	color: #33ab9f;
+}
+
+.turismo-comunitario-detalle__iconos-item-wrapper .p--morado {
+	color: #811063;
+}
+
+.turismo-comunitario-detalle__iconos-item-wrapper .p--verde-hoja {
+	color: #77b822;
+}
+
+.turismo-comunitario-detalle__iconos-item-wrapper .p--m {
+	font-size: 13px;
+}
+
+.turismo-comunitario-detalle__iconos-item-wrapper .boton.m--pequeno {
+    min-height: 36px;
+    border-radius: 16px;
+    font-size: 13px;
+}
+
+.turismo-comunitario-detalle__iconos-item-wrapper .boton {
+    padding: 0 20px;
+    width: 100%;
+}
+
+.boton.m--azul {
+    background-color: #0094d1;
+}
+
+.popup__contenido-titulo {
+    display: block;
+    position: relative;
+    font-size: 0;
+}
+
+.popup__contenido-titulo img {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+.popup__contenido-titulo p {
+    font-size: 17px;
+    font-family: 'ClanOffc-Bold';
+    padding: 0;
+    color: #333;
+    text-align: left;
+    line-height: 1.3;
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(100% - 65px);
+}
+
+.popup--amarillo .popup__contenido-titulo p {
+	color: #f0b126;
+}
+
+.popup--azul .popup__contenido-titulo p {
+	color: #0094d1;
+}
+
+.popup--verde .popup__contenido-titulo p {
+	color: #33ab9f;
+}
+
+.popup--morado .popup__contenido-titulo p {
+	color: #811063;
+}
+
+.popup--verde-hoja .popup__contenido-titulo p {
+	color: #77b822;
+}
+
+.popup__contenido-parrafo {
+    display: block;
+    position: relative;
+    padding: 0 20px;
+    padding-top: 25px;
+    font-size: 0;
+}
+
+.popup__contenido-parrafo-uno {
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+.popup__contenido-parrafo-dos {
+    width: 50%;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+}
+
+.popup__contenido-parrafo-dos:nth-child(1) {
+	padding-right: 20px;
+}
+
+.popup__contenido-parrafo-dos:nth-child(2) {
+	padding-left: 20px;
+}
+
+.popup__contenido-parrafo p {
+    font-size: 14px;
+    font-family: 'ClanOffc-Bold';
+    padding: 0;
+    color: #636363;
+    text-align: left;
+    line-height: 1.3;
+}
+
+.popup__contenido-parrafo ul {
+    display: block;
+    position: relative;
+    padding-top: 0;
+}
+
+.popup__contenido-parrafo ul li {
+	color: #979797;
+    font-size: 14px;
+    padding-top: 15px;
+    text-align: left;
+    line-height: 1.3;
+}
+
+.popup__contenido-parrafo ul li span {
+    display: block;
+    padding-bottom: 3px;
+    font-size: 13px;
+    color: #979797;
+    font-family: 'ClanOffc-Bold';
+}
+
+.popup__contenido-parrafo ul li label {
+    display: block;
+}
+
+.popup__contenido .box__cerrar {
+    width: 20px;
+}
+
+@media only screen and (max-width: 480px) {
+    .turismo-comunitario-detalle__resumen {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__bloque {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__iconos {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul li::before {
+        margin-right: -5px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .turismo-comunitario-detalle__bloque-left {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .SliderBloqueTCD__right, .SliderBloqueTCD__left {
+        width: 30px;
+    }
+
+    .fnSliderBloqueTCD .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper img {
+        width: 55px;
+        height: 75px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper p {
+        font-size: 13px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper .boton.m--pequeno {
+        font-size: 12.5px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper {
+        padding: 0 20px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper .p--m {
+        font-size: 13px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item h4 {
+        font-size: 16px;
+    }
+
+    .turismo-comunitario-detalle__bloque-slider-bg {
+        height: 300px;
+    }
+
+    .turismo-comunitario-detalle__resumen {
+        padding: 0 0 25px;
+        font-size: 13px;
+    }
+
+    .turismo-comunitario-detalle__iconos {
+        padding-top: 55px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item {
+        width: calc(100% / 2);
+    }
+
+    .turismo-comunitario-detalle__iconos-item:nth-last-child(1), .turismo-comunitario-detalle__iconos-item:nth-last-child(2), .turismo-comunitario-detalle__iconos-item:nth-last-child(3) {
+        margin-top: 40px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item {
+        padding: 0;
+        display: block;
+        width: 100%;
+        vertical-align: top;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item:first-child {
+        padding-bottom: 25px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul:first-child {
+        margin-bottom: 15px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul {
+        position: relative;
+        display: block;
+        width: 100%;
+        vertical-align: top;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul:first-child li {
+        padding-right: 0;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul:last-child li {
+        padding-right: 0;
+    }
+
+    .turismo-comunitario-detalle__iconos-item:nth-child(2)::before {
+        content: none;
+    }
+
+    .turismo-comunitario-detalle__iconos-item:nth-child(4)::before {
+        content: none;
+    }
+
+    .popup__contenido-titulo img {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .popup__contenido-titulo p {
+        font-size: 16px;
+        width: 100%;
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .popup__contenido-parrafo-dos {
+        width: 100%;
+        display: block;
+    }
+
+    .popup__contenido-parrafo-dos:nth-child(1) {
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+
+    .popup__contenido-parrafo-dos:nth-child(2) {
+        padding-left: 0;
+    }
+
+    .popup__contenido-parrafo p {
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .popup__contenido-parrafo ul li {
+        font-size: 13px;
+        text-align: center;
+    }
+}
+@media only screen and (min-width: 481px) and (max-width: 599px) {
+    .turismo-comunitario-detalle__resumen {
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__bloque {
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__iconos {
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul li::before {
+        margin-right: -5px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .turismo-comunitario-detalle__bloque-left {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .SliderBloqueTCD__right, .SliderBloqueTCD__left {
+        width: 30px;
+    }
+
+    .fnSliderBloqueTCD .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper img {
+        width: 55px;
+        height: 75px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper p {
+        font-size: 13px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper .boton.m--pequeno {
+        font-size: 12.5px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper {
+        padding: 0 25px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper .p--m {
+        font-size: 13px;
+        margin-top: -10px;
+        margin-bottom: -7px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item h4 {
+        font-size: 16px;
+    }
+
+    .turismo-comunitario-detalle__bloque-slider-bg {
+        height: 300px;
+    }
+
+    .turismo-comunitario-detalle__resumen {
+        padding: 0 0 25px;
+    }
+
+    .turismo-comunitario-detalle__iconos {
+        padding-top: 55px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item {
+        width: calc(100% / 2);
+    }
+
+    .turismo-comunitario-detalle__iconos-item:nth-last-child(1), .turismo-comunitario-detalle__iconos-item:nth-last-child(2), .turismo-comunitario-detalle__iconos-item:nth-last-child(3) {
+        margin-top: 40px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item {
+        padding: 0;
+        display: block;
+        width: 100%;
+        vertical-align: top;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item:first-child {
+        padding-bottom: 25px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul:first-child {
+        margin-bottom: 15px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul {
+        position: relative;
+        display: block;
+        width: 100%;
+        vertical-align: top;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul:first-child li {
+        padding-right: 20px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul:last-child li {
+        padding-right: 20px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item:nth-child(2)::before {
+        content: none;
+    }
+
+    .turismo-comunitario-detalle__iconos-item:nth-child(4)::before {
+        content: none;
+    }
+}
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    .turismo-comunitario-detalle__resumen {
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__bloque {
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__iconos {
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul li::before {
+        margin-right: -5px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .turismo-comunitario-detalle__bloque-left {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .SliderBloqueTCD__right, .SliderBloqueTCD__left {
+        width: 30px;
+    }
+
+    .fnSliderBloqueTCD .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper img {
+        width: 55px;
+        height: 75px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper p {
+        font-size: 13px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper .boton.m--pequeno {
+        font-size: 12.5px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper {
+        padding: 0 25px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper .p--m {
+        font-size: 13px;
+        margin-top: -10px;
+        margin-bottom: -7px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item h4 {
+        font-size: 16px;
+    }
+
+    .turismo-comunitario-detalle__bloque-slider-bg {
+        height: 300px;
+    }
+
+    .turismo-comunitario-detalle__resumen {
+        padding: 0 0 25px;
+    }
+
+    .turismo-comunitario-detalle__iconos {
+        padding-top: 55px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item {
+        width: calc(100% / 3);
+    }
+
+    .turismo-comunitario-detalle__iconos-item:nth-last-child(1), .turismo-comunitario-detalle__iconos-item:nth-last-child(2) {
+        margin-top: 40px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item {
+        padding: 0;
+        display: inline-block;
+        width: 50%;
+        vertical-align: top;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item:first-child {
+        padding-bottom: 0;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul:first-child {
+        margin-bottom: 15px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul {
+        position: relative;
+        display: block;
+        width: 100%;
+        vertical-align: top;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul:first-child li {
+        padding-right: 20px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul:last-child li {
+        padding-right: 20px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item:nth-child(3)::before {
+        content: none;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+    .turismo-comunitario-detalle__resumen {
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__bloque {
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__iconos {
+        width: 700px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul li::before {
+        margin-right: -5px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .turismo-comunitario-detalle__bloque-left {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .SliderBloqueTCD__right, .SliderBloqueTCD__left {
+        width: 30px;
+    }
+
+    .fnSliderBloqueTCD .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper img {
+        width: 55px;
+        height: 75px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper p {
+        font-size: 13px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper .boton.m--pequeno {
+        font-size: 12.5px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper {
+        padding: 0 15px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper .p--m {
+        font-size: 13px;
+        margin-top: -10px;
+        margin-bottom: -7px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item h4 {
+        font-size: 16px;
+    }
+
+    .turismo-comunitario-detalle__bloque-slider-bg {
+        height: 300px;
+    }
+
+    .turismo-comunitario-detalle__resumen {
+        padding: 0 0 25px;
+    }
+
+    .turismo-comunitario-detalle__iconos {
+        padding-top: 70px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item {
+        padding: 0;
+        display: inline-block;
+        width: 50%;
+        vertical-align: top;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item:first-child {
+        padding-bottom: 0;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul:first-child {
+        margin-bottom: 15px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul {
+        position: relative;
+        display: block;
+        width: 100%;
+        vertical-align: top;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul:first-child li {
+        padding-right: 20px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul:last-child li {
+        padding-right: 20px;
+    }
+}
+@media only screen and (min-width: 980px) and (max-width: 1099px) {
+    .turismo-comunitario-detalle__resumen {
+        width: 900px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__bloque {
+        width: 900px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__iconos {
+        width: 900px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul li::before {
+        margin-right: -5px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right {
+        width: calc(100% - 395px);
+    }
+
+    .turismo-comunitario-detalle__bloque-left {
+        width: 355px;
+        margin-right: 40px;
+    }
+
+    .SliderBloqueTCD__right, .SliderBloqueTCD__left {
+        width: 30px;
+    }
+
+    .fnSliderBloqueTCD .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper img {
+        width: 55px;
+        height: 75px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper .p--m {
+        font-size: 13px;
+        margin-top: -7px;
+        margin-bottom: -7px;
+    }
+}
+@media only screen and (min-width: 1100px) and (max-width: 1199px) {
+    .turismo-comunitario-detalle__resumen {
+        width: 900px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__bloque {
+        width: 900px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__iconos {
+        width: 900px;
+        margin: 0 auto;
+    }
+
+    .turismo-comunitario-detalle__bloque-right-item-list ul li::before {
+        margin-right: -5px;
+    }
+
+    .turismo-comunitario-detalle__bloque-right {
+        width: calc(100% - 395px);
+    }
+
+    .turismo-comunitario-detalle__bloque-left {
+        width: 355px;
+        margin-right: 40px;
+    }
+
+    .SliderBloqueTCD__right, .SliderBloqueTCD__left {
+        width: 30px;
+    }
+
+    .fnSliderBloqueTCD .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper img {
+        width: 55px;
+        height: 75px;
+    }
+
+    .turismo-comunitario-detalle__iconos-item-wrapper .p--m {
+        font-size: 13px;
+        margin-top: -7px;
+        margin-bottom: -7px;
+    }
+}
+
+@media (max-width: 980px){
+	.turismo-comunitario-detalle__bloque-left .swiper-container,
+    .turismo-comunitario-detalle__bloque-left .swiper-wrapper,
+    .turismo-comunitario-detalle__bloque-left .swiper-slide {
+	    height: 300px;
+	}
+}

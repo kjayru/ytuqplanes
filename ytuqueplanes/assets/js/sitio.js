@@ -181,6 +181,18 @@ const site = (function(){
 		     	}
 		    });
 
+		    let swiperBloqueTCD = new Swiper('.fnSliderBloqueTCD', {
+				speed: 1500, autoplay: true, loop: true, spaceBetween: 18,
+		    	pagination: {
+		        	el: '.SliderBloqueTCD__pagination',
+		        	clickable: true
+		     	},
+		     	navigation: {
+		     		nextEl: '.SliderBloqueTCD__left',
+        			prevEl: '.SliderBloqueTCD__right'
+		     	}
+			});
+
 		},
 
 		clicks : function(){
@@ -224,6 +236,8 @@ const site = (function(){
 				.on('change', function(e){
 					$(this).parent().find('.fnTargetSelect').text($(this).find('option:selected').text());
 				});
+
+			// Grilla
 			$('.fnFiltrarGrilla')
 				.on('click change', function(e){
 					const target = $( $(this).closest('.filtro-selector').data('target') );
@@ -256,7 +270,6 @@ const site = (function(){
 							.addClass('-mostrar-todos-')
 							.find('.card-poster')
 								.removeClass(dom.active);
-
 						const activos = target.find('.card-poster').length;
 						activos>8 && target.addClass('-mas-8-');
 						activos>6 && target.addClass('-mas-6-');
@@ -268,6 +281,17 @@ const site = (function(){
 					$( $(this).data('target') )
 						.addClass('-mostrar-ocultos-');
 				});
+			$.each(
+				$('.fnFiltroSelectorValidar .filtro-selector__boton, .fnFiltroSelectorValidar .filtro-selector__select-ui__select option'),
+				function(index, val) {
+					const t = $(this);
+					const filtro = t.data('filtro')!==undefined ? t.data('filtro') : t.val() ;
+					if(filtro!='' && $('#fnTargetFiltroGrilla .card-poster[data-filtro*="'+filtro+'"]').length==0){
+						t.attr('hidden', 'hidden');
+					}
+				}
+			);
+
 			// cambia el estado del filtro ciduda en el blog
 			$('.fnSelectCityBlog')
 				.on('change', function(e){
