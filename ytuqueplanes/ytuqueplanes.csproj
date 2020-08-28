@@ -136,6 +136,7 @@
     <Compile Include="Controllers\NoticiasController.cs" />
     <Compile Include="Controllers\OfertasController.cs" />
     <Compile Include="Controllers\RutasController.cs" />
+    <Compile Include="Controllers\TurismoController.cs" />
     <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -692,6 +693,8 @@
     <Content Include="Views\Experiencias\Provincia.cshtml" />
     <Content Include="Views\Buscador\Index.cshtml" />
     <Content Include="Views\Error\_ErrorPage.cshtml" />
+    <Content Include="Views\Turismo\Detalle.cshtml" />
+    <Content Include="Views\Turismo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

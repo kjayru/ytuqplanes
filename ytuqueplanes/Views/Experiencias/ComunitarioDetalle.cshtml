@@ -1,0 +1,470 @@
+﻿
+@{
+    ViewBag.Title = "ComunitarioDetalle";
+}
+
+<!-- Turismo comunitario - Detalle -->
+<section class="page__header m--destinos-nivel-4" style="background-image: url('/assets/images/rutas-cortas-3.jpg');">
+    <div class="limit page__header__inset">
+        <a href="#" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a turismo comunitario</span></a>
+        <h2 class="page__header__titulo">Turismo Comunitario en Lima</h2>
+        <p class="page__header__resumen">Navega por los aguajales y renacales de Tingana</p>
+    </div>
+</section>
+
+<main class="seccion">
+
+    <!-- Código implementado (Jimmy) -->
+    <section class="seccion">
+        <div class="limit">
+            <p class="turismo-comunitario-detalle__resumen">Tingana, un asombroso paraíso que alberga una gran variedad de especies de flora y fauna silvestre, en su mayoría aves y primates, es ideal para realizar estudios de investigación y observación. En este particular ecosistema, hábitat de especies en peligro de extinción y en situación vulnerable, los pobladores juegan un rol importante al protegerlas y cuidarlas para poder mostrarlas al mundo.</p>
+            <div class="turismo-comunitario-detalle__bloque">
+                <div class="turismo-comunitario-detalle__bloque-wrapper">
+                    <div class="turismo-comunitario-detalle__bloque-left">
+                        <div class="turismo-comunitario-detalle__bloque-slider swiper-container fnSliderBloqueTCD">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="turismo-comunitario-detalle__bloque-slider-bg" style="background-image: url(http://dev.mmsolutions.com.pe/assets/images/rutas-cortas-2.jpg);"></div>
+                                    <div class="turismo-comunitario-detalle__bloque-slider-overlay"></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="turismo-comunitario-detalle__bloque-slider-bg" style="background-image: url(http://dev.mmsolutions.com.pe/assets/images/rutas-cortas-7.jpg);"></div>
+                                    <div class="turismo-comunitario-detalle__bloque-slider-overlay"></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="turismo-comunitario-detalle__bloque-slider-bg" style="background-image: url(http://dev.mmsolutions.com.pe/assets/images/rutas-cortas-3.jpg);"></div>
+                                    <div class="turismo-comunitario-detalle__bloque-slider-overlay"></div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination SliderBloqueTCD__pagination"></div>
+                            <div class="swiper-button-prev SliderBloqueTCD__right"><img src="assets/images/left.png"></div>
+                            <div class="swiper-button-next SliderBloqueTCD__left"><img src="assets/images/right.png"></div>
+                        </div>
+                    </div>
+                    <div class="turismo-comunitario-detalle__bloque-right">
+                        <div class="turismo-comunitario-detalle__bloque-right-item">
+                            <h4>¿Qué hacer?</h4>
+                            <div class="turismo-comunitario-detalle__bloque-right-item-list">
+                                <ul>
+                                    <li>Paseos en canoa</li>
+                                    <li>Caminatas ecológicas</li>
+                                    <li>Observación de fauna</li>
+                                    <li>Avistamiento de aves</li>
+                                </ul>
+                                <ul>
+                                    <li>Visita a chacras ecológicas</li>
+                                    <li>Visita a parcelas de plantas medicinales</li>
+                                    <li>Visitas a vivero de plantas forestales</li>
+                                    <li>Pesca artesanal</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="turismo-comunitario-detalle__bloque-right-item">
+                            <h4>¿Qué servicios encuentro?</h4>
+                            <div class="turismo-comunitario-detalle__bloque-right-item-list">
+                                <ul>
+                                    <li>Transporte fluvial</li>
+                                    <li>Alojamiento en bungalows</li>
+                                </ul>
+                                <ul>
+                                    <li>Alimentación (tradicional y vegetariana)</li>
+                                    <li>Orientación turística</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="turismo-comunitario-detalle__iconos">
+                <div class="turismo-comunitario-detalle__iconos-item">
+                    <div class="turismo-comunitario-detalle__iconos-item-wrapper">
+                        <img src="assets/images/icono_reloj.png">
+                        <p class="p--amarillo">Precio y Horario</p>
+                        <a href="#" class="boton m--amarillo m--pequeno fnToggleClass" data-targets="#PI_Precio">
+                            <strong>Más info</strong>
+                        </a>
+                    </div>
+                </div>
+                <div class="turismo-comunitario-detalle__iconos-item">
+                    <div class="turismo-comunitario-detalle__iconos-item-wrapper">
+                        <img src="assets/images/icono_geopunto.png">
+                        <p class="p--azul">¿Cómo llegar?</p>
+                        <a href="#" class="boton m--azul m--pequeno fnToggleClass" data-targets="#PI_Llegada">
+                            <strong>Más info</strong>
+                        </a>
+                    </div>
+                </div>
+                <div class="turismo-comunitario-detalle__iconos-item">
+                    <div class="turismo-comunitario-detalle__iconos-item-wrapper">
+                        <img src="assets/images/icono_sol.png">
+                        <p class="p--verde">Clima y altura</p>
+                        <a href="#" class="boton m--verde m--pequeno fnToggleClass" data-targets="#PI_Clima">
+                            <strong>Más info</strong>
+                        </a>
+                    </div>
+                </div>
+                <div class="turismo-comunitario-detalle__iconos-item">
+                    <div class="turismo-comunitario-detalle__iconos-item-wrapper">
+                        <img src="assets/images/icono_foco.png">
+                        <p class="p--morado">Tips de viaje</p>
+                        <a href="#" class="boton m--morado m--pequeno fnToggleClass" data-targets="#PI_Tips">
+                            <strong>Más info</strong>
+                        </a>
+                    </div>
+                </div>
+                <div class="turismo-comunitario-detalle__iconos-item">
+                    <div class="turismo-comunitario-detalle__iconos-item-wrapper">
+                        <img src="assets/images/icono_telefono.png">
+                        <p class="p--verde-hoja p--m">Contactar con agencias</p>
+                        <a href="#" class="boton m--verde-hoja m--pequeno fnToggleClass" data-targets="#PI_Contacto">
+                            <strong>Más info</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Fin del código -->
+
+    <section class="seccion m--slider-standard">
+        <div class="limit">
+            <h3 class="seccion__titulo">Explora otros lugares turísticos en Lima</h3>
+            <div class="swiper-container seccion__slider fnSliderFree">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <article class="card-poster m--tipo3">
+                            <img src="assets/images/rutas-cortas-4.jpg" alt="" class="card-poster__imagen">
+                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
+                            <header class="card-poster__header">
+                                <h1 class="card-poster__titulo">Amazonas</h1>
+                            </header>
+                            <a href="#" class="card-poster__mas-informacion">Más información</a>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="card-poster m--tipo3">
+                            <img src="assets/images/rutas-cortas-4.jpg" alt="" class="card-poster__imagen">
+                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
+                            <header class="card-poster__header">
+                                <h1 class="card-poster__titulo">Amazonas</h1>
+                            </header>
+                            <a href="#" class="card-poster__mas-informacion">Más información</a>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="card-poster m--tipo3">
+                            <img src="assets/images/rutas-cortas-4.jpg" alt="" class="card-poster__imagen">
+                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
+                            <header class="card-poster__header">
+                                <h1 class="card-poster__titulo">Amazonas</h1>
+                            </header>
+                            <a href="#" class="card-poster__mas-informacion">Más información</a>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="card-poster m--tipo3">
+                            <img src="assets/images/rutas-cortas-4.jpg" alt="" class="card-poster__imagen">
+                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
+                            <header class="card-poster__header">
+                                <h1 class="card-poster__titulo">Amazonas</h1>
+                            </header>
+                            <a href="#" class="card-poster__mas-informacion">Más información</a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="PI_Precio" class="box">
+    <div class="box__inset">
+        <span class="bg-cerrar fnToggleClass" data-removes="#PI_Precio"></span>
+        <div class="box__contenido popup__contenido popup--amarillo">
+            <div class="popup__contenido-titulo">
+                <img src="assets/images/icono_reloj.png">
+                <p>Precio y Horario</p>
+            </div>
+            <div class="popup__contenido-parrafo">
+                <div class="popup__contenido-parrafo-uno">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label>Excepteur sint occaecat cupidatat non proident.</label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="popup__contenido-parrafo">
+                <div class="popup__contenido-parrafo-dos">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label>Excepteur sint occaecat cupidatat non proident.</label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="popup__contenido-parrafo-dos">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label><a href="https://www.google.com.pe/" target="_blank">Excepteur sint occaecat cupidatat non proident.</a></label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <img src="assets/images/box-cerrar.svg" alt="" class="box__cerrar fnToggleClass" data-removes="#PI_Precio" />
+        </div>
+    </div>
+</div>
+<div id="PI_Llegada" class="box">
+    <div class="box__inset">
+        <span class="bg-cerrar fnToggleClass" data-removes="#PI_Llegada"></span>
+        <div class="box__contenido popup__contenido popup--azul">
+            <div class="popup__contenido-titulo">
+                <img src="assets/images/icono_geopunto.png">
+                <p>¿Cómo llegar?</p>
+            </div>
+            <div class="popup__contenido-parrafo">
+                <div class="popup__contenido-parrafo-uno">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label>Excepteur sint occaecat cupidatat non proident.</label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="popup__contenido-parrafo">
+                <div class="popup__contenido-parrafo-dos">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label>Excepteur sint occaecat cupidatat non proident.</label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="popup__contenido-parrafo-dos">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label><a href="https://www.google.com.pe/" target="_blank">Excepteur sint occaecat cupidatat non proident.</a></label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <img src="assets/images/box-cerrar.svg" alt="" class="box__cerrar fnToggleClass" data-removes="#PI_Llegada" />
+        </div>
+    </div>
+</div>
+<div id="PI_Clima" class="box">
+    <div class="box__inset">
+        <span class="bg-cerrar fnToggleClass" data-removes="#PI_Clima"></span>
+        <div class="box__contenido popup__contenido popup--verde">
+            <div class="popup__contenido-titulo">
+                <img src="assets/images/icono_sol.png">
+                <p>Clima y altura</p>
+            </div>
+            <div class="popup__contenido-parrafo">
+                <div class="popup__contenido-parrafo-uno">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label>Excepteur sint occaecat cupidatat non proident.</label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="popup__contenido-parrafo">
+                <div class="popup__contenido-parrafo-dos">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label>Excepteur sint occaecat cupidatat non proident.</label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="popup__contenido-parrafo-dos">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label><a href="https://www.google.com.pe/" target="_blank">Excepteur sint occaecat cupidatat non proident.</a></label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <img src="assets/images/box-cerrar.svg" alt="" class="box__cerrar fnToggleClass" data-removes="#PI_Clima" />
+        </div>
+    </div>
+</div>
+<div id="PI_Tips" class="box">
+    <div class="box__inset">
+        <span class="bg-cerrar fnToggleClass" data-removes="#PI_Tips"></span>
+        <div class="box__contenido popup__contenido popup--morado">
+            <div class="popup__contenido-titulo">
+                <img src="assets/images/icono_foco.png">
+                <p>Tips de viaje</p>
+            </div>
+            <div class="popup__contenido-parrafo">
+                <div class="popup__contenido-parrafo-uno">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label>Excepteur sint occaecat cupidatat non proident.</label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="popup__contenido-parrafo">
+                <div class="popup__contenido-parrafo-dos">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label>Excepteur sint occaecat cupidatat non proident.</label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="popup__contenido-parrafo-dos">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label><a href="https://www.google.com.pe/" target="_blank">Excepteur sint occaecat cupidatat non proident.</a></label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <img src="assets/images/box-cerrar.svg" alt="" class="box__cerrar fnToggleClass" data-removes="#PI_Tips" />
+        </div>
+    </div>
+</div>
+<div id="PI_Contacto" class="box">
+    <div class="box__inset">
+        <span class="bg-cerrar fnToggleClass" data-removes="#PI_Contacto"></span>
+        <div class="box__contenido popup__contenido popup--verde-hoja">
+            <div class="popup__contenido-titulo">
+                <img src="assets/images/icono_telefono.png">
+                <p>Tips de viaje</p>
+            </div>
+            <div class="popup__contenido-parrafo">
+                <div class="popup__contenido-parrafo-uno">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label>Excepteur sint occaecat cupidatat non proident.</label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="popup__contenido-parrafo">
+                <div class="popup__contenido-parrafo-dos">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label>Excepteur sint occaecat cupidatat non proident.</label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="popup__contenido-parrafo-dos">
+                    <p>Lorem Ipsum</p>
+                    <ul>
+                        <li>
+                            <span>Ut enim ad minim veniam:</span>
+                            <label><a href="https://www.google.com.pe/" target="_blank">Excepteur sint occaecat cupidatat non proident.</a></label>
+                        </li>
+                        <li>
+                            <span>Fusce vitae libero non:</span>
+                            <label>Mauris nisl arcu, semper a nibh.</label>
+                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <img src="assets/images/box-cerrar.svg" alt="" class="box__cerrar fnToggleClass" data-removes="#PI_Contacto" />
+        </div>
+    </div>
+</div>
+<!-- Turismo comunitario - Detalle - Fin -->
