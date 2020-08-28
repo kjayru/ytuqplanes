@@ -1,20 +1,31 @@
 ﻿@model dynamic
 @{
     ViewBag.Title = "Inicio";
+    @* @ObjectInfo.Print(Model.sliders); *@
 }
 
+@{int icss = 1; int islide = 1;}
+@foreach (ytuqueplanes.Models.Slide slide in Model.sliders)
+{
+    <style type="text/css" media="screen and (min-width: 1401px)"> .slider-@icss { background-image:url(@slide.imagen_xl); } </style>
+    <style type="text/css" media="screen and (min-width: 801px) and (max-width: 1400px)"> .slider-@icss { background-image:url(@slide.imagen_lg); } </style>
+    <style type="text/css" media="screen and (min-width: 501px) and (max-width: 800px)"> .slider-@icss { background-image:url(@slide.imagen_md); } </style>
+    <style type="text/css" media="screen and (max-width: 500px)"> .slider-@icss { background-image:url(@slide.imagen_sm); } </style>
+    icss++;
+}
 <section class="all swiper-container sliders fnSliderHome">
     <div class="swiper-wrapper">
         @foreach (ytuqueplanes.Models.Slide slide in Model.sliders)
         {
-            <article class="swiper-slide slider" style="background-image: url('@slide.imagen_xl');">
+            <article class="swiper-slide slider slider-@islide">
                 <div class="limit">
-                    <!--<div class="slider__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Amazonas</div>-->
+                    @* <div class="slider__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Amazonas</div> *@
                     <h2 class="slider__titulo">@slide.titulo</h2>
                     <p class="slider__contenido">@slide.descripcion</p>
                     <a href="@slide.url" title="" class="boton m--grande m--verde"><strong>Más información</strong></a>
                 </div>
             </article>
+            islide++;
         }
     </div>
 
