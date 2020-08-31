@@ -7,6 +7,7 @@
 	position relative
 	cursor pointer
 	transition background-color ease 0.25s
+	border 0
 
 	align-items center
 	justify-content center
@@ -39,6 +40,7 @@
 			animation menuItemIn ease 0.45s forwards
 
 	&-contenedor
+		width 100%
 		display flex
 		justify-content center
 
@@ -1406,6 +1408,8 @@
 		border-radius 18px
 		position relative
 		z-index 2
+		&.m--center
+			text-align center
 
 	&__cerrar
 		position absolute

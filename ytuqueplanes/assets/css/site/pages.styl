@@ -1582,10 +1582,212 @@
     }
 }
 
-@media (max-width: 980px){
-	.turismo-comunitario-detalle__bloque-left .swiper-container,
-    .turismo-comunitario-detalle__bloque-left .swiper-wrapper,
-    .turismo-comunitario-detalle__bloque-left .swiper-slide {
-	    height: 300px;
-	}
-}
+@media (max-width 980px)
+	.turismo-comunitario-detalle__bloque-left
+		.swiper-container, .swiper-wrapper, .swiper-slide
+			height 300px
+
+
+/* Formularios */
+.form
+	&__contenido
+		max-width 830px
+		margin auto
+		display flex
+		flex-wrap wrap
+		justify-content space-between
+		&__titulo
+			display block
+			width 100%
+			font-size 1.5rem
+			padding-bottom 10px
+			&.m--sub
+				margin-top 35px
+	&__label
+		flex 1 1 50%
+		padding 15px 5px
+		&__titulo
+			display block
+			font-family f-news
+			font-size 1.125rem
+			padding-bottom 5px
+			max-width 395px
+	&__input
+		display block
+		width 100%
+		max-width 395px
+		height 51px
+		border 1px solid #979797
+		border-radius 4px
+		input, select, span
+			width 100%
+			height 100%
+			border 0
+			padding 0 15px
+			font-family f-news
+			border-radius 4px
+
+		&.-focus-, &.m--select.-focus-
+			border-color verde
+			&:after
+				border-color verde
+		&.-error-
+			border-color red
+
+		&.m--dia, &.m--mes, &.m--anio
+			width 64px
+			margin-right 12px
+			font-size 1.06rem
+			input
+				text-align center
+				letter-spacing 1px
+		&.m--anio
+			width 100px
+
+		&.m--select
+			position relative
+			&:after
+				content ''
+				display block
+				width 16px
+				height 16px
+				border-left 1.5px solid #777
+				border-bottom .51px solid #777
+				position absolute
+				top 50%
+				margin-top -12px
+				right 18px
+				transform rotate(-45deg)
+			span
+				position absolute
+				z-index 0
+				top 0
+				left 0
+				display flex
+				align-items center
+			select
+				opacity 0
+
+		&-fecha
+			display flex
+
+		&-radios
+			height 51px
+			display flex
+			align-items center
+			.form
+				&__input
+					width 23px
+					height 23px
+					margin-right 10px
+					display flex
+					text-align center
+					justify-content center
+					i
+						line-height 1.227rem
+						font-size 0.95rem
+						opacity 0
+					&__radio
+						cursor pointer
+						display flex
+						font-family f-news
+						align-items center
+						margin-right 30px
+						&:last-of-type
+							margin-right 0
+						&.-error-
+							.form__input
+								border-color red
+			input
+				display none
+			input:checked + .form__input
+				border-color verde
+				color verde
+				i
+					opacity 1
+			&.m--terminos
+				width 100%
+				justify-content center
+				padding 25px 0 40px
+				.form__input
+					width 18px
+					height 18px
+					i
+						font-size 0.8rem
+						line-height 1.1rem
+					&__radio
+						font-size 0.75rem
+						margin 0
+						a
+							color celeste
+
+	&__checkboxes
+		padding 15px 0 50px
+
+	&__checkbox-boton
+		input
+			display none
+		.boton.m--filtro
+			width 150px
+			margin-right 10px
+			strong
+				font-size 0.9rem
+				color #333
+		input:checked + .boton, input:checked:hover + .boton
+			background-color morado
+			border-color morado
+			opacity 1
+			&:before
+				background-color morado
+			strong
+				color #fff !important
+
+	&__recaptcha
+		margin 0 auto
+		display block
+	.rc-anchor-normal
+		width 100%
+		max-width 300px
+
+
+	@media (max-width 600px)
+
+		&__label
+			flex 100%
+			padding 10px 0
+		&__input
+			max-width inherit
+
+		&__checkbox-boton
+			.boton.m--filtro
+				margin 5px 5px 5px 0
+
+
+	@media (max-width 500px)
+
+		&__contenido
+			&__titulo
+				font-size 1.25rem
+				&.m--sub
+					margin-top 20px
+		&__label
+			&__titulo
+				font-size 1.05rem
+		&__input
+			height 40px
+			&-radios
+				&.m--terminos
+					padding 20px 0 25px
+		&__checkboxes
+			padding 5px 0 25px
+		&__checkbox-boton
+			.boton.m--filtro
+				padding 0
+				width 137px
+
+
+	@media (max-width 400px)
+
+		&__contenido
+			&__titulo
+				font-size 1.2rem

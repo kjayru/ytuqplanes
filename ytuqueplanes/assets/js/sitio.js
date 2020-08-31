@@ -20,6 +20,7 @@ const site = (function(){
 		events.swipers();
 		events.clicks();
 		events.setRotadores();
+		events.forms();
 		$('#calendario').length && events.calendario();
 	};
 
@@ -345,8 +346,6 @@ const site = (function(){
 		},
 
 		forms : function(){
-			// Set Recaptach
-				// setNewRecaptcha();
 
 			let formBlock = true;
 			$('form').on('submit', function(e){
@@ -384,24 +383,23 @@ const site = (function(){
 						return true;
 					} else {
 						e.preventDefault();
-						btn.attr('disabled','disabled');
-						formBlock=false;
-						$.ajax({url: f.attr('action'), type: 'POST', dataType: 'json', data: f.serializeArray()})
-							.done(function(response) {
-								if(response.rpta)
-								{
-									switch (tipoForm) {
-										case 'inLightbox':
-											break;
-										default:
-												// default action
-											break;
-									}
-									// setNewRecaptcha();
-									formBlock = true;
-									btn.removeAttr('disabled');
-								}
-							});
+						grecaptcha.ready(function(){
+							if( grecaptcha.getResponse() ) {
+								btn.attr('disabled','disabled');
+								formBlock=false;
+								// $.ajax({url: f.attr('action'), type: 'POST', dataType: 'json', data: f.serializeArray()})
+								// 	.done(function(response) {
+								// 	});
+								$(lightbox).addClass(dom.active);
+								$.each(fields, function(index, val) {
+									$(this).val('').prop( "checked", false );
+								});
+								formBlock=true;
+								btn.removeAttr('disabled');
+							} else {
+
+							}
+						});
 					}
 				} else {
 					return false;
@@ -410,7 +408,10 @@ const site = (function(){
 
 			$('input, select, textarea')
 				.on('focus', function(){
-					// Set you own function
+					$(this).parent().addClass('-focus-').removeClass('-error-');
+				})
+				.on('blur change', function(){
+					$(this).parent().removeClass('-focus-');
 				});
 		}
 
@@ -419,7 +420,6 @@ const site = (function(){
 	function setCalendario(direccion){
 		const urlApi = calendario_provincia ? '/api/festividades/'+calendario_provincia : '/api/festividades';
 		$.getJSON(urlApi, function(data, textStatus) {
-			console.log(data);
 			const json = data;
 			const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 			const dia = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sáb'];
@@ -511,19 +511,6 @@ const site = (function(){
                 </div>`;
 	}
 
-	// set Google Recaptha
-	function setNewRecaptcha(){
-		grecaptcha.ready(function() {
-			grecaptcha.execute('Define your own key code', {action: 'nameofweb'}).then(function(token) {
-				if(!$('input[name="tokengoogle"]').length) {
-					$('form').append('<input type="hidden" name="tokengoogle" value="'+token+'" />');
-				} else {
-					$('form input[name="tokengoogle"]').val(token);
-				}
-			});
-		});
-	}
-
 	// Switch active class to target
 	function active(key){ $($.trim(key)).toggleClass(dom.active); }
 
@@ -540,46 +527,3 @@ const site = (function(){
 })();
 
 site.init();
-
-// var now = new Date();
-// var current;
-// if (now.getMonth() == 11) {
-// 	console.log(1);
-//     current = new Date(now.getFullYear() + 1, 0, 1);
-// } else {
-// 	console.log(2);
-//     current = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-// }
-// console.log( current );
-var direccion = 'menos';
-var date = new Date();
-var mes = date.getMonth();
-var anio = date.getFullYear();
-
-function setDateCalendario() {
-	switch (direccion) {
-		case 'mas':
-				if(mes==11) {
-					anio = anio+1;
-					mes = 0;
-				} else {
-					mes++;
-				}
-				date = new Date(anio, mes, 1)
-			break;
-		case 'menos':
-				if(mes==0) {
-					anio = anio-1;
-					mes = 11;
-				} else {
-					mes--;
-				}
-				date = new Date(anio, mes, 1)
-			break;
-	}
-	console.log(date);
-}
-
-// setInterval(function(){
-// 	setDateCalendario();
-// }, 1000);
