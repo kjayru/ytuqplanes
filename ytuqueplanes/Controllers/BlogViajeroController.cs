@@ -45,6 +45,15 @@ namespace ytuqueplanes.Controllers
 
 
             ViewBag.gprovincias = pr;
+
+            var seo = db.seos.Where(c => c.id == 6).Select(p => new { p.og_title, p.og_description, p.og_image, p.keywords }).FirstOrDefault();
+            //seo
+            ViewBag.seotitle = seo.og_title;
+            ViewBag.seotype = seo.og_description;
+            ViewBag.seourl = System.Web.HttpContext.Current.Request.Url.AbsoluteUri;
+            ViewBag.seoimagen = seo.og_image;
+            ViewBag.seodescripcion = seo.og_description;
+            ViewBag.keywords = seo.keywords;
         }
 
         public ActionResult Index()

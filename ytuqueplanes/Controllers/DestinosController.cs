@@ -45,9 +45,16 @@ namespace ytuqueplanes.Controllers
 
             }
 
-
-
             ViewBag.gprovincias = pr;
+
+            var seo = db.seos.Where(c => c.id == 2).Select(p => new { p.og_title, p.og_description, p.og_image, p.keywords }).FirstOrDefault();
+            //seo
+            ViewBag.seotitle = seo.og_title;
+            ViewBag.seotype = seo.og_description;
+            ViewBag.seourl = System.Web.HttpContext.Current.Request.Url.AbsoluteUri;
+            ViewBag.seoimagen = seo.og_image;
+            ViewBag.seodescripcion = seo.og_description;
+            ViewBag.keywords = seo.keywords;
         }
 
         public ActionResult Index()
@@ -178,7 +185,7 @@ namespace ytuqueplanes.Controllers
 
             datosDestinoModel.festividades = fests;
 
-            datosDestinoModel.destacados = getDestacados();
+           // datosDestinoModel.destacados = getDestacados();
 
 
 
@@ -223,6 +230,55 @@ namespace ytuqueplanes.Controllers
 
             datosDestinoModel.comollegar = comolls;
 
+            //relacionados
+
+
+            var rel = from t1 in db.atractivos
+                     join t2 in db.destinos
+
+                     on t1.destino_id equals t2.id
+
+                     where t2.provincia_Id == prov.id
+
+                     select new
+                     {
+                         id = t1.id,
+                         titulo = t1.titulo,
+                         contenido = t1.contenido,
+                         destino_id = t2.id,
+                         slug = t1.slug,
+                         imagen = t1.banner,
+                         destino_slug = t2.slug
+
+                     };
+
+            var destacados = rel.ToList();
+
+            List<Destacado> dtdo = new List<Destacado>();
+
+            for (var i = 0; i < destacados.Count; i++)
+            {
+                var destinoId = destacados[i].destino_id;
+                var pvId = db.destinos.Where(d => d.id == destinoId).Select(p => new { p.provincia_Id }).First();
+                var prv = db.provincias.Where(d => d.id == pvId.provincia_Id).Select(p => new { p.slug, p.nombre }).First();
+
+                dtdo.Add(
+                    new Destacado
+                    {
+                        titulo = destacados[i].titulo,
+                        provincia = prv.nombre,
+                        slug = destacados[i].slug,
+                        imagen = destacados[i].imagen,
+                        provincia_slug = prv.slug,
+                        destino_slug = destacados[i].destino_slug
+                    }
+                );
+
+
+            }
+
+
+            datosDestinoModel.destacados = dtdo;
 
             return View(datosDestinoModel);
         }
