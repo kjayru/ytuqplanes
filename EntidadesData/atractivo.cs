@@ -26,5 +26,7 @@ namespace EntidadesData
         public string slug { get; set; }
         public string titulo { get; set; }
         public Nullable<int> destacado { get; set; }
+        public string thumb { get; set; }
+        public Nullable<int> seo_id { get; set; }
     }
 }

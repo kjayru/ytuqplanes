@@ -32,6 +32,7 @@ namespace EntidadesData
         public string slug { get; set; }
         public string festivida_pdf { get; set; }
         public string tenencuenta { get; set; }
+        public Nullable<int> seo_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<provincia_comollegar> provincia_comollegar { get; set; }

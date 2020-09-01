@@ -14,15 +14,11 @@ namespace EntidadesData
     
     public partial class user
     {
-        public int idusuario { get; set; }
-        public string nombre { get; set; }
-        public string paterno { get; set; }
-        public string materno { get; set; }
+        public int UserID { get; set; }
+        public string name { get; set; }
         public string email { get; set; }
         public Nullable<int> idrol { get; set; }
-        public byte[] password_hash { get; set; }
-        public byte[] password_salt { get; set; }
-        public Nullable<bool> condicion { get; set; }
+        public string password { get; set; }
     
         public virtual role role { get; set; }
     }

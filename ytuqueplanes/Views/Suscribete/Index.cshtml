@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "";
+}
+
+
+<!-- Formulario -->
+
+<section class="page__header" style="background-image: url('/assets/images/rutas-cortas-3.jpg');">
+    <div class="limit page__header__inset">
+        <a href="#" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
+        <h2 class="page__header__titulo">Suscríbete</h2>
+        <p class="page__header__resumen">Recibe las últimas novedades sobre destinos, ofertas y promociones que el Perú te ofrece.</p>
+    </div>
+</section>
+
+<section class="seccion">
+    <div class="limit">
+        <form method="post" class="form__contenido" action="/suscribete/gracias"  autocomplete="on">
+            <h3 class="form__contenido__titulo">Ingresa tus datos</h3>
+            <label class="form__label">
+                <strong class="form__label__titulo">Nombres</strong>
+                <div class="form__input">
+                    <input type="text" name="name" required>
+                </div>
+            </label>
+            <label class="form__label">
+                <strong class="form__label__titulo">Apellidos</strong>
+                <div class="form__input">
+                    <input type="text" name="lastname" required>
+                </div>
+            </label>
+            <label class="form__label">
+                <strong class="form__label__titulo">Correo electrónico</strong>
+                <div class="form__input">
+                    <input type="email" name="email" valid="email" required>
+                </div>
+            </label>
+            <div class="form__label">
+                <strong class="form__label__titulo">Fecha de nacimiento</strong>
+                <span class="form__input-radios">
+                    <label class="form__input__radio">
+                        <input type="radio" name="sexo" value="Masculino" required>
+                        <span class="form__input"><i class="fa fa-check" aria-hidden="true"></i></span>
+                        Masculino
+                    </label>
+                    <label class="form__input__radio">
+                        <input type="radio" name="sexo" value="Femenino" required>
+                        <span class="form__input"><i class="fa fa-check" aria-hidden="true"></i></span>
+                        Femenino
+                    </label>
+                </span>
+            </div>
+            <div class="form__label">
+                <strong class="form__label__titulo">Fecha de nacimiento</strong>
+                <span class="form__input-fecha">
+                    <label class="form__input m--dia">
+                        <input type="tel" name="dia" placeholder="DD" maxlength="2" valid="numero">
+                    </label>
+                    <label class="form__input m--mes">
+                        <input type="tel" name="mes" placeholder="MM" maxlength="2" valid="numero">
+                    </label>
+                    <label class="form__input m--anio">
+                        <input type="tel" name="anio" placeholder="AAAA" maxlength="4" valid="numero">
+                    </label>
+                </span>
+            </div>
+            <label class="form__label">
+                <strong class="form__label__titulo">Región donde vives</strong>
+                <div class="form__input m--select">
+                    <span class="fnTargetSelect">Seleccionar</span>
+                    <select name="provincia" class="fnSelect">
+                        <option value="">Seleccionar</option>
+                        @{
+                            string[] opts = { "Amazonas", "Áncash", "Apurímac", "Arequipa", "Ayacucho", "Cajamarca", "cajamarca", "norte", "Cusco", "Huancavelíca", "Huánuco", "Ica", "Junín", "La Libertad", "Lambayeque", "Lima", "Loreto", "Madre De Dios", "Moquegua", "Pasco", "Piura", "Puno", "San Martín", "Tacna", "Tumbes", "Ucayali" };
+                        }
+                        @foreach (var opt in opts)
+                        {
+                            <option value="@opt">@opt</option>
+                        }
+                    </select>
+                </div>
+            </label>
+            <h3 class="form__contenido__titulo m--sub">Actividades de interés</h3>
+            <div class="form__checkboxes">
+                <label class="form__checkbox-boton">
+                    <input type="checkbox" value="Aventura" name="act[]">
+                    <span class="boton m--filtro m--mediano m--morado"><strong>Aventura</strong></span>
+                </label>
+                <label class="form__checkbox-boton">
+                    <input type="checkbox" value="Aventura" name="act[]">
+                    <span class="boton m--filtro m--mediano m--morado"><strong>Vivencial</strong></span>
+                </label>
+                <label class="form__checkbox-boton">
+                    <input type="checkbox" value="Aventura" name="act[]">
+                    <span class="boton m--filtro m--mediano m--morado"><strong>Descanzo</strong></span>
+                </label>
+                <label class="form__checkbox-boton">
+                    <input type="checkbox" value="Aventura" name="act[]">
+                    <span class="boton m--filtro m--mediano m--morado"><strong>Naturaleza</strong></span>
+                </label>
+                <label class="form__checkbox-boton">
+                    <input type="checkbox" value="Aventura" name="act[]">
+                    <span class="boton m--filtro m--mediano m--morado"><strong>Historia</strong></span>
+                </label>
+            </div>
+            <div class="g-recaptcha form__recaptcha" data-sitekey="6LdobcUZAAAAAJW3wlW5SJXPdUqJEbYP1cpc9fiY"></div>
+            
+            <span class="form__input-radios m--terminos">
+                <label class="form__input__radio">
+                    <input type="checkbox" name="terminos" value="terminos" checked="checked" valid="terminos">
+                    <span class="form__input"><i class="fa fa-check" aria-hidden="true"></i></span>
+                    <span>He leído y acepto los <a href="#" target="_blank"> términos y condiciones</a></span>
+                </label>
+            </span>
+
+            <div class="boton-contenedor">
+                <button type="submit" class="boton m--grande m--crema"><strong>Suscribirse</strong></button>
+            </div>
+        </form>
+    </div>
+</section>
+

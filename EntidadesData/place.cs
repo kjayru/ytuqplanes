@@ -28,6 +28,7 @@ namespace EntidadesData
         public string height { get; set; }
         public string image { get; set; }
         public Nullable<int> ruta_id { get; set; }
+        public string thumb { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<place_activity> place_activity { get; set; }

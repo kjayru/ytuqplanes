@@ -92,17 +92,30 @@ namespace ytuqueplanes
           );
 
 
-            routes.MapRoute(
+        routes.MapRoute(
           "Turismo",
           "turismo-comunitario",
           new { controller = "Turismo", action = "Index" }
-       );
+         );
 
-        routes.MapRoute(
+
+         routes.MapRoute(
             "TurismoDetalle",
             "turismo-comunitario/{id}",
             new { controller = "Turismo", action = "Detalle", id = UrlParameter.Optional }
         );
+            routes.MapRoute(
+             "Suscribete",
+             "suscribete",
+             new { controller = "Suscribete", action = "Index" }
+            );
+
+            routes.MapRoute(
+             "SuscribeteGracias",
+             "suscribete/gracias",
+             new { controller = "Suscribete", action = "Index" },
+             new { httpMethod = new HttpMethodConstraint("POST") }
+            );
 
 
 
@@ -112,12 +125,13 @@ namespace ytuqueplanes
             new { controller = "Experiencias", action = "AllResult" }
          );
 
-            routes.MapRoute(
+         routes.MapRoute(
             "ExperienciaApiProvincia",
             "api/festividades/{id}",
             new { controller = "Experiencias", action = "EPProvincia", id = UrlParameter.Optional }
          );
-            routes.MapRoute(
+
+         routes.MapRoute(
            "RutasApiMapa",
            "api/ApiMapa/{id}",
            new { controller = "Rutas", action = "ApiMapa", id = UrlParameter.Optional }

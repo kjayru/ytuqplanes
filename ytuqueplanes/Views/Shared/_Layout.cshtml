@@ -11,25 +11,24 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Y tu que planes</title>
+    <title>@ViewBag.seotitle</title>
     <link rel="icon" type="image/png" href="/assets/images/logo.ico">
-    <meta name="description" content="En el Perú hay muchas cosas por hacer. Conoce y disfruta todas las actividades que harán tu viaje inolvidable." />
-
+    <meta name="description" content="@ViewBag.seodescripcion" />
+    <meta name="keywords" lang="es" content="@ViewBag.keywords" />
     <!-- Facebook  -->
     <meta property="fb:app_id" content="2613846985498810" />
-    <meta property="og:title" content="Y tú qué planes? - Turismo y Viajes Perú" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ytuqueplanes.com" />
-    <meta property="og:image" content="https://ytuqueplanes.com/images/ytqp-share2.jpg" />
-    <meta property="og:site_name" content="Y tú qué planes?" />
-    <meta property="og:description" content="¡Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces." />
+    <meta property="og:title" content="@ViewBag.seotitle" />
+    <meta property="og:type" content="@ViewBag.seotype" />
+    <meta property="og:url" content="@ViewBag.seourl" />
+    <meta property="og:image" content="@ViewBag.seoimagen" />
+    <meta property="og:description" content="@ViewBag.seodescripcion" />
     <meta property="fb:admins" content="100002348994943" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="ConoceelPeru" />
-    <meta name="twitter:title" content="Y tú qué planes? - Turismo y Viajes Perú" />
-    <meta name="twitter:description" content="¡Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces." />
+    <meta name="twitter:site" content="YtuQuePlanes" />
+    <meta name="twitter:title" content="@ViewBag.seotitulo" />
+    <meta name="twitter:description" content="@ViewBag.seodescripcion" />
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -39,11 +38,15 @@
     }
     <link rel="stylesheet" href="/assets/css/site.css?v=10">
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5ZM22Z4');</script>
+    <script>
+    (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5ZM22Z4');</script>
     <!-- End Google Tag Manager -->
 </head>
 
@@ -52,6 +55,8 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5ZM22Z4"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    
 
     @if (ViewBag.pageMapa != true)
     {
@@ -76,42 +81,15 @@
                                     <span class="header__nav__destinos__filtro fnVerDepartamentosPorZona" data-filtro="-centro-">Centro</span>
                                     <span class="header__nav__destinos__filtro fnVerDepartamentosPorZona" data-filtro="-sur-">Sur</span>
                                 </aside>
-                                @{
-                                    var deps= new string[,] {
-                                        {"Amazonas", "amazonas", "norte"},
-                                        {"Áncash", "ancash", "centro"},
-                                        {"Apurímac", "apurimac", "sur"},
-                                        {"Arequipa", "arequipa", "sur"},
-                                        {"Ayacucho", "ayacucho", "sur"},
-                                        {"Cajamarca", "cajamarca", "norte"},
-                                        {"Cusco", "cusco", "sur"},
-                                        {"Huancavelíca", "huancavelica", "centro"},
-                                        {"Huánuco", "huanuco", "centro"},
-                                        {"Ica", "ica", "centro"},
-                                        {"Junín", "junin", "centro"},
-                                        {"La Libertad", "la-libertad", "norte"},
-                                        {"Lambayeque", "lambayeque", "norte"},
-                                        {"Lima", "lima", "centro"},
-                                        {"Loreto", "loreto", "norte"},
-                                        {"Madre De Dios", "madre-de-dios", "sur"},
-                                        {"Moquegua", "moquegua", "sur"},
-                                        {"Pasco", "pasco", "centro"},
-                                        {"Piura", "piura", "norte"},
-                                        {"Puno", "puno", "sur"},
-                                        {"San Martín", "san-martin", "norte"},
-                                        {"Tacna", "tacna", "sur"},
-                                        {"Tumbes", "tumbes", "norte"},
-                                        {"Ucayali", "ucayali", "centro"}
-                                    };
-                                    var depsSize = (deps.Length/3)-1;
-                                }
-                                @for(var i=0; i<=depsSize; i++){
-                                    <li class="header__nav__destinos__item" data-filtro="@deps[i,2]">
-                                        <a
-                                            href="/destinos/@deps[i,1]"
-                                            class="header__nav__destinos__enlace @(ViewBag.slugProvincia==@deps[i,1]||ViewBag.provinciaSlug==@deps[i,1]||ViewBag.provincia_slug==@deps[i,1]?"-activo-":"")"
-                                            data-mapa="@deps[i,1]"
-                                        >@deps[i,0]</a>
+                               
+
+
+                                @foreach (var pr in ViewBag.gprovincias)
+                                {
+                                    <li class="header__nav__destinos__item" data-filtro="@pr.region">
+                                        <a href="/destinos/@pr.slug"
+                                           class="header__nav__destinos__enlace @(ViewBag.slugProvincia==pr.slug||ViewBag.provinciaSlug==pr.slug||ViewBag.provincia_slug==pr.slug?"-activo-":"")"
+                                           data-mapa="@pr.slug">@pr.nombre</a>
                                     </li>
                                 }
                             </ul>

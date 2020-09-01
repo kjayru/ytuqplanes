@@ -28,5 +28,6 @@ namespace EntidadesData
         public Nullable<int> estado { get; set; }
         public Nullable<int> tipo_id { get; set; }
         public Nullable<int> provincia_id { get; set; }
+        public Nullable<int> seo_id { get; set; }
     }
 }

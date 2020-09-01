@@ -26,6 +26,7 @@ namespace EntidadesData
         public Nullable<int> provincia_Id { get; set; }
         public string imagen { get; set; }
         public string slug { get; set; }
+        public string thumb { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<experiencia> experiencias { get; set; }

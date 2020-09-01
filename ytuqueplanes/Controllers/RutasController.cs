@@ -17,6 +17,39 @@ namespace ytuqueplanes.Controllers
     {
         ytuqueplanesDBEntities1 db = new ytuqueplanesDBEntities1();
         // GET: Rutas
+        public RutasController()
+        {
+
+            var prov = db.provincias.Where(c => c.estado == 1).Select(p => new { p.id, p.nombre, p.slug, p.region_id }).ToList();
+
+            List<Provincias> pr = new List<Provincias>();
+            for (var i = 0; i < prov.Count(); i++)
+            {
+
+                var regID = prov[i].region_id;
+                string regname = "";
+                var reg = db.regions.Where(c => c.id == regID).Select(q => new { q.nombre }).FirstOrDefault();
+
+                if (reg != null)
+                {
+                    regname = reg.nombre;
+                }
+                pr.Add(new Provincias
+                {
+                    id = prov[i].id,
+                    slug = prov[i].slug,
+                    nombre = prov[i].nombre,
+                    region = regname
+
+                });
+
+            }
+
+
+
+            ViewBag.gprovincias = pr;
+        }
+
         public ActionResult Index()
         {
             dynamic RutasModel = new ExpandoObject();

@@ -31,5 +31,6 @@ namespace EntidadesData
         public string fb_app_id { get; set; }
         public string fb_admins { get; set; }
         public string scripts { get; set; }
+        public string keywords { get; set; }
     }
 }

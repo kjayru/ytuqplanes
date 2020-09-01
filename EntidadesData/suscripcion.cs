@@ -23,5 +23,9 @@ namespace EntidadesData
         public int tipo_suscripcion_id { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> updated_at { get; set; }
+        public string genero { get; set; }
+        public string fechanac { get; set; }
+        public string provincia { get; set; }
+        public string actividades { get; set; }
     }
 }

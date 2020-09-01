@@ -20,5 +20,6 @@ namespace EntidadesData
         public string contenido { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> updated_at { get; set; }
+        public Nullable<int> seo_id { get; set; }
     }
 }
