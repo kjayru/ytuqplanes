@@ -58,7 +58,7 @@ namespace ytuqueplanes.Controllers
         }
 
         [HttpPost]
-        public ActionResult gracias(EntidadesData.suscripcion item) 
+        public ActionResult Gracias(EntidadesData.suscripcion item) 
         {
             item.created_at = DateTime.Now;
             item.updated_at = DateTime.Now;
@@ -69,9 +69,10 @@ namespace ytuqueplanes.Controllers
             item.fechanac = Request.Form["dia"] + "/" + Request.Form["mes"] + "/" + Request.Form["anio"];
             item.email = Request.Form["email"];
             item.provincia = Request.Form["provincia"];
-            item.actividades = Request.Form["actividades"];
+            item.actividades = Request.Form["act[]"];
 
             db.suscripcions.Add(item);
+            db.SaveChanges();
 
             return View();
         }

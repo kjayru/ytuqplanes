@@ -113,7 +113,7 @@ namespace ytuqueplanes
             routes.MapRoute(
              "SuscribeteGracias",
              "suscribete/gracias",
-             new { controller = "Suscribete", action = "Index" },
+             new { controller = "Suscribete", action = "Gracias" },
              new { httpMethod = new HttpMethodConstraint("POST") }
             );
 

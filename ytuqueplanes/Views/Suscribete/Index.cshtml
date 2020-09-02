@@ -16,7 +16,7 @@
 
 <section class="seccion">
     <div class="limit">
-        <form method="post" class="form__contenido" action="/suscribete/gracias"  autocomplete="on">
+        <form method="post" class="form__contenido" action="/suscribete/gracias" data-tipo="postpermit" autocomplete="on">
             <h3 class="form__contenido__titulo">Ingresa tus datos</h3>
             <label class="form__label">
                 <strong class="form__label__titulo">Nombres</strong>
@@ -88,24 +88,24 @@
                     <span class="boton m--filtro m--mediano m--morado"><strong>Aventura</strong></span>
                 </label>
                 <label class="form__checkbox-boton">
-                    <input type="checkbox" value="Aventura" name="act[]">
+                    <input type="checkbox" value="Vivencial" name="act[]">
                     <span class="boton m--filtro m--mediano m--morado"><strong>Vivencial</strong></span>
                 </label>
                 <label class="form__checkbox-boton">
-                    <input type="checkbox" value="Aventura" name="act[]">
+                    <input type="checkbox" value="Descanso" name="act[]">
                     <span class="boton m--filtro m--mediano m--morado"><strong>Descanzo</strong></span>
                 </label>
                 <label class="form__checkbox-boton">
-                    <input type="checkbox" value="Aventura" name="act[]">
+                    <input type="checkbox" value="Naturaleza" name="act[]">
                     <span class="boton m--filtro m--mediano m--morado"><strong>Naturaleza</strong></span>
                 </label>
                 <label class="form__checkbox-boton">
-                    <input type="checkbox" value="Aventura" name="act[]">
+                    <input type="checkbox" value="Historia" name="act[]">
                     <span class="boton m--filtro m--mediano m--morado"><strong>Historia</strong></span>
                 </label>
             </div>
-            <div class="g-recaptcha form__recaptcha" data-sitekey="6LdobcUZAAAAAJW3wlW5SJXPdUqJEbYP1cpc9fiY"></div>
-            
+             <div class="g-recaptcha form__recaptcha" data-sitekey="6Lc9xcYZAAAAAEfhtw_CbD0ScVJSMT9p1kWgLylP"></div>
+    
             <span class="form__input-radios m--terminos">
                 <label class="form__input__radio">
                     <input type="checkbox" name="terminos" value="terminos" checked="checked" valid="terminos">
@@ -115,7 +115,7 @@
             </span>
 
             <div class="boton-contenedor">
-                <button type="submit" class="boton m--grande m--crema"><strong>Suscribirse</strong></button>
+                <button type="submit" data-tipo="postpermit" class="boton m--grande m--crema"><strong>Suscribirse</strong></button>
             </div>
         </form>
     </div>
