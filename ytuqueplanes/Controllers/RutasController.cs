@@ -20,7 +20,7 @@ namespace ytuqueplanes.Controllers
         public RutasController()
         {
 
-            var prov = db.provincias.Where(c => c.estado == 1).Select(p => new { p.id, p.nombre, p.slug, p.region_id }).ToList();
+            var prov = db.provincias.Where(c => c.estado == 1 && c.id != 26).Select(p => new { p.id, p.nombre, p.slug, p.region_id }).ToList();
 
             List<Provincias> pr = new List<Provincias>();
             for (var i = 0; i < prov.Count(); i++)
@@ -148,9 +148,6 @@ namespace ytuqueplanes.Controllers
             }
 
 
-            // var ruta = db.rutas.Where(c => c.provincia_id == prov.id).Select(p => new { p.id, p.titulo }).First();
-
-            //select categoria_ruta_id from rutas join provincias on rutas.provincia_id = provincias.id where provincias.id=1 group by categoria_ruta_id
             dynamic RutasModel = new ExpandoObject();
 
             List<RutaProvincia> rp = new List<RutaProvincia>();

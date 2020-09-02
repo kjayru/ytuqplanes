@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 
@@ -18,6 +19,8 @@ namespace ytuqueplanes.Models
         public string categoria { get; set; }
 
         public int? likes { get; set; }
+        public string provincia { get; set; }
+        public string provincia_slug { get; set; }
 
     }
 }

@@ -18,6 +18,10 @@ namespace ytuqueplanes.Models
         public string resumen { get; set; }
         public string contenido { get; set; }
         public string estado { get; set; }
+        public string provincia { get; set; }
+        public string provincia_slug { get; set; }
+        public string destino_slug { get; set; }
+        public int? contador { get; set; }
 
 
 

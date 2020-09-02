@@ -14,7 +14,7 @@ namespace ytuqueplanes.Controllers
         public TurismoController()
         {
 
-            var prov = db.provincias.Where(c => c.estado == 1).Select(p => new { p.id, p.nombre, p.slug, p.region_id }).ToList();
+            var prov = db.provincias.Where(c => c.estado == 1 && c.id != 26).Select(p => new { p.id, p.nombre, p.slug, p.region_id }).ToList();
 
             List<Provincias> pr = new List<Provincias>();
             for (var i = 0; i < prov.Count(); i++)

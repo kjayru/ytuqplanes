@@ -117,6 +117,13 @@ namespace ytuqueplanes
              new { httpMethod = new HttpMethodConstraint("POST") }
             );
 
+            routes.MapRoute(
+            "buscar",
+            "buscar/{id}",
+            new { controller = "Buscador", action = "Index", id = UrlParameter.Optional }
+            
+           );
+
 
 
             routes.MapRoute(
