@@ -125,14 +125,15 @@ $(document).ready(function() {
 		contenido += "<p class='wfrhbi-link popup' data-id='#datos-utiles'><i class='fa fa-info-circle'></i>Datos útiles</p>";
 		contenido += "</div>";
 		contenido += "</div>";
-		if(data[0].google != null || data[0].pdf != null) {
+		console.log(data[0].google, data[0].pdf);
+		if(data[0].google != null && data[0].google != "" || data[0].pdf != null && data[0].pdf != "") {
 			contenido += "<div class='wrapper-first-right-header-buttons-right'>";
-			if(data[0].google != null) {
+			if(data[0].google != null && data[0].google != "") {
 				contenido += "<div class='wrapper-first-right-header-buttons-item'>";
 				contenido += "<p class='wfrhbi-link btn' data-href='" + data[0].google + "'><i class='fa fa-map-marker'></i>Ubicar en Google Maps</p>";
 				contenido += "</div>";
 			}
-			if(data[0].pdf != null) {
+			if(data[0].pdf != null && data[0].pdf != "") {
 				contenido += "<div class='wrapper-first-right-header-buttons-item'>";
 				contenido += "<p class='wfrhbi-link download' data-href='" + data[0].pdf + "'><i class='fa fa-download'></i>Descargar Ruta en PDF</p>";
 				contenido += "</div>";

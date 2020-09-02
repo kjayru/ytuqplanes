@@ -94,8 +94,8 @@ const site = (function(){
 										slidesPerView: 'auto',
 										freeMode: true,
 			     						navigation: {
-								     		nextEl: el.clase.parentElement.querySelector('.fnSliderDestinosDetalle__left'),
-						        			prevEl: el.clase.parentElement.querySelector('.fnSliderDestinosDetalle__right')
+								     		nextEl: el.clase.parentElement.querySelector('.fnSliderDestinosDetalle__right'),
+						        			prevEl: el.clase.parentElement.querySelector('.fnSliderDestinosDetalle__left')
 								     	}
 								    };
                             break;
