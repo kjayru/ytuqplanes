@@ -129,7 +129,6 @@ namespace ytuqueplanes.Controllers
         public ActionResult Detalle(string provincia, string id) {
 
             dynamic datosRelacionadoModel = new ExpandoObject();
-
             var detalle = db.posts.Where(c => c.slug == id).Select(p => new {
                 p.id,
                 p.titulo,
@@ -138,9 +137,30 @@ namespace ytuqueplanes.Controllers
                 p.resumen,
                 p.imagen,
                 p.categoria_blog_id,
-                p.provincia_id
-                
+                p.provincia_id,
+                p.seo_id
             }).First();
+
+            if (detalle.seo_id > 0)
+            {
+                ///Opengraph
+                var graph = db.seos.Where(c => c.id == detalle.seo_id).Select(p => new
+                {
+                    p.og_title,
+                    p.og_description,
+                    p.og_image,
+                    p.og_url,
+                    p.keywords
+                }).FirstOrDefault();
+
+                ViewBag.seotitle = graph.og_title;
+                ViewBag.seotype = graph.og_description;
+                ViewBag.seourl = System.Web.HttpContext.Current.Request.Url.AbsoluteUri;
+                ViewBag.seoimagen = graph.og_image;
+                ViewBag.seodescripcion = graph.og_description;
+                ViewBag.keywords = graph.keywords;
+            }
+                //detalles
 
             var prov = db.provincias.Where(d => d.id == detalle.provincia_id).Select(p => new { p.id, p.nombre, p.slug }).First();
 
