@@ -1,6 +1,6 @@
 ﻿@using ytuqueplanes.Models;
 @{
-    @* @ObjectInfo.Print(ViewBag); *@
+    @ObjectInfo.Print(ViewBag);
 }
 <!DOCTYPE html>
 <html class="no-js" lang="es-PE">
@@ -56,7 +56,7 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    
+
 
     @if (ViewBag.pageMapa != true)
     {
@@ -81,8 +81,6 @@
                                     <span class="header__nav__destinos__filtro fnVerDepartamentosPorZona" data-filtro="-centro-">Centro</span>
                                     <span class="header__nav__destinos__filtro fnVerDepartamentosPorZona" data-filtro="-sur-">Sur</span>
                                 </aside>
-                               
-
 
                                 @foreach (var pr in ViewBag.gprovincias)
                                 {
@@ -256,10 +254,10 @@
                     <a href="https://api.whatsapp.com/send?phone=051944492314&text=&source=&data=&app_absent=" class="boton m--mediano m--235 m--wsp"><strong><i class="fa fa-whatsapp" aria-hidden="true"></i>944492314</strong></a>
                     <img src="/assets/images/i-peru-gris.png" alt="" class="footer__peru">
                     <div class="footer__titulo m--top">Recibe nuevas ofertas y novedades</div>
-                    <a href="https://ytuqueplanes.com/suscribete.aspx" target="_blank" class="boton m--mediano m--235 m--morado"><strong>Suscribirme</strong></a>
+                    <a href="/suscribete" target="_blank" class="boton m--mediano m--235 m--morado"><strong>Suscribirme</strong></a>
                 </div>
                 <div class="footer__bloque m--redes">
-                    <div class="footer__titulo">Siguenos</div>
+                    <div class="footer__titulo">Síguenos</div>
                     <div class="footer__redes-wrap">
                         <div class="footer__redes">
                             <a href="https://www.facebook.com/ytuqueplanes/" target="_blank" class="footer__redes__enlace m--facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -280,9 +278,9 @@
             <hr class="footer__separador">
             <div class="limit footer__inferior">
                 <ul class="footer__inferior__lista">
-                    <li><a href="#" class="footer__inferior__enlace">Mapa de sitio</a></li>
+                    <li><a href="https://www.ytuqueplanes.com/sitemap" target="_blank" class="footer__inferior__enlace">Mapa de sitio</a></li>
                     <li><a href="#" class="footer__inferior__enlace fnToggleClass" data-targets="#aviso-legal">Aviso legal</a></li>
-                    <li><a href="#" class="footer__inferior__enlace">Términos y Condiciones</a></li>
+                    <li><a href="https://www.ytuqueplanes.com/terminos-condiciones.aspx" target="_blank" class="footer__inferior__enlace">Términos y Condiciones</a></li>
                 </ul>
                 <p class="footer__inferior__copyright">Todos los derechos reservados, <span>ytuqueplanes 2020</span></p>
             </div>
