@@ -125,7 +125,6 @@ $(document).ready(function() {
 		contenido += "<p class='wfrhbi-link popup' data-id='#datos-utiles'><i class='fa fa-info-circle'></i>Datos útiles</p>";
 		contenido += "</div>";
 		contenido += "</div>";
-		console.log(data[0].google, data[0].pdf);
 		if(data[0].google != null && data[0].google != "" || data[0].pdf != null && data[0].pdf != "") {
 			contenido += "<div class='wrapper-first-right-header-buttons-right'>";
 			if(data[0].google != null && data[0].google != "") {

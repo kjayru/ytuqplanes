@@ -194,6 +194,12 @@ const site = (function(){
 		     	}
 			});
 
+			let swiperSlideBg = new Swiper('.fnSliderBg', {
+				effect: 'fade',
+				autoplay: { delay: 5000 },
+				speed: 1200
+			});
+
 		},
 
 		clicks : function(){

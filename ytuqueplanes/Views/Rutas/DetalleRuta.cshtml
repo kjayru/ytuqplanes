@@ -8,6 +8,15 @@
 }
 
 <section class="page__header m--bg-black" style="background-image: url(@ViewData["imagenProvincia"]);">
+    <div class="page__header__bg-animado">
+        <div class="swiper-container page__header__bg-animado__slider fnSliderBg">
+            <div class="swiper-wrapper">
+                <img class="swiper-slide page__header__bg-animado__imagen" src="/assets/images/rutas-cortas-4.jpg">
+                <img class="swiper-slide page__header__bg-animado__imagen" src="/assets/images/rutas-cortas-5.jpg">
+                <img class="swiper-slide page__header__bg-animado__imagen" src="/assets/images/rutas-cortas-6.jpg">
+            </div>
+        </div>
+    </div>
     <div class="limit page__header__inset">
         <a href="/rutas-cortas" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a rutas cortas</span></a>
         <h2 class="page__header__titulo">Desde @ViewData["nombreProvincia"]</h2>
