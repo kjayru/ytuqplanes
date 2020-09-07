@@ -10,7 +10,6 @@ namespace ytuqueplanes.Models
        
         public string imagen_lg { get; set; }
         public string imagen_md { get; set; }
-
         public string imagen_sm { get; set; }
         public string imagen_xl { get; set; }
         public string titulo { get; set; }

@@ -6,19 +6,20 @@
     grillaInicial = Model.provincias.Count>8?"-mas-4- -mas-6- -mas-8-":grillaInicial;
 }
 
-    <section class="page__header m--bg-black" style="background-image: url('@ViewBag.imagen_lg');">
+    <section class="page__header m--bg-black" >
         <div class="page__header__bg-animado">
             <div class="swiper-container page__header__bg-animado__slider fnSliderBg">
                 <div class="swiper-wrapper">
-                    <img class="swiper-slide page__header__bg-animado__imagen" src="/assets/images/rutas-cortas-1.jpg">
-                    <img class="swiper-slide page__header__bg-animado__imagen" src="/assets/images/rutas-cortas-2.jpg">
-                    <img class="swiper-slide page__header__bg-animado__imagen" src="/assets/images/rutas-cortas-3.jpg">
+                    @foreach (ytuqueplanes.Models.Slide sl in Model.slides)
+                    { 
+                        <img class="swiper-slide page__header__bg-animado__imagen" src="@sl.imagen_lg">
+                    }
                 </div>
             </div>
         </div>
         <div class="limit page__header__inset">
-            <a href="/" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
-            <h2 class="page__header__titulo">@ViewBag.titulo</h2>
+            <a href="/" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" ><span>Volver a inicio</span></a>
+            <h2 class="page__header__titulo">Rutas cortas</h2>
         </div>
     </section>
 
@@ -73,7 +74,7 @@
                                 <img src="/@dest.imagen" alt="" class="card-poster__imagen">
                                 <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@dest.provincia_nombre</aside>
                                 <header class="card-poster__header">
-                                    <h1 class="card-poster__titulo">Barranca <br>@dest.nombre</h1>
+                                    <h1 class="card-poster__titulo">@dest.provincia_nombre <br>@dest.nombre</h1>
                                     <a href="/rutas-cortas/@dest.provincia_slug/@dest.slug" class="boton m--morado m--pequeno m--148" style="margin: auto;"><strong>Ver @dest.conteo lugares</strong></a>
                                 </header>
                             </article>

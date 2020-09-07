@@ -111,21 +111,43 @@ namespace ytuqueplanes.Controllers
                 p.imagen_xl,
                 p.titulo,
                 p.alt,
-                p.descripcion
+                p.descripcion,
+                p.url
             }).ToList();
 
+            
 
-            ViewBag.imagen_lg = sliders[0].imagen_lg;
-            ViewBag.imagen_md = sliders[0].imagen_md;
-            ViewBag.imagen_sm = sliders[0].imagen_sm;
-            ViewBag.imagen_xl = sliders[0].imagen_xl;
-            ViewBag.titulo = sliders[0].titulo;
-            ViewBag.descripcion = sliders[0].descripcion;
+            List<Slide> sls = new List<Slide>();
+
+            foreach (var item in sliders) {
+
+                sls.Add(
+                    new Slide
+                    {
+                        imagen_lg = item.imagen_lg,
+                        imagen_md = item.imagen_md,
+                        imagen_sm = item.imagen_sm,
+                        imagen_xl = item.imagen_xl,
+                        titulo = item.titulo,
+                        alt = item.alt,
+                        descripcion = item.descripcion,
+                        url = item.url
+                    });
+            }
+
+           
+            /*  ViewBag.imagen_lg = sliders[0].imagen_lg;
+              ViewBag.imagen_md = sliders[0].imagen_md;
+              ViewBag.imagen_sm = sliders[0].imagen_sm;
+              ViewBag.imagen_xl = sliders[0].imagen_xl;
+              ViewBag.titulo = sliders[0].titulo;
+              ViewBag.descripcion = sliders[0].descripcion;*/
 
 
             RutasModel.provincias = rp;
             RutasModel.destacados = getDestacados();
-            // return Json(rp, JsonRequestBehavior.AllowGet);
+            RutasModel.slides = sls;
+           
             return View(RutasModel);
         }
 
@@ -363,6 +385,7 @@ namespace ytuqueplanes.Controllers
                     {
                         conteo = conteo,
                         categoria = cat.nombre,
+                        provincia_nombre = prov.nombre,
                         provincia_thumb = prov.thumb,
                         provincia_slug = prov.slug,
                         nombre = rutas[j].titulo,
