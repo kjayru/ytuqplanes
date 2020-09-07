@@ -108,4 +108,5 @@ Backup*/
 UpgradeLog*.XML
 .vs
 .vs/
-.bin
+.bin/
+bin/
