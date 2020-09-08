@@ -152,7 +152,11 @@ namespace ytuqueplanes
            "ofertas",
            new { controller = "Ofertas", action = "Index" }
        );
-
+            routes.MapRoute(
+           "Terminos",
+           "terminos-y-condiciones",
+           new { controller = "Terminos", action = "Index" }
+       );
 
 
             routes.MapRoute(
@@ -161,8 +165,8 @@ namespace ytuqueplanes
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            
 
+           
 
         }
         protected void Application_Start()

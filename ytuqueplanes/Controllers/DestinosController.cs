@@ -96,8 +96,8 @@ namespace ytuqueplanes.Controllers
                          contenido = t1.contenido,
                          imagen = t1.imagen,
                          slug = t1.slug,
-                         filtro = t3.nombre
-
+                         filtro = t3.nombre,
+                         thumb = t1.thumb
 
                      };
 
@@ -116,7 +116,8 @@ namespace ytuqueplanes.Controllers
                         contenido = destinos[k].contenido,
                         imagen = destinos[k].imagen,
                         slug = destinos[k].slug,
-                        filtro = destinos[k].filtro
+                        filtro = destinos[k].filtro,
+                        thumb = destinos[k].thumb
                     });
 
             }
@@ -297,7 +298,8 @@ namespace ytuqueplanes.Controllers
                  p.slug,
                  p.contenido,
                  p.imagen,
-                 p.provincia_Id
+                 p.provincia_Id,
+                 p.thumb
                 }).First();
 
             var prov = db.provincias.Where(c => c.id == datos.provincia_Id).Select(p => new { p.nombre,p.slug }).First();

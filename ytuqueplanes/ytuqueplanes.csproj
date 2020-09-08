@@ -135,7 +135,9 @@
     <Compile Include="Controllers\NoticiasController.cs" />
     <Compile Include="Controllers\OfertasController.cs" />
     <Compile Include="Controllers\RutasController.cs" />
+    <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Controllers\SuscribeteController.cs" />
+    <Compile Include="Controllers\TerminosController.cs" />
     <Compile Include="Controllers\TurismoController.cs" />
     <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -226,6 +228,7 @@
     <Content Include="assets\images\flecha-volver-verde.svg" />
     <Content Include="assets\images\flecha-volver.svg" />
     <Content Include="assets\images\flecha.svg" />
+    <Content Include="assets\images\gracias-icono.svg" />
     <Content Include="assets\images\i-peru-gris.png" />
     <Content Include="assets\images\icono_foco.png" />
     <Content Include="assets\images\icono_geopunto.png" />
@@ -435,6 +438,7 @@
     <Content Include="assets\images\mapa\preview\route\piura-reinos-de-arena-y-mar.jpg" />
     <Content Include="assets\images\mapa\preview\route\piura-serranias-magicas.jpg" />
     <Content Include="assets\images\mapa\preview\route\piura-tierras-milenarias.jpg" />
+    <Content Include="assets\images\no-encontrado-ico.svg" />
     <Content Include="assets\images\perumarca.png" />
     <Content Include="assets\images\preview\destination\arequipa.jpg" />
     <Content Include="assets\images\preview\destination\huancayo.jpg" />
@@ -719,6 +723,8 @@
     <Content Include="Views\Turismo\Index.cshtml" />
     <Content Include="Views\Suscribete\Index.cshtml" />
     <Content Include="Views\Suscribete\gracias.cshtml" />
+    <Content Include="Views\Terminos\Index.cshtml" />
+    <Content Include="Views\Sitemap\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
