@@ -82,7 +82,7 @@
 
                                 @foreach (var pr in ViewBag.gprovincias)
                                 {
-                                    <li class="header__nav__destinos__item" data-filtro="@pr.region">
+                                    <li class="header__nav__destinos__item" data-filtro="@pr.region.ToLower()">
                                         <a href="/destinos/@pr.slug"
                                            class="header__nav__destinos__enlace @(ViewBag.slugProvincia==pr.slug||ViewBag.provinciaSlug==pr.slug||ViewBag.provincia_slug==pr.slug?"-activo-":"")"
                                            data-mapa="@pr.slug">@pr.nombre</a>
