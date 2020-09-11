@@ -1,3 +1,42 @@
+.share__general
+	position fixed
+	top 50%
+	left 0
+	transform translate(0, -50%)
+	background-color rgba(255,255,255,0.9)
+	border-top-right-radius 20px
+	border-bottom-right-radius 20px
+	padding 15px 10px
+	z-index 20
+	a
+		margin 0 0 20px
+		&:last-child
+			margin 0
+		&.m--share
+			display none
+
+	@media (max-width 810px)
+		padding 6px 6px
+		left inherit
+		right 0
+		top 65px
+		transform translate(0,0)
+		border-radius 0
+		border-top-left-radius 20px
+		border-bottom-left-radius 20px
+		a
+			display none
+			margin-bottom 6px
+			&.m--share
+				display flex
+				margin-bottom 0
+		&.-activo-
+			a
+				display flex
+				&.m--share
+					margin-bottom 6px
+
+
 .boton
 	display inline-flex
 	font-family f-medium
