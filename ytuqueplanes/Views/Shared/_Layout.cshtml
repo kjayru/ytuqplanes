@@ -123,16 +123,17 @@
                     <aside class="header__nav__submenu">
                         <img src="/assets/images/lupa.svg" alt="" class="header__nav__submenu__lupa fnToggleClass fnMostrarBuscadorPrincipal" data-targets="#buscador-principal, .header__nav__enlace__bg">
                         <a href=""
-                           class="header__nav__submenu__enlace header__nav__submenu__boton-noticias fnToggleClass"
+                           class="header__nav__submenu__enlace -activo- header__nav__submenu__boton-noticias fnToggleClass"
                            data-targets=".header__nav__submenu__menu-noticias"
                            data-removes=".header__nav__submenu__menu-usuario, .header__nav__lista, .header__nav__submenu__boton-menu">
-                            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                           <img src="/assets/images/bell.svg" alt="">
+                           <span class="header__nav__submenu__enlace__numero">2</span>
                         </a>
                         <a href="https://ytuqueplanes-9c1b7.web.app/" target="_blank" rel="nofollow"
                            class="header__nav__submenu__enlace m--usuario header__nav__submenu__boton-usuario"
                            data-targets=".header__nav__submenu__menu-usuario"
                            data-removes=".header__nav__submenu__menu-noticias, .header__nav__lista, .header__nav__submenu__boton-menu">
-                            <img src="/assets/images/usuario.svg" alt="">
+                            <img src="/assets/images/usuario-icono.svg" alt="">
                         </a>
                         <a href="#" title="Mostra Menú"
                            class="header__nav__submenu__enlace header__nav__submenu__boton-menu fnToggleClass"
@@ -169,7 +170,7 @@
                                         <a href="#">Ver todo ></a>
                                     </strong>
                                     <article class="header__nav__submenu__menu-noticias__articulo">
-                                        <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                        <img src="/assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
                                         <div class="header__nav__submenu__menu-noticias__articulo___contenido">
                                             <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
                                             <header class="header__nav__submenu__menu-noticias__articulo__header">
@@ -179,7 +180,7 @@
                                         </div>
                                     </article>
                                     <article class="header__nav__submenu__menu-noticias__articulo">
-                                        <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                        <img src="/assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
                                         <div class="header__nav__submenu__menu-noticias__articulo___contenido">
                                             <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
                                             <header class="header__nav__submenu__menu-noticias__articulo__header">
@@ -195,7 +196,7 @@
                                         <a href="#">Ver todo ></a>
                                     </strong>
                                     <article class="header__nav__submenu__menu-noticias__articulo">
-                                        <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                        <img src="/assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
                                         <div class="header__nav__submenu__menu-noticias__articulo___contenido">
                                             <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
                                             <header class="header__nav__submenu__menu-noticias__articulo__header">
@@ -206,7 +207,7 @@
                                         </div>
                                     </article>
                                     <article class="header__nav__submenu__menu-noticias__articulo">
-                                        <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                        <img src="/assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
                                         <div class="header__nav__submenu__menu-noticias__articulo___contenido">
                                             <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
                                             <header class="header__nav__submenu__menu-noticias__articulo__header">
@@ -217,7 +218,7 @@
                                         </div>
                                     </article>
                                     <article class="header__nav__submenu__menu-noticias__articulo">
-                                        <img src="assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
+                                        <img src="/assets/images/rutas-cortas-1.jpg" alt="" width="70" height="60" />
                                         <div class="header__nav__submenu__menu-noticias__articulo___contenido">
                                             <span class="header__nav__submenu__menu-noticias__articulo__nuevo">Nuevo</span>
                                             <header class="header__nav__submenu__menu-noticias__articulo__header">
@@ -306,6 +307,13 @@
         </div>
 
         <span class="header__mapa__fuente"></span>
+
+        <div class="share__general">
+            <a href="#" target="_blank" class="destinos__detalle__redes m--share fnShare"> <img src="/assets/images/share.svg" alt=""> </a>
+            <a href="#" class="destinos__detalle__redes m--facebook fnShareFacebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="#" target="_blank" class="destinos__detalle__redes m--twitter fnShareTwitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="#" target="_blank" class="destinos__detalle__redes m--wsp fnShareWsp"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+        </div>
     }
 
     <script src="/assets/js/vendor/modernizr-3.6.0.min.js"></script>

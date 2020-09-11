@@ -313,8 +313,19 @@ const site = (function(){
 					e.preventDefault();
 					FB.ui({
 					  method: 'share',
-					  href: 'https://ytuqueplanes.com'
+					  href: window.location.href
 					}, function(response){});
+				});
+
+			// Compartir en Twitter
+			$('.fnShareTwitter').attr('href','https://twitter.com/intent/tweet?text=Ytuqueplanes&url='+window.location.href);
+
+			$('.fnShareWsp').attr('href','https://api.whatsapp.com/send?text='+window.location.href);
+
+			$('.fnShare')
+				.on('click', function(e){
+					e.preventDefault();
+					$(this).parent().toggleClass(dom.active);
 				});
 
 			// Buscador de departamentos de rutas
