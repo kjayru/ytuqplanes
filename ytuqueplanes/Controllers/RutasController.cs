@@ -104,16 +104,7 @@ namespace ytuqueplanes.Controllers
 
             Slide slider = new Slide();
 
-            var sliders = db.slider_item.Where(c => c.slider_id == 3).Select(p => new {
-                p.imagen_lg,
-                p.imagen_md,
-                p.imagen_sm,
-                p.imagen_xl,
-                p.titulo,
-                p.alt,
-                p.descripcion,
-                p.url
-            }).ToList();
+            var sliders = db.slider_item.Where(c => c.slider_id == 3).ToList();
 
             
 
@@ -136,12 +127,6 @@ namespace ytuqueplanes.Controllers
             }
 
            
-            /*  ViewBag.imagen_lg = sliders[0].imagen_lg;
-              ViewBag.imagen_md = sliders[0].imagen_md;
-              ViewBag.imagen_sm = sliders[0].imagen_sm;
-              ViewBag.imagen_xl = sliders[0].imagen_xl;
-              ViewBag.titulo = sliders[0].titulo;
-              ViewBag.descripcion = sliders[0].descripcion;*/
 
 
             RutasModel.provincias = rp;
