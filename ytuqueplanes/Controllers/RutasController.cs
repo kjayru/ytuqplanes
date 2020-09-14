@@ -71,6 +71,20 @@ namespace ytuqueplanes.Controllers
                 var provid = provincias[i].id;
                 var conteo = db.rutas.Where(c => c.provincia_id == provid).Select(p => new { p.provincia_id }).Count();
 
+
+                var places = db.rutas.Where(c => c.provincia_id == provid).Select(p => new { p.titulo }).ToList();
+                List<Lugares> mp = new List<Lugares>();
+
+
+                List<string> lugares = new List<string>();
+
+                foreach (var it in places)
+                {
+                    //mp.Add( new Lugares { nombre = item.nombre });
+                    lugares.Add(it.titulo);
+                };
+
+
                 if (conteo > 0)
                 {
                     var rutas = (from  rt in db.provincias where rt.id == provid
@@ -86,11 +100,13 @@ namespace ytuqueplanes.Controllers
 
                     for (var j = 0;j< rutas.Count; j++)
                     {
+                        
+                            
                         rp.Add(
                             new RutaProvincia
                             {
                                 conteo = conteo,
-                               
+                                lugares = JsonConvert.SerializeObject(lugares),
                                 provincia_nombre = rutas[j].provincia,
                                 provincia_slug = rutas[j].slug,
                                 provincia_thumb = rutas[j].thumb

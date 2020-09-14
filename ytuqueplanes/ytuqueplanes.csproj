@@ -151,6 +151,7 @@
     <Compile Include="Models\DestinosProvincia.cs" />
     <Compile Include="Models\Festividad.cs" />
     <Compile Include="Models\HtmlUtility.cs" />
+    <Compile Include="Models\Lugares.cs" />
     <Compile Include="Models\Mapa.cs" />
     <Compile Include="Models\MapaActivity.cs" />
     <Compile Include="Models\MapaApt.cs" />
@@ -220,6 +221,7 @@
     <Content Include="assets\images\404-rutas-cortas.svg" />
     <Content Include="assets\images\auto-svg.svg" />
     <Content Include="assets\images\avion-svg.svg" />
+    <Content Include="assets\images\bell.svg" />
     <Content Include="assets\images\bg-404.jpg" />
     <Content Include="assets\images\bg_card-servicios.jpg" />
     <Content Include="assets\images\box-cerrar.svg" />
@@ -613,7 +615,9 @@
     <Content Include="assets\images\rutas-cortas-8.jpg" />
     <Content Include="assets\images\rutas-cortas-9.jpg" />
     <Content Include="assets\images\seccion-bg.jpg" />
+    <Content Include="assets\images\share.svg" />
     <Content Include="assets\images\tren-svg.svg" />
+    <Content Include="assets\images\usuario-icono.svg" />
     <Content Include="assets\images\usuario.svg" />
     <Content Include="assets\images\y-tu-que-planes-gris.svg" />
     <Content Include="assets\images\y-tu-que-planes.png" />
