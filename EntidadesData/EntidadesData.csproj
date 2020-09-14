@@ -71,6 +71,9 @@
     <Compile Include="categorias_blog.cs">
       <DependentUpon>Entidades2.tt</DependentUpon>
     </Compile>
+    <Compile Include="categoria_comunitario.cs">
+      <DependentUpon>Entidades2.tt</DependentUpon>
+    </Compile>
     <Compile Include="categoria_noticia.cs">
       <DependentUpon>Entidades2.tt</DependentUpon>
     </Compile>
@@ -79,6 +82,18 @@
     </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="como_llegar.cs">
+      <DependentUpon>Entidades2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="comunitario.cs">
+      <DependentUpon>Entidades2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="comunitario_hacer.cs">
+      <DependentUpon>Entidades2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="comunitario_llegar.cs">
+      <DependentUpon>Entidades2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="comunitario_servicio.cs">
       <DependentUpon>Entidades2.tt</DependentUpon>
     </Compile>
     <Compile Include="C__MigrationHistory.cs">

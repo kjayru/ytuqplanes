@@ -12,31 +12,33 @@ namespace EntidadesData
     using System;
     using System.Collections.Generic;
     
-    public partial class place
+    public partial class comunitario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public place()
+        public comunitario()
         {
-            this.place_activity = new HashSet<place_activity>();
-            this.place_apt = new HashSet<place_apt>();
-            this.place_coordinate = new HashSet<place_coordinate>();
+            this.comunitario_hacer = new HashSet<comunitario_hacer>();
+            this.comunitario_llegar = new HashSet<comunitario_llegar>();
+            this.comunitario_servicio = new HashSet<comunitario_servicio>();
+            this.categoria_comunitario = new HashSet<categoria_comunitario>();
         }
     
         public int id { get; set; }
-        public string nombre { get; set; }
+        public string titulo { get; set; }
+        public string imagen { get; set; }
+        public Nullable<int> provincia_id { get; set; }
+        public string slug { get; set; }
+        public string alt { get; set; }
+        public string resumen { get; set; }
         public string descripcion { get; set; }
-        public string height { get; set; }
-        public string image { get; set; }
-        public Nullable<int> ruta_id { get; set; }
-        public string thumb { get; set; }
-        public Nullable<int> seo_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<place_activity> place_activity { get; set; }
+        public virtual ICollection<comunitario_hacer> comunitario_hacer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<place_apt> place_apt { get; set; }
+        public virtual ICollection<comunitario_llegar> comunitario_llegar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<place_coordinate> place_coordinate { get; set; }
-        public virtual ruta ruta { get; set; }
+        public virtual ICollection<comunitario_servicio> comunitario_servicio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<categoria_comunitario> categoria_comunitario { get; set; }
     }
 }

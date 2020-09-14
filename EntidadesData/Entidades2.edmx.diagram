@@ -79,6 +79,16 @@
         <AssociationConnector Association="ytuqueplanesDBModel.user_rol_fk" ManuallyRouted="false" />
         <AssociationConnector Association="ytuqueplanesDBModel.foreing_transporte_ruta" ManuallyRouted="false" />
         <AssociationConnector Association="ytuqueplanesDBModel.foreing_transporte_tipotransporte" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.categoria_comunitario" Width="1.5" PointX="17.375" PointY="26" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.comunitario_hacer" Width="1.5" PointX="21.875" PointY="30.125" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.comunitario_llegar" Width="1.5" PointX="23.875" PointY="16.625" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.comunitario_servicio" Width="1.5" PointX="21.875" PointY="27.625" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.comunitario" Width="1.5" PointX="19.625" PointY="25.125" />
+        <AssociationConnector Association="ytuqueplanesDBModel.foreign_comunitario001_fk" />
+        <AssociationConnector Association="ytuqueplanesDBModel.foreign_comunitario003_fk" />
+        <AssociationConnector Association="ytuqueplanesDBModel.foreign_tipotransporte001_fk" />
+        <AssociationConnector Association="ytuqueplanesDBModel.foreign_comunitario002_fk" />
+        <AssociationConnector Association="ytuqueplanesDBModel.categoria_comunitario_comunitarios" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

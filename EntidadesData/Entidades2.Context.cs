@@ -82,5 +82,10 @@ namespace EntidadesData
         public virtual DbSet<post_seo> post_seo { get; set; }
         public virtual DbSet<post_tag> post_tag { get; set; }
         public virtual DbSet<rutas_seo> rutas_seo { get; set; }
+        public virtual DbSet<categoria_comunitario> categoria_comunitario { get; set; }
+        public virtual DbSet<comunitario_hacer> comunitario_hacer { get; set; }
+        public virtual DbSet<comunitario_llegar> comunitario_llegar { get; set; }
+        public virtual DbSet<comunitario_servicio> comunitario_servicio { get; set; }
+        public virtual DbSet<comunitario> comunitarios { get; set; }
     }
 }

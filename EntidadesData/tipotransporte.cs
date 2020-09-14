@@ -18,6 +18,7 @@ namespace EntidadesData
         public tipotransporte()
         {
             this.transportes = new HashSet<transporte>();
+            this.comunitario_llegar = new HashSet<comunitario_llegar>();
         }
     
         public int id { get; set; }
@@ -25,5 +26,7 @@ namespace EntidadesData
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<transporte> transportes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<comunitario_llegar> comunitario_llegar { get; set; }
     }
 }
