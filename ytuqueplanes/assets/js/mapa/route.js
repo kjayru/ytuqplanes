@@ -185,7 +185,7 @@ $(document).ready(function() {
 				}
 				if(data_places[i].image != "" && data_places[i].image != null) {
 					// cambio de imagen por rafctorizar
-					contenido += "<div class='wflitem-image' style='background-image: url(/"+data_places[i].image+");'></div>";
+					contenido += "<div class='wflitem-image' style='background-image: url("+data_places[i].image+");'></div>";
 					// contenido += "<div class='wflitem-image' style='background-image: url(/assets/images/rutas-cortas-1.jpg);'></div>";
 				}
 				contenido += "</div>";

@@ -332,9 +332,16 @@ const site = (function(){
 			$('#inputSearchRutasCortas')
 				.on('keyup', function(e){
 					if( $.trim($(this).val()).length>0 ) {
-						$('#fnTargetFiltroGrilla').addClass('-mostrar-resultados-')
+						let valor = $(this).val().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+						let cards = $('#fnTargetFiltroGrilla .card-poster');
+						$('#fnTargetFiltroGrilla').removeClass('-sin-resultados-').addClass('-mostrar-resultados-');
 						$('.card-poster').removeClass('-activo-');
-						$('.card-poster[data-filtro*='+$(this).val().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")+']').addClass('-activo-');
+						// $('.card-poster[data-filtro*="'+$(this).val().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")+'"]').addClass('-activo-');
+						$.each(cards, function(index, val) {
+							let t = $(this);
+							let filtro = t.data('filtro').toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+							filtro.search(valor)!=-1 && t.addClass('-activo-');
+						});
 						$('.card-poster.-activo-').length==0 && $('#fnTargetFiltroGrilla').removeClass('-mostrar-resultados-').addClass('-sin-resultados-');
 					} else {
 						$('#fnTargetFiltroGrilla').removeClass('-mostrar-resultados- -sin-resultados-');
