@@ -146,7 +146,9 @@
     <Compile Include="Models\ApFestividad.cs" />
     <Compile Include="Models\Atractivo.cs" />
     <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\CategoriaComunitario.cs" />
     <Compile Include="Models\Comollegar.cs" />
+    <Compile Include="Models\Comunitarios.cs" />
     <Compile Include="Models\Destacado.cs" />
     <Compile Include="Models\DestinosProvincia.cs" />
     <Compile Include="Models\Festividad.cs" />

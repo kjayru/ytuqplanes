@@ -128,6 +128,7 @@
     <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="experiencias" Relationship="Self.FK__experienc__desti__4E88ABD4" FromRole="destinos" ToRole="experiencias" />
+    <Property Name="seo_id" Type="Int32" />
   </EntityType>
   <EntityType Name="experiencia">
     <Key>
@@ -310,6 +311,7 @@
     <NavigationProperty Name="place_apt" Relationship="Self.foreing_apt_place" FromRole="places" ToRole="place_apt" />
     <NavigationProperty Name="place_coordinate" Relationship="Self.foreing_coordinate_place" FromRole="places" ToRole="place_coordinate" />
     <NavigationProperty Name="ruta" Relationship="Self.foreign_place_rutas" FromRole="places" ToRole="rutas" />
+    <Property Name="seo_id" Type="Int32" />
   </EntityType>
   <EntityType Name="post">
     <Key>
@@ -534,6 +536,7 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="transportes" Relationship="Self.foreing_transporte_tipotransporte" FromRole="tipotransporte" ToRole="transporte" />
+    <NavigationProperty Name="comunitario_llegar" Relationship="ytuqueplanesDBModel.foreign_tipotransporte001_fk" FromRole="tipotransporte" ToRole="comunitario_llegar" />
   </EntityType>
   <EntityType Name="transporte">
     <Key>
@@ -997,5 +1000,144 @@
       <End Role="tipotransporte" EntitySet="tipotransportes" />
       <End Role="transporte" EntitySet="transportes" />
     </AssociationSet>
+    <EntitySet Name="categoria_comunitario" EntityType="ytuqueplanesDBModel.categoria_comunitario" />
+    <EntitySet Name="comunitario_hacer" EntityType="ytuqueplanesDBModel.comunitario_hacer" />
+    <EntitySet Name="comunitario_llegar" EntityType="ytuqueplanesDBModel.comunitario_llegar" />
+    <EntitySet Name="comunitario_servicio" EntityType="ytuqueplanesDBModel.comunitario_servicio" />
+    <EntitySet Name="comunitarios" EntityType="ytuqueplanesDBModel.comunitario" />
+    <AssociationSet Name="foreign_comunitario001_fk" Association="ytuqueplanesDBModel.foreign_comunitario001_fk">
+      <End Role="comunitario" EntitySet="comunitarios" />
+      <End Role="comunitario_hacer" EntitySet="comunitario_hacer" />
+    </AssociationSet>
+    <AssociationSet Name="foreign_comunitario003_fk" Association="ytuqueplanesDBModel.foreign_comunitario003_fk">
+      <End Role="comunitario" EntitySet="comunitarios" />
+      <End Role="comunitario_llegar" EntitySet="comunitario_llegar" />
+    </AssociationSet>
+    <AssociationSet Name="foreign_tipotransporte001_fk" Association="ytuqueplanesDBModel.foreign_tipotransporte001_fk">
+      <End Role="tipotransporte" EntitySet="tipotransportes" />
+      <End Role="comunitario_llegar" EntitySet="comunitario_llegar" />
+    </AssociationSet>
+    <AssociationSet Name="foreign_comunitario002_fk" Association="ytuqueplanesDBModel.foreign_comunitario002_fk">
+      <End Role="comunitario" EntitySet="comunitarios" />
+      <End Role="comunitario_servicio" EntitySet="comunitario_servicio" />
+    </AssociationSet>
+    <AssociationSet Name="categoria_comunitario_comunitarios" Association="ytuqueplanesDBModel.categoria_comunitario_comunitarios">
+      <End Role="categoria_comunitario" EntitySet="categoria_comunitario" />
+      <End Role="comunitario" EntitySet="comunitarios" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="categoria_comunitario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="comunitarios" Relationship="ytuqueplanesDBModel.categoria_comunitario_comunitarios" FromRole="categoria_comunitario" ToRole="comunitario" />
+  </EntityType>
+  <EntityType Name="comunitario_hacer">
+    <Key>
+      <PropertyRef Name="comunitario_hacer_Id" />
+    </Key>
+    <Property Name="comunitario_hacer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="comunitario_Id" Type="Int32" />
+    <NavigationProperty Name="comunitario" Relationship="ytuqueplanesDBModel.foreign_comunitario001_fk" FromRole="comunitario_hacer" ToRole="comunitario" />
+  </EntityType>
+  <EntityType Name="comunitario_llegar">
+    <Key>
+      <PropertyRef Name="comunitario_llegar_Id" />
+    </Key>
+    <Property Name="comunitario_llegar_Id" Type="Int32" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tipotransporte_id" Type="Int32" />
+    <Property Name="comunitario_Id" Type="Int32" />
+    <NavigationProperty Name="comunitario" Relationship="ytuqueplanesDBModel.foreign_comunitario003_fk" FromRole="comunitario_llegar" ToRole="comunitario" />
+    <NavigationProperty Name="tipotransporte" Relationship="ytuqueplanesDBModel.foreign_tipotransporte001_fk" FromRole="comunitario_llegar" ToRole="tipotransporte" />
+  </EntityType>
+  <EntityType Name="comunitario_servicio">
+    <Key>
+      <PropertyRef Name="comunitario_servicio_Id" />
+    </Key>
+    <Property Name="comunitario_servicio_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="comunitario_Id" Type="Int32" />
+    <NavigationProperty Name="comunitario" Relationship="ytuqueplanesDBModel.foreign_comunitario002_fk" FromRole="comunitario_servicio" ToRole="comunitario" />
+  </EntityType>
+  <EntityType Name="comunitario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="provincia_id" Type="Int32" />
+    <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="alt" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="resumen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="comunitario_hacer" Relationship="ytuqueplanesDBModel.foreign_comunitario001_fk" FromRole="comunitario" ToRole="comunitario_hacer" />
+    <NavigationProperty Name="comunitario_llegar" Relationship="ytuqueplanesDBModel.foreign_comunitario003_fk" FromRole="comunitario" ToRole="comunitario_llegar" />
+    <NavigationProperty Name="comunitario_servicio" Relationship="ytuqueplanesDBModel.foreign_comunitario002_fk" FromRole="comunitario" ToRole="comunitario_servicio" />
+    <NavigationProperty Name="categoria_comunitario" Relationship="ytuqueplanesDBModel.categoria_comunitario_comunitarios" FromRole="comunitario" ToRole="categoria_comunitario" />
+  </EntityType>
+  <Association Name="foreign_comunitario001_fk">
+    <End Type="ytuqueplanesDBModel.comunitario" Role="comunitario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ytuqueplanesDBModel.comunitario_hacer" Role="comunitario_hacer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comunitario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comunitario_hacer">
+        <PropertyRef Name="comunitario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreign_comunitario003_fk">
+    <End Type="ytuqueplanesDBModel.comunitario" Role="comunitario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ytuqueplanesDBModel.comunitario_llegar" Role="comunitario_llegar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comunitario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comunitario_llegar">
+        <PropertyRef Name="comunitario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreign_tipotransporte001_fk">
+    <End Type="ytuqueplanesDBModel.tipotransporte" Role="tipotransporte" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ytuqueplanesDBModel.comunitario_llegar" Role="comunitario_llegar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipotransporte">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comunitario_llegar">
+        <PropertyRef Name="tipotransporte_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreign_comunitario002_fk">
+    <End Type="ytuqueplanesDBModel.comunitario" Role="comunitario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ytuqueplanesDBModel.comunitario_servicio" Role="comunitario_servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comunitario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comunitario_servicio">
+        <PropertyRef Name="comunitario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="categoria_comunitario_comunitarios">
+    <End Type="ytuqueplanesDBModel.categoria_comunitario" Role="categoria_comunitario" Multiplicity="*" />
+    <End Type="ytuqueplanesDBModel.comunitario" Role="comunitario" Multiplicity="*" />
+  </Association>
 </Schema>

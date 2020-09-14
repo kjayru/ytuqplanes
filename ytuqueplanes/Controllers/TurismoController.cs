@@ -1,6 +1,7 @@
 ﻿using EntidadesData;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -56,6 +57,14 @@ namespace ytuqueplanes.Controllers
         // GET: Turismo
         public ActionResult Index()
         {
+            dynamic ModelComunitario = new ExpandoObject();
+
+            var categorias = db.categoria_comunitario.OrderByDescending(c => c.nombre).ToList();
+
+            var cmms = db.comunitarios.OrderBy(c => c.id).ToList();
+
+
+
             return View();
         }
 

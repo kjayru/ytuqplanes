@@ -126,6 +126,7 @@
     <EntitySetMapping Name="destinos">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.destino">
         <MappingFragment StoreEntitySet="destinos">
+          <ScalarProperty Name="seo_id" ColumnName="seo_id" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="titulo" ColumnName="titulo" />
           <ScalarProperty Name="contenido" ColumnName="contenido" />
@@ -305,6 +306,7 @@
     <EntitySetMapping Name="places">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.place">
         <MappingFragment StoreEntitySet="places">
+          <ScalarProperty Name="seo_id" ColumnName="seo_id" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -668,5 +670,63 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="categoria_comunitario">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.categoria_comunitario">
+        <MappingFragment StoreEntitySet="categoria_comunitario">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comunitario_hacer">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_hacer">
+        <MappingFragment StoreEntitySet="comunitario_hacer">
+          <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="comunitario_hacer_Id" ColumnName="comunitario_hacer_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comunitario_llegar">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_llegar">
+        <MappingFragment StoreEntitySet="comunitario_llegar">
+          <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+          <ScalarProperty Name="tipotransporte_id" ColumnName="tipotransporte_id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="comunitario_llegar_Id" ColumnName="comunitario_llegar_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comunitario_servicio">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_servicio">
+        <MappingFragment StoreEntitySet="comunitario_servicio">
+          <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="comunitario_servicio_Id" ColumnName="comunitario_servicio_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comunitarios">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario">
+        <MappingFragment StoreEntitySet="comunitarios">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="resumen" ColumnName="resumen" />
+          <ScalarProperty Name="alt" ColumnName="alt" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="categoria_comunitario_comunitarios" TypeName="ytuqueplanesDBModel.categoria_comunitario_comunitarios" StoreEntitySet="categoria_comunitario_comunitarios">
+      <EndProperty Name="comunitario">
+        <ScalarProperty Name="id" ColumnName="comunitarioId" />
+      </EndProperty>
+      <EndProperty Name="categoria_comunitario">
+        <ScalarProperty Name="id" ColumnName="categoria_comunitarioId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

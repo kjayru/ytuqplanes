@@ -166,7 +166,7 @@ $(document).ready(function() {
 					contenido += "<ul class='wflitem-activity-list'>";
 					for(var k in data_places[i].activity) {
 						contenido += "<li>";
-						contenido += "<img src='/" + data_places[i].activity[k].icon + "' />";
+						contenido += "<img src='" + data_places[i].activity[k].icon + "' />";
 						contenido += "<span>" + data_places[i].activity[k].name + "</span>";
 						contenido += "</li>";
 					}

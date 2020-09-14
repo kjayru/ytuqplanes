@@ -36,3 +36,4 @@ C:\Users\Loncharich Vera\source\repos\ytuqplanes\EntidadesData\obj\Debug\Entidad
 C:\Users\Loncharich Vera\source\repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.csproj.CopyComplete
 C:\Users\Loncharich Vera\source\repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.dll
 C:\Users\Loncharich Vera\source\repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.pdb
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Debug\EntidadesData.csprojAssemblyReference.cache
