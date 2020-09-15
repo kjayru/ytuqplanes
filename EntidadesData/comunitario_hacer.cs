@@ -16,7 +16,7 @@ namespace EntidadesData
     {
         public int comunitario_hacer_Id { get; set; }
         public string nombre { get; set; }
-        public Nullable<int> comunitario_Id { get; set; }
+        public int comunitario_Id { get; set; }
     
         public virtual comunitario comunitario { get; set; }
     }

@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ytuqueplanesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
   <EntityType Name="actividade">
     <Key>
       <PropertyRef Name="id" />
@@ -9,6 +19,16 @@
     <Property Name="icono" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ruta_id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ruta" Relationship="Self.FK__actividad__ruta___4BAC3F29" FromRole="actividades" ToRole="rutas" />
+  </EntityType>
+  <EntityType Name="agencia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="destino_como_llegar_id" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="alerta">
     <Key>
@@ -26,18 +46,35 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="banner" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="banner" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="destino_id" Type="Int32" />
-    <NavigationProperty Name="destino" Relationship="Self.FK__atractivo__desti__4CA06362" FromRole="atractivos" ToRole="destinos" />
-    <Property Name="resumen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="destino_id" Type="Int32" Nullable="false" />
+    <Property Name="resumen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="estado" Type="Int32" />
-    <Property Name="banner_t" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="banner_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="slug" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="titulo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="banner_t" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="banner_m" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="slug" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="titulo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="destacado" Type="Int32" />
+    <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="seo_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="atractivos_galeria">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="atractivo_id" Type="Int32" Nullable="false" />
+    <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="categoria_comunitario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="comunitarios" Relationship="Self.categoria_comunitario_comunitarios" FromRole="categoria_comunitario" ToRole="comunitarios" />
   </EntityType>
   <EntityType Name="categoria_noticia">
     <Key>
@@ -46,7 +83,7 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="noticias" Relationship="ytuqueplanesDBModel.categoria_noticia_noticia_fk" FromRole="categoria_noticia" ToRole="noticia" />
+    <NavigationProperty Name="noticias" Relationship="Self.categoria_noticia_noticia_fk" FromRole="categoria_noticia" ToRole="noticias" />
   </EntityType>
   <EntityType Name="categoria_ruta">
     <Key>
@@ -84,6 +121,105 @@
     <Property Name="alt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="created_at" Type="DateTime" Precision="3" />
     <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <Property Name="recomendar" Type="Int32" />
+    <NavigationProperty Name="provincia_comollegar" Relationship="Self.fk_comollegarprovincia_comollegar" FromRole="como_llegar" ToRole="provincia_comollegar" />
+  </EntityType>
+  <EntityType Name="comunitario_clima">
+    <Key>
+      <PropertyRef Name="comunitario_clima_Id" />
+    </Key>
+    <Property Name="comunitario_clima_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="comunitario_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="comunitario" Relationship="Self.foreign_comunitario012_fk" FromRole="comunitario_clima" ToRole="comunitarios" />
+  </EntityType>
+  <EntityType Name="comunitario_contacto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="comunitario_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="comunitario_contacto_option" Relationship="Self.foreign_contact_option001_fk" FromRole="comunitario_contacto" ToRole="comunitario_contacto_option" />
+  </EntityType>
+  <EntityType Name="comunitario_contacto_option">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="comunitario_contacto_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="comunitario_contacto" Relationship="Self.foreign_contact_option001_fk" FromRole="comunitario_contacto_option" ToRole="comunitario_contacto" />
+  </EntityType>
+  <EntityType Name="comunitario_hacer">
+    <Key>
+      <PropertyRef Name="comunitario_hacer_Id" />
+      <PropertyRef Name="comunitario_Id" />
+    </Key>
+    <Property Name="comunitario_hacer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="comunitario_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="comunitario" Relationship="Self.foreign_comunitario001_fk" FromRole="comunitario_hacer" ToRole="comunitarios" />
+  </EntityType>
+  <EntityType Name="comunitario_llegar">
+    <Key>
+      <PropertyRef Name="comunitario_llegar_Id" />
+    </Key>
+    <Property Name="comunitario_llegar_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tipotransporte_Id" Type="Int32" Nullable="false" />
+    <Property Name="comunitario_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="comunitario" Relationship="Self.foreign_llega001_fk" FromRole="comunitario_llegar" ToRole="comunitarios" />
+    <NavigationProperty Name="tipotransporte" Relationship="Self.foreing_transporte001_fk" FromRole="comunitario_llegar" ToRole="tipotransporte" />
+  </EntityType>
+  <EntityType Name="comunitario_precio">
+    <Key>
+      <PropertyRef Name="comunitario_precio_Id" />
+    </Key>
+    <Property Name="comunitario_precio_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="precio" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="comunitario_Id" Type="Int32" />
+    <NavigationProperty Name="comunitario" Relationship="Self.foreign_comunitario010_fk" FromRole="comunitario_precio" ToRole="comunitarios" />
+  </EntityType>
+  <EntityType Name="comunitario_servicio">
+    <Key>
+      <PropertyRef Name="comunitario_servicio_Id" />
+    </Key>
+    <Property Name="comunitario_servicio_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="comunitario_Id" Type="Int32" />
+    <NavigationProperty Name="comunitario" Relationship="Self.foreign_comunitario002_fk" FromRole="comunitario_servicio" ToRole="comunitarios" />
+  </EntityType>
+  <EntityType Name="comunitario_tip">
+    <Key>
+      <PropertyRef Name="comunitario_tip_Id" />
+    </Key>
+    <Property Name="comunitario_tip_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="comunitario_Id" Type="Int32" />
+    <NavigationProperty Name="comunitario" Relationship="Self.foreign_comunitario011_fk" FromRole="comunitario_tip" ToRole="comunitarios" />
+  </EntityType>
+  <EntityType Name="comunitario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="provincia_id" Type="Int32" />
+    <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="alt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="resumen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="comunitario_clima" Relationship="Self.foreign_comunitario012_fk" FromRole="comunitarios" ToRole="comunitario_clima" />
+    <NavigationProperty Name="comunitario_hacer" Relationship="Self.foreign_comunitario001_fk" FromRole="comunitarios" ToRole="comunitario_hacer" />
+    <NavigationProperty Name="comunitario_llegar" Relationship="Self.foreign_llega001_fk" FromRole="comunitarios" ToRole="comunitario_llegar" />
+    <NavigationProperty Name="comunitario_precio" Relationship="Self.foreign_comunitario010_fk" FromRole="comunitarios" ToRole="comunitario_precio" />
+    <NavigationProperty Name="comunitario_servicio" Relationship="Self.foreign_comunitario002_fk" FromRole="comunitarios" ToRole="comunitario_servicio" />
+    <NavigationProperty Name="comunitario_tip" Relationship="Self.foreign_comunitario011_fk" FromRole="comunitarios" ToRole="comunitario_tip" />
+    <NavigationProperty Name="categoria_comunitario" Relationship="Self.categoria_comunitario_comunitarios" FromRole="comunitarios" ToRole="categoria_comunitario" />
+    <NavigationProperty Name="provincia" Relationship="ytuqueplanesDBModel.foreign_provincia001_fk" FromRole="comunitario" ToRole="provincia" />
   </EntityType>
   <EntityType Name="destino">
     <Key>
@@ -92,12 +228,12 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="contenido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="provincia_Id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="atractivos" Relationship="Self.FK__atractivo__desti__4CA06362" FromRole="destinos" ToRole="atractivos" />
-    <NavigationProperty Name="provincia" Relationship="Self.FK__destinos__provin__4D94879B" FromRole="destinos" ToRole="provincias" />
-    <NavigationProperty Name="experiencias" Relationship="Self.FK__experienc__desti__4E88ABD4" FromRole="destinos" ToRole="experiencias" />
+    <Property Name="provincia_Id" Type="Int32" />
     <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="seo_id" Type="Int32" />
+    <NavigationProperty Name="experiencias" Relationship="Self.FK__experienc__desti__4E88ABD4" FromRole="destinos" ToRole="experiencias" />
   </EntityType>
   <EntityType Name="experiencia">
     <Key>
@@ -119,13 +255,15 @@
     <Property Name="final" Type="Int32" Nullable="false" />
     <Property Name="provincia_id" Type="Int32" Nullable="false" />
     <Property Name="imagen" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="contenido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="mes_id" Type="Int32" />
     <Property Name="likes" Type="Int32" />
     <Property Name="documento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="mes" Relationship="Self.FK__festivida__mes_i__4F7CD00D" FromRole="festividades" ToRole="meses" />
-    <NavigationProperty Name="provincia" Relationship="Self.FK__festivida__provi__5070F446" FromRole="festividades" ToRole="provincias" />
     <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_festividad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="seo_id" Type="Int32" />
+    <NavigationProperty Name="mes" Relationship="Self.FK__festivida__mes_i__4F7CD00D" FromRole="festividades" ToRole="meses" />
   </EntityType>
   <EntityType Name="icono">
     <Key>
@@ -185,7 +323,7 @@
     <Property Name="created_at" Type="DateTime" Precision="3" />
     <Property Name="updated_at" Type="DateTime" Precision="3" />
     <Property Name="categoria_noticia_id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="categoria_noticia" Relationship="ytuqueplanesDBModel.categoria_noticia_noticia_fk" FromRole="noticia" ToRole="categoria_noticia" />
+    <NavigationProperty Name="categoria_noticia" Relationship="Self.categoria_noticia_noticia_fk" FromRole="noticias" ToRole="categoria_noticia" />
   </EntityType>
   <EntityType Name="oferta">
     <Key>
@@ -208,7 +346,6 @@
     <Property Name="provincia_id" Type="Int32" Nullable="false" />
     <Property Name="categoria_id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="categoria" Relationship="Self.FK__ofertas__categor__534D60F1" FromRole="ofertas" ToRole="categorias" />
-    <NavigationProperty Name="provincia" Relationship="Self.FK__ofertas__provinc__5441852A" FromRole="ofertas" ToRole="provincias" />
     <NavigationProperty Name="opciones" Relationship="Self.fk_opciones_oferta" FromRole="ofertas" ToRole="opciones" />
   </EntityType>
   <EntityType Name="opcione">
@@ -233,6 +370,53 @@
     <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="created_at" Type="DateTime" Precision="3" />
     <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <Property Name="seo_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="place_activity">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="icono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int32" />
+    <NavigationProperty Name="place" Relationship="Self.foreing_activity_place" FromRole="place_activity" ToRole="places" />
+  </EntityType>
+  <EntityType Name="place_apt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int32" />
+    <NavigationProperty Name="place" Relationship="Self.foreing_apt_place" FromRole="place_apt" ToRole="places" />
+  </EntityType>
+  <EntityType Name="place_coordinate">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="latitude" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="longitude" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="place_id" Type="Int32" />
+    <NavigationProperty Name="place" Relationship="Self.foreing_coordinate_place" FromRole="place_coordinate" ToRole="places" />
+  </EntityType>
+  <EntityType Name="place">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="height" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ruta_id" Type="Int32" />
+    <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="seo_id" Type="Int32" />
+    <NavigationProperty Name="place_activity" Relationship="Self.foreing_activity_place" FromRole="places" ToRole="place_activity" />
+    <NavigationProperty Name="place_apt" Relationship="Self.foreing_apt_place" FromRole="places" ToRole="place_apt" />
+    <NavigationProperty Name="place_coordinate" Relationship="Self.foreing_coordinate_place" FromRole="places" ToRole="place_coordinate" />
+    <NavigationProperty Name="ruta" Relationship="Self.foreign_place_rutas" FromRole="places" ToRole="rutas" />
   </EntityType>
   <EntityType Name="post">
     <Key>
@@ -252,6 +436,7 @@
     <Property Name="estado" Type="Int32" />
     <Property Name="tipo_id" Type="Int32" />
     <Property Name="provincia_id" Type="Int32" />
+    <Property Name="seo_id" Type="Int32" />
   </EntityType>
   <EntityType Name="preferencias_destino">
     <Key>
@@ -261,6 +446,21 @@
     <Property Name="user_id" Type="Int32" Nullable="false" />
     <Property Name="destino_id" Type="Int32" Nullable="false" />
   </EntityType>
+  <EntityType Name="provincia_comollegar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="como_llegar_id" Type="Int32" Nullable="false" />
+    <Property Name="duracion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="distancia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="empresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="waze" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="provincia_id" Type="Int32" Nullable="false" />
+    <Property Name="recomendar" Type="Int32" />
+    <NavigationProperty Name="como_llegar" Relationship="Self.fk_comollegarprovincia_comollegar" FromRole="provincia_comollegar" ToRole="como_llegar" />
+    <NavigationProperty Name="provincia" Relationship="Self.fk_comollegarprovincia_provincia" FromRole="provincia_comollegar" ToRole="provincias" />
+  </EntityType>
   <EntityType Name="provincia">
     <Key>
       <PropertyRef Name="id" />
@@ -268,10 +468,6 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="region_id" Type="Int32" />
-    <NavigationProperty Name="destinos" Relationship="Self.FK__destinos__provin__4D94879B" FromRole="provincias" ToRole="destinos" />
-    <NavigationProperty Name="festividades" Relationship="Self.FK__festivida__provi__5070F446" FromRole="provincias" ToRole="festividades" />
-    <NavigationProperty Name="ofertas" Relationship="Self.FK__ofertas__provinc__5441852A" FromRole="provincias" ToRole="ofertas" />
-    <NavigationProperty Name="region" Relationship="Self.FK__provincia__regio__5812160E" FromRole="provincias" ToRole="region" />
     <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="latitud" Type="Double" />
@@ -279,6 +475,11 @@
     <Property Name="estado" Type="Int32" />
     <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="festivida_pdf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tenencuenta" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="seo_id" Type="Int32" />
+    <NavigationProperty Name="provincia_comollegar" Relationship="Self.fk_comollegarprovincia_provincia" FromRole="provincias" ToRole="provincia_comollegar" />
+    <NavigationProperty Name="comunitarios" Relationship="ytuqueplanesDBModel.foreign_provincia001_fk" FromRole="provincia" ToRole="comunitario" />
   </EntityType>
   <EntityType Name="rating">
     <Key>
@@ -309,7 +510,6 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="provincias" Relationship="Self.FK__provincia__regio__5812160E" FromRole="region" ToRole="provincias" />
   </EntityType>
   <EntityType Name="role">
     <Key>
@@ -333,10 +533,18 @@
     <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="estado" Type="Boolean" />
     <Property Name="destacar" Type="Boolean" />
+    <Property Name="provincia_id" Type="Int32" Nullable="false" />
     <Property Name="categoria_ruta_id" Type="Int32" Nullable="false" />
+    <Property Name="google" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="maxtemp" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mintemp" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="seo_id" Type="Int32" />
     <NavigationProperty Name="actividades" Relationship="Self.FK__actividad__ruta___4BAC3F29" FromRole="rutas" ToRole="actividades" />
     <NavigationProperty Name="mapas" Relationship="Self.FK__mapas__ruta_id__52593CB8" FromRole="rutas" ToRole="mapas" />
-    <Property Name="provincia_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="places" Relationship="Self.foreign_place_rutas" FromRole="rutas" ToRole="places" />
+    <NavigationProperty Name="transportes" Relationship="Self.foreing_transporte_ruta" FromRole="rutas" ToRole="transporte" />
   </EntityType>
   <EntityType Name="seo">
     <Key>
@@ -359,6 +567,7 @@
     <Property Name="fb_app_id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="fb_admins" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="scripts" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="keywords" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="slider_item">
     <Key>
@@ -373,6 +582,8 @@
     <Property Name="titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="alt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" />
   </EntityType>
   <EntityType Name="slider">
     <Key>
@@ -396,6 +607,10 @@
     <Property Name="tipo_suscripcion_id" Type="Int32" Nullable="false" />
     <Property Name="created_at" Type="DateTime" Precision="3" />
     <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <Property Name="genero" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fechanac" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="provincia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="actividades" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="tag">
     <Key>
@@ -420,19 +635,35 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
+  <EntityType Name="tipotransporte">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="comunitario_llegar" Relationship="Self.foreing_transporte001_fk" FromRole="tipotransporte" ToRole="comunitario_llegar" />
+    <NavigationProperty Name="transportes" Relationship="Self.foreing_transporte_tipotransporte" FromRole="tipotransporte" ToRole="transporte" />
+  </EntityType>
+  <EntityType Name="transporte">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tipotransporte_id" Type="Int32" />
+    <Property Name="ruta_id" Type="Int32" />
+    <NavigationProperty Name="ruta" Relationship="Self.foreing_transporte_ruta" FromRole="transporte" ToRole="rutas" />
+    <NavigationProperty Name="tipotransporte" Relationship="Self.foreing_transporte_tipotransporte" FromRole="transporte" ToRole="tipotransporte" />
+  </EntityType>
   <EntityType Name="user">
     <Key>
-      <PropertyRef Name="idusuario" />
+      <PropertyRef Name="UserID" />
     </Key>
-    <Property Name="idusuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="paterno" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="materno" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="idrol" Type="Int32" />
-    <Property Name="password_hash" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="password_salt" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="condicion" Type="Boolean" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="role" Relationship="Self.user_rol_fk" FromRole="users" ToRole="roles" />
   </EntityType>
   <EntityType Name="destino_como_llegar">
@@ -444,6 +675,7 @@
     <Property Name="distancia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="tiempo_viaje" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="waze" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="recomendar" Type="Int32" />
   </EntityType>
   <EntityType Name="destino_seo">
     <Key>
@@ -544,15 +776,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__atractivo__desti__4CA06362">
-    <End Role="destinos" Type="Self.destino" Multiplicity="0..1" />
-    <End Role="atractivos" Type="Self.atractivo" Multiplicity="*" />
+  <Association Name="categoria_noticia_noticia_fk">
+    <End Role="categoria_noticia" Type="Self.categoria_noticia" Multiplicity="1" />
+    <End Role="noticias" Type="Self.noticia" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="destinos">
+      <Principal Role="categoria_noticia">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="atractivos">
-        <PropertyRef Name="destino_id" />
+      <Dependent Role="noticias">
+        <PropertyRef Name="categoria_noticia_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -568,15 +800,127 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__destinos__provin__4D94879B">
-    <End Role="provincias" Type="Self.provincia" Multiplicity="1" />
-    <End Role="destinos" Type="Self.destino" Multiplicity="*" />
+  <Association Name="fk_comollegarprovincia_comollegar">
+    <End Role="como_llegar" Type="Self.como_llegar" Multiplicity="1" />
+    <End Role="provincia_comollegar" Type="Self.provincia_comollegar" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="provincias">
+      <Principal Role="como_llegar">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="destinos">
-        <PropertyRef Name="provincia_Id" />
+      <Dependent Role="provincia_comollegar">
+        <PropertyRef Name="como_llegar_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreign_comunitario012_fk">
+    <End Role="comunitarios" Type="Self.comunitario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="comunitario_clima" Type="Self.comunitario_clima" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comunitarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comunitario_clima">
+        <PropertyRef Name="comunitario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreign_contact_option001_fk">
+    <End Role="comunitario_contacto" Type="Self.comunitario_contacto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="comunitario_contacto_option" Type="Self.comunitario_contacto_option" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comunitario_contacto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comunitario_contacto_option">
+        <PropertyRef Name="comunitario_contacto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreign_comunitario001_fk">
+    <End Role="comunitarios" Type="Self.comunitario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="comunitario_hacer" Type="Self.comunitario_hacer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comunitarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comunitario_hacer">
+        <PropertyRef Name="comunitario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreign_llega001_fk">
+    <End Role="comunitarios" Type="Self.comunitario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="comunitario_llegar" Type="Self.comunitario_llegar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comunitarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comunitario_llegar">
+        <PropertyRef Name="comunitario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreing_transporte001_fk">
+    <End Role="tipotransporte" Type="Self.tipotransporte" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="comunitario_llegar" Type="Self.comunitario_llegar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipotransporte">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comunitario_llegar">
+        <PropertyRef Name="tipotransporte_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreign_comunitario010_fk">
+    <End Role="comunitarios" Type="Self.comunitario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="comunitario_precio" Type="Self.comunitario_precio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comunitarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comunitario_precio">
+        <PropertyRef Name="comunitario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreign_comunitario002_fk">
+    <End Role="comunitarios" Type="Self.comunitario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="comunitario_servicio" Type="Self.comunitario_servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comunitarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comunitario_servicio">
+        <PropertyRef Name="comunitario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreign_comunitario011_fk">
+    <End Role="comunitarios" Type="Self.comunitario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="comunitario_tip" Type="Self.comunitario_tip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comunitarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comunitario_tip">
+        <PropertyRef Name="comunitario_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -604,18 +948,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__festivida__provi__5070F446">
-    <End Role="provincias" Type="Self.provincia" Multiplicity="1" />
-    <End Role="festividades" Type="Self.festividade" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="provincias">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="festividades">
-        <PropertyRef Name="provincia_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__iconos__mapa_id__5165187F">
     <End Role="mapas" Type="Self.mapa" Multiplicity="1" />
     <End Role="iconos" Type="Self.icono" Multiplicity="*" />
@@ -640,18 +972,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ofertas__provinc__5441852A">
-    <End Role="provincias" Type="Self.provincia" Multiplicity="1" />
-    <End Role="ofertas" Type="Self.oferta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="provincias">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="ofertas">
-        <PropertyRef Name="provincia_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fk_opciones_oferta">
     <End Role="ofertas" Type="Self.oferta" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -666,15 +986,71 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__provincia__regio__5812160E">
-    <End Role="region" Type="Self.region" Multiplicity="0..1" />
-    <End Role="provincias" Type="Self.provincia" Multiplicity="*" />
+  <Association Name="foreing_activity_place">
+    <End Role="places" Type="Self.place" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="place_activity" Type="Self.place_activity" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="region">
+      <Principal Role="places">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="provincias">
-        <PropertyRef Name="region_id" />
+      <Dependent Role="place_activity">
+        <PropertyRef Name="place_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreing_apt_place">
+    <End Role="places" Type="Self.place" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="place_apt" Type="Self.place_apt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="places">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="place_apt">
+        <PropertyRef Name="place_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreing_coordinate_place">
+    <End Role="places" Type="Self.place" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="place_coordinate" Type="Self.place_coordinate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="places">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="place_coordinate">
+        <PropertyRef Name="place_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreign_place_rutas">
+    <End Role="rutas" Type="Self.ruta" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="places" Type="Self.place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rutas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="places">
+        <PropertyRef Name="ruta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_comollegarprovincia_provincia">
+    <End Role="provincias" Type="Self.provincia" Multiplicity="1" />
+    <End Role="provincia_comollegar" Type="Self.provincia_comollegar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provincias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="provincia_comollegar">
+        <PropertyRef Name="provincia_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -690,15 +1066,58 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="ytuqueplanesDBEntities" annotation:LazyLoadingEnabled="true">
+  <Association Name="foreing_transporte_ruta">
+    <End Role="rutas" Type="Self.ruta" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="transporte" Type="Self.transporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rutas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="transporte">
+        <PropertyRef Name="ruta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="foreing_transporte_tipotransporte">
+    <End Role="tipotransporte" Type="Self.tipotransporte" Multiplicity="0..1" />
+    <End Role="transporte" Type="Self.transporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipotransporte">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="transporte">
+        <PropertyRef Name="tipotransporte_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="categoria_comunitario_comunitarios">
+    <End Role="categoria_comunitario" Type="Self.categoria_comunitario" Multiplicity="*" />
+    <End Role="comunitarios" Type="Self.comunitario" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="ytuqueplanesDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
     <EntitySet Name="actividades" EntityType="Self.actividade" />
+    <EntitySet Name="agencias" EntityType="Self.agencia" />
     <EntitySet Name="alertas" EntityType="Self.alerta" />
     <EntitySet Name="atractivos" EntityType="Self.atractivo" />
+    <EntitySet Name="atractivos_galeria" EntityType="Self.atractivos_galeria" />
+    <EntitySet Name="categoria_comunitario" EntityType="Self.categoria_comunitario" />
     <EntitySet Name="categoria_noticia" EntityType="Self.categoria_noticia" />
     <EntitySet Name="categoria_ruta" EntityType="Self.categoria_ruta" />
     <EntitySet Name="categorias" EntityType="Self.categoria" />
     <EntitySet Name="categorias_blog" EntityType="Self.categorias_blog" />
     <EntitySet Name="como_llegar" EntityType="Self.como_llegar" />
+    <EntitySet Name="comunitario_clima" EntityType="Self.comunitario_clima" />
+    <EntitySet Name="comunitario_contacto" EntityType="Self.comunitario_contacto" />
+    <EntitySet Name="comunitario_contacto_option" EntityType="Self.comunitario_contacto_option" />
+    <EntitySet Name="comunitario_hacer" EntityType="Self.comunitario_hacer" />
+    <EntitySet Name="comunitario_llegar" EntityType="Self.comunitario_llegar" />
+    <EntitySet Name="comunitario_precio" EntityType="Self.comunitario_precio" />
+    <EntitySet Name="comunitario_servicio" EntityType="Self.comunitario_servicio" />
+    <EntitySet Name="comunitario_tip" EntityType="Self.comunitario_tip" />
+    <EntitySet Name="comunitarios" EntityType="Self.comunitario" />
     <EntitySet Name="destinos" EntityType="Self.destino" />
     <EntitySet Name="experiencias" EntityType="Self.experiencia" />
     <EntitySet Name="festividades" EntityType="Self.festividade" />
@@ -710,8 +1129,13 @@
     <EntitySet Name="ofertas" EntityType="Self.oferta" />
     <EntitySet Name="opciones" EntityType="Self.opcione" />
     <EntitySet Name="pages" EntityType="Self.page" />
+    <EntitySet Name="place_activity" EntityType="Self.place_activity" />
+    <EntitySet Name="place_apt" EntityType="Self.place_apt" />
+    <EntitySet Name="place_coordinate" EntityType="Self.place_coordinate" />
+    <EntitySet Name="places" EntityType="Self.place" />
     <EntitySet Name="posts" EntityType="Self.post" />
     <EntitySet Name="preferencias_destino" EntityType="Self.preferencias_destino" />
+    <EntitySet Name="provincia_comollegar" EntityType="Self.provincia_comollegar" />
     <EntitySet Name="provincias" EntityType="Self.provincia" />
     <EntitySet Name="ratings" EntityType="Self.rating" />
     <EntitySet Name="redes_soclaies" EntityType="Self.redes_soclaies" />
@@ -725,6 +1149,8 @@
     <EntitySet Name="tags" EntityType="Self.tag" />
     <EntitySet Name="tipo_oferta" EntityType="Self.tipo_oferta" />
     <EntitySet Name="tipo_suscripcion" EntityType="Self.tipo_suscripcion" />
+    <EntitySet Name="tipotransportes" EntityType="Self.tipotransporte" />
+    <EntitySet Name="transportes" EntityType="Self.transporte" />
     <EntitySet Name="users" EntityType="Self.user" />
     <EntitySet Name="destino_como_llegar" EntityType="Self.destino_como_llegar" />
     <EntitySet Name="destino_seo" EntityType="Self.destino_seo" />
@@ -742,17 +1168,49 @@
       <End Role="rutas" EntitySet="rutas" />
       <End Role="actividades" EntitySet="actividades" />
     </AssociationSet>
-    <AssociationSet Name="FK__atractivo__desti__4CA06362" Association="Self.FK__atractivo__desti__4CA06362">
-      <End Role="destinos" EntitySet="destinos" />
-      <End Role="atractivos" EntitySet="atractivos" />
+    <AssociationSet Name="categoria_noticia_noticia_fk" Association="Self.categoria_noticia_noticia_fk">
+      <End Role="categoria_noticia" EntitySet="categoria_noticia" />
+      <End Role="noticias" EntitySet="noticias" />
     </AssociationSet>
     <AssociationSet Name="FK__ofertas__categor__534D60F1" Association="Self.FK__ofertas__categor__534D60F1">
       <End Role="categorias" EntitySet="categorias" />
       <End Role="ofertas" EntitySet="ofertas" />
     </AssociationSet>
-    <AssociationSet Name="FK__destinos__provin__4D94879B" Association="Self.FK__destinos__provin__4D94879B">
-      <End Role="provincias" EntitySet="provincias" />
-      <End Role="destinos" EntitySet="destinos" />
+    <AssociationSet Name="fk_comollegarprovincia_comollegar" Association="Self.fk_comollegarprovincia_comollegar">
+      <End Role="como_llegar" EntitySet="como_llegar" />
+      <End Role="provincia_comollegar" EntitySet="provincia_comollegar" />
+    </AssociationSet>
+    <AssociationSet Name="foreign_comunitario012_fk" Association="Self.foreign_comunitario012_fk">
+      <End Role="comunitarios" EntitySet="comunitarios" />
+      <End Role="comunitario_clima" EntitySet="comunitario_clima" />
+    </AssociationSet>
+    <AssociationSet Name="foreign_contact_option001_fk" Association="Self.foreign_contact_option001_fk">
+      <End Role="comunitario_contacto" EntitySet="comunitario_contacto" />
+      <End Role="comunitario_contacto_option" EntitySet="comunitario_contacto_option" />
+    </AssociationSet>
+    <AssociationSet Name="foreign_comunitario001_fk" Association="Self.foreign_comunitario001_fk">
+      <End Role="comunitarios" EntitySet="comunitarios" />
+      <End Role="comunitario_hacer" EntitySet="comunitario_hacer" />
+    </AssociationSet>
+    <AssociationSet Name="foreign_llega001_fk" Association="Self.foreign_llega001_fk">
+      <End Role="comunitarios" EntitySet="comunitarios" />
+      <End Role="comunitario_llegar" EntitySet="comunitario_llegar" />
+    </AssociationSet>
+    <AssociationSet Name="foreing_transporte001_fk" Association="Self.foreing_transporte001_fk">
+      <End Role="tipotransporte" EntitySet="tipotransportes" />
+      <End Role="comunitario_llegar" EntitySet="comunitario_llegar" />
+    </AssociationSet>
+    <AssociationSet Name="foreign_comunitario010_fk" Association="Self.foreign_comunitario010_fk">
+      <End Role="comunitarios" EntitySet="comunitarios" />
+      <End Role="comunitario_precio" EntitySet="comunitario_precio" />
+    </AssociationSet>
+    <AssociationSet Name="foreign_comunitario002_fk" Association="Self.foreign_comunitario002_fk">
+      <End Role="comunitarios" EntitySet="comunitarios" />
+      <End Role="comunitario_servicio" EntitySet="comunitario_servicio" />
+    </AssociationSet>
+    <AssociationSet Name="foreign_comunitario011_fk" Association="Self.foreign_comunitario011_fk">
+      <End Role="comunitarios" EntitySet="comunitarios" />
+      <End Role="comunitario_tip" EntitySet="comunitario_tip" />
     </AssociationSet>
     <AssociationSet Name="FK__experienc__desti__4E88ABD4" Association="Self.FK__experienc__desti__4E88ABD4">
       <End Role="destinos" EntitySet="destinos" />
@@ -760,10 +1218,6 @@
     </AssociationSet>
     <AssociationSet Name="FK__festivida__mes_i__4F7CD00D" Association="Self.FK__festivida__mes_i__4F7CD00D">
       <End Role="meses" EntitySet="meses" />
-      <End Role="festividades" EntitySet="festividades" />
-    </AssociationSet>
-    <AssociationSet Name="FK__festivida__provi__5070F446" Association="Self.FK__festivida__provi__5070F446">
-      <End Role="provincias" EntitySet="provincias" />
       <End Role="festividades" EntitySet="festividades" />
     </AssociationSet>
     <AssociationSet Name="FK__iconos__mapa_id__5165187F" Association="Self.FK__iconos__mapa_id__5165187F">
@@ -774,57 +1228,63 @@
       <End Role="rutas" EntitySet="rutas" />
       <End Role="mapas" EntitySet="mapas" />
     </AssociationSet>
-    <AssociationSet Name="FK__ofertas__provinc__5441852A" Association="Self.FK__ofertas__provinc__5441852A">
-      <End Role="provincias" EntitySet="provincias" />
-      <End Role="ofertas" EntitySet="ofertas" />
-    </AssociationSet>
     <AssociationSet Name="fk_opciones_oferta" Association="Self.fk_opciones_oferta">
       <End Role="ofertas" EntitySet="ofertas" />
       <End Role="opciones" EntitySet="opciones" />
     </AssociationSet>
-    <AssociationSet Name="FK__provincia__regio__5812160E" Association="Self.FK__provincia__regio__5812160E">
-      <End Role="region" EntitySet="regions" />
+    <AssociationSet Name="foreing_activity_place" Association="Self.foreing_activity_place">
+      <End Role="places" EntitySet="places" />
+      <End Role="place_activity" EntitySet="place_activity" />
+    </AssociationSet>
+    <AssociationSet Name="foreing_apt_place" Association="Self.foreing_apt_place">
+      <End Role="places" EntitySet="places" />
+      <End Role="place_apt" EntitySet="place_apt" />
+    </AssociationSet>
+    <AssociationSet Name="foreing_coordinate_place" Association="Self.foreing_coordinate_place">
+      <End Role="places" EntitySet="places" />
+      <End Role="place_coordinate" EntitySet="place_coordinate" />
+    </AssociationSet>
+    <AssociationSet Name="foreign_place_rutas" Association="Self.foreign_place_rutas">
+      <End Role="rutas" EntitySet="rutas" />
+      <End Role="places" EntitySet="places" />
+    </AssociationSet>
+    <AssociationSet Name="fk_comollegarprovincia_provincia" Association="Self.fk_comollegarprovincia_provincia">
       <End Role="provincias" EntitySet="provincias" />
+      <End Role="provincia_comollegar" EntitySet="provincia_comollegar" />
     </AssociationSet>
     <AssociationSet Name="user_rol_fk" Association="Self.user_rol_fk">
       <End Role="roles" EntitySet="roles" />
       <End Role="users" EntitySet="users" />
     </AssociationSet>
-    <AssociationSet Name="categoria_noticia_noticia_fk" Association="ytuqueplanesDBModel.categoria_noticia_noticia_fk">
-      <End Role="categoria_noticia" EntitySet="categoria_noticia" />
-      <End Role="noticia" EntitySet="noticias" />
+    <AssociationSet Name="foreing_transporte_ruta" Association="Self.foreing_transporte_ruta">
+      <End Role="rutas" EntitySet="rutas" />
+      <End Role="transporte" EntitySet="transportes" />
     </AssociationSet>
-    <EntitySet Name="atractivos_galeria" EntityType="ytuqueplanesDBModel.atractivos_galeria" />
-    <EntitySet Name="agencias" EntityType="ytuqueplanesDBModel.agencia" />
+    <AssociationSet Name="foreing_transporte_tipotransporte" Association="Self.foreing_transporte_tipotransporte">
+      <End Role="tipotransporte" EntitySet="tipotransportes" />
+      <End Role="transporte" EntitySet="transportes" />
+    </AssociationSet>
+    <AssociationSet Name="categoria_comunitario_comunitarios" Association="Self.categoria_comunitario_comunitarios">
+      <End Role="categoria_comunitario" EntitySet="categoria_comunitario" />
+      <End Role="comunitarios" EntitySet="comunitarios" />
+    </AssociationSet>
+    <AssociationSet Name="foreign_provincia001_fk" Association="ytuqueplanesDBModel.foreign_provincia001_fk">
+      <End Role="provincia" EntitySet="provincias" />
+      <End Role="comunitario" EntitySet="comunitarios" />
+    </AssociationSet>
   </EntityContainer>
-  <Association Name="categoria_noticia_noticia_fk">
-    <End Type="ytuqueplanesDBModel.categoria_noticia" Role="categoria_noticia" Multiplicity="1" />
-    <End Type="ytuqueplanesDBModel.noticia" Role="noticia" Multiplicity="*" />
+  <Association Name="foreign_provincia001_fk">
+    <End Type="ytuqueplanesDBModel.provincia" Role="provincia" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ytuqueplanesDBModel.comunitario" Role="comunitario" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="categoria_noticia">
+      <Principal Role="provincia">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="noticia">
-        <PropertyRef Name="categoria_noticia_id" />
+      <Dependent Role="comunitario">
+        <PropertyRef Name="provincia_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="atractivos_galeria">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="atractivo_id" Type="Int32" Nullable="false" />
-    <Property Name="imagen" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="agencia">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="destino_como_llegar_id" Type="Int32" Nullable="false" />
-    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-  </EntityType>
 </Schema>

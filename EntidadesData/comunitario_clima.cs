@@ -12,14 +12,12 @@ namespace EntidadesData
     using System;
     using System.Collections.Generic;
     
-    public partial class comunitario_llegar
+    public partial class comunitario_clima
     {
-        public int comunitario_llegar_Id { get; set; }
+        public int comunitario_clima_Id { get; set; }
         public string descripcion { get; set; }
-        public int tipotransporte_Id { get; set; }
         public int comunitario_Id { get; set; }
     
         public virtual comunitario comunitario { get; set; }
-        public virtual tipotransporte tipotransporte { get; set; }
     }
 }

@@ -61,16 +61,142 @@ namespace ytuqueplanes.Controllers
 
             var categorias = db.categoria_comunitario.OrderByDescending(c => c.nombre).ToList();
 
-            var cmms = db.comunitarios.OrderBy(c => c.id).ToList();
+            var cmms = db.comunitarios.OrderByDescending(c => c.id).ToList();
 
+            List<CategoriaComunitario> cats = new List<CategoriaComunitario>();
 
+            List<Comunitarios> comuns = new List<Comunitarios>();
 
-            return View();
+            foreach (var item in categorias) {
+                cats.Add(new CategoriaComunitario { 
+                    id = item.id,
+                    nombre = item.nombre
+                });
+            }
+
+            foreach (var its in cmms) {
+                comuns.Add(new Comunitarios {
+                    id = its.id,
+                    titulo = its.titulo,
+                    slug = its.slug,
+                    imagen = its.imagen,
+                    provincia_id = its.provincia_id,
+                    provincia = its.provincia.nombre,
+                    alt = its.alt,
+                    resumen = its.resumen,
+                    descripcion = its.descripcion,
+                    thumb = its.thumb
+                });
+            }
+
+            //return Json(comuns, JsonRequestBehavior.AllowGet);
+            ModelComunitario.categories = cats;
+            ModelComunitario.comunitarios = comuns;
+            return View(ModelComunitario);
         }
 
-        public ActionResult Detalle() 
+        public ActionResult Detalle(string slug) 
         {
-            return View();
+            dynamic ModelComunitario = new ExpandoObject();
+
+            var cmms = db.comunitarios.Where(c => c.slug == slug).FirstOrDefault();
+
+            var comunitarioID = cmms.id;
+
+                ViewBag.titulo = cmms.titulo;
+                ViewBag.slug = cmms.slug;
+                ViewBag.imagen = cmms.imagen;
+                ViewBag.provincia_id = cmms.provincia_id;
+                ViewBag.alt = cmms.alt;
+                ViewBag.resumen = cmms.resumen;
+                ViewBag.descripcion = cmms.descripcion;
+
+            var llega = db.comunitario_llegar.Where(c => c.comunitario_Id == comunitarioID).ToList();
+            var hacer = db.comunitario_hacer.Where(c => c.comunitario_Id == comunitarioID).ToList();
+
+            var clima = db.comunitario_clima.Where(c => c.comunitario_Id == comunitarioID).ToList();
+            var contacto = db.comunitario_contacto.Where(c => c.comunitario_Id == comunitarioID).Select(p => new { 
+               descripcion = p.descripcion,
+               opciones = p.comunitario_contacto_option.Select(e => e.descripcion)
+            }).ToList();
+            var precio = db.comunitario_precio.Where(c => c.comunitario_Id == comunitarioID).ToList();
+            var servicio = db.comunitario_servicio.Where(c => c.comunitario_Id == comunitarioID).ToList();
+            var tip = db.comunitario_tip.Where(c => c.comunitario_Id == comunitarioID).ToList();
+
+            List<ComunitarioHacer> lch = new List<ComunitarioHacer>();
+            List<ComunitarioLlegar> lcll = new List<ComunitarioLlegar>();
+
+            List<ComunitarioClima> lclima = new List<ComunitarioClima>();
+            List<ComunitarioContacto> lcontacto = new List<ComunitarioContacto>();
+            List<ComunitarioPrecio> lprecio = new List<ComunitarioPrecio>();
+            List<ComunitarioServicio> lservicio = new List<ComunitarioServicio>();
+            List<ComunitarioTip> ltip = new List<ComunitarioTip>();
+
+            foreach (var item in llega) {
+                lcll.Add(new ComunitarioLlegar
+                {
+                    descripcion = item.descripcion,
+                    transporte = item.tipotransporte.nombre
+                }); 
+            }
+
+            foreach (var it in hacer) {
+                lch.Add( new ComunitarioHacer { 
+                    nombre = it.nombre
+                });
+            }
+
+            foreach (var item in clima)
+            {
+                lclima.Add(new ComunitarioClima
+                {
+                    descripcion = item.descripcion
+                });
+            }
+
+            foreach (var item in contacto)
+            {
+                lcontacto.Add(new ComunitarioContacto
+                {
+                    descripcion = item.descripcion,
+                   // options = item.opciones
+                });
+            }
+
+            foreach (var item in precio)
+            {
+                lprecio.Add(new ComunitarioPrecio
+                {
+                    precio = item.precio
+                });
+            }
+
+            foreach (var item in servicio)
+            {
+                lservicio.Add(new ComunitarioServicio
+                {
+                    nombre = item.nombre
+                });
+            }
+
+            foreach (var item in tip)
+            {
+                ltip.Add(new ComunitarioTip
+                {
+                    descripcion = item.descripcion
+                });
+            }
+
+
+            ModelComunitario.hacer = lch;
+            ModelComunitario.llegar = lcll;
+            ModelComunitario.clima = lclima;
+            ModelComunitario.contacto = lcontacto;
+            ModelComunitario.precio = lprecio;
+            ModelComunitario.servicio = lservicio;
+            ModelComunitario.tip = ltip;
+
+            return View(ModelComunitario);
         }
 
     }

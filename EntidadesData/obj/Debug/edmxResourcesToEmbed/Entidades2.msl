@@ -709,6 +709,7 @@
     <EntitySetMapping Name="comunitarios">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario">
         <MappingFragment StoreEntitySet="comunitarios">
+          <ScalarProperty Name="thumb" ColumnName="thumb" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="resumen" ColumnName="resumen" />
           <ScalarProperty Name="alt" ColumnName="alt" />

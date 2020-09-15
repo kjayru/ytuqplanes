@@ -31,11 +31,21 @@ namespace EntidadesData
         public virtual DbSet<alerta> alertas { get; set; }
         public virtual DbSet<atractivo> atractivos { get; set; }
         public virtual DbSet<atractivos_galeria> atractivos_galeria { get; set; }
+        public virtual DbSet<categoria_comunitario> categoria_comunitario { get; set; }
         public virtual DbSet<categoria_noticia> categoria_noticia { get; set; }
         public virtual DbSet<categoria_ruta> categoria_ruta { get; set; }
         public virtual DbSet<categoria> categorias { get; set; }
         public virtual DbSet<categorias_blog> categorias_blog { get; set; }
         public virtual DbSet<como_llegar> como_llegar { get; set; }
+        public virtual DbSet<comunitario_clima> comunitario_clima { get; set; }
+        public virtual DbSet<comunitario_contacto> comunitario_contacto { get; set; }
+        public virtual DbSet<comunitario_contacto_option> comunitario_contacto_option { get; set; }
+        public virtual DbSet<comunitario_hacer> comunitario_hacer { get; set; }
+        public virtual DbSet<comunitario_llegar> comunitario_llegar { get; set; }
+        public virtual DbSet<comunitario_precio> comunitario_precio { get; set; }
+        public virtual DbSet<comunitario_servicio> comunitario_servicio { get; set; }
+        public virtual DbSet<comunitario_tip> comunitario_tip { get; set; }
+        public virtual DbSet<comunitario> comunitarios { get; set; }
         public virtual DbSet<destino> destinos { get; set; }
         public virtual DbSet<experiencia> experiencias { get; set; }
         public virtual DbSet<festividade> festividades { get; set; }
@@ -82,10 +92,5 @@ namespace EntidadesData
         public virtual DbSet<post_seo> post_seo { get; set; }
         public virtual DbSet<post_tag> post_tag { get; set; }
         public virtual DbSet<rutas_seo> rutas_seo { get; set; }
-        public virtual DbSet<categoria_comunitario> categoria_comunitario { get; set; }
-        public virtual DbSet<comunitario_hacer> comunitario_hacer { get; set; }
-        public virtual DbSet<comunitario_llegar> comunitario_llegar { get; set; }
-        public virtual DbSet<comunitario_servicio> comunitario_servicio { get; set; }
-        public virtual DbSet<comunitario> comunitarios { get; set; }
     }
 }

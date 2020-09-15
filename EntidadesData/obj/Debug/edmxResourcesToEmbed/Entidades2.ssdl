@@ -164,6 +164,7 @@
     <Property Name="alt" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="resumen" Type="varchar" MaxLength="255" />
     <Property Name="descripcion" Type="text" />
+    <Property Name="thumb" Type="varchar" MaxLength="255" />
   </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.destino_como_llegar' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->

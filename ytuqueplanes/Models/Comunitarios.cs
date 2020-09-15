@@ -11,11 +11,14 @@ namespace ytuqueplanes.Models
         public int id { get; set; }
         public string titulo { get; set; }
         public string imagen { get; set; }
+        public string provincia { get; set; }
         public Nullable<int> provincia_id { get; set; }
         public string slug { get; set; }
         public string alt { get; set; }
         public string resumen { get; set; }
         public string descripcion { get; set; }
+
+        public string thumb { get; set; }
 
     }
 }

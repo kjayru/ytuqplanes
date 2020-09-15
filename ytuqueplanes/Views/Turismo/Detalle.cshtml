@@ -3,11 +3,11 @@
     ViewBag.Title = "Detalle";
     string grillaInicial = "-mas-4- -mas-6- -mas-8-";
 }
-<section class="page__header m--destinos-nivel-4" style="background-image: url('/assets/images/rutas-cortas-3.jpg');">
+<section class="page__header m--destinos-nivel-4" style="        background-image: url('@ViewBag.imagen');">
     <div class="limit page__header__inset">
         <a href="#" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a turismo comunitario</span></a>
-        <h2 class="page__header__titulo">Turismo Comunitario en Lima</h2>
-        <p class="page__header__resumen">Navega por los aguajales y renacales de Tingana</p>
+        <h2 class="page__header__titulo">Turismo Comunitario en @ViewBag.provincia_id</h2>
+        <p class="page__header__resumen">@ViewBag.resumen</p>
     </div>
 </section>
 
@@ -16,7 +16,9 @@
     <!-- Código implementado (Jimmy) -->
     <section class="seccion">
         <div class="limit">
-            <p class="turismo-comunitario-detalle__resumen">Tingana, un asombroso paraíso que alberga una gran variedad de especies de flora y fauna silvestre, en su mayoría aves y primates, es ideal para realizar estudios de investigación y observación. En este particular ecosistema, hábitat de especies en peligro de extinción y en situación vulnerable, los pobladores juegan un rol importante al protegerlas y cuidarlas para poder mostrarlas al mundo.</p>
+            <p class="turismo-comunitario-detalle__resumen">
+            @Html.Raw(ViewBag.descripcion)
+            </p>
             <div class="turismo-comunitario-detalle__bloque">
                 <div class="turismo-comunitario-detalle__bloque-wrapper">
                     <div class="turismo-comunitario-detalle__bloque-left">
@@ -45,30 +47,25 @@
                             <h4>¿Qué hacer?</h4>
                             <div class="turismo-comunitario-detalle__bloque-right-item-list">
                                 <ul>
-                                    <li>Paseos en canoa</li>
-                                    <li>Caminatas ecológicas</li>
-                                    <li>Observación de fauna</li>
-                                    <li>Avistamiento de aves</li>
+                                    @foreach (ytuqueplanes.Models.ComunitarioHacer hacer in Model.hacer)
+                                    {
+                                    <li>@hacer.nombre</li>
+                                    }
                                 </ul>
-                                <ul>
-                                    <li>Visita a chacras ecológicas</li>
-                                    <li>Visita a parcelas de plantas medicinales</li>
-                                    <li>Visitas a vivero de plantas forestales</li>
-                                    <li>Pesca artesanal</li>
-                                </ul>
+                              
                             </div>
                         </div>
                         <div class="turismo-comunitario-detalle__bloque-right-item">
                             <h4>¿Qué servicios encuentro?</h4>
                             <div class="turismo-comunitario-detalle__bloque-right-item-list">
                                 <ul>
-                                    <li>Transporte fluvial</li>
-                                    <li>Alojamiento en bungalows</li>
+
+                                    @foreach (ytuqueplanes.Models.ComunitarioServicio servir in Model.servicio)
+                                    {
+                                        <li>@servir.nombre</li>
+                                    }
                                 </ul>
-                                <ul>
-                                    <li>Alimentación (tradicional y vegetariana)</li>
-                                    <li>Orientación turística</li>
-                                </ul>
+                                
                             </div>
                         </div>
                     </div>
@@ -186,47 +183,13 @@
             </div>
             <div class="popup__contenido-parrafo">
                 <div class="popup__contenido-parrafo-uno">
-                    <p>Lorem Ipsum</p>
+                   
                     <ul>
-                        <li>
-                            <span>Ut enim ad minim veniam:</span>
-                            <label>Excepteur sint occaecat cupidatat non proident.</label>
-                        </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="popup__contenido-parrafo">
-                <div class="popup__contenido-parrafo-dos">
-                    <p>Lorem Ipsum</p>
-                    <ul>
-                        <li>
-                            <span>Ut enim ad minim veniam:</span>
-                            <label>Excepteur sint occaecat cupidatat non proident.</label>
-                        </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
-                    </ul>
-                </div>
-                <div class="popup__contenido-parrafo-dos">
-                    <p>Lorem Ipsum</p>
-                    <ul>
-                        <li>
-                            <span>Ut enim ad minim veniam:</span>
-                            <label><a href="https://www.google.com.pe/" target="_blank">Excepteur sint occaecat cupidatat non proident.</a></label>
-                        </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
+                        @foreach (ytuqueplanes.Models.ComunitarioPrecio price in Model.precio)
+                        {
+                            <li>@price.precio</li>
+                        }
+
                     </ul>
                 </div>
             </div>
@@ -244,50 +207,20 @@
             </div>
             <div class="popup__contenido-parrafo">
                 <div class="popup__contenido-parrafo-uno">
-                    <p>Lorem Ipsum</p>
+                   
                     <ul>
-                        <li>
-                            <span>Ut enim ad minim veniam:</span>
-                            <label>Excepteur sint occaecat cupidatat non proident.</label>
-                        </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
+                        @foreach (ytuqueplanes.Models.ComunitarioLlegar llegar in Model.llegar)
+                        {
+                            <li>
+                                <span>@llegar.transporte:</span>
+                                <label>@llegar.descripcion</label>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
-            <div class="popup__contenido-parrafo">
-                <div class="popup__contenido-parrafo-dos">
-                    <p>Lorem Ipsum</p>
-                    <ul>
-                        <li>
-                            <span>Ut enim ad minim veniam:</span>
-                            <label>Excepteur sint occaecat cupidatat non proident.</label>
-                        </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
-                    </ul>
-                </div>
-                <div class="popup__contenido-parrafo-dos">
-                    <p>Lorem Ipsum</p>
-                    <ul>
-                        <li>
-                            <span>Ut enim ad minim veniam:</span>
-                            <label><a href="https://www.google.com.pe/" target="_blank">Excepteur sint occaecat cupidatat non proident.</a></label>
-                        </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+           
             <img src="/assets/images/box-cerrar.svg" alt="" class="box__cerrar fnToggleClass" data-removes="#PI_Llegada" />
         </div>
     </div>
@@ -302,50 +235,16 @@
             </div>
             <div class="popup__contenido-parrafo">
                 <div class="popup__contenido-parrafo-uno">
-                    <p>Lorem Ipsum</p>
+                   
                     <ul>
-                        <li>
-                            <span>Ut enim ad minim veniam:</span>
-                            <label>Excepteur sint occaecat cupidatat non proident.</label>
-                        </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
+                        @foreach (ytuqueplanes.Models.ComunitarioClima clim in Model.clima)
+                        {
+                            <li>@clim.descripcion</li>
+                        }
                     </ul>
                 </div>
             </div>
-            <div class="popup__contenido-parrafo">
-                <div class="popup__contenido-parrafo-dos">
-                    <p>Lorem Ipsum</p>
-                    <ul>
-                        <li>
-                            <span>Ut enim ad minim veniam:</span>
-                            <label>Excepteur sint occaecat cupidatat non proident.</label>
-                        </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
-                    </ul>
-                </div>
-                <div class="popup__contenido-parrafo-dos">
-                    <p>Lorem Ipsum</p>
-                    <ul>
-                        <li>
-                            <span>Ut enim ad minim veniam:</span>
-                            <label><a href="https://www.google.com.pe/" target="_blank">Excepteur sint occaecat cupidatat non proident.</a></label>
-                        </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+          
             <img src="/assets/images/box-cerrar.svg" alt="" class="box__cerrar fnToggleClass" data-removes="#PI_Clima" />
         </div>
     </div>
@@ -360,47 +259,12 @@
             </div>
             <div class="popup__contenido-parrafo">
                 <div class="popup__contenido-parrafo-uno">
-                    <p>Lorem Ipsum</p>
+                   
                     <ul>
-                        <li>
-                            <span>Ut enim ad minim veniam:</span>
-                            <label>Excepteur sint occaecat cupidatat non proident.</label>
-                        </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="popup__contenido-parrafo">
-                <div class="popup__contenido-parrafo-dos">
-                    <p>Lorem Ipsum</p>
-                    <ul>
-                        <li>
-                            <span>Ut enim ad minim veniam:</span>
-                            <label>Excepteur sint occaecat cupidatat non proident.</label>
-                        </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
-                    </ul>
-                </div>
-                <div class="popup__contenido-parrafo-dos">
-                    <p>Lorem Ipsum</p>
-                    <ul>
-                        <li>
-                            <span>Ut enim ad minim veniam:</span>
-                            <label><a href="https://www.google.com.pe/" target="_blank">Excepteur sint occaecat cupidatat non proident.</a></label>
-                        </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
+                        @foreach (ytuqueplanes.Models.ComunitarioTip tp in Model.tip)
+                        {
+                            <li>@tp.descripcion</li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -418,50 +282,21 @@
             </div>
             <div class="popup__contenido-parrafo">
                 <div class="popup__contenido-parrafo-uno">
-                    <p>Lorem Ipsum</p>
+                    @foreach (ytuqueplanes.Models.ComunitarioContacto contact in Model.contacto)
+                    {
+
+                    <p>@contact.descripcion</p>
                     <ul>
                         <li>
-                            <span>Ut enim ad minim veniam:</span>
+                           
                             <label>Excepteur sint occaecat cupidatat non proident.</label>
                         </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
+                       
                     </ul>
+                    }
                 </div>
             </div>
-            <div class="popup__contenido-parrafo">
-                <div class="popup__contenido-parrafo-dos">
-                    <p>Lorem Ipsum</p>
-                    <ul>
-                        <li>
-                            <span>Ut enim ad minim veniam:</span>
-                            <label>Excepteur sint occaecat cupidatat non proident.</label>
-                        </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
-                    </ul>
-                </div>
-                <div class="popup__contenido-parrafo-dos">
-                    <p>Lorem Ipsum</p>
-                    <ul>
-                        <li>
-                            <span>Ut enim ad minim veniam:</span>
-                            <label><a href="https://www.google.com.pe/" target="_blank">Excepteur sint occaecat cupidatat non proident.</a></label>
-                        </li>
-                        <li>
-                            <span>Fusce vitae libero non:</span>
-                            <label>Mauris nisl arcu, semper a nibh.</label>
-                            <label>Donec suscipit orci nec tortor rutrum, ac volutpat.</label>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+           
             <img src="/assets/images/box-cerrar.svg" alt="" class="box__cerrar fnToggleClass" data-removes="#PI_Contacto" />
         </div>
     </div>

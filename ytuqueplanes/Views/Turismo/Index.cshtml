@@ -1,4 +1,4 @@
-﻿
+﻿@model dynamic
 @{
     ViewBag.Title = "Index";
     string grillaInicial = "-mas-4- -mas-6- -mas-8-";
@@ -19,48 +19,40 @@
             <strong class="destinos__subtitulo m--gris">Descubre nuevas experiencias</strong>
             <strong class="destinos__subtitulo-mobile m--gris">Descubre nuevas experiencias</strong>
             <div class="filtro-selector fnFiltroSelectorValidar" data-target="#fnTargetFiltroGrilla">
+
                 <div class="boton m--filtro m--morado m--grande filtro-selector__boton -activo- fnFiltrarGrilla" data-filtro="">
                     <strong>Mostrar todo</strong>
                 </div>
-                <div class="boton m--filtro m--morado m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Naturaleza">
-                    <strong>Naturaleza</strong>
-                </div>
-                <div class="boton m--filtro m--morado m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Gastronomia">
-                    <strong>Gastronomia</strong>
-                </div>
-                <div class="boton m--filtro m--morado m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Caminatas">
-                    <strong>Caminatas</strong>
-                </div>
-                <div class="boton m--filtro m--morado m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Cultural">
-                    <strong>Cultural</strong>
-                </div>
-                <div class="boton m--filtro m--morado m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="Música y danza">
-                    <strong>Música y danza</strong>
-                </div>
+                @foreach (ytuqueplanes.Models.CategoriaComunitario cat in Model.categories)
+                {
+                    <div class="boton m--filtro m--morado m--grande filtro-selector__boton fnFiltrarGrilla" data-filtro="@cat.nombre">
+                        <strong>@cat.nombre</strong>
+                    </div>
+                }
                 <div class="boton m--morado m--grande filtro-selector__select-ui">
                     <strong class="filtro-selector__select-ui__contenido fnTargetSelect">Todos</strong>
                     <select class="filtro-selector__select-ui__select fnSelect fnFiltrarGrilla">
                         <option value="">Mostrar todo</option>
-                        <option value="Naturaleza" data-filtro="Naturaleza">Naturaleza</option>
-                        <option value="Gastronomia" data-filtro="Gastronomia">Gastronomia</option>
-                        <option value="Caminatas" data-filtro="Caminatas">Caminatas</option>
-                        <option value="Cultural" data-filtro="Cultural">Cultural</option>
-                        <option value="Música y danza" data-filtro="Música y danza">Música y danza</option>
-                    </select>
+                        @foreach (ytuqueplanes.Models.CategoriaComunitario cat in Model.categories)
+                        {
+                            <option value="@cat.nombre" data-filtro="@cat.nombre">@cat.nombre</option>
+                            
+                        }
+                        </select>
                 </div>
             </div>
 
             <div id="fnTargetFiltroGrilla" class="seccion__grilla -mostrar-todos- @grillaInicial">
                 <div class="seccion__grilla__bloques">
-                    @for (var i = 1; i <= 10; i++)
+                    @foreach (ytuqueplanes.Models.Comunitarios coms in Model.comunitarios)
                     {
-                        <article class="card-poster m--tipo3" data-filtro="Naturaleza">
-                            <img src="/assets/images/rutas-cortas-@(i).jpg" alt="" class="card-poster__imagen">
-                            <address class="card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>Lima</address>
+                        <article class="card-poster m--tipo3" data-filtro="Música danza">
+                            <img src="@coms.thumb" alt="" class="card-poster__imagen">
+                            <address class="card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@coms.provincia</address>
                             <header class="card-poster__header">
-                                <h1 class="card-poster__titulo">Santa Elena</h1>
+                                <h1 class="card-poster__titulo">@coms.titulo</h1>
                             </header>
-                            <a href="/experiencias" class="card-poster__mas-informacion">Más información</a>
+                            <a href="/turismo-comunitario/@coms.slug" class="card-poster__mas-informacion">Más información</a>
                         </article>
                     }
                 </div>

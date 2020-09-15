@@ -132,21 +132,54 @@
           <Property Name="updated_at" Type="datetime" />
           <Property Name="recomendar" Type="int" />
         </EntityType>
+        <EntityType Name="comunitario_clima">
+          <Key>
+            <PropertyRef Name="comunitario_clima_Id" />
+          </Key>
+          <Property Name="comunitario_clima_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="comunitario_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="comunitario_contacto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="comunitario_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="comunitario_contacto_option">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="comunitario_contacto_Id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="comunitario_hacer">
           <Key>
             <PropertyRef Name="comunitario_hacer_Id" />
+            <PropertyRef Name="comunitario_Id" />
           </Key>
           <Property Name="comunitario_hacer_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="255" />
-          <Property Name="comunitario_Id" Type="int" />
+          <Property Name="comunitario_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="comunitario_llegar">
           <Key>
             <PropertyRef Name="comunitario_llegar_Id" />
           </Key>
-          <Property Name="comunitario_llegar_Id" Type="int" Nullable="false" />
+          <Property Name="comunitario_llegar_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="255" />
-          <Property Name="tipotransporte_id" Type="int" />
+          <Property Name="tipotransporte_Id" Type="int" Nullable="false" />
+          <Property Name="comunitario_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="comunitario_precio">
+          <Key>
+            <PropertyRef Name="comunitario_precio_Id" />
+          </Key>
+          <Property Name="comunitario_precio_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="precio" Type="varchar" MaxLength="255" />
           <Property Name="comunitario_Id" Type="int" />
         </EntityType>
         <EntityType Name="comunitario_servicio">
@@ -155,6 +188,14 @@
           </Key>
           <Property Name="comunitario_servicio_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="255" />
+          <Property Name="comunitario_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="comunitario_tip">
+          <Key>
+            <PropertyRef Name="comunitario_tip_Id" />
+          </Key>
+          <Property Name="comunitario_tip_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" />
           <Property Name="comunitario_Id" Type="int" />
         </EntityType>
         <EntityType Name="comunitarios">
@@ -169,6 +210,7 @@
           <Property Name="alt" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="resumen" Type="varchar" MaxLength="255" />
           <Property Name="descripcion" Type="text" />
+          <Property Name="thumb" Type="varchar" MaxLength="255" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.destino_como_llegar' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -854,7 +896,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           </ReferentialConstraint>
         </Association>
         <Association Name="foreign_comunitario001_fk">
-          <End Role="comunitarios" Type="Self.comunitarios" Multiplicity="0..1">
+          <End Role="comunitarios" Type="Self.comunitarios" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="comunitario_hacer" Type="Self.comunitario_hacer" Multiplicity="*" />
@@ -881,8 +923,64 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="foreign_comunitario003_fk">
+        <Association Name="foreign_comunitario010_fk">
           <End Role="comunitarios" Type="Self.comunitarios" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comunitario_precio" Type="Self.comunitario_precio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comunitarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_precio">
+              <PropertyRef Name="comunitario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreign_comunitario011_fk">
+          <End Role="comunitarios" Type="Self.comunitarios" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comunitario_tip" Type="Self.comunitario_tip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comunitarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_tip">
+              <PropertyRef Name="comunitario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreign_comunitario012_fk">
+          <End Role="comunitarios" Type="Self.comunitarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comunitario_clima" Type="Self.comunitario_clima" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comunitarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_clima">
+              <PropertyRef Name="comunitario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreign_contact_option001_fk">
+          <End Role="comunitario_contacto" Type="Self.comunitario_contacto" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comunitario_contacto_option" Type="Self.comunitario_contacto_option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comunitario_contacto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_contacto_option">
+              <PropertyRef Name="comunitario_contacto_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreign_llega001_fk">
+          <End Role="comunitarios" Type="Self.comunitarios" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="comunitario_llegar" Type="Self.comunitario_llegar" Multiplicity="*" />
@@ -909,17 +1007,17 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="foreign_tipotransporte001_fk">
-          <End Role="tipotransporte" Type="Self.tipotransporte" Multiplicity="0..1">
+        <Association Name="foreign_provincia001_fk">
+          <End Role="provincias" Type="Self.provincias" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="comunitario_llegar" Type="Self.comunitario_llegar" Multiplicity="*" />
+          <End Role="comunitarios" Type="Self.comunitarios" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tipotransporte">
+            <Principal Role="provincias">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="comunitario_llegar">
-              <PropertyRef Name="tipotransporte_id" />
+            <Dependent Role="comunitarios">
+              <PropertyRef Name="provincia_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -991,6 +1089,20 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="foreing_transporte001_fk">
+          <End Role="tipotransporte" Type="Self.tipotransporte" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comunitario_llegar" Type="Self.comunitario_llegar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipotransporte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_llegar">
+              <PropertyRef Name="tipotransporte_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="user_rol_fk">
           <End Role="roles" Type="Self.roles" Multiplicity="0..1" />
           <End Role="users" Type="Self.users" Multiplicity="*" />
@@ -1017,9 +1129,14 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySet Name="categorias" EntityType="Self.categorias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="categorias_blog" EntityType="Self.categorias_blog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="como_llegar" EntityType="Self.como_llegar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comunitario_clima" EntityType="Self.comunitario_clima" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comunitario_contacto" EntityType="Self.comunitario_contacto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comunitario_contacto_option" EntityType="Self.comunitario_contacto_option" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="comunitario_hacer" EntityType="Self.comunitario_hacer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="comunitario_llegar" EntityType="Self.comunitario_llegar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comunitario_precio" EntityType="Self.comunitario_precio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="comunitario_servicio" EntityType="Self.comunitario_servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comunitario_tip" EntityType="Self.comunitario_tip" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="comunitarios" EntityType="Self.comunitarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="destinos" EntityType="Self.destinos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="experiencias" EntityType="Self.experiencias" Schema="dbo" store:Type="Tables" />
@@ -1187,7 +1304,23 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="comunitarios" EntitySet="comunitarios" />
             <End Role="comunitario_servicio" EntitySet="comunitario_servicio" />
           </AssociationSet>
-          <AssociationSet Name="foreign_comunitario003_fk" Association="Self.foreign_comunitario003_fk">
+          <AssociationSet Name="foreign_comunitario010_fk" Association="Self.foreign_comunitario010_fk">
+            <End Role="comunitarios" EntitySet="comunitarios" />
+            <End Role="comunitario_precio" EntitySet="comunitario_precio" />
+          </AssociationSet>
+          <AssociationSet Name="foreign_comunitario011_fk" Association="Self.foreign_comunitario011_fk">
+            <End Role="comunitarios" EntitySet="comunitarios" />
+            <End Role="comunitario_tip" EntitySet="comunitario_tip" />
+          </AssociationSet>
+          <AssociationSet Name="foreign_comunitario012_fk" Association="Self.foreign_comunitario012_fk">
+            <End Role="comunitarios" EntitySet="comunitarios" />
+            <End Role="comunitario_clima" EntitySet="comunitario_clima" />
+          </AssociationSet>
+          <AssociationSet Name="foreign_contact_option001_fk" Association="Self.foreign_contact_option001_fk">
+            <End Role="comunitario_contacto" EntitySet="comunitario_contacto" />
+            <End Role="comunitario_contacto_option" EntitySet="comunitario_contacto_option" />
+          </AssociationSet>
+          <AssociationSet Name="foreign_llega001_fk" Association="Self.foreign_llega001_fk">
             <End Role="comunitarios" EntitySet="comunitarios" />
             <End Role="comunitario_llegar" EntitySet="comunitario_llegar" />
           </AssociationSet>
@@ -1195,9 +1328,9 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="rutas" EntitySet="rutas" />
             <End Role="places" EntitySet="places" />
           </AssociationSet>
-          <AssociationSet Name="foreign_tipotransporte001_fk" Association="Self.foreign_tipotransporte001_fk">
-            <End Role="tipotransporte" EntitySet="tipotransporte" />
-            <End Role="comunitario_llegar" EntitySet="comunitario_llegar" />
+          <AssociationSet Name="foreign_provincia001_fk" Association="Self.foreign_provincia001_fk">
+            <End Role="provincias" EntitySet="provincias" />
+            <End Role="comunitarios" EntitySet="comunitarios" />
           </AssociationSet>
           <AssociationSet Name="foreing_activity_place" Association="Self.foreing_activity_place">
             <End Role="places" EntitySet="places" />
@@ -1218,6 +1351,10 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <AssociationSet Name="foreing_transporte_tipotransporte" Association="Self.foreing_transporte_tipotransporte">
             <End Role="tipotransporte" EntitySet="tipotransporte" />
             <End Role="transporte" EntitySet="transporte" />
+          </AssociationSet>
+          <AssociationSet Name="foreing_transporte001_fk" Association="Self.foreing_transporte001_fk">
+            <End Role="tipotransporte" EntitySet="tipotransporte" />
+            <End Role="comunitario_llegar" EntitySet="comunitario_llegar" />
           </AssociationSet>
           <AssociationSet Name="user_rol_fk" Association="Self.user_rol_fk">
             <End Role="roles" EntitySet="roles" />
@@ -1296,6 +1433,14 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="atractivo_id" Type="Int32" Nullable="false" />
           <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
+        <EntityType Name="categoria_comunitario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="comunitarios" Relationship="Self.categoria_comunitario_comunitarios" FromRole="categoria_comunitario" ToRole="comunitarios" />
+        </EntityType>
         <EntityType Name="categoria_noticia">
           <Key>
             <PropertyRef Name="id" />
@@ -1344,6 +1489,103 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="recomendar" Type="Int32" />
           <NavigationProperty Name="provincia_comollegar" Relationship="Self.fk_comollegarprovincia_comollegar" FromRole="como_llegar" ToRole="provincia_comollegar" />
         </EntityType>
+        <EntityType Name="comunitario_clima">
+          <Key>
+            <PropertyRef Name="comunitario_clima_Id" />
+          </Key>
+          <Property Name="comunitario_clima_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="comunitario_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="comunitario" Relationship="Self.foreign_comunitario012_fk" FromRole="comunitario_clima" ToRole="comunitarios" />
+        </EntityType>
+        <EntityType Name="comunitario_contacto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="comunitario_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="comunitario_contacto_option" Relationship="Self.foreign_contact_option001_fk" FromRole="comunitario_contacto" ToRole="comunitario_contacto_option" />
+        </EntityType>
+        <EntityType Name="comunitario_contacto_option">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="comunitario_contacto_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="comunitario_contacto" Relationship="Self.foreign_contact_option001_fk" FromRole="comunitario_contacto_option" ToRole="comunitario_contacto" />
+        </EntityType>
+        <EntityType Name="comunitario_hacer">
+          <Key>
+            <PropertyRef Name="comunitario_hacer_Id" />
+            <PropertyRef Name="comunitario_Id" />
+          </Key>
+          <Property Name="comunitario_hacer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="comunitario_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="comunitario" Relationship="Self.foreign_comunitario001_fk" FromRole="comunitario_hacer" ToRole="comunitarios" />
+        </EntityType>
+        <EntityType Name="comunitario_llegar">
+          <Key>
+            <PropertyRef Name="comunitario_llegar_Id" />
+          </Key>
+          <Property Name="comunitario_llegar_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tipotransporte_Id" Type="Int32" Nullable="false" />
+          <Property Name="comunitario_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="comunitario" Relationship="Self.foreign_llega001_fk" FromRole="comunitario_llegar" ToRole="comunitarios" />
+          <NavigationProperty Name="tipotransporte" Relationship="Self.foreing_transporte001_fk" FromRole="comunitario_llegar" ToRole="tipotransporte" />
+        </EntityType>
+        <EntityType Name="comunitario_precio">
+          <Key>
+            <PropertyRef Name="comunitario_precio_Id" />
+          </Key>
+          <Property Name="comunitario_precio_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="precio" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="comunitario_Id" Type="Int32" />
+          <NavigationProperty Name="comunitario" Relationship="Self.foreign_comunitario010_fk" FromRole="comunitario_precio" ToRole="comunitarios" />
+        </EntityType>
+        <EntityType Name="comunitario_servicio">
+          <Key>
+            <PropertyRef Name="comunitario_servicio_Id" />
+          </Key>
+          <Property Name="comunitario_servicio_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="comunitario_Id" Type="Int32" />
+          <NavigationProperty Name="comunitario" Relationship="Self.foreign_comunitario002_fk" FromRole="comunitario_servicio" ToRole="comunitarios" />
+        </EntityType>
+        <EntityType Name="comunitario_tip">
+          <Key>
+            <PropertyRef Name="comunitario_tip_Id" />
+          </Key>
+          <Property Name="comunitario_tip_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="comunitario_Id" Type="Int32" />
+          <NavigationProperty Name="comunitario" Relationship="Self.foreign_comunitario011_fk" FromRole="comunitario_tip" ToRole="comunitarios" />
+        </EntityType>
+        <EntityType Name="comunitario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="provincia_id" Type="Int32" />
+          <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="alt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="resumen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="comunitario_clima" Relationship="Self.foreign_comunitario012_fk" FromRole="comunitarios" ToRole="comunitario_clima" />
+          <NavigationProperty Name="comunitario_hacer" Relationship="Self.foreign_comunitario001_fk" FromRole="comunitarios" ToRole="comunitario_hacer" />
+          <NavigationProperty Name="comunitario_llegar" Relationship="Self.foreign_llega001_fk" FromRole="comunitarios" ToRole="comunitario_llegar" />
+          <NavigationProperty Name="comunitario_precio" Relationship="Self.foreign_comunitario010_fk" FromRole="comunitarios" ToRole="comunitario_precio" />
+          <NavigationProperty Name="comunitario_servicio" Relationship="Self.foreign_comunitario002_fk" FromRole="comunitarios" ToRole="comunitario_servicio" />
+          <NavigationProperty Name="comunitario_tip" Relationship="Self.foreign_comunitario011_fk" FromRole="comunitarios" ToRole="comunitario_tip" />
+          <NavigationProperty Name="categoria_comunitario" Relationship="Self.categoria_comunitario_comunitarios" FromRole="comunitarios" ToRole="categoria_comunitario" />
+          <NavigationProperty Name="provincia" Relationship="ytuqueplanesDBModel.foreign_provincia001_fk" FromRole="comunitario" ToRole="provincia" />
+        </EntityType>
         <EntityType Name="destino">
           <Key>
             <PropertyRef Name="id" />
@@ -1355,8 +1597,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="experiencias" Relationship="Self.FK__experienc__desti__4E88ABD4" FromRole="destinos" ToRole="experiencias" />
           <Property Name="seo_id" Type="Int32" />
+          <NavigationProperty Name="experiencias" Relationship="Self.FK__experienc__desti__4E88ABD4" FromRole="destinos" ToRole="experiencias" />
         </EntityType>
         <EntityType Name="experiencia">
           <Key>
@@ -1535,11 +1777,11 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ruta_id" Type="Int32" />
           <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="seo_id" Type="Int32" />
           <NavigationProperty Name="place_activity" Relationship="Self.foreing_activity_place" FromRole="places" ToRole="place_activity" />
           <NavigationProperty Name="place_apt" Relationship="Self.foreing_apt_place" FromRole="places" ToRole="place_apt" />
           <NavigationProperty Name="place_coordinate" Relationship="Self.foreing_coordinate_place" FromRole="places" ToRole="place_coordinate" />
           <NavigationProperty Name="ruta" Relationship="Self.foreign_place_rutas" FromRole="places" ToRole="rutas" />
-          <Property Name="seo_id" Type="Int32" />
         </EntityType>
         <EntityType Name="post">
           <Key>
@@ -1602,6 +1844,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="tenencuenta" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="seo_id" Type="Int32" />
           <NavigationProperty Name="provincia_comollegar" Relationship="Self.fk_comollegarprovincia_provincia" FromRole="provincias" ToRole="provincia_comollegar" />
+          <NavigationProperty Name="comunitarios" Relationship="ytuqueplanesDBModel.foreign_provincia001_fk" FromRole="provincia" ToRole="comunitario" />
         </EntityType>
         <EntityType Name="rating">
           <Key>
@@ -1763,8 +2006,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="comunitario_llegar" Relationship="Self.foreing_transporte001_fk" FromRole="tipotransporte" ToRole="comunitario_llegar" />
           <NavigationProperty Name="transportes" Relationship="Self.foreing_transporte_tipotransporte" FromRole="tipotransporte" ToRole="transporte" />
-          <NavigationProperty Name="comunitario_llegar" Relationship="ytuqueplanesDBModel.foreign_tipotransporte001_fk" FromRole="tipotransporte" ToRole="comunitario_llegar" />
         </EntityType>
         <EntityType Name="transporte">
           <Key>
@@ -1931,6 +2174,118 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Principal>
             <Dependent Role="provincia_comollegar">
               <PropertyRef Name="como_llegar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreign_comunitario012_fk">
+          <End Role="comunitarios" Type="Self.comunitario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comunitario_clima" Type="Self.comunitario_clima" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comunitarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_clima">
+              <PropertyRef Name="comunitario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreign_contact_option001_fk">
+          <End Role="comunitario_contacto" Type="Self.comunitario_contacto" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comunitario_contacto_option" Type="Self.comunitario_contacto_option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comunitario_contacto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_contacto_option">
+              <PropertyRef Name="comunitario_contacto_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreign_comunitario001_fk">
+          <End Role="comunitarios" Type="Self.comunitario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comunitario_hacer" Type="Self.comunitario_hacer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comunitarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_hacer">
+              <PropertyRef Name="comunitario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreign_llega001_fk">
+          <End Role="comunitarios" Type="Self.comunitario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comunitario_llegar" Type="Self.comunitario_llegar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comunitarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_llegar">
+              <PropertyRef Name="comunitario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreing_transporte001_fk">
+          <End Role="tipotransporte" Type="Self.tipotransporte" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comunitario_llegar" Type="Self.comunitario_llegar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipotransporte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_llegar">
+              <PropertyRef Name="tipotransporte_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreign_comunitario010_fk">
+          <End Role="comunitarios" Type="Self.comunitario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comunitario_precio" Type="Self.comunitario_precio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comunitarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_precio">
+              <PropertyRef Name="comunitario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreign_comunitario002_fk">
+          <End Role="comunitarios" Type="Self.comunitario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comunitario_servicio" Type="Self.comunitario_servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comunitarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_servicio">
+              <PropertyRef Name="comunitario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreign_comunitario011_fk">
+          <End Role="comunitarios" Type="Self.comunitario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comunitario_tip" Type="Self.comunitario_tip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comunitarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_tip">
+              <PropertyRef Name="comunitario_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2102,6 +2457,10 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="categoria_comunitario_comunitarios">
+          <End Role="categoria_comunitario" Type="Self.categoria_comunitario" Multiplicity="*" />
+          <End Role="comunitarios" Type="Self.comunitario" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="ytuqueplanesDBEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="actividades" EntityType="Self.actividade" />
@@ -2109,11 +2468,21 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySet Name="alertas" EntityType="Self.alerta" />
           <EntitySet Name="atractivos" EntityType="Self.atractivo" />
           <EntitySet Name="atractivos_galeria" EntityType="Self.atractivos_galeria" />
+          <EntitySet Name="categoria_comunitario" EntityType="Self.categoria_comunitario" />
           <EntitySet Name="categoria_noticia" EntityType="Self.categoria_noticia" />
           <EntitySet Name="categoria_ruta" EntityType="Self.categoria_ruta" />
           <EntitySet Name="categorias" EntityType="Self.categoria" />
           <EntitySet Name="categorias_blog" EntityType="Self.categorias_blog" />
           <EntitySet Name="como_llegar" EntityType="Self.como_llegar" />
+          <EntitySet Name="comunitario_clima" EntityType="Self.comunitario_clima" />
+          <EntitySet Name="comunitario_contacto" EntityType="Self.comunitario_contacto" />
+          <EntitySet Name="comunitario_contacto_option" EntityType="Self.comunitario_contacto_option" />
+          <EntitySet Name="comunitario_hacer" EntityType="Self.comunitario_hacer" />
+          <EntitySet Name="comunitario_llegar" EntityType="Self.comunitario_llegar" />
+          <EntitySet Name="comunitario_precio" EntityType="Self.comunitario_precio" />
+          <EntitySet Name="comunitario_servicio" EntityType="Self.comunitario_servicio" />
+          <EntitySet Name="comunitario_tip" EntityType="Self.comunitario_tip" />
+          <EntitySet Name="comunitarios" EntityType="Self.comunitario" />
           <EntitySet Name="destinos" EntityType="Self.destino" />
           <EntitySet Name="experiencias" EntityType="Self.experiencia" />
           <EntitySet Name="festividades" EntityType="Self.festividade" />
@@ -2176,6 +2545,38 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="como_llegar" EntitySet="como_llegar" />
             <End Role="provincia_comollegar" EntitySet="provincia_comollegar" />
           </AssociationSet>
+          <AssociationSet Name="foreign_comunitario012_fk" Association="Self.foreign_comunitario012_fk">
+            <End Role="comunitarios" EntitySet="comunitarios" />
+            <End Role="comunitario_clima" EntitySet="comunitario_clima" />
+          </AssociationSet>
+          <AssociationSet Name="foreign_contact_option001_fk" Association="Self.foreign_contact_option001_fk">
+            <End Role="comunitario_contacto" EntitySet="comunitario_contacto" />
+            <End Role="comunitario_contacto_option" EntitySet="comunitario_contacto_option" />
+          </AssociationSet>
+          <AssociationSet Name="foreign_comunitario001_fk" Association="Self.foreign_comunitario001_fk">
+            <End Role="comunitarios" EntitySet="comunitarios" />
+            <End Role="comunitario_hacer" EntitySet="comunitario_hacer" />
+          </AssociationSet>
+          <AssociationSet Name="foreign_llega001_fk" Association="Self.foreign_llega001_fk">
+            <End Role="comunitarios" EntitySet="comunitarios" />
+            <End Role="comunitario_llegar" EntitySet="comunitario_llegar" />
+          </AssociationSet>
+          <AssociationSet Name="foreing_transporte001_fk" Association="Self.foreing_transporte001_fk">
+            <End Role="tipotransporte" EntitySet="tipotransportes" />
+            <End Role="comunitario_llegar" EntitySet="comunitario_llegar" />
+          </AssociationSet>
+          <AssociationSet Name="foreign_comunitario010_fk" Association="Self.foreign_comunitario010_fk">
+            <End Role="comunitarios" EntitySet="comunitarios" />
+            <End Role="comunitario_precio" EntitySet="comunitario_precio" />
+          </AssociationSet>
+          <AssociationSet Name="foreign_comunitario002_fk" Association="Self.foreign_comunitario002_fk">
+            <End Role="comunitarios" EntitySet="comunitarios" />
+            <End Role="comunitario_servicio" EntitySet="comunitario_servicio" />
+          </AssociationSet>
+          <AssociationSet Name="foreign_comunitario011_fk" Association="Self.foreign_comunitario011_fk">
+            <End Role="comunitarios" EntitySet="comunitarios" />
+            <End Role="comunitario_tip" EntitySet="comunitario_tip" />
+          </AssociationSet>
           <AssociationSet Name="FK__experienc__desti__4E88ABD4" Association="Self.FK__experienc__desti__4E88ABD4">
             <End Role="destinos" EntitySet="destinos" />
             <End Role="experiencias" EntitySet="experiencias" />
@@ -2228,145 +2629,28 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="tipotransporte" EntitySet="tipotransportes" />
             <End Role="transporte" EntitySet="transportes" />
           </AssociationSet>
-          <EntitySet Name="categoria_comunitario" EntityType="ytuqueplanesDBModel.categoria_comunitario" />
-          <EntitySet Name="comunitario_hacer" EntityType="ytuqueplanesDBModel.comunitario_hacer" />
-          <EntitySet Name="comunitario_llegar" EntityType="ytuqueplanesDBModel.comunitario_llegar" />
-          <EntitySet Name="comunitario_servicio" EntityType="ytuqueplanesDBModel.comunitario_servicio" />
-          <EntitySet Name="comunitarios" EntityType="ytuqueplanesDBModel.comunitario" />
-          <AssociationSet Name="foreign_comunitario001_fk" Association="ytuqueplanesDBModel.foreign_comunitario001_fk">
-            <End Role="comunitario" EntitySet="comunitarios" />
-            <End Role="comunitario_hacer" EntitySet="comunitario_hacer" />
-          </AssociationSet>
-          <AssociationSet Name="foreign_comunitario003_fk" Association="ytuqueplanesDBModel.foreign_comunitario003_fk">
-            <End Role="comunitario" EntitySet="comunitarios" />
-            <End Role="comunitario_llegar" EntitySet="comunitario_llegar" />
-          </AssociationSet>
-          <AssociationSet Name="foreign_tipotransporte001_fk" Association="ytuqueplanesDBModel.foreign_tipotransporte001_fk">
-            <End Role="tipotransporte" EntitySet="tipotransportes" />
-            <End Role="comunitario_llegar" EntitySet="comunitario_llegar" />
-          </AssociationSet>
-          <AssociationSet Name="foreign_comunitario002_fk" Association="ytuqueplanesDBModel.foreign_comunitario002_fk">
-            <End Role="comunitario" EntitySet="comunitarios" />
-            <End Role="comunitario_servicio" EntitySet="comunitario_servicio" />
-          </AssociationSet>
-          <AssociationSet Name="categoria_comunitario_comunitarios" Association="ytuqueplanesDBModel.categoria_comunitario_comunitarios">
+          <AssociationSet Name="categoria_comunitario_comunitarios" Association="Self.categoria_comunitario_comunitarios">
             <End Role="categoria_comunitario" EntitySet="categoria_comunitario" />
+            <End Role="comunitarios" EntitySet="comunitarios" />
+          </AssociationSet>
+          <AssociationSet Name="foreign_provincia001_fk" Association="ytuqueplanesDBModel.foreign_provincia001_fk">
+            <End Role="provincia" EntitySet="provincias" />
             <End Role="comunitario" EntitySet="comunitarios" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="categoria_comunitario">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="comunitarios" Relationship="ytuqueplanesDBModel.categoria_comunitario_comunitarios" FromRole="categoria_comunitario" ToRole="comunitario" />
-        </EntityType>
-        <EntityType Name="comunitario_hacer">
-          <Key>
-            <PropertyRef Name="comunitario_hacer_Id" />
-          </Key>
-          <Property Name="comunitario_hacer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="comunitario_Id" Type="Int32" />
-          <NavigationProperty Name="comunitario" Relationship="ytuqueplanesDBModel.foreign_comunitario001_fk" FromRole="comunitario_hacer" ToRole="comunitario" />
-        </EntityType>
-        <EntityType Name="comunitario_llegar">
-          <Key>
-            <PropertyRef Name="comunitario_llegar_Id" />
-          </Key>
-          <Property Name="comunitario_llegar_Id" Type="Int32" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="tipotransporte_id" Type="Int32" />
-          <Property Name="comunitario_Id" Type="Int32" />
-          <NavigationProperty Name="comunitario" Relationship="ytuqueplanesDBModel.foreign_comunitario003_fk" FromRole="comunitario_llegar" ToRole="comunitario" />
-          <NavigationProperty Name="tipotransporte" Relationship="ytuqueplanesDBModel.foreign_tipotransporte001_fk" FromRole="comunitario_llegar" ToRole="tipotransporte" />
-        </EntityType>
-        <EntityType Name="comunitario_servicio">
-          <Key>
-            <PropertyRef Name="comunitario_servicio_Id" />
-          </Key>
-          <Property Name="comunitario_servicio_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="comunitario_Id" Type="Int32" />
-          <NavigationProperty Name="comunitario" Relationship="ytuqueplanesDBModel.foreign_comunitario002_fk" FromRole="comunitario_servicio" ToRole="comunitario" />
-        </EntityType>
-        <EntityType Name="comunitario">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="provincia_id" Type="Int32" />
-          <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="alt" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="resumen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="comunitario_hacer" Relationship="ytuqueplanesDBModel.foreign_comunitario001_fk" FromRole="comunitario" ToRole="comunitario_hacer" />
-          <NavigationProperty Name="comunitario_llegar" Relationship="ytuqueplanesDBModel.foreign_comunitario003_fk" FromRole="comunitario" ToRole="comunitario_llegar" />
-          <NavigationProperty Name="comunitario_servicio" Relationship="ytuqueplanesDBModel.foreign_comunitario002_fk" FromRole="comunitario" ToRole="comunitario_servicio" />
-          <NavigationProperty Name="categoria_comunitario" Relationship="ytuqueplanesDBModel.categoria_comunitario_comunitarios" FromRole="comunitario" ToRole="categoria_comunitario" />
-        </EntityType>
-        <Association Name="foreign_comunitario001_fk">
-          <End Type="ytuqueplanesDBModel.comunitario" Role="comunitario" Multiplicity="0..1">
+        <Association Name="foreign_provincia001_fk">
+          <End Type="ytuqueplanesDBModel.provincia" Role="provincia" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="ytuqueplanesDBModel.comunitario_hacer" Role="comunitario_hacer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="comunitario">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="comunitario_hacer">
-              <PropertyRef Name="comunitario_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="foreign_comunitario003_fk">
-          <End Type="ytuqueplanesDBModel.comunitario" Role="comunitario" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="ytuqueplanesDBModel.comunitario_llegar" Role="comunitario_llegar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="comunitario">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="comunitario_llegar">
-              <PropertyRef Name="comunitario_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="foreign_tipotransporte001_fk">
-          <End Type="ytuqueplanesDBModel.tipotransporte" Role="tipotransporte" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="ytuqueplanesDBModel.comunitario_llegar" Role="comunitario_llegar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tipotransporte">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="comunitario_llegar">
-              <PropertyRef Name="tipotransporte_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="foreign_comunitario002_fk">
-          <End Type="ytuqueplanesDBModel.comunitario" Role="comunitario" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="ytuqueplanesDBModel.comunitario_servicio" Role="comunitario_servicio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="comunitario">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="comunitario_servicio">
-              <PropertyRef Name="comunitario_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="categoria_comunitario_comunitarios">
-          <End Type="ytuqueplanesDBModel.categoria_comunitario" Role="categoria_comunitario" Multiplicity="*" />
           <End Type="ytuqueplanesDBModel.comunitario" Role="comunitario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario">
+              <PropertyRef Name="provincia_id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -2446,6 +2730,14 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="categoria_comunitario">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.categoria_comunitario">
+              <MappingFragment StoreEntitySet="categoria_comunitario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="categoria_noticia">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.categoria_noticia">
               <MappingFragment StoreEntitySet="categoria_noticia">
@@ -2496,10 +2788,97 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="comunitario_clima">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_clima">
+              <MappingFragment StoreEntitySet="comunitario_clima">
+                <ScalarProperty Name="comunitario_clima_Id" ColumnName="comunitario_clima_Id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comunitario_contacto">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_contacto">
+              <MappingFragment StoreEntitySet="comunitario_contacto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comunitario_contacto_option">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_contacto_option">
+              <MappingFragment StoreEntitySet="comunitario_contacto_option">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="comunitario_contacto_Id" ColumnName="comunitario_contacto_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comunitario_hacer">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_hacer">
+              <MappingFragment StoreEntitySet="comunitario_hacer">
+                <ScalarProperty Name="comunitario_hacer_Id" ColumnName="comunitario_hacer_Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comunitario_llegar">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_llegar">
+              <MappingFragment StoreEntitySet="comunitario_llegar">
+                <ScalarProperty Name="comunitario_llegar_Id" ColumnName="comunitario_llegar_Id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipotransporte_Id" ColumnName="tipotransporte_Id" />
+                <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comunitario_precio">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_precio">
+              <MappingFragment StoreEntitySet="comunitario_precio">
+                <ScalarProperty Name="comunitario_precio_Id" ColumnName="comunitario_precio_Id" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comunitario_servicio">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_servicio">
+              <MappingFragment StoreEntitySet="comunitario_servicio">
+                <ScalarProperty Name="comunitario_servicio_Id" ColumnName="comunitario_servicio_Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comunitario_tip">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_tip">
+              <MappingFragment StoreEntitySet="comunitario_tip">
+                <ScalarProperty Name="comunitario_tip_Id" ColumnName="comunitario_tip_Id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comunitarios">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario">
+              <MappingFragment StoreEntitySet="comunitarios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
+                <ScalarProperty Name="slug" ColumnName="slug" />
+                <ScalarProperty Name="alt" ColumnName="alt" />
+                <ScalarProperty Name="resumen" ColumnName="resumen" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="thumb" ColumnName="thumb" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="destinos">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.destino">
               <MappingFragment StoreEntitySet="destinos">
-                <ScalarProperty Name="seo_id" ColumnName="seo_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="contenido" ColumnName="contenido" />
@@ -2507,6 +2886,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
                 <ScalarProperty Name="imagen" ColumnName="imagen" />
                 <ScalarProperty Name="slug" ColumnName="slug" />
                 <ScalarProperty Name="thumb" ColumnName="thumb" />
+                <ScalarProperty Name="seo_id" ColumnName="seo_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2679,7 +3059,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="places">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.place">
               <MappingFragment StoreEntitySet="places">
-                <ScalarProperty Name="seo_id" ColumnName="seo_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -2687,6 +3066,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="ruta_id" ColumnName="ruta_id" />
                 <ScalarProperty Name="thumb" ColumnName="thumb" />
+                <ScalarProperty Name="seo_id" ColumnName="seo_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2872,10 +3252,6 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="suscripcions">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.suscripcion">
               <MappingFragment StoreEntitySet="suscripcion">
-                <ScalarProperty Name="actividades" ColumnName="actividades" />
-                <ScalarProperty Name="provincia" ColumnName="provincia" />
-                <ScalarProperty Name="fechanac" ColumnName="fechanac" />
-                <ScalarProperty Name="genero" ColumnName="genero" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellidos" ColumnName="apellidos" />
@@ -2885,6 +3261,10 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
                 <ScalarProperty Name="tipo_suscripcion_id" ColumnName="tipo_suscripcion_id" />
                 <ScalarProperty Name="created_at" ColumnName="created_at" />
                 <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="genero" ColumnName="genero" />
+                <ScalarProperty Name="fechanac" ColumnName="fechanac" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="actividades" ColumnName="actividades" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3043,62 +3423,12 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="categoria_comunitario">
-            <EntityTypeMapping TypeName="ytuqueplanesDBModel.categoria_comunitario">
-              <MappingFragment StoreEntitySet="categoria_comunitario">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="comunitario_hacer">
-            <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_hacer">
-              <MappingFragment StoreEntitySet="comunitario_hacer">
-                <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="comunitario_hacer_Id" ColumnName="comunitario_hacer_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="comunitario_llegar">
-            <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_llegar">
-              <MappingFragment StoreEntitySet="comunitario_llegar">
-                <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
-                <ScalarProperty Name="tipotransporte_id" ColumnName="tipotransporte_id" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="comunitario_llegar_Id" ColumnName="comunitario_llegar_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="comunitario_servicio">
-            <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_servicio">
-              <MappingFragment StoreEntitySet="comunitario_servicio">
-                <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="comunitario_servicio_Id" ColumnName="comunitario_servicio_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="comunitarios">
-            <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario">
-              <MappingFragment StoreEntitySet="comunitarios">
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="resumen" ColumnName="resumen" />
-                <ScalarProperty Name="alt" ColumnName="alt" />
-                <ScalarProperty Name="slug" ColumnName="slug" />
-                <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
-                <ScalarProperty Name="imagen" ColumnName="imagen" />
-                <ScalarProperty Name="titulo" ColumnName="titulo" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="categoria_comunitario_comunitarios" TypeName="ytuqueplanesDBModel.categoria_comunitario_comunitarios" StoreEntitySet="categoria_comunitario_comunitarios">
-            <EndProperty Name="comunitario">
-              <ScalarProperty Name="id" ColumnName="comunitarioId" />
-            </EndProperty>
             <EndProperty Name="categoria_comunitario">
               <ScalarProperty Name="id" ColumnName="categoria_comunitarioId" />
+            </EndProperty>
+            <EndProperty Name="comunitarios">
+              <ScalarProperty Name="id" ColumnName="comunitarioId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

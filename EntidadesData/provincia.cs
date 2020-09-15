@@ -18,6 +18,7 @@ namespace EntidadesData
         public provincia()
         {
             this.provincia_comollegar = new HashSet<provincia_comollegar>();
+            this.comunitarios = new HashSet<comunitario>();
         }
     
         public int id { get; set; }
@@ -36,5 +37,7 @@ namespace EntidadesData
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<provincia_comollegar> provincia_comollegar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<comunitario> comunitarios { get; set; }
     }
 }

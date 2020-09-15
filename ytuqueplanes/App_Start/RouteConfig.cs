@@ -101,8 +101,8 @@ namespace ytuqueplanes
 
          routes.MapRoute(
             "TurismoDetalle",
-            "turismo-comunitario/{id}",
-            new { controller = "Turismo", action = "Detalle", id = UrlParameter.Optional }
+            "turismo-comunitario/{slug}",
+            new { controller = "Turismo", action = "Detalle", slug = UrlParameter.Optional }
         );
             routes.MapRoute(
              "Suscribete",

@@ -17,9 +17,12 @@ namespace EntidadesData
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public comunitario()
         {
+            this.comunitario_clima = new HashSet<comunitario_clima>();
             this.comunitario_hacer = new HashSet<comunitario_hacer>();
             this.comunitario_llegar = new HashSet<comunitario_llegar>();
+            this.comunitario_precio = new HashSet<comunitario_precio>();
             this.comunitario_servicio = new HashSet<comunitario_servicio>();
+            this.comunitario_tip = new HashSet<comunitario_tip>();
             this.categoria_comunitario = new HashSet<categoria_comunitario>();
         }
     
@@ -31,14 +34,22 @@ namespace EntidadesData
         public string alt { get; set; }
         public string resumen { get; set; }
         public string descripcion { get; set; }
+        public string thumb { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<comunitario_clima> comunitario_clima { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<comunitario_hacer> comunitario_hacer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<comunitario_llegar> comunitario_llegar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<comunitario_precio> comunitario_precio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<comunitario_servicio> comunitario_servicio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<comunitario_tip> comunitario_tip { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<categoria_comunitario> categoria_comunitario { get; set; }
+        public virtual provincia provincia { get; set; }
     }
 }

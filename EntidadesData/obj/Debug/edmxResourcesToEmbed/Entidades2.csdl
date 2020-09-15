@@ -1079,6 +1079,7 @@
     <NavigationProperty Name="comunitario_llegar" Relationship="ytuqueplanesDBModel.foreign_comunitario003_fk" FromRole="comunitario" ToRole="comunitario_llegar" />
     <NavigationProperty Name="comunitario_servicio" Relationship="ytuqueplanesDBModel.foreign_comunitario002_fk" FromRole="comunitario" ToRole="comunitario_servicio" />
     <NavigationProperty Name="categoria_comunitario" Relationship="ytuqueplanesDBModel.categoria_comunitario_comunitarios" FromRole="comunitario" ToRole="categoria_comunitario" />
+    <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="foreign_comunitario001_fk">
     <End Type="ytuqueplanesDBModel.comunitario" Role="comunitario" Multiplicity="0..1">
