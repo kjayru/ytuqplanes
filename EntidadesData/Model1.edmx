@@ -165,6 +165,14 @@
           <Property Name="nombre" Type="varchar" MaxLength="255" />
           <Property Name="comunitario_Id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="comunitario_imagen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imagen" Type="varchar" MaxLength="255" />
+          <Property Name="comunitario_Id" Type="int" />
+        </EntityType>
         <EntityType Name="comunitario_llegar">
           <Key>
             <PropertyRef Name="comunitario_llegar_Id" />
@@ -759,6 +767,20 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="comunitario020_fk">
+          <End Role="comunitarios" Type="Self.comunitarios" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comunitario_imagen" Type="Self.comunitario_imagen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comunitarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_imagen">
+              <PropertyRef Name="comunitario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__actividad__ruta___4BAC3F29">
           <End Role="rutas" Type="Self.rutas" Multiplicity="1" />
           <End Role="actividades" Type="Self.actividades" Multiplicity="*" />
@@ -1133,6 +1155,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySet Name="comunitario_contacto" EntityType="Self.comunitario_contacto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="comunitario_contacto_option" EntityType="Self.comunitario_contacto_option" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="comunitario_hacer" EntityType="Self.comunitario_hacer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comunitario_imagen" EntityType="Self.comunitario_imagen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="comunitario_llegar" EntityType="Self.comunitario_llegar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="comunitario_precio" EntityType="Self.comunitario_precio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="comunitario_servicio" EntityType="Self.comunitario_servicio" Schema="dbo" store:Type="Tables" />
@@ -1251,6 +1274,10 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <AssociationSet Name="categoria_noticia_noticia_fk" Association="Self.categoria_noticia_noticia_fk">
             <End Role="categoria_noticia" EntitySet="categoria_noticia" />
             <End Role="noticias" EntitySet="noticias" />
+          </AssociationSet>
+          <AssociationSet Name="comunitario020_fk" Association="Self.comunitario020_fk">
+            <End Role="comunitarios" EntitySet="comunitarios" />
+            <End Role="comunitario_imagen" EntitySet="comunitario_imagen" />
           </AssociationSet>
           <AssociationSet Name="FK__actividad__ruta___4BAC3F29" Association="Self.FK__actividad__ruta___4BAC3F29">
             <End Role="rutas" EntitySet="rutas" />
@@ -1585,6 +1612,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <NavigationProperty Name="comunitario_tip" Relationship="Self.foreign_comunitario011_fk" FromRole="comunitarios" ToRole="comunitario_tip" />
           <NavigationProperty Name="categoria_comunitario" Relationship="Self.categoria_comunitario_comunitarios" FromRole="comunitarios" ToRole="categoria_comunitario" />
           <NavigationProperty Name="provincia" Relationship="ytuqueplanesDBModel.foreign_provincia001_fk" FromRole="comunitario" ToRole="provincia" />
+          <NavigationProperty Name="comunitario_imagen" Relationship="ytuqueplanesDBModel.comunitario020_fk" FromRole="comunitario" ToRole="comunitario_imagen" />
         </EntityType>
         <EntityType Name="destino">
           <Key>
@@ -2637,6 +2665,11 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="provincia" EntitySet="provincias" />
             <End Role="comunitario" EntitySet="comunitarios" />
           </AssociationSet>
+          <EntitySet Name="comunitario_imagen" EntityType="ytuqueplanesDBModel.comunitario_imagen" />
+          <AssociationSet Name="comunitario020_fk" Association="ytuqueplanesDBModel.comunitario020_fk">
+            <End Role="comunitario" EntitySet="comunitarios" />
+            <End Role="comunitario_imagen" EntitySet="comunitario_imagen" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="foreign_provincia001_fk">
           <End Type="ytuqueplanesDBModel.provincia" Role="provincia" Multiplicity="0..1">
@@ -2649,6 +2682,29 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Principal>
             <Dependent Role="comunitario">
               <PropertyRef Name="provincia_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="comunitario_imagen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="comunitario_Id" Type="Int32" />
+          <NavigationProperty Name="comunitario" Relationship="ytuqueplanesDBModel.comunitario020_fk" FromRole="comunitario_imagen" ToRole="comunitario" />
+        </EntityType>
+        <Association Name="comunitario020_fk">
+          <End Type="ytuqueplanesDBModel.comunitario" Role="comunitario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ytuqueplanesDBModel.comunitario_imagen" Role="comunitario_imagen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comunitario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comunitario_imagen">
+              <PropertyRef Name="comunitario_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3431,6 +3487,15 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
               <ScalarProperty Name="id" ColumnName="comunitarioId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="comunitario_imagen">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_imagen">
+              <MappingFragment StoreEntitySet="comunitario_imagen">
+                <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -52,20 +52,23 @@ namespace ytuqueplanes.Controllers
                 case 505:
                     ViewBag.Title = "Ocurrio un error inesperado";
                     ViewBag.Description = "Esto es muy vergonzoso, esperemos que no vuelva a pasar ..";
+                    ViewBag.error =error;
                     break;
 
                 case 404:
                     ViewBag.Title = "Página no encontrada";
                     ViewBag.Description = "La URL que está intentando ingresar no existe";
+                    ViewBag.error = error;
                     break;
 
                 default:
                     ViewBag.Title = "Página no encontrada";
                     ViewBag.Description = "Algo salio muy mal :( ..";
+                    ViewBag.error = error;
                     break;
             }
 
-            return View("~/views/error/_ErrorPage.cshtml");
+            return View("~/Views/Error/_ErrorPage.cshtml");
         }
     }
 }

@@ -99,6 +99,9 @@
     <Compile Include="comunitario_hacer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="comunitario_imagen.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="comunitario_llegar.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

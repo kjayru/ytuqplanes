@@ -774,5 +774,14 @@
         <ScalarProperty Name="id" ColumnName="comunitarioId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="comunitario_imagen">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_imagen">
+        <MappingFragment StoreEntitySet="comunitario_imagen">
+          <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

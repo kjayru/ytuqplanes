@@ -24,6 +24,7 @@ namespace EntidadesData
             this.comunitario_servicio = new HashSet<comunitario_servicio>();
             this.comunitario_tip = new HashSet<comunitario_tip>();
             this.categoria_comunitario = new HashSet<categoria_comunitario>();
+            this.comunitario_imagen = new HashSet<comunitario_imagen>();
         }
     
         public int id { get; set; }
@@ -51,5 +52,7 @@ namespace EntidadesData
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<categoria_comunitario> categoria_comunitario { get; set; }
         public virtual provincia provincia { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<comunitario_imagen> comunitario_imagen { get; set; }
     }
 }

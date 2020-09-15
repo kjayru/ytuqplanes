@@ -220,6 +220,7 @@
     <NavigationProperty Name="comunitario_tip" Relationship="Self.foreign_comunitario011_fk" FromRole="comunitarios" ToRole="comunitario_tip" />
     <NavigationProperty Name="categoria_comunitario" Relationship="Self.categoria_comunitario_comunitarios" FromRole="comunitarios" ToRole="categoria_comunitario" />
     <NavigationProperty Name="provincia" Relationship="ytuqueplanesDBModel.foreign_provincia001_fk" FromRole="comunitario" ToRole="provincia" />
+    <NavigationProperty Name="comunitario_imagen" Relationship="ytuqueplanesDBModel.comunitario020_fk" FromRole="comunitario" ToRole="comunitario_imagen" />
   </EntityType>
   <EntityType Name="destino">
     <Key>
@@ -1272,6 +1273,11 @@
       <End Role="provincia" EntitySet="provincias" />
       <End Role="comunitario" EntitySet="comunitarios" />
     </AssociationSet>
+    <EntitySet Name="comunitario_imagen" EntityType="ytuqueplanesDBModel.comunitario_imagen" />
+    <AssociationSet Name="comunitario020_fk" Association="ytuqueplanesDBModel.comunitario020_fk">
+      <End Role="comunitario" EntitySet="comunitarios" />
+      <End Role="comunitario_imagen" EntitySet="comunitario_imagen" />
+    </AssociationSet>
   </EntityContainer>
   <Association Name="foreign_provincia001_fk">
     <End Type="ytuqueplanesDBModel.provincia" Role="provincia" Multiplicity="0..1">
@@ -1284,6 +1290,29 @@
       </Principal>
       <Dependent Role="comunitario">
         <PropertyRef Name="provincia_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="comunitario_imagen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="comunitario_Id" Type="Int32" />
+    <NavigationProperty Name="comunitario" Relationship="ytuqueplanesDBModel.comunitario020_fk" FromRole="comunitario_imagen" ToRole="comunitario" />
+  </EntityType>
+  <Association Name="comunitario020_fk">
+    <End Type="ytuqueplanesDBModel.comunitario" Role="comunitario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ytuqueplanesDBModel.comunitario_imagen" Role="comunitario_imagen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comunitario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comunitario_imagen">
+        <PropertyRef Name="comunitario_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

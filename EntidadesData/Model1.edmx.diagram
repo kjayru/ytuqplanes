@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bc7ac283ee3e47c7ae14f9c3eba47142" Name="Diagram1">
+      <Diagram DiagramId="bc7ac283ee3e47c7ae14f9c3eba47142" Name="Diagram1" ZoomLevel="57">
         <EntityTypeShape EntityType="ytuqueplanesDBModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ytuqueplanesDBModel.actividade" Width="1.5" PointX="13" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ytuqueplanesDBModel.agencia" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
@@ -99,6 +99,8 @@
         <AssociationConnector Association="ytuqueplanesDBModel.foreing_transporte_tipotransporte" ManuallyRouted="false" />
         <AssociationConnector Association="ytuqueplanesDBModel.categoria_comunitario_comunitarios" ManuallyRouted="false" />
         <AssociationConnector Association="ytuqueplanesDBModel.foreign_provincia001_fk" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.comunitario_imagen" Width="1.5" PointX="5.25" PointY="19.375" />
+        <AssociationConnector Association="ytuqueplanesDBModel.comunitario020_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

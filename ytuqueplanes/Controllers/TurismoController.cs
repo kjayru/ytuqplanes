@@ -1,4 +1,5 @@
 ﻿using EntidadesData;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -61,7 +62,9 @@ namespace ytuqueplanes.Controllers
 
             var categorias = db.categoria_comunitario.OrderByDescending(c => c.nombre).ToList();
 
-            var cmms = db.comunitarios.OrderByDescending(c => c.id).ToList();
+            //var cmms = db.comunitarios.OrderByDescending(c => c.id).ToList();
+
+            var cmms = db.categoria_comunitario.SelectMany(g => g.comunitarios).ToList();
 
             List<CategoriaComunitario> cats = new List<CategoriaComunitario>();
 
@@ -75,7 +78,8 @@ namespace ytuqueplanes.Controllers
             }
 
             foreach (var its in cmms) {
-                comuns.Add(new Comunitarios {
+                comuns.Add(new Comunitarios
+                {
                     id = its.id,
                     titulo = its.titulo,
                     slug = its.slug,
@@ -85,8 +89,10 @@ namespace ytuqueplanes.Controllers
                     alt = its.alt,
                     resumen = its.resumen,
                     descripcion = its.descripcion,
-                    thumb = its.thumb
-                });
+                    thumb = its.thumb,
+                    categorias = JsonConvert.SerializeObject(its.categoria_comunitario.Select(p => p.nombre).ToList())
+
+                }) ;
             }
 
             //return Json(comuns, JsonRequestBehavior.AllowGet);
@@ -101,12 +107,14 @@ namespace ytuqueplanes.Controllers
 
             var cmms = db.comunitarios.Where(c => c.slug == slug).FirstOrDefault();
 
+            
             var comunitarioID = cmms.id;
 
+           
                 ViewBag.titulo = cmms.titulo;
                 ViewBag.slug = cmms.slug;
                 ViewBag.imagen = cmms.imagen;
-                ViewBag.provincia_id = cmms.provincia_id;
+                ViewBag.provincia = cmms.provincia.nombre;
                 ViewBag.alt = cmms.alt;
                 ViewBag.resumen = cmms.resumen;
                 ViewBag.descripcion = cmms.descripcion;
@@ -119,18 +127,24 @@ namespace ytuqueplanes.Controllers
                descripcion = p.descripcion,
                opciones = p.comunitario_contacto_option.Select(e => e.descripcion)
             }).ToList();
+
+
+            //return Json(contacto, JsonRequestBehavior.AllowGet);
+
             var precio = db.comunitario_precio.Where(c => c.comunitario_Id == comunitarioID).ToList();
             var servicio = db.comunitario_servicio.Where(c => c.comunitario_Id == comunitarioID).ToList();
             var tip = db.comunitario_tip.Where(c => c.comunitario_Id == comunitarioID).ToList();
 
+            var imagenes = db.comunitario_imagen.Where(c => c.comunitario_Id == comunitarioID).ToList();
+
             List<ComunitarioHacer> lch = new List<ComunitarioHacer>();
             List<ComunitarioLlegar> lcll = new List<ComunitarioLlegar>();
-
             List<ComunitarioClima> lclima = new List<ComunitarioClima>();
             List<ComunitarioContacto> lcontacto = new List<ComunitarioContacto>();
             List<ComunitarioPrecio> lprecio = new List<ComunitarioPrecio>();
             List<ComunitarioServicio> lservicio = new List<ComunitarioServicio>();
             List<ComunitarioTip> ltip = new List<ComunitarioTip>();
+            List<ComunitarioImagen> limagens = new List<ComunitarioImagen>();
 
             foreach (var item in llega) {
                 lcll.Add(new ComunitarioLlegar
@@ -156,11 +170,10 @@ namespace ytuqueplanes.Controllers
 
             foreach (var item in contacto)
             {
-                lcontacto.Add(new ComunitarioContacto
-                {
-                    descripcion = item.descripcion,
-                   // options = item.opciones
-                });
+                lcontacto.Add(
+                    new ComunitarioContacto(
+                        item.descripcion.ToString(), item.opciones.ToList()
+                      ));
             }
 
             foreach (var item in precio)
@@ -188,6 +201,31 @@ namespace ytuqueplanes.Controllers
             }
 
 
+            foreach (var item in imagenes)
+            {
+                limagens.Add(new ComunitarioImagen
+                {
+                    imagen = item.imagen
+                });
+            }
+
+            //relacionados
+
+            var listado = db.comunitarios.Where(c => c.id != comunitarioID).ToList();
+            List<Comunitarios> comuns = new List<Comunitarios>();
+
+            foreach (var its in listado)
+            {
+                comuns.Add(new Comunitarios
+                {                
+                    titulo = its.titulo,
+                    slug = its.slug,
+                    provincia = its.provincia.nombre,
+                    thumb = its.thumb                   
+                });
+            }
+
+           
             ModelComunitario.hacer = lch;
             ModelComunitario.llegar = lcll;
             ModelComunitario.clima = lclima;
@@ -195,7 +233,8 @@ namespace ytuqueplanes.Controllers
             ModelComunitario.precio = lprecio;
             ModelComunitario.servicio = lservicio;
             ModelComunitario.tip = ltip;
-
+            ModelComunitario.relacionados = comuns;
+            ModelComunitario.galeria = limagens;
             return View(ModelComunitario);
         }
 

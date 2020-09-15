@@ -151,6 +151,7 @@
     <Compile Include="Models\ComunitarioClima.cs" />
     <Compile Include="Models\ComunitarioContacto.cs" />
     <Compile Include="Models\ComunitarioHacer.cs" />
+    <Compile Include="Models\ComunitarioImagen.cs" />
     <Compile Include="Models\ComunitarioLlegar.cs" />
     <Compile Include="Models\ComunitarioPrecio.cs" />
     <Compile Include="Models\Comunitarios.cs" />

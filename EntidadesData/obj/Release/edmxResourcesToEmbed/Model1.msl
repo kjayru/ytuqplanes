@@ -1,6 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ytuqueplanesDBModelStoreContainer" CdmEntityContainer="ytuqueplanesDBEntities">
+  <EntityContainerMapping StorageEntityContainer="ytuqueplanesDBModelStoreContainer" CdmEntityContainer="ytuqueplanesDBEntities1">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="actividades">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.actividade">
         <MappingFragment StoreEntitySet="actividades">
@@ -8,6 +18,17 @@
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="icono" ColumnName="icono" />
           <ScalarProperty Name="ruta_id" ColumnName="ruta_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="agencias">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.agencia">
+        <MappingFragment StoreEntitySet="agencias">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="destino_como_llegar_id" ColumnName="destino_como_llegar_id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -26,18 +47,37 @@
     <EntitySetMapping Name="atractivos">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.atractivo">
         <MappingFragment StoreEntitySet="atractivos">
-          <ScalarProperty Name="destacado" ColumnName="destacado" />
-          <ScalarProperty Name="titulo" ColumnName="titulo" />
-          <ScalarProperty Name="slug" ColumnName="slug" />
-          <ScalarProperty Name="banner_m" ColumnName="banner_m" />
-          <ScalarProperty Name="banner_t" ColumnName="banner_t" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
-          <ScalarProperty Name="resumen" ColumnName="resumen" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="banner" ColumnName="banner" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="contenido" ColumnName="contenido" />
           <ScalarProperty Name="destino_id" ColumnName="destino_id" />
+          <ScalarProperty Name="resumen" ColumnName="resumen" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="banner_t" ColumnName="banner_t" />
+          <ScalarProperty Name="banner_m" ColumnName="banner_m" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="destacado" ColumnName="destacado" />
+          <ScalarProperty Name="thumb" ColumnName="thumb" />
+          <ScalarProperty Name="seo_id" ColumnName="seo_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="atractivos_galeria">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.atractivos_galeria">
+        <MappingFragment StoreEntitySet="atractivos_galeria">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="atractivo_id" ColumnName="atractivo_id" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categoria_comunitario">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.categoria_comunitario">
+        <MappingFragment StoreEntitySet="categoria_comunitario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -87,18 +127,109 @@
           <ScalarProperty Name="alt" ColumnName="alt" />
           <ScalarProperty Name="created_at" ColumnName="created_at" />
           <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="recomendar" ColumnName="recomendar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comunitario_clima">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_clima">
+        <MappingFragment StoreEntitySet="comunitario_clima">
+          <ScalarProperty Name="comunitario_clima_Id" ColumnName="comunitario_clima_Id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comunitario_contacto">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_contacto">
+        <MappingFragment StoreEntitySet="comunitario_contacto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comunitario_contacto_option">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_contacto_option">
+        <MappingFragment StoreEntitySet="comunitario_contacto_option">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="comunitario_contacto_Id" ColumnName="comunitario_contacto_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comunitario_hacer">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_hacer">
+        <MappingFragment StoreEntitySet="comunitario_hacer">
+          <ScalarProperty Name="comunitario_hacer_Id" ColumnName="comunitario_hacer_Id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comunitario_llegar">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_llegar">
+        <MappingFragment StoreEntitySet="comunitario_llegar">
+          <ScalarProperty Name="comunitario_llegar_Id" ColumnName="comunitario_llegar_Id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="tipotransporte_Id" ColumnName="tipotransporte_Id" />
+          <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comunitario_precio">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_precio">
+        <MappingFragment StoreEntitySet="comunitario_precio">
+          <ScalarProperty Name="comunitario_precio_Id" ColumnName="comunitario_precio_Id" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comunitario_servicio">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_servicio">
+        <MappingFragment StoreEntitySet="comunitario_servicio">
+          <ScalarProperty Name="comunitario_servicio_Id" ColumnName="comunitario_servicio_Id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comunitario_tip">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_tip">
+        <MappingFragment StoreEntitySet="comunitario_tip">
+          <ScalarProperty Name="comunitario_tip_Id" ColumnName="comunitario_tip_Id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comunitarios">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario">
+        <MappingFragment StoreEntitySet="comunitarios">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="alt" ColumnName="alt" />
+          <ScalarProperty Name="resumen" ColumnName="resumen" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="thumb" ColumnName="thumb" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="destinos">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.destino">
         <MappingFragment StoreEntitySet="destinos">
-          <ScalarProperty Name="slug" ColumnName="slug" />
-          <ScalarProperty Name="imagen" ColumnName="imagen" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="titulo" ColumnName="titulo" />
           <ScalarProperty Name="contenido" ColumnName="contenido" />
           <ScalarProperty Name="provincia_Id" ColumnName="provincia_Id" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="thumb" ColumnName="thumb" />
+          <ScalarProperty Name="seo_id" ColumnName="seo_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -115,7 +246,6 @@
     <EntitySetMapping Name="festividades">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.festividade">
         <MappingFragment StoreEntitySet="festividades">
-          <ScalarProperty Name="slug" ColumnName="slug" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="inicio" ColumnName="inicio" />
@@ -126,6 +256,10 @@
           <ScalarProperty Name="mes_id" ColumnName="mes_id" />
           <ScalarProperty Name="likes" ColumnName="likes" />
           <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="tipo_festividad" ColumnName="tipo_festividad" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="seo_id" ColumnName="seo_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -232,17 +366,56 @@
           <ScalarProperty Name="contenido" ColumnName="contenido" />
           <ScalarProperty Name="created_at" ColumnName="created_at" />
           <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="seo_id" ColumnName="seo_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="place_activity">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.place_activity">
+        <MappingFragment StoreEntitySet="place_activity">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="icono" ColumnName="icono" />
+          <ScalarProperty Name="place_id" ColumnName="place_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="place_apt">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.place_apt">
+        <MappingFragment StoreEntitySet="place_apt">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="place_id" ColumnName="place_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="place_coordinate">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.place_coordinate">
+        <MappingFragment StoreEntitySet="place_coordinate">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="place_id" ColumnName="place_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="places">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.place">
+        <MappingFragment StoreEntitySet="places">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="ruta_id" ColumnName="ruta_id" />
+          <ScalarProperty Name="thumb" ColumnName="thumb" />
+          <ScalarProperty Name="seo_id" ColumnName="seo_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="posts">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.post">
         <MappingFragment StoreEntitySet="posts">
-          <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
-          <ScalarProperty Name="tipo_id" ColumnName="tipo_id" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
-          <ScalarProperty Name="slug" ColumnName="slug" />
-          <ScalarProperty Name="destacado" ColumnName="destacado" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="titulo" ColumnName="titulo" />
           <ScalarProperty Name="resumen" ColumnName="resumen" />
@@ -252,6 +425,12 @@
           <ScalarProperty Name="updated_at" ColumnName="updated_at" />
           <ScalarProperty Name="likes" ColumnName="likes" />
           <ScalarProperty Name="categoria_blog_id" ColumnName="categoria_blog_id" />
+          <ScalarProperty Name="destacado" ColumnName="destacado" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="tipo_id" ColumnName="tipo_id" />
+          <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
+          <ScalarProperty Name="seo_id" ColumnName="seo_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -264,19 +443,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="provincia_comollegar">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.provincia_comollegar">
+        <MappingFragment StoreEntitySet="provincia_comollegar">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="como_llegar_id" ColumnName="como_llegar_id" />
+          <ScalarProperty Name="duracion" ColumnName="duracion" />
+          <ScalarProperty Name="distancia" ColumnName="distancia" />
+          <ScalarProperty Name="empresa" ColumnName="empresa" />
+          <ScalarProperty Name="waze" ColumnName="waze" />
+          <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
+          <ScalarProperty Name="recomendar" ColumnName="recomendar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="provincias">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.provincia">
         <MappingFragment StoreEntitySet="provincias">
-          <ScalarProperty Name="slug" ColumnName="slug" />
-          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
-          <ScalarProperty Name="longitud" ColumnName="longitud" />
-          <ScalarProperty Name="latitud" ColumnName="latitud" />
-          <ScalarProperty Name="thumb" ColumnName="thumb" />
-          <ScalarProperty Name="imagen" ColumnName="imagen" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="thumb" ColumnName="thumb" />
+          <ScalarProperty Name="latitud" ColumnName="latitud" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="festivida_pdf" ColumnName="festivida_pdf" />
+          <ScalarProperty Name="tenencuenta" ColumnName="tenencuenta" />
+          <ScalarProperty Name="seo_id" ColumnName="seo_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -327,7 +523,6 @@
     <EntitySetMapping Name="rutas">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.ruta">
         <MappingFragment StoreEntitySet="rutas">
-          <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="titulo" ColumnName="titulo" />
           <ScalarProperty Name="tiempo_recorrido" ColumnName="tiempo_recorrido" />
@@ -335,7 +530,14 @@
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="destacar" ColumnName="destacar" />
+          <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
           <ScalarProperty Name="categoria_ruta_id" ColumnName="categoria_ruta_id" />
+          <ScalarProperty Name="google" ColumnName="google" />
+          <ScalarProperty Name="maxtemp" ColumnName="maxtemp" />
+          <ScalarProperty Name="mintemp" ColumnName="mintemp" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="seo_id" ColumnName="seo_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -359,6 +561,7 @@
           <ScalarProperty Name="fb_app_id" ColumnName="fb_app_id" />
           <ScalarProperty Name="fb_admins" ColumnName="fb_admins" />
           <ScalarProperty Name="scripts" ColumnName="scripts" />
+          <ScalarProperty Name="keywords" ColumnName="keywords" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -374,6 +577,8 @@
           <ScalarProperty Name="titulo" ColumnName="titulo" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="alt" ColumnName="alt" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -399,6 +604,10 @@
           <ScalarProperty Name="tipo_suscripcion_id" ColumnName="tipo_suscripcion_id" />
           <ScalarProperty Name="created_at" ColumnName="created_at" />
           <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="genero" ColumnName="genero" />
+          <ScalarProperty Name="fechanac" ColumnName="fechanac" />
+          <ScalarProperty Name="provincia" ColumnName="provincia" />
+          <ScalarProperty Name="actividades" ColumnName="actividades" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -428,29 +637,44 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tipotransportes">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.tipotransporte">
+        <MappingFragment StoreEntitySet="tipotransporte">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transportes">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.transporte">
+        <MappingFragment StoreEntitySet="transporte">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="tipotransporte_id" ColumnName="tipotransporte_id" />
+          <ScalarProperty Name="ruta_id" ColumnName="ruta_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="users">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.user">
         <MappingFragment StoreEntitySet="users">
-          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="paterno" ColumnName="paterno" />
-          <ScalarProperty Name="materno" ColumnName="materno" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="idrol" ColumnName="idrol" />
-          <ScalarProperty Name="password_hash" ColumnName="password_hash" />
-          <ScalarProperty Name="password_salt" ColumnName="password_salt" />
-          <ScalarProperty Name="condicion" ColumnName="condicion" />
+          <ScalarProperty Name="password" ColumnName="password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="destino_como_llegar">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.destino_como_llegar">
         <MappingFragment StoreEntitySet="destino_como_llegar">
-          <ScalarProperty Name="waze" ColumnName="waze" />
-          <ScalarProperty Name="tiempo_viaje" ColumnName="tiempo_viaje" />
-          <ScalarProperty Name="distancia" ColumnName="distancia" />
           <ScalarProperty Name="destino_id" ColumnName="destino_id" />
           <ScalarProperty Name="como_llegar_id" ColumnName="como_llegar_id" />
+          <ScalarProperty Name="distancia" ColumnName="distancia" />
+          <ScalarProperty Name="tiempo_viaje" ColumnName="tiempo_viaje" />
+          <ScalarProperty Name="waze" ColumnName="waze" />
+          <ScalarProperty Name="recomendar" ColumnName="recomendar" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -542,23 +766,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="atractivos_galeria">
-      <EntityTypeMapping TypeName="ytuqueplanesDBModel.atractivos_galeria">
-        <MappingFragment StoreEntitySet="atractivos_galeria">
+    <AssociationSetMapping Name="categoria_comunitario_comunitarios" TypeName="ytuqueplanesDBModel.categoria_comunitario_comunitarios" StoreEntitySet="categoria_comunitario_comunitarios">
+      <EndProperty Name="categoria_comunitario">
+        <ScalarProperty Name="id" ColumnName="categoria_comunitarioId" />
+      </EndProperty>
+      <EndProperty Name="comunitarios">
+        <ScalarProperty Name="id" ColumnName="comunitarioId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="comunitario_imagen">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario_imagen">
+        <MappingFragment StoreEntitySet="comunitario_imagen">
+          <ScalarProperty Name="comunitario_Id" ColumnName="comunitario_Id" />
           <ScalarProperty Name="imagen" ColumnName="imagen" />
-          <ScalarProperty Name="atractivo_id" ColumnName="atractivo_id" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="agencias">
-      <EntityTypeMapping TypeName="ytuqueplanesDBModel.agencia">
-        <MappingFragment StoreEntitySet="agencias">
-          <ScalarProperty Name="imagen" ColumnName="imagen" />
-          <ScalarProperty Name="url" ColumnName="url" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="destino_como_llegar_id" ColumnName="destino_como_llegar_id" />
-          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

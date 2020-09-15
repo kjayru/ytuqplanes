@@ -3,10 +3,10 @@
     ViewBag.Title = "Detalle";
     string grillaInicial = "-mas-4- -mas-6- -mas-8-";
 }
-<section class="page__header m--destinos-nivel-4" style="        background-image: url('@ViewBag.imagen');">
+<section class="page__header m--destinos-nivel-4" style="background-image: url(@ViewBag.imagen);">
     <div class="limit page__header__inset">
-        <a href="#" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a turismo comunitario</span></a>
-        <h2 class="page__header__titulo">Turismo Comunitario en @ViewBag.provincia_id</h2>
+        <a href="/turismo-comunitario" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a turismo comunitario</span></a>
+        <h2 class="page__header__titulo">Turismo Comunitario en @ViewBag.titulo</h2>
         <p class="page__header__resumen">@ViewBag.resumen</p>
     </div>
 </section>
@@ -24,19 +24,14 @@
                     <div class="turismo-comunitario-detalle__bloque-left">
                         <div class="turismo-comunitario-detalle__bloque-slider swiper-container fnSliderBloqueTCD">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="turismo-comunitario-detalle__bloque-slider-bg" style="background-image: url(http://dev.mmsolutions.com.pe/assets/images/rutas-cortas-2.jpg);"></div>
-                                    <div class="turismo-comunitario-detalle__bloque-slider-overlay"></div>
+                                @foreach (ytuqueplanes.Models.ComunitarioImagen gal in Model.galeria)
+                                {
+                                    <div class="swiper-slide">
+                                        <div class="turismo-comunitario-detalle__bloque-slider-bg" style="background-image: url(@gal.imagen);"></div>
+                                        <div class="turismo-comunitario-detalle__bloque-slider-overlay"></div>
+                                    </div>
+                                }
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="turismo-comunitario-detalle__bloque-slider-bg" style="background-image: url(http://dev.mmsolutions.com.pe/assets/images/rutas-cortas-7.jpg);"></div>
-                                    <div class="turismo-comunitario-detalle__bloque-slider-overlay"></div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="turismo-comunitario-detalle__bloque-slider-bg" style="background-image: url(http://dev.mmsolutions.com.pe/assets/images/rutas-cortas-3.jpg);"></div>
-                                    <div class="turismo-comunitario-detalle__bloque-slider-overlay"></div>
-                                </div>
-                            </div>
                             <div class="swiper-pagination SliderBloqueTCD__pagination"></div>
                             <div class="swiper-button-prev SliderBloqueTCD__right"><img src="/assets/images/left.png"></div>
                             <div class="swiper-button-next SliderBloqueTCD__left"><img src="/assets/images/right.png"></div>
@@ -124,49 +119,22 @@
 
     <section class="seccion m--slider-standard">
         <div class="limit">
-            <h3 class="seccion__titulo">Explora otros lugares turísticos en Lima</h3>
+            <h3 class="seccion__titulo">Explora otros lugares turísticos</h3>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo3">
-                            <img src="/assets/images/rutas-cortas-4.jpg" alt="" class="card-poster__imagen">
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <h1 class="card-poster__titulo">Amazonas</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo3">
-                            <img src="/assets/images/rutas-cortas-4.jpg" alt="" class="card-poster__imagen">
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <h1 class="card-poster__titulo">Amazonas</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo3">
-                            <img src="/assets/images/rutas-cortas-4.jpg" alt="" class="card-poster__imagen">
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <h1 class="card-poster__titulo">Amazonas</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="card-poster m--tipo3">
-                            <img src="/assets/images/rutas-cortas-4.jpg" alt="" class="card-poster__imagen">
-                            <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>
-                            <header class="card-poster__header">
-                                <h1 class="card-poster__titulo">Amazonas</h1>
-                            </header>
-                            <a href="#" class="card-poster__mas-informacion">Más información</a>
-                        </article>
-                    </div>
+                    @foreach (ytuqueplanes.Models.Comunitarios post in Model.relacionados)
+                    {
+                        <div class="swiper-slide">
+                            <article class="card-poster m--tipo3">
+                                <img src="@post.thumb" alt="" class="card-poster__imagen">
+                                <!-- <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>-->
+                                <header class="card-poster__header">
+                                    <h1 class="card-poster__titulo">@post.titulo</h1>
+                                </header>
+                                <a href="/turismo-comunitario/@post.slug" class="card-poster__mas-informacion">Más información</a>
+                            </article>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -278,7 +246,7 @@
         <div class="box__contenido popup__contenido popup--verde-hoja">
             <div class="popup__contenido-titulo">
                 <img src="/assets/images/icono_telefono.png">
-                <p>Tips de viaje</p>
+                <p>Contactar con agencias</p>
             </div>
             <div class="popup__contenido-parrafo">
                 <div class="popup__contenido-parrafo-uno">
@@ -287,11 +255,12 @@
 
                     <p>@contact.descripcion</p>
                     <ul>
+                        @for(var i=0; i<contact.options.Count();i++){
                         <li>
                            
-                            <label>Excepteur sint occaecat cupidatat non proident.</label>
+                            <label>@contact.options[i]</label>
                         </li>
-                       
+                       }
                     </ul>
                     }
                 </div>

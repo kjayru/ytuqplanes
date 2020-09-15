@@ -46,7 +46,7 @@
                 <div class="seccion__grilla__bloques">
                     @foreach (ytuqueplanes.Models.Comunitarios coms in Model.comunitarios)
                     {
-                        <article class="card-poster m--tipo3" data-filtro="Música danza">
+                        <article class="card-poster m--tipo3" data-filtro="@coms.categorias">
                             <img src="@coms.thumb" alt="" class="card-poster__imagen">
                             <address class="card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@coms.provincia</address>
                             <header class="card-poster__header">

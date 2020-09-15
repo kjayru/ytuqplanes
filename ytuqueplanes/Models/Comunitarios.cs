@@ -7,7 +7,7 @@ namespace ytuqueplanes.Models
 {
     public class Comunitarios
     {
-       
+
         public int id { get; set; }
         public string titulo { get; set; }
         public string imagen { get; set; }
@@ -19,6 +19,8 @@ namespace ytuqueplanes.Models
         public string descripcion { get; set; }
 
         public string thumb { get; set; }
+
+        public string categorias {get; set;}
 
     }
 }
