@@ -62,31 +62,32 @@ const site = (function(){
                 dom.swiperrotadores.forEach(function (el, index) {
                     var ar = "";
                     let api = el.clase.getAttribute('data-api-tipo');
+
                     if( api ) {
-                    	$.ajax({
-							url: 'https://devapi.joinnus.com/v2/search',
-							headers: { 'brand': 'ytqp', 'Content-Type': 'application/json' },
-							type: 'GET',
-							dataType: 'json',
-							data: JSON.parse(el.clase.getAttribute('data-api-data').replace(/['"]+/g, '"'))
-						})
-						.done(function(response) {
+      //               	$.ajax({
+						// 	url: 'https://devapi.joinnus.com/v2/search',
+						// 	headers: { 'brand': 'ytqp', 'Content-Type': 'application/json' },
+						// 	type: 'GET',
+						// 	dataType: 'json',
+						// 	data: JSON.parse(el.clase.getAttribute('data-api-data').replace(/['"]+/g, '"'))
+						// })
+						// .done(function(response) {
 							var slides = '';
 							switch (api) {
+								// response.data
 	                    		case 'card-poster-tipo-1':
-										$.each(response.data, function(index, val) {
+										$.each(jsonOfertas, function(index, val) {
 											slides += cardPosterTipo1(val);
 										});
 	                    			break;
 	                    		case 'card-poster-tipo-2':
-										$.each(response.data, function(index, val) {
+										$.each(jsonOfertas, function(index, val) {
 											slides += cardPosterTipo2(val);
 										});
 	                    			break;
 	                    	}
 							el.clase.querySelector('.swiper-wrapper').innerHTML = slides;
-						});
-
+						// });
                     }
                     switch (el.clase.classList[2]) {
                         default:
@@ -499,7 +500,7 @@ const site = (function(){
 
 	function cardPosterTipo1(val) {
 		return `<div class="swiper-slide">
-                    <article class="card-poster m--tipo1">
+                    <article class="card-poster m--tipo1 m--pronto">
                         <img src="${val.images.activityImage.full.url}" alt="" class="card-poster__imagen">
                         <strong class="card-poster__precio">
                             S/ ${val.pricing.amountSale}
@@ -512,13 +513,14 @@ const site = (function(){
                             <h1 class="card-poster__titulo">${val.title}</h1>
                         </header>
                         <a href="${val.url}" target="_blank" class="card-poster__mas-informacion">Más información</a>
+                        <div class="card-poster__pronto"><p><span>MUY PRONTO</span><br>estarán activas<br>las ofertas</p></div>
                     </article>
                 </div>`;
 	}
 
 	function cardPosterTipo2(val) {
 		return `<div class="swiper-slide">
-                    <article class="card-poster m--tipo2">
+                    <article class="card-poster m--tipo2 m--pronto">
                         <img src="${val.images.activityImage.full.url}" alt="" class="card-poster__imagen">
                         <strong class="card-poster__precio">
                             S/ ${val.pricing.amountSale}
@@ -531,6 +533,7 @@ const site = (function(){
                             <h1 class="card-poster__titulo">${val.title}</h1>
                         </header>
                         <a href="${val.url}" target="_blank" class="card-poster__mas-informacion">Más información</a>
+                        <div class="card-poster__pronto"<p><span>>MUY PRONT</span>O<br>estarán activas<br>las oferta</p>s</div>
                     </article>
                 </div>`;
 	}
