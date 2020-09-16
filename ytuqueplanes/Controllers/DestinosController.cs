@@ -77,7 +77,7 @@ namespace ytuqueplanes.Controllers
 
             dynamic datosDestinoModel = new ExpandoObject();
             
-            var prov = db.provincias.Where(c => c.slug == id).Select(p => new { p.id, p.nombre, p.slug, p.imagen, p.tenencuenta }).First();
+            var prov = db.provincias.Where(c => c.slug == id).Select(p => new { p.id, p.nombre, p.slug, p.imagen, p.tenencuenta, p.seo_id }).First();
 
             ViewBag.slugProvincia = prov.slug;
             ViewBag.nombreProvincia = prov.nombre;
@@ -98,10 +98,24 @@ namespace ytuqueplanes.Controllers
                          slug = t1.slug,
                          filtro = t3.nombre,
                          thumb = t1.thumb
-
+                        
                      };
 
             var destinos = dt.ToList();
+
+
+            //metas
+            if (prov.seo_id > 0)
+            {
+                var seo = db.seos.Where(c => c.id == prov.seo_id).Select(p => new { p.og_title, p.og_description, p.og_image, p.keywords }).FirstOrDefault();
+                //seo
+                ViewBag.seotitle = seo.og_title;
+                ViewBag.seotype = seo.og_description;
+                ViewBag.seourl = System.Web.HttpContext.Current.Request.Url.AbsoluteUri;
+                ViewBag.seoimagen = seo.og_image;
+                ViewBag.seodescripcion = seo.og_description;
+                ViewBag.keywords = seo.keywords;
+            }
 
             //return Json(destinos, JsonRequestBehavior.AllowGet);
 
@@ -125,7 +139,6 @@ namespace ytuqueplanes.Controllers
             datosDestinoModel.destinos = ddatos;
 
             //festividades
-
 
             var fs = db.festividades.Where(d => d.provincia_id == prov.id).Select(p => new
             {
@@ -299,8 +312,23 @@ namespace ytuqueplanes.Controllers
                  p.contenido,
                  p.imagen,
                  p.provincia_Id,
-                 p.thumb
+                 p.thumb,
+                 p.seo_id
                 }).First();
+
+            //metas
+            if (datos.seo_id > 0)
+            {
+                var seo = db.seos.Where(c => c.id == datos.seo_id).Select(p => new { p.og_title, p.og_description, p.og_image, p.keywords }).FirstOrDefault();
+                //seo
+                ViewBag.seotitle = seo.og_title;
+                ViewBag.seotype = seo.og_description;
+                ViewBag.seourl = System.Web.HttpContext.Current.Request.Url.AbsoluteUri;
+                ViewBag.seoimagen = seo.og_image;
+                ViewBag.seodescripcion = seo.og_description;
+                ViewBag.keywords = seo.keywords;
+            }
+
 
             var prov = db.provincias.Where(c => c.id == datos.provincia_Id).Select(p => new { p.nombre,p.slug }).First();
 
@@ -355,8 +383,22 @@ namespace ytuqueplanes.Controllers
                 p.banner,
                 p.banner_m,
                 p.banner_t,
-                p.destino_id
+                p.destino_id,
+                p.seo_id
             }).FirstOrDefault();
+
+            //metas
+            if (detalle.seo_id > 0)
+            {
+                var seo = db.seos.Where(c => c.id == detalle.seo_id).Select(p => new { p.og_title, p.og_description, p.og_image, p.keywords }).FirstOrDefault();
+                //seo
+                ViewBag.seotitle = seo.og_title;
+                ViewBag.seotype = seo.og_description;
+                ViewBag.seourl = System.Web.HttpContext.Current.Request.Url.AbsoluteUri;
+                ViewBag.seoimagen = seo.og_image;
+                ViewBag.seodescripcion = seo.og_description;
+                ViewBag.keywords = seo.keywords;
+            }
 
             var destino = db.destinos.Where(c => c.id == detalle.destino_id).Select(p => new { p.id, p.slug, p.titulo, p.provincia_Id }).First();
 

@@ -75,19 +75,19 @@ namespace ytuqueplanes
 
         routes.MapRoute(
            "Experiencias",
-           "experiencias",
+           "festividades",
            new { controller = "Experiencias", action = "Index" }
         );
 
             routes.MapRoute(
               "ExperienciaProvincia",
-              "experiencias/{id}",
+              "festividades/{id}",
               new { controller = "Experiencias", action = "Provincia", id = UrlParameter.Optional }
            );
 
            routes.MapRoute(
              "ExperienciaDetalle",
-             "experiencias/{provincia}/{id}",
+             "festividades/{provincia}/{id}",
              new { controller = "Experiencias", action = "Detalle", provincia = UrlParameter.Optional, id = UrlParameter.Optional }
           );
 

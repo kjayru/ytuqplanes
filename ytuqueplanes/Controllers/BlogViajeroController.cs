@@ -80,7 +80,7 @@ namespace ytuqueplanes.Controllers
                 p.id,
                 p.titulo,
                 p.slug,
-               p.contenido,
+                p.contenido,
                 p.resumen,
                 p.imagen,
                 p.categoria_blog_id,

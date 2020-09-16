@@ -21,7 +21,6 @@ namespace ytuqueplanes.Controllers
             List<Provincias> pr = new List<Provincias>();
             for (var i = 0; i < prov.Count(); i++)
             {
-
                 var regID = prov[i].region_id;
                 string regname = "";
                 var reg = db.regions.Where(c => c.id == regID).Select(q => new { q.nombre }).FirstOrDefault();
@@ -36,12 +35,8 @@ namespace ytuqueplanes.Controllers
                     slug = prov[i].slug,
                     nombre = prov[i].nombre,
                     region = regname
-
                 });
-
             }
-
-
 
             ViewBag.gprovincias = pr;
 
@@ -239,6 +234,8 @@ namespace ytuqueplanes.Controllers
                     thumb = its.thumb                   
                 });
             }
+
+
 
            
             ModelComunitario.hacer = lch;

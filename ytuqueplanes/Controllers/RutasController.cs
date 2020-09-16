@@ -158,7 +158,7 @@ namespace ytuqueplanes.Controllers
             var pslug = id;
             var Coun = db.provincias.Where(c => c.slug == pslug).Select(p => p.id ).Count();
             
-                var pv = db.provincias.Where(c => c.slug == pslug).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).FirstOrDefault();
+                var pv = db.provincias.Where(c => c.slug == pslug).FirstOrDefault();
             if (Coun > 0)
             {
 
@@ -169,6 +169,19 @@ namespace ytuqueplanes.Controllers
                 ViewData["nombreProvincia"] = "";
                 ViewData["imagenProvincia"] = "";
             }
+
+            if (pv.seo_id > 0)
+            {
+                var seo = db.seos.Where(c => c.id == pv.seo_id).Select(p => new { p.og_title, p.og_description, p.og_image, p.keywords }).FirstOrDefault();
+                //seo
+                ViewBag.seotitle = seo.og_title;
+                ViewBag.seotype = seo.og_description;
+                ViewBag.seourl = System.Web.HttpContext.Current.Request.Url.AbsoluteUri;
+                ViewBag.seoimagen = seo.og_image;
+                ViewBag.seodescripcion = seo.og_description;
+                ViewBag.keywords = seo.keywords;
+            }
+
 
 
             dynamic RutasModel = new ExpandoObject();
@@ -224,7 +237,7 @@ namespace ytuqueplanes.Controllers
 
           
 
-            var prov = db.provincias.Where(c => c.slug == provincia).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).FirstOrDefault();
+            var prov = db.provincias.Where(c => c.slug == provincia).FirstOrDefault();
 
             ViewBag.nombreProvincia = prov.nombre;
             ViewBag.slugProvincia = prov.slug;
@@ -243,6 +256,7 @@ namespace ytuqueplanes.Controllers
                 mintemp = p.mintemp,
                 slug = p.slug,
                 image = p.image,
+                seo_id = p.seo_id,
                 car = p.transportes.Where(a => a.tipotransporte_id == 1).Select(e => new { description = e.descripcion }), 
                 bus = p.transportes.Where(a => a.tipotransporte_id == 2).Select(e => new { description = e.descripcion }),
                 airplane = p.transportes.Where(a => a.tipotransporte_id == 3).Select(e => new { description = e.descripcion }),
@@ -260,7 +274,18 @@ namespace ytuqueplanes.Controllers
                 
             }).ToList();
 
-           
+            if (prov.seo_id > 0)
+            {
+                var seo = db.seos.Where(c => c.id == prov.seo_id).Select(p => new { p.og_title, p.og_description, p.og_image, p.keywords }).FirstOrDefault();
+                //seo
+                ViewBag.seotitle = seo.og_title;
+                ViewBag.seotype = seo.og_description;
+                ViewBag.seourl = System.Web.HttpContext.Current.Request.Url.AbsoluteUri;
+                ViewBag.seoimagen = seo.og_image;
+                ViewBag.seodescripcion = seo.og_description;
+                ViewBag.keywords = seo.keywords;
+            }
+
             return View();
         }
 
