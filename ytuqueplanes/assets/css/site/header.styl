@@ -203,6 +203,12 @@
 				background-color #fff
 				strong
 					animation menuItemIn ease .35s forwards
+			&.m--none
+				opacity 0.5
+				cursor default
+				&:hover
+					color #fff
+					background-color verde
 			@media (min-width 811px)
 				&:hover ~ .header__nav__enlace__bg
 					animation menuBg ease .35s forwards
@@ -329,9 +335,11 @@
 					color verde
 					font-size 2rem
 					align-self flex-end
-
+					opacity 0.5
+					cursor default
 					&:hover, &.-activo-
-						background-color crema
+						background-color verde
+
 				&.-activo-
 					background-color crema
 

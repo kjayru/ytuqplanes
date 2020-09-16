@@ -66,7 +66,8 @@
                 <nav class="header__nav">
                     <ul class="header__nav__lista">
                         <li class="header__nav__item">
-                            <a href="https://ytuqueplanes-9c1b7.web.app/" class="header__nav__enlace" target="_blank"><strong>Ofertas</strong></a>
+                            @* <a href="https://ytuqueplanes-9c1b7.web.app/" class="header__nav__enlace" target="_blank"><strong>Ofertas</strong></a> *@
+                            <span class="header__nav__enlace m--none" target="_blank"><strong>Ofertas</strong></span>
                         </li>
                         <li class="header__nav__item">
                             <a href="/destinos" class="header__nav__enlace @Html.IsActive("Destinos", "Index")">
@@ -129,12 +130,18 @@
                            <img src="/assets/images/bell.svg" alt="">
                            <span class="header__nav__submenu__enlace__numero">2</span>
                         </a>
-                        <a href="https://ytuqueplanes-9c1b7.web.app/" target="_blank" rel="nofollow"
+                        @* <a href="https://ytuqueplanes-9c1b7.web.app/" target="_blank" rel="nofollow"
                            class="header__nav__submenu__enlace m--usuario header__nav__submenu__boton-usuario"
                            data-targets=".header__nav__submenu__menu-usuario"
                            data-removes=".header__nav__submenu__menu-noticias, .header__nav__lista, .header__nav__submenu__boton-menu">
                             <img src="/assets/images/usuario-icono.svg" alt="">
-                        </a>
+                        </a> *@
+                        <span
+                           class="header__nav__submenu__enlace m--usuario header__nav__submenu__boton-usuario"
+                           data-targets=".header__nav__submenu__menu-usuario"
+                           data-removes=".header__nav__submenu__menu-noticias, .header__nav__lista, .header__nav__submenu__boton-menu">
+                            <img src="/assets/images/usuario-icono.svg" alt="">
+                        </span>
                         <a href="#" title="Mostra Menú"
                            class="header__nav__submenu__enlace header__nav__submenu__boton-menu fnToggleClass"
                            data-targets=".header__nav__submenu__boton-menu, .header__nav__lista"
