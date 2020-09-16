@@ -94,8 +94,23 @@
                             <span class="header__nav__item__ver-mas fnToggleClass"
                                   data-targets=".header__nav__item__ver-mas, .header__nav__destinos"></span>
                         </li>
-                        <li class="header__nav__item">
-                            <a href="/experiencias" class="header__nav__enlace @Html.IsActive("Experiencias", "Index")"><strong>Experiencias</strong></a>
+                        <li class="header__nav__item m--content">
+                            <span class="header__nav__enlace @Html.IsActive("Experiencias", "Index")"><strong>Experiencias</strong></span>
+                            <span class="header__nav__interno header__nav__experiencias">
+                                <span class="header__nav__experiencias__inset">
+                                    <a href="/festividades">
+                                        <img class="header__nav__experiencias__imagen" src="/assets/images/header-festividades.svg" alt="">
+                                        <strong>Festividades</strong>
+                                    </a>
+                                    <a href="/turismo-comunitario">
+                                        <img class="header__nav__experiencias__imagen" src="/assets/images/header-turismo.svg" alt="">
+                                        <strong>Turismo <br>Comunitario</strong>
+                                    </a>
+                                </span>
+                            </span>
+                            <span class="header__nav__enlace__bg"></span>
+                            <span class="header__nav__item__ver-mas-2 fnToggleClass"
+                                  data-targets=".header__nav__item__ver-mas-2, .header__nav__experiencias"></span>
                         </li>
                         <span class="header__nav__item m--logo">
                             <a href="/"><img src="/assets/images/y-tu-que-planes.png" alt=""></a>

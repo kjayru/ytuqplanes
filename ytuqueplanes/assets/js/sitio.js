@@ -491,7 +491,7 @@ const site = (function(){
 									<img src="${dia.imagen}" class="calendario__imagen" />
 			                        <strong class="calendario__resumen">${dia.nombre}</strong>
 			                        <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> ${dia.provincia}</address>
-			                        <a href="/experiencias/${dia.provincia_slug}/${dia.slug}" class="calendario__enlace">Más información</a>
+			                        <a href="/festividades/${dia.provincia_slug}/${dia.slug}" class="calendario__enlace">Más información</a>
 			                    </article>`;
 			}
 		});

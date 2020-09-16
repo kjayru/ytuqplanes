@@ -45,10 +45,10 @@
                     }
                 </div>
                 <select class="page__header__form__selector__select fnSelect fnSelectUrlReload">
-                    <option value="/experiencias">Todos</option>
+                    <option value="/festividades">Todos</option>
 
                     @for(var i=0; i<=depsSize; i++){
-                        <option value="/experiencias/@deps[i,1]" @(ViewBag.provinciaSlug==deps[i,1]?"selected":"")>@deps[i,0]</option>
+                        <option value="/festividades/@deps[i,1]" @(ViewBag.provinciaSlug==deps[i,1]?"selected":"")>@deps[i,0]</option>
                     }
                 </select>
             </div>
