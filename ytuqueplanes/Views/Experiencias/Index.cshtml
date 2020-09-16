@@ -14,7 +14,7 @@
             <div class="page__header__form__selector">
                 <div class="page__header__form__selector__contenido fnTargetSelect">Todos</div>
                 <select class="page__header__form__selector__select fnSelect fnSelectUrlReload">
-                    <option value="/experiencias">Todos</option>
+                    <option value="/festividades">Todos</option>
                     @{
                         var deps= new string[,] {
                             {"Amazonas", "amazonas"},
@@ -45,7 +45,7 @@
                         var depsSize = (deps.Length/2)-1;
                     }
                     @for(var i=0; i<=depsSize; i++){
-                        <option value="/experiencias/@deps[i,1]">@deps[i,0]</option>
+                        <option value="/festividades/@deps[i,1]">@deps[i,0]</option>
                     }
                 </select>
             </div>

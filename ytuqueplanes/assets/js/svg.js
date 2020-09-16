@@ -145,5 +145,37 @@ const jsonOfertas = [
         "activityType": "Full Day",
         "title": "Tingo María y ucayali",
         "url": "#"
+    },
+    {
+        "images": {
+            "activityImage": {
+                "full": {
+                    "url" : "/assets/images/rutas-cortas-1.jpg"
+                }
+            }
+        },
+        "pricing": {
+            "amountSale": "280",
+            "amount": "325",
+        },
+        "activityType": "Full Day",
+        "title": "Tingo María y su paraíso místico",
+        "url": "#"
+    },
+    {
+        "images": {
+            "activityImage": {
+                "full": {
+                    "url" : "/assets/images/rutas-cortas-2.jpg"
+                }
+            }
+        },
+        "pricing": {
+            "amountSale": "185",
+            "amount": "240",
+        },
+        "activityType": "Full Day",
+        "title": "Vive la naturaleza con nunash",
+        "url": "#"
     }
 ];
