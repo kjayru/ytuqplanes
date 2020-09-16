@@ -59,15 +59,14 @@ namespace ytuqueplanes.Controllers
         public ActionResult Index()
         {
             dynamic ModelComunitario = new ExpandoObject();
-
             var categorias = db.categoria_comunitario.OrderByDescending(c => c.nombre).ToList();
-
             //var cmms = db.comunitarios.OrderByDescending(c => c.id).ToList();
 
             var cmms = db.categoria_comunitario.SelectMany(g => g.comunitarios).ToList();
 
-            List<CategoriaComunitario> cats = new List<CategoriaComunitario>();
+           
 
+            List<CategoriaComunitario> cats = new List<CategoriaComunitario>();
             List<Comunitarios> comuns = new List<Comunitarios>();
 
             foreach (var item in categorias) {
@@ -77,25 +76,41 @@ namespace ytuqueplanes.Controllers
                 });
             }
 
-            foreach (var its in cmms) {
-                comuns.Add(new Comunitarios
-                {
-                    id = its.id,
-                    titulo = its.titulo,
-                    slug = its.slug,
-                    imagen = its.imagen,
-                    provincia_id = its.provincia_id,
-                    provincia = its.provincia.nombre,
-                    alt = its.alt,
-                    resumen = its.resumen,
-                    descripcion = its.descripcion,
-                    thumb = its.thumb,
-                    categorias = JsonConvert.SerializeObject(its.categoria_comunitario.Select(p => p.nombre).ToList())
+            for (var i=0; i< cmms.Count(); i++) {
 
-                }) ;
+                bool duplicate = false;
+                for (int z = 0; z < i; z++)
+                {
+
+                    if (cmms[z].id == cmms[i].id)
+                    {
+                        
+                        duplicate = true;
+                        break;
+                    }
+
+                }
+                if (!duplicate)
+                {
+                    comuns.Add(new Comunitarios
+                    {
+                        id = cmms[i].id,
+                        titulo = cmms[i].titulo,
+                        slug = cmms[i].slug,
+                        imagen = cmms[i].imagen,
+                        provincia_id = cmms[i].provincia_id,
+                        provincia = cmms[i].provincia.nombre,
+                        alt = cmms[i].alt,
+                        resumen = cmms[i].resumen,
+                        descripcion = cmms[i].descripcion,
+                        thumb = cmms[i].thumb,
+                        categorias = JsonConvert.SerializeObject(cmms[i].categoria_comunitario.Select(p => p.nombre).ToList())
+
+                    });
+                }
             }
 
-            //return Json(comuns, JsonRequestBehavior.AllowGet);
+           
             ModelComunitario.categories = cats;
             ModelComunitario.comunitarios = comuns;
             return View(ModelComunitario);

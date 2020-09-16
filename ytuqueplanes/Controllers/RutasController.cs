@@ -362,7 +362,8 @@ namespace ytuqueplanes.Controllers
                 p.id,
                 p.categoria_ruta_id,
                 p.image,
-                p.provincia_id
+                p.provincia_id,
+                
             }).ToList();
 
           
