@@ -204,6 +204,31 @@ const site = (function(){
 		},
 
 		clicks : function(){
+
+			const _bloques = $('#popup-comollegar .popup-comollegar__bloque');
+			let terrestre = [];
+			let aereo = [];
+			let lacustre = [];
+			_bloques.each(function(index, val) {
+				$(this).data('tipo')=='Terrestre' && terrestre.push( $(this).find('ul').html() );
+				$(this).data('tipo')=='Aero' && aereo.push( $(this).find('ul').html() );
+				$(this).data('tipo')=='Lacustre' && lacustre.push( $(this).find('ul').html() );
+			});
+			$('#popup-comollegar').html('');
+			if(terrestre.length>0){
+				terrestre = terrestre.join("");
+				$('#popup-comollegar').append('<div class="popup__contenido-parrafo__bloque"><p>Terrestre:</p><ul class="popup-comollegar__ul">'+terrestre+'</ul></div>');
+			}
+			if(aereo.length>0){
+				aereo = aereo.join("");
+				$('#popup-comollegar').append('<div class="popup__contenido-parrafo__bloque"><p>Aereo:</p><ul class="popup-comollegar__ul">'+aereo+'</ul></div>');
+			}
+			if(lacustre.length>0){
+				lacustre = lacustre.join("");
+				$('#popup-comollegar').append('<div class="popup__contenido-parrafo__bloque"><p>Lacustre:</p><ul class="popup-comollegar__ul">'+lacustre+'</ul></div>');
+			}
+
+
 			$('.fnToggleClass')
 				.on('click', function(e){
 					e.preventDefault();
@@ -533,7 +558,7 @@ const site = (function(){
                             <h1 class="card-poster__titulo">${val.title}</h1>
                         </header>
                         <a href="${val.url}" target="_blank" class="card-poster__mas-informacion">Más información</a>
-                        <div class="card-poster__pronto"<p><span>>MUY PRONT</span>O<br>estarán activas<br>las oferta</p>s</div>
+                        <div class="card-poster__pronto"><p><span>MUY PRONTO</span><br>estarán activas<br>las ofertas</p></div>
                     </article>
                 </div>`;
 	}

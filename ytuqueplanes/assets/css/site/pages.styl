@@ -813,8 +813,9 @@
 
 .turismo-comunitario-detalle__bloque-right-item-list ul {
     position: relative;
-    display: inline-block;
-    width: 50%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 100%;
     vertical-align: top;
 }
 
@@ -824,6 +825,7 @@
     padding-bottom: 15px;
     text-align: left;
     line-height: 1.3;
+    flex 1 1 50%
 }
 
 .turismo-comunitario-detalle__bloque-right-item-list ul:first-child li {
@@ -1029,6 +1031,7 @@
     padding-top: 15px;
     text-align: left;
     line-height: 1.3;
+    list-style: none;
 }
 
 .popup__contenido-parrafo ul li span {
@@ -1041,6 +1044,18 @@
 
 .popup__contenido-parrafo ul li label {
     display: block;
+}
+
+.popup__contenido-parrafo__bloque {
+    display: inline-block;
+    vertical-align: top;
+    width:50%;
+    padding-bottom: 10px;
+}
+@media only screen and (max-width: 520px) {
+	.popup__contenido-parrafo__bloque {
+		width: 100%;
+	}
 }
 
 .popup__contenido .box__cerrar {
