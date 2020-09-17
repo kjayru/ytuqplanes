@@ -242,6 +242,8 @@
     <Content Include="assets\images\flecha-volver.svg" />
     <Content Include="assets\images\flecha.svg" />
     <Content Include="assets\images\gracias-icono.svg" />
+    <Content Include="assets\images\header-festividades.svg" />
+    <Content Include="assets\images\header-turismo.svg" />
     <Content Include="assets\images\i-peru-gris.png" />
     <Content Include="assets\images\icono_foco.png" />
     <Content Include="assets\images\icono_geopunto.png" />
