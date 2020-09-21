@@ -230,6 +230,7 @@
     <Content Include="assets\images\404-ofertas.svg" />
     <Content Include="assets\images\404-rutas-cortas-fl.svg" />
     <Content Include="assets\images\404-rutas-cortas.svg" />
+    <Content Include="assets\images\aeropuerto.png" />
     <Content Include="assets\images\auto-svg.svg" />
     <Content Include="assets\images\avion-svg.svg" />
     <Content Include="assets\images\bell.svg" />
@@ -251,11 +252,13 @@
     <Content Include="assets\images\icono_select.svg" />
     <Content Include="assets\images\icono_sol.png" />
     <Content Include="assets\images\icono_telefono.png" />
+    <Content Include="assets\images\indecopi.png" />
     <Content Include="assets\images\left.png" />
     <Content Include="assets\images\logo-ministerio.png" />
     <Content Include="assets\images\logo.ico" />
     <Content Include="assets\images\lupa-negra.svg" />
     <Content Include="assets\images\lupa.svg" />
+    <Content Include="assets\images\macchu.png" />
     <Content Include="assets\images\mapa\activity\aguas-termales.png" />
     <Content Include="assets\images\mapa\activity\andinismo.png" />
     <Content Include="assets\images\mapa\activity\artesania.png" />
