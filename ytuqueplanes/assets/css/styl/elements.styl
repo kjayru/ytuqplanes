@@ -1235,6 +1235,20 @@
 					.seccion__slider__sin-resultados
 						display block
 
+		&.m--noticias
+			.seccion
+				&__grilla
+					margin 0
+					&__bloques
+						justify-content space-between
+					.card-info
+						margin-bottom 10px
+					&.-mas-6-
+						.card-info:nth-of-type(6) ~ .card-info
+							display none
+						.boton-contenedor
+							display flex
+
 	&.m--slider-standard
 		.seccion
 			&__slider
