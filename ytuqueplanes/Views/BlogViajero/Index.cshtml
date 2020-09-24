@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
 }
 
-<section class="page__header m--bg-black m--blog" style="background-image: url('/assets/images/rutas-cortas-4.jpg');">
+<section class="page__header m--bg-black m--blog" style=" background-image: url('@ViewBag.hostStaticUrl@ViewBag.imagen_xl');">
     <div class="limit page__header__inset">
         <a href="/" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a inicio</span></a>
         <h2 class="page__header__titulo">Blog viajero</h2>
@@ -59,7 +59,7 @@
                         {
                             <div class="swiper-slide" data-tipo="@blog.tipo">
                                 <article class="card-info m--tipo2" data-tipo="@blog.tipo">
-                                    <img src="@blog.imagen" alt="" class="card-info__imagen" loading="lazy">
+                                    <img src="@ViewBag.hostStaticUrl@blog.thumb" alt="" class="card-info__imagen" loading="lazy">
                                     <header class="card-info__header">
                                         <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@blog.provincia</address>
                                         <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->
@@ -89,7 +89,7 @@
                         {
                             <div class="swiper-slide" data-tipo="@blog.tipo">
                                 <article class="card-info m--tipo2" data-tipo="@blog.tipo">
-                                    <img src="@blog.imagen" alt="" class="card-info__imagen" loading="lazy">
+                                    <img src="@ViewBag.hostStaticUrl@blog.thumb" alt="" class="card-info__imagen" loading="lazy">
                                     <header class="card-info__header">
                                         <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@blog.provincia</address>
                                         <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->
@@ -119,7 +119,7 @@
                         {
                             <div class="swiper-slide" data-tipo="@blog.tipo">
                                 <article class="card-info m--tipo2" data-tipo="@blog.tipo">
-                                    <img src="@blog.imagen" alt="" class="card-info__imagen" loading="lazy">
+                                    <img src="@ViewBag.hostStaticUrl@blog.thumb" alt="" class="card-info__imagen" loading="lazy">
                                     <header class="card-info__header">
                                         <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@blog.provincia</address>
                                         <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>13</aside>-->

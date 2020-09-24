@@ -12,7 +12,7 @@
                 <div class="swiper-wrapper">
                     @foreach (ytuqueplanes.Models.Slide sl in Model.slides)
                     {
-                        <img class="swiper-slide page__header__bg-animado__imagen" src="@sl.imagen_lg">
+                        <img class="swiper-slide page__header__bg-animado__imagen" src="@ViewBag.hostStaticUrl@sl.imagen_lg">
                     }
                 </div>
             </div>
@@ -43,7 +43,7 @@
 
 
                         <article class="card-poster m--tipo4" data-filtro="@prov.lugares" >
-                            <img src="@prov.provincia_thumb" alt="" class="card-poster__imagen">
+                            <img src="@ViewBag.hostStaticUrl@prov.provincia_thumb" alt="" class="card-poster__imagen">
                             <!-- <aside class="corazon m--blanco card-poster__corazon"><i class="fa fa-heart" aria-hidden="true"></i>0</aside>-->
                             <header class="card-poster__header">
                                 <h1 class="card-poster__titulo">@prov.provincia_nombre</h1>
@@ -73,7 +73,7 @@
 
                         <div class="swiper-slide">
                             <article class="card-poster m--tipo5">
-                                <img src="@dest.imagen" alt="" class="card-poster__imagen">
+                                <img src="@ViewBag.hostStaticUrl@dest.imagen" alt="" class="card-poster__imagen">
                                 <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@dest.provincia_nombre</aside>
                                 <header class="card-poster__header">
                                     <h1 class="card-poster__titulo">@dest.provincia_nombre <br>@dest.nombre</h1>

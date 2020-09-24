@@ -36,6 +36,11 @@ namespace EntidadesData
         public string resumen { get; set; }
         public string descripcion { get; set; }
         public string thumb { get; set; }
+        public Nullable<int> seo_id { get; set; }
+        public string imagen_t { get; set; }
+        public string imagen_m { get; set; }
+        public Nullable<int> destacado { get; set; }
+        public Nullable<int> activado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<comunitario_clima> comunitario_clima { get; set; }

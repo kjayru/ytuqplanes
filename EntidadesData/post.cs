@@ -29,5 +29,8 @@ namespace EntidadesData
         public Nullable<int> tipo_id { get; set; }
         public Nullable<int> provincia_id { get; set; }
         public Nullable<int> seo_id { get; set; }
+        public string thumb { get; set; }
+        public string imagen_t { get; set; }
+        public string imagen_m { get; set; }
     }
 }

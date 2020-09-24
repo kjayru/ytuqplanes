@@ -3,7 +3,7 @@
     ViewBag.Title = "Detalle";
 }
 
-<section class="page__header m--bg-black m--destinos-nivel-4" style="background-image: url('@ViewBag.imagen');">
+<section class="page__header m--bg-black m--destinos-nivel-4" style="background-image: url('@ViewBag.hostStaticUrl@ViewBag.imagen');">
     <div class="limit page__header__inset">
         <a href="/blog-viajero" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a blog viajero</span></a>
         <h2 class="page__header__titulo">@ViewBag.titulo</h2>
@@ -45,7 +45,7 @@
                         {
                         <div class="swiper-slide">
                             <article class="card-info m--tipo2">
-                                <img src="@nota.imagen" alt="" class="card-info__imagen">
+                                <img src="@ViewBag.hostStaticUrl@nota.thumb" alt="" class="card-info__imagen">
                                 <header class="card-info__header">
                                     <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@ViewBag.provincia</address>
                                     <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>

@@ -18,5 +18,6 @@ namespace ytuqueplanes.Models
         public string slug { get; set; }
         public string lugares { get; set; }
         public string imagen { get; set; }
+        public string thumb { get; set; }
     }
 }

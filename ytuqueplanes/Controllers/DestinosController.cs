@@ -2,6 +2,7 @@
 using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Dynamic;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
@@ -19,7 +20,7 @@ namespace ytuqueplanes.Controllers
 
         public DestinosController()
         {
-
+            ViewBag.hostStaticUrl = ConfigurationManager.AppSettings["staticURL"];
             var prov = db.provincias.Where(c => c.estado == 1 && c.id != 26).Select(p => new { p.id, p.nombre, p.slug, p.region_id }).ToList();
 
             List<Provincias> pr = new List<Provincias>();
@@ -77,7 +78,7 @@ namespace ytuqueplanes.Controllers
 
             dynamic datosDestinoModel = new ExpandoObject();
             
-            var prov = db.provincias.Where(c => c.slug == id).Select(p => new { p.id, p.nombre, p.slug, p.imagen, p.tenencuenta, p.seo_id }).First();
+            var prov = db.provincias.Where(c => c.slug == id).First();
 
             ViewBag.slugProvincia = prov.slug;
             ViewBag.nombreProvincia = prov.nombre;
@@ -95,6 +96,8 @@ namespace ytuqueplanes.Controllers
                          titulo = t1.titulo,
                          contenido = t1.contenido,
                          imagen = t1.imagen,
+                         imagen_t = t1.imagen_t,
+                         imagen_m = t1.imagen_m,
                          slug = t1.slug,
                          filtro = t3.nombre,
                          thumb = t1.thumb

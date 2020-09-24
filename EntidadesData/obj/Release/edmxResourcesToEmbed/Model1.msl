@@ -207,6 +207,11 @@
     <EntitySetMapping Name="comunitarios">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario">
         <MappingFragment StoreEntitySet="comunitarios">
+          <ScalarProperty Name="activado" ColumnName="activado" />
+          <ScalarProperty Name="destacado" ColumnName="destacado" />
+          <ScalarProperty Name="imagen_m" ColumnName="imagen_m" />
+          <ScalarProperty Name="imagen_t" ColumnName="imagen_t" />
+          <ScalarProperty Name="seo_id" ColumnName="seo_id" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="titulo" ColumnName="titulo" />
           <ScalarProperty Name="imagen" ColumnName="imagen" />
@@ -222,6 +227,8 @@
     <EntitySetMapping Name="destinos">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.destino">
         <MappingFragment StoreEntitySet="destinos">
+          <ScalarProperty Name="imagen_m" ColumnName="imagen_m" />
+          <ScalarProperty Name="imagen_t" ColumnName="imagen_t" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="titulo" ColumnName="titulo" />
           <ScalarProperty Name="contenido" ColumnName="contenido" />
@@ -246,6 +253,7 @@
     <EntitySetMapping Name="festividades">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.festividade">
         <MappingFragment StoreEntitySet="festividades">
+          <ScalarProperty Name="thumb" ColumnName="thumb" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="inicio" ColumnName="inicio" />
@@ -416,6 +424,9 @@
     <EntitySetMapping Name="posts">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.post">
         <MappingFragment StoreEntitySet="posts">
+          <ScalarProperty Name="imagen_m" ColumnName="imagen_m" />
+          <ScalarProperty Name="imagen_t" ColumnName="imagen_t" />
+          <ScalarProperty Name="thumb" ColumnName="thumb" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="titulo" ColumnName="titulo" />
           <ScalarProperty Name="resumen" ColumnName="resumen" />
@@ -460,6 +471,8 @@
     <EntitySetMapping Name="provincias">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.provincia">
         <MappingFragment StoreEntitySet="provincias">
+          <ScalarProperty Name="imagen_m" ColumnName="imagen_m" />
+          <ScalarProperty Name="imagen_t" ColumnName="imagen_t" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="region_id" ColumnName="region_id" />
@@ -523,6 +536,9 @@
     <EntitySetMapping Name="rutas">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.ruta">
         <MappingFragment StoreEntitySet="rutas">
+          <ScalarProperty Name="thumb" ColumnName="thumb" />
+          <ScalarProperty Name="imagen_t" ColumnName="imagen_t" />
+          <ScalarProperty Name="imagen_m" ColumnName="imagen_m" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="titulo" ColumnName="titulo" />
           <ScalarProperty Name="tiempo_recorrido" ColumnName="tiempo_recorrido" />
@@ -568,6 +584,7 @@
     <EntitySetMapping Name="slider_item">
       <EntityTypeMapping TypeName="ytuqueplanesDBModel.slider_item">
         <MappingFragment StoreEntitySet="slider_item">
+          <ScalarProperty Name="orden" ColumnName="orden" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="slider_id" ColumnName="slider_id" />
           <ScalarProperty Name="imagen_xl" ColumnName="imagen_xl" />
@@ -783,5 +800,58 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="ytuqueplanesDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUser">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRole">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

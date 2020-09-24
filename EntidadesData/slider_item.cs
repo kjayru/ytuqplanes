@@ -25,5 +25,6 @@ namespace EntidadesData
         public string alt { get; set; }
         public string url { get; set; }
         public Nullable<int> estado { get; set; }
+        public Nullable<int> orden { get; set; }
     }
 }

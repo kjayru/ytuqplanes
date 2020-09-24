@@ -45,6 +45,57 @@
           <Property Name="imagen" Type="varchar" MaxLength="255" />
           <Property Name="alt_imagen" Type="varchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
         <EntityType Name="atractivos">
           <Key>
             <PropertyRef Name="id" />
@@ -219,6 +270,11 @@
           <Property Name="resumen" Type="varchar" MaxLength="255" />
           <Property Name="descripcion" Type="text" />
           <Property Name="thumb" Type="varchar" MaxLength="255" />
+          <Property Name="seo_id" Type="int" />
+          <Property Name="imagen_t" Type="varchar" MaxLength="255" />
+          <Property Name="imagen_m" Type="varchar" MaxLength="255" />
+          <Property Name="destacado" Type="int" />
+          <Property Name="activado" Type="int" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.destino_como_llegar' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -255,6 +311,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.destino_seo' no tiene def
           <Property Name="slug" Type="varchar" MaxLength="255" />
           <Property Name="thumb" Type="varchar" MaxLength="255" />
           <Property Name="seo_id" Type="int" />
+          <Property Name="imagen_t" Type="varchar" MaxLength="255" />
+          <Property Name="imagen_m" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="experiencias">
           <Key>
@@ -293,6 +351,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.festividad_tag' no tiene 
           <Property Name="tipo_festividad" Type="varchar" MaxLength="255" />
           <Property Name="estado" Type="int" />
           <Property Name="seo_id" Type="int" />
+          <Property Name="thumb" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="iconos">
           <Key>
@@ -530,6 +589,9 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_tag' no tiene defini
           <Property Name="tipo_id" Type="int" />
           <Property Name="provincia_id" Type="int" />
           <Property Name="seo_id" Type="int" />
+          <Property Name="thumb" Type="varchar" MaxLength="255" />
+          <Property Name="imagen_t" Type="varchar" MaxLength="255" />
+          <Property Name="imagen_m" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="preferencias_destino">
           <Key>
@@ -569,6 +631,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_tag' no tiene defini
           <Property Name="festivida_pdf" Type="varchar" MaxLength="255" />
           <Property Name="tenencuenta" Type="varchar" MaxLength="255" />
           <Property Name="seo_id" Type="int" />
+          <Property Name="imagen_t" Type="varchar" MaxLength="255" />
+          <Property Name="imagen_m" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="ratings">
           <Key>
@@ -629,6 +693,9 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.post_tag' no tiene defini
           <Property Name="image" Type="varchar" MaxLength="255" />
           <Property Name="slug" Type="varchar" MaxLength="255" />
           <Property Name="seo_id" Type="int" />
+          <Property Name="imagen_m" Type="varchar" MaxLength="255" />
+          <Property Name="imagen_t" Type="varchar" MaxLength="255" />
+          <Property Name="thumb" Type="varchar" MaxLength="255" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -678,6 +745,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="alt" Type="varchar" MaxLength="255" />
           <Property Name="url" Type="varchar" MaxLength="255" />
           <Property Name="estado" Type="int" />
+          <Property Name="orden" Type="int" />
         </EntityType>
         <EntityType Name="sliders">
           <Key>
@@ -874,6 +942,62 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Principal>
             <Dependent Role="provincia_comollegar">
               <PropertyRef Name="provincia_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1142,6 +1266,11 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySet Name="actividades" EntityType="Self.actividades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="agencias" EntityType="Self.agencias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="alertas" EntityType="Self.alertas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="atractivos" EntityType="Self.atractivos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="atractivos_galeria" EntityType="Self.atractivos_galeria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="categoria_comunitario" EntityType="Self.categoria_comunitario" Schema="dbo" store:Type="Tables" />
@@ -1310,6 +1439,22 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <AssociationSet Name="fk_comollegarprovincia_provincia" Association="Self.fk_comollegarprovincia_provincia">
             <End Role="provincias" EntitySet="provincias" />
             <End Role="provincia_comollegar" EntitySet="provincia_comollegar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
           <AssociationSet Name="fk_opciones_oferta" Association="Self.fk_opciones_oferta">
             <End Role="ofertas" EntitySet="ofertas" />
@@ -1613,6 +1758,11 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <NavigationProperty Name="categoria_comunitario" Relationship="Self.categoria_comunitario_comunitarios" FromRole="comunitarios" ToRole="categoria_comunitario" />
           <NavigationProperty Name="provincia" Relationship="ytuqueplanesDBModel.foreign_provincia001_fk" FromRole="comunitario" ToRole="provincia" />
           <NavigationProperty Name="comunitario_imagen" Relationship="ytuqueplanesDBModel.comunitario020_fk" FromRole="comunitario" ToRole="comunitario_imagen" />
+          <Property Name="seo_id" Type="Int32" />
+          <Property Name="imagen_t" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagen_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="destacado" Type="Int32" />
+          <Property Name="activado" Type="Int32" />
         </EntityType>
         <EntityType Name="destino">
           <Key>
@@ -1627,6 +1777,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="seo_id" Type="Int32" />
           <NavigationProperty Name="experiencias" Relationship="Self.FK__experienc__desti__4E88ABD4" FromRole="destinos" ToRole="experiencias" />
+          <Property Name="imagen_t" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagen_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="experiencia">
           <Key>
@@ -1657,6 +1809,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="estado" Type="Int32" />
           <Property Name="seo_id" Type="Int32" />
           <NavigationProperty Name="mes" Relationship="Self.FK__festivida__mes_i__4F7CD00D" FromRole="festividades" ToRole="meses" />
+          <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="icono">
           <Key>
@@ -1830,6 +1983,9 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="tipo_id" Type="Int32" />
           <Property Name="provincia_id" Type="Int32" />
           <Property Name="seo_id" Type="Int32" />
+          <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagen_t" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagen_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="preferencias_destino">
           <Key>
@@ -1873,6 +2029,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="seo_id" Type="Int32" />
           <NavigationProperty Name="provincia_comollegar" Relationship="Self.fk_comollegarprovincia_provincia" FromRole="provincias" ToRole="provincia_comollegar" />
           <NavigationProperty Name="comunitarios" Relationship="ytuqueplanesDBModel.foreign_provincia001_fk" FromRole="provincia" ToRole="comunitario" />
+          <Property Name="imagen_t" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagen_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="rating">
           <Key>
@@ -1938,6 +2096,9 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <NavigationProperty Name="mapas" Relationship="Self.FK__mapas__ruta_id__52593CB8" FromRole="rutas" ToRole="mapas" />
           <NavigationProperty Name="places" Relationship="Self.foreign_place_rutas" FromRole="rutas" ToRole="places" />
           <NavigationProperty Name="transportes" Relationship="Self.foreing_transporte_ruta" FromRole="rutas" ToRole="transporte" />
+          <Property Name="imagen_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagen_t" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="seo">
           <Key>
@@ -1977,6 +2138,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="alt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="estado" Type="Int32" />
+          <Property Name="orden" Type="Int32" />
         </EntityType>
         <EntityType Name="slider">
           <Key>
@@ -2670,6 +2832,22 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="comunitario" EntitySet="comunitarios" />
             <End Role="comunitario_imagen" EntitySet="comunitario_imagen" />
           </AssociationSet>
+          <EntitySet Name="AspNetRoles" EntityType="ytuqueplanesDBModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="ytuqueplanesDBModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="ytuqueplanesDBModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="ytuqueplanesDBModel.AspNetUser" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="ytuqueplanesDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="ytuqueplanesDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="ytuqueplanesDBModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="foreign_provincia001_fk">
           <End Type="ytuqueplanesDBModel.provincia" Role="provincia" Multiplicity="0..1">
@@ -2707,6 +2885,87 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
               <PropertyRef Name="comunitario_Id" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="ytuqueplanesDBModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="ytuqueplanesDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="ytuqueplanesDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="ytuqueplanesDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="ytuqueplanesDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="ytuqueplanesDBModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="ytuqueplanesDBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ytuqueplanesDBModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="ytuqueplanesDBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ytuqueplanesDBModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="ytuqueplanesDBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="ytuqueplanesDBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -2920,6 +3179,11 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="comunitarios">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.comunitario">
               <MappingFragment StoreEntitySet="comunitarios">
+                <ScalarProperty Name="activado" ColumnName="activado" />
+                <ScalarProperty Name="destacado" ColumnName="destacado" />
+                <ScalarProperty Name="imagen_m" ColumnName="imagen_m" />
+                <ScalarProperty Name="imagen_t" ColumnName="imagen_t" />
+                <ScalarProperty Name="seo_id" ColumnName="seo_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="imagen" ColumnName="imagen" />
@@ -2935,6 +3199,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="destinos">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.destino">
               <MappingFragment StoreEntitySet="destinos">
+                <ScalarProperty Name="imagen_m" ColumnName="imagen_m" />
+                <ScalarProperty Name="imagen_t" ColumnName="imagen_t" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="contenido" ColumnName="contenido" />
@@ -2959,6 +3225,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="festividades">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.festividade">
               <MappingFragment StoreEntitySet="festividades">
+                <ScalarProperty Name="thumb" ColumnName="thumb" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="inicio" ColumnName="inicio" />
@@ -3129,6 +3396,9 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="posts">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.post">
               <MappingFragment StoreEntitySet="posts">
+                <ScalarProperty Name="imagen_m" ColumnName="imagen_m" />
+                <ScalarProperty Name="imagen_t" ColumnName="imagen_t" />
+                <ScalarProperty Name="thumb" ColumnName="thumb" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="resumen" ColumnName="resumen" />
@@ -3173,6 +3443,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="provincias">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.provincia">
               <MappingFragment StoreEntitySet="provincias">
+                <ScalarProperty Name="imagen_m" ColumnName="imagen_m" />
+                <ScalarProperty Name="imagen_t" ColumnName="imagen_t" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="region_id" ColumnName="region_id" />
@@ -3236,6 +3508,9 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="rutas">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.ruta">
               <MappingFragment StoreEntitySet="rutas">
+                <ScalarProperty Name="thumb" ColumnName="thumb" />
+                <ScalarProperty Name="imagen_t" ColumnName="imagen_t" />
+                <ScalarProperty Name="imagen_m" ColumnName="imagen_m" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="tiempo_recorrido" ColumnName="tiempo_recorrido" />
@@ -3281,6 +3556,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <EntitySetMapping Name="slider_item">
             <EntityTypeMapping TypeName="ytuqueplanesDBModel.slider_item">
               <MappingFragment StoreEntitySet="slider_item">
+                <ScalarProperty Name="orden" ColumnName="orden" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="slider_id" ColumnName="slider_id" />
                 <ScalarProperty Name="imagen_xl" ColumnName="imagen_xl" />
@@ -3496,6 +3772,59 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="ytuqueplanesDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

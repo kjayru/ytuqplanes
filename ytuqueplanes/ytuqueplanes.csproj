@@ -139,7 +139,6 @@
     <Compile Include="Controllers\SuscribeteController.cs" />
     <Compile Include="Controllers\TerminosController.cs" />
     <Compile Include="Controllers\TurismoController.cs" />
-    <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -620,6 +619,7 @@
     <Content Include="assets\images\preview\route\piura-tierras-milenarias.jpg" />
     <Content Include="assets\images\promperu.png" />
     <Content Include="assets\images\right.png" />
+    <Content Include="assets\images\ruta-del-viajero-seguro.png" />
     <Content Include="assets\images\rutas-cortas-1.jpg" />
     <Content Include="assets\images\rutas-cortas-10.jpg" />
     <Content Include="assets\images\rutas-cortas-2.jpg" />
@@ -635,6 +635,7 @@
     <Content Include="assets\images\tren-svg.svg" />
     <Content Include="assets\images\usuario-icono.svg" />
     <Content Include="assets\images\usuario.svg" />
+    <Content Include="assets\images\viaje-seguro-sutran.jpg" />
     <Content Include="assets\images\y-tu-que-planes-gris.svg" />
     <Content Include="assets\images\y-tu-que-planes.png" />
     <Content Include="assets\js\mapa\jquery.waypoints.min.js" />

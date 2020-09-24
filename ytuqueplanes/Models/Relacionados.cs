@@ -10,8 +10,8 @@ namespace ytuqueplanes.Models
     {
         public string titulo { get; set; }
         public string resumen { get; set; }
-       
         public string imagen { get; set; }
+        public string thumb { get; set; }
         public string created_at { get; set; }
 
         public string slug { get; set; }

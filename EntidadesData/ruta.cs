@@ -38,6 +38,9 @@ namespace EntidadesData
         public string image { get; set; }
         public string slug { get; set; }
         public Nullable<int> seo_id { get; set; }
+        public string imagen_m { get; set; }
+        public string imagen_t { get; set; }
+        public string thumb { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<actividade> actividades { get; set; }

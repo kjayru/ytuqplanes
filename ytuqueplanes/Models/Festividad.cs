@@ -13,6 +13,7 @@ namespace ytuqueplanes.Models
         public int? final { get; set; }
         public string provincia { get; set; }
         public string imagen { get; set; }
+        public string thumb { get; set; }
         public string contenido { get; set; }
         public string mes { get; set; }
         public int? likes { get; set; }

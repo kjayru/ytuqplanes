@@ -2,6 +2,7 @@
 using EntidadesData;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Dynamic;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
@@ -17,7 +18,7 @@ namespace ytuqueplanes.Controllers
 
         public TerminosController()
         {
-
+            ViewBag.hosturl = ConfigurationManager.AppSettings["staticURL"];
             var prov = db.provincias.Where(c => c.estado == 1 && c.id != 26).Select(p => new { p.id, p.nombre, p.slug, p.region_id }).ToList();
 
             List<Provincias> pr = new List<Provincias>();

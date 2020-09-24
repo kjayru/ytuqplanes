@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Dynamic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -19,7 +20,7 @@ namespace ytuqueplanes.Controllers
         // GET: Rutas
         public RutasController()
         {
-
+            ViewBag.hostStaticUrl = ConfigurationManager.AppSettings["staticURL"];
             var prov = db.provincias.Where(c => c.estado == 1 && c.id != 26).Select(p => new { p.id, p.nombre, p.slug, p.region_id }).ToList();
 
             List<Provincias> pr = new List<Provincias>();
@@ -190,7 +191,7 @@ namespace ytuqueplanes.Controllers
 
 
 
-            var rutas = db.rutas.Where(d => d.provincia_id == pv.id).Select( p => new {  p.titulo ,p.slug, p.id,p.categoria_ruta_id, p.image}).ToList();
+            var rutas = db.rutas.Where(d => d.provincia_id == pv.id).ToList();
 
            //eturn Json(rutas, JsonRequestBehavior.AllowGet);
 
@@ -216,7 +217,8 @@ namespace ytuqueplanes.Controllers
                         provincia_slug = pv.slug,
                         nombre = rutas[j].titulo,
                         slug = rutas[j].slug,
-                        imagen = rutas[j].image
+                        imagen = rutas[j].image,
+                        thumb = rutas[j].thumb
 
                     });
             }
@@ -297,13 +299,13 @@ namespace ytuqueplanes.Controllers
 
             var prov = db.provincias.Where(c => c.slug == id).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).FirstOrDefault();
 
-            var rutas = db.rutas.Where(c => c.provincia_id == prov.id).Select(p =>
+            var rutas = db.rutas.Where(c => c.provincia_id == prov.id).AsEnumerable().Select(p =>
             new
             {
                
                 name = p.titulo,
                 url = p.slug,
-                image = p.image,
+                image = ConfigurationManager.AppSettings["staticURL"]+p.image,
                 region = prov.nombre,
                 urlRegion = prov.slug,
                 destacar = p.destacar,
@@ -321,15 +323,15 @@ namespace ytuqueplanes.Controllers
                 maximumWeather = p.maxtemp,
                 minimumWeather = p.mintemp,
 
-                places = p.places.Select(d => new {
+                places = p.places.AsEnumerable().Select(d => new {
                     name = d.nombre,
                     order = d.id,
                     description = d.descripcion,
-                   
                     height = d.height,
-                    image = d.image,
+
+                    image = ConfigurationManager.AppSettings["staticURL"] + d.image,
                     apt = d.place_apt.Select(f => new { description = f.descripcion }),
-                    activity = d.place_activity.Select(g => new { name = g.nombre, icon = g.icono }),
+                    activity = d.place_activity.AsEnumerable().Select(g => new { name = g.nombre, icon = ConfigurationManager.AppSettings["staticURL"] + g.icono }),
                     cordinate = d.place_coordinate.Select(h => new { latitude = h.latitude, longitude = h.longitude })
                 }),
 
@@ -387,6 +389,7 @@ namespace ytuqueplanes.Controllers
                 p.id,
                 p.categoria_ruta_id,
                 p.image,
+                p.thumb,
                 p.provincia_id,
                 
             }).ToList();
@@ -417,7 +420,8 @@ namespace ytuqueplanes.Controllers
                         provincia_slug = prov.slug,
                         nombre = rutas[j].titulo,
                         slug = rutas[j].slug,
-                        imagen = rutas[j].image
+                        imagen = rutas[j].image,
+                        thumb = rutas[j].thumb
 
                     });
             }

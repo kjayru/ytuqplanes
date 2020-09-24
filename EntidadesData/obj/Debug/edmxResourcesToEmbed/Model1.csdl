@@ -221,6 +221,11 @@
     <NavigationProperty Name="categoria_comunitario" Relationship="Self.categoria_comunitario_comunitarios" FromRole="comunitarios" ToRole="categoria_comunitario" />
     <NavigationProperty Name="provincia" Relationship="ytuqueplanesDBModel.foreign_provincia001_fk" FromRole="comunitario" ToRole="provincia" />
     <NavigationProperty Name="comunitario_imagen" Relationship="ytuqueplanesDBModel.comunitario020_fk" FromRole="comunitario" ToRole="comunitario_imagen" />
+    <Property Name="seo_id" Type="Int32" />
+    <Property Name="imagen_t" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imagen_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="destacado" Type="Int32" />
+    <Property Name="activado" Type="Int32" />
   </EntityType>
   <EntityType Name="destino">
     <Key>
@@ -235,6 +240,8 @@
     <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="seo_id" Type="Int32" />
     <NavigationProperty Name="experiencias" Relationship="Self.FK__experienc__desti__4E88ABD4" FromRole="destinos" ToRole="experiencias" />
+    <Property Name="imagen_t" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imagen_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="experiencia">
     <Key>
@@ -265,6 +272,7 @@
     <Property Name="estado" Type="Int32" />
     <Property Name="seo_id" Type="Int32" />
     <NavigationProperty Name="mes" Relationship="Self.FK__festivida__mes_i__4F7CD00D" FromRole="festividades" ToRole="meses" />
+    <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="icono">
     <Key>
@@ -438,6 +446,9 @@
     <Property Name="tipo_id" Type="Int32" />
     <Property Name="provincia_id" Type="Int32" />
     <Property Name="seo_id" Type="Int32" />
+    <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imagen_t" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imagen_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="preferencias_destino">
     <Key>
@@ -481,6 +492,8 @@
     <Property Name="seo_id" Type="Int32" />
     <NavigationProperty Name="provincia_comollegar" Relationship="Self.fk_comollegarprovincia_provincia" FromRole="provincias" ToRole="provincia_comollegar" />
     <NavigationProperty Name="comunitarios" Relationship="ytuqueplanesDBModel.foreign_provincia001_fk" FromRole="provincia" ToRole="comunitario" />
+    <Property Name="imagen_t" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imagen_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="rating">
     <Key>
@@ -546,6 +559,9 @@
     <NavigationProperty Name="mapas" Relationship="Self.FK__mapas__ruta_id__52593CB8" FromRole="rutas" ToRole="mapas" />
     <NavigationProperty Name="places" Relationship="Self.foreign_place_rutas" FromRole="rutas" ToRole="places" />
     <NavigationProperty Name="transportes" Relationship="Self.foreing_transporte_ruta" FromRole="rutas" ToRole="transporte" />
+    <Property Name="imagen_m" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imagen_t" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="seo">
     <Key>
@@ -585,6 +601,7 @@
     <Property Name="alt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="estado" Type="Int32" />
+    <Property Name="orden" Type="Int32" />
   </EntityType>
   <EntityType Name="slider">
     <Key>
@@ -1278,6 +1295,22 @@
       <End Role="comunitario" EntitySet="comunitarios" />
       <End Role="comunitario_imagen" EntitySet="comunitario_imagen" />
     </AssociationSet>
+    <EntitySet Name="AspNetRoles" EntityType="ytuqueplanesDBModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="ytuqueplanesDBModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="ytuqueplanesDBModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="ytuqueplanesDBModel.AspNetUser" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="ytuqueplanesDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="ytuqueplanesDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="ytuqueplanesDBModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
   </EntityContainer>
   <Association Name="foreign_provincia001_fk">
     <End Type="ytuqueplanesDBModel.provincia" Role="provincia" Multiplicity="0..1">
@@ -1315,5 +1348,86 @@
         <PropertyRef Name="comunitario_Id" />
       </Dependent>
     </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="ytuqueplanesDBModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="ytuqueplanesDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="ytuqueplanesDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="ytuqueplanesDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="ytuqueplanesDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="AspNetRoles" Relationship="ytuqueplanesDBModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="ytuqueplanesDBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ytuqueplanesDBModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="ytuqueplanesDBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ytuqueplanesDBModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="ytuqueplanesDBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="ytuqueplanesDBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
   </Association>
 </Schema>

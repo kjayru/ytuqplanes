@@ -1,6 +1,7 @@
 ﻿using EntidadesData;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,7 +14,7 @@ namespace ytuqueplanes.Controllers
         ytuqueplanesDBEntities1 db = new ytuqueplanesDBEntities1();
         public ExperienciasController()
         {
-
+            ViewBag.hostStaticUrl = ConfigurationManager.AppSettings["staticURL"];
             var prov = db.provincias.Where(c => c.estado == 1 && c.id != 26).Select(p => new { p.id, p.nombre, p.slug, p.region_id }).ToList();
 
             List<Provincias> pr = new List<Provincias>();
@@ -150,6 +151,7 @@ namespace ytuqueplanes.Controllers
                 provincia_imagen = t2.thumb,
                 provincia_slug = t2.slug,
                 imagen  = t1.imagen,
+                thumb = t1.thumb,
                 mes = t1.mes_id,
                 slug = t1.slug,
                 tipo_de_festividad = t1.tipo_festividad
@@ -158,7 +160,7 @@ namespace ytuqueplanes.Controllers
             };
 
 
-            var fest = ft.ToList();
+            var fest = ft.AsEnumerable().ToList();
 
             List<ApFestividad> festividades = new List<ApFestividad>();
 
@@ -171,7 +173,8 @@ namespace ytuqueplanes.Controllers
                         inicio = fest[i].inicio,
                         final = fest[i].final,
                         provincia = fest[i].provincia,
-                        imagen = fest[i].imagen,
+                        imagen = ConfigurationManager.AppSettings["staticURL"]+fest[i].imagen,
+                        thumb = ConfigurationManager.AppSettings["staticURL"] + fest[i].thumb,
                         mes_id = fest[i].mes,
                         slug = fest[i].slug,
                         provincia_slug = fest[i].provincia_slug,
@@ -209,7 +212,8 @@ namespace ytuqueplanes.Controllers
                          provincia = t2.nombre,
                          provincia_imagen = t2.thumb,
                          provincia_slug = t2.slug,
-                         imagen = t1.imagen,
+                         imagen =  t1.imagen,
+                         thumb = t1.thumb,
                          mes = t1.mes_id,
                          slug = t1.slug,
                          tipo_de_festividad = t1.tipo_festividad
@@ -217,7 +221,7 @@ namespace ytuqueplanes.Controllers
                      };
 
 
-            var fest = ft.ToList();
+            var fest = ft.AsEnumerable().ToList();
 
             List<ApFestividad> festividades = new List<ApFestividad>();
 
@@ -231,13 +235,14 @@ namespace ytuqueplanes.Controllers
                         inicio = fest[i].inicio,
                         final = fest[i].final,
                         provincia = fest[i].provincia,
-                        imagen = fest[i].imagen,
+                        imagen = ConfigurationManager.AppSettings["staticURL"] + fest[i].imagen,
+                        thumb = ConfigurationManager.AppSettings["staticURL"] + fest[i].thumb,
                         mes_id = fest[i].mes,
                         slug = fest[i].slug,
                         provincia_slug = fest[i].provincia_slug,
                         tipo_de_festividad = fest[i].tipo_de_festividad,
                         anio = year.ToString()
-                    });
+                    }) ;
             }
 
             return Json(festividades, JsonRequestBehavior.AllowGet);

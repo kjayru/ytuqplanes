@@ -2,6 +2,7 @@
 using EntidadesData;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Dynamic;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
@@ -18,7 +19,7 @@ namespace ytuqueplanes.Controllers
 
         public HomeController()
         {
-           
+            ViewBag.hostStaticUrl = ConfigurationManager.AppSettings["staticURL"];
             var prov = db.provincias.Where(c => c.estado == 1 && c.id != 26).Select(p => new { p.id, p.nombre, p.slug,p.region_id }).ToList();
 
             List<Provincias> pr = new List<Provincias>();
@@ -124,6 +125,7 @@ namespace ytuqueplanes.Controllers
                           contenido = pd.contenido,
                           resumen = pd.resumen,
                           imagen = pd.imagen,
+                          thumb = pd.thumb,
                           categoria_id = pd.categoria_blog_id,
                           categoria = ct.nombre,
                           tipo = pd.tipo_id,
@@ -148,6 +150,7 @@ namespace ytuqueplanes.Controllers
                         id = notas[j].id,
                         titulo = notas[j].titulo,
                         imagen = notas[j].imagen,
+                        thumb = notas[j].thumb,
                         resumen = notas[j].resumen,
                         slug = notas[j].slug,
                         categoria_id = notas[j].categoria_id,
@@ -182,6 +185,7 @@ namespace ytuqueplanes.Controllers
                final = t1.final,
                provincia = t3.nombre ,
                imagen = t1.imagen,
+               thumb = t1.thumb,
                contenido = t1.contenido,
                mes =  t2.nombre,
                likes = t1.likes,
@@ -195,13 +199,15 @@ namespace ytuqueplanes.Controllers
             for (var k = 0; k < festividades.Count(); k++)
             {
                 festidatos.Add(
-                    new Festividad { 
+                    new Festividad
+                    {
                         id = festividades[k].id,
                         nombre = festividades[k].nombre,
                         inicio = festividades[k].inicio,
                         final = festividades[k].final,
                         provincia = festividades[k].provincia,
                         imagen = festividades[k].imagen,
+                        thumb = festividades[k].thumb,
                         contenido = festividades[k].contenido,
                         mes = festividades[k].mes,
                         likes = festividades[k].likes,

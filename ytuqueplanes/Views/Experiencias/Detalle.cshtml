@@ -15,7 +15,7 @@
     <section class="seccion">
         <div class="limit">
             <div class="destinos__festividad-detalle">
-                <img src="@ViewBag.imagen" alt="" class="destinos__festividad-detalle__imagen">
+                <img src="@ViewBag.hostStaticUrl@ViewBag.imagen" alt="" class="destinos__festividad-detalle__imagen">
                 <div class="destinos__festividad-detalle__contenido">
                     <article class="destinos__detalle">
                         <header class="destinos__detalle__header">
@@ -42,7 +42,7 @@
                         <a href="#" target="_blank" class="destinos__detalle__redes m--wsp fnShareWsp"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
                     </div>
                     @if(ViewBag.documento!=null){
-                    <a href="@ViewBag.documento" download="download" class="boton m--grande m--morado m--padding-pequeno"><strong>Descargar cronograma</strong></a>
+                    <a href="@ViewBag.hostStaticUrl@ViewBag.documento" download="download" class="boton m--grande m--morado m--padding-pequeno"><strong>Descargar cronograma</strong></a>
                     }
                 </div>
             </div>

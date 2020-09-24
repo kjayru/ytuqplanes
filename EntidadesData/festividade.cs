@@ -28,6 +28,7 @@ namespace EntidadesData
         public string tipo_festividad { get; set; }
         public Nullable<int> estado { get; set; }
         public Nullable<int> seo_id { get; set; }
+        public string thumb { get; set; }
     
         public virtual mes mes { get; set; }
     }

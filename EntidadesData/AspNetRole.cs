@@ -12,26 +12,18 @@ namespace EntidadesData
     using System;
     using System.Collections.Generic;
     
-    public partial class destino
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public destino()
+        public AspNetRole()
         {
-            this.experiencias = new HashSet<experiencia>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public int id { get; set; }
-        public string titulo { get; set; }
-        public string contenido { get; set; }
-        public Nullable<int> provincia_Id { get; set; }
-        public string imagen { get; set; }
-        public string slug { get; set; }
-        public string thumb { get; set; }
-        public Nullable<int> seo_id { get; set; }
-        public string imagen_t { get; set; }
-        public string imagen_m { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<experiencia> experiencias { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

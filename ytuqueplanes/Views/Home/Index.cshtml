@@ -7,10 +7,10 @@
 @{int icss = 1; int islide = 1;}
 @foreach (ytuqueplanes.Models.Slide slide in Model.sliders)
 {
-    <style type="text/css" media="screen and (min-width: 1401px)"> .slider-@icss { background-image:url(@slide.imagen_xl); } </style>
-    <style type="text/css" media="screen and (min-width: 801px) and (max-width: 1400px)"> .slider-@icss { background-image:url(@slide.imagen_lg); } </style>
-    <style type="text/css" media="screen and (min-width: 501px) and (max-width: 800px)"> .slider-@icss { background-image:url(@slide.imagen_md); } </style>
-    <style type="text/css" media="screen and (max-width: 500px)"> .slider-@icss { background-image:url(@slide.imagen_sm); } </style>
+<style type="text/css" media="screen and (min-width: 1401px)"> .slider-@icss { background-image:url('@ViewBag.hostStaticUrl@slide.imagen_xl'); } </style>
+<style type="text/css" media="screen and (min-width: 801px) and (max-width: 1400px)"> .slider-@icss { background-image:url('@ViewBag.hostStaticUrl@slide.imagen_lg'); } </style>
+<style type="text/css" media="screen and (min-width: 501px) and (max-width: 800px)"> .slider-@icss { background-image:url('@ViewBag.hostStaticUrl@slide.imagen_md'); } </style>
+<style type="text/css" media="screen and (max-width: 500px)"> .slider-@icss { background-image:url('@ViewBag.hostStaticUrl@slide.imagen_sm'); } </style>
     icss++;
 }
 <section class="all swiper-container sliders fnSliderHome">
@@ -89,7 +89,7 @@
                  @foreach (ytuqueplanes.Models.Blog blog in Model.notas) {
                     <div class="swiper-slide">
                         <article class="card-info m--tipo1">
-                            <img src="@blog.imagen" alt="" class="card-info__imagen">
+                            <img src="@ViewBag.hostStaticUrl@blog.thumb" alt="" class="card-info__imagen">
                             <header class="card-info__header">
                                 <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@blog.provincia</address>
                                <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>-->
@@ -124,7 +124,7 @@
                     @foreach (ytuqueplanes.Models.Festividad festividad in Model.festividades) {
                     <div class="swiper-slide">
                         <article class="card-info m--tipo3">
-                            <img src="@festividad.imagen" alt="" class="card-info__imagen">
+                            <img src="@ViewBag.hostStaticUrl@festividad.thumb" alt="" class="card-info__imagen">
                             <header class="card-info__header">
                                 <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@festividad.provincia</address>
                                 <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>1</aside>

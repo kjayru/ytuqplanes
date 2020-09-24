@@ -14,7 +14,7 @@ namespace ytuqueplanes.Models
         public int? final { get; set; }
         public string provincia { get; set; }
         public string imagen { get; set; }
-
+        public string thumb { get; set; }
         public int? mes_id { get; set; }
 
         public string slug { get; set; }

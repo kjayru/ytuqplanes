@@ -101,6 +101,13 @@
         <AssociationConnector Association="ytuqueplanesDBModel.foreign_provincia001_fk" />
         <EntityTypeShape EntityType="ytuqueplanesDBModel.comunitario_imagen" Width="1.5" PointX="5.25" PointY="19.375" />
         <AssociationConnector Association="ytuqueplanesDBModel.comunitario020_fk" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.AspNetRole" Width="1.5" PointX="20.375" PointY="26.5" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.AspNetUserClaim" Width="1.5" PointX="24.875" PointY="27.625" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.AspNetUserLogin" Width="1.5" PointX="24.875" PointY="25" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.AspNetUser" Width="1.5" PointX="22.625" PointY="25.375" />
+        <AssociationConnector Association="ytuqueplanesDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ytuqueplanesDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ytuqueplanesDBModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

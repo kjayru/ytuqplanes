@@ -1,6 +1,7 @@
 ﻿using EntidadesData;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Dynamic;
 using System.Linq;
 using System.Web;
@@ -16,7 +17,7 @@ namespace ytuqueplanes.Controllers
 
         public BlogViajeroController()
         {
-
+            ViewBag.hostStaticUrl = ConfigurationManager.AppSettings["staticURL"];
             var prov = db.provincias.Where(c => c.estado == 1 && c.id != 26).Select(p => new { p.id, p.nombre, p.slug, p.region_id }).ToList();
 
             List<Provincias> pr = new List<Provincias>();
@@ -60,8 +61,25 @@ namespace ytuqueplanes.Controllers
         {
             dynamic datosNotasModel = new ExpandoObject();
 
+           
+            var slider = db.slider_item.Where(c => c.slider_id == 4).FirstOrDefault();
+
+
+
+            ViewBag.imagen_lg = slider.imagen_lg;
+            ViewBag.imagen_md = slider.imagen_md;
+            ViewBag.imagen_sm = slider.imagen_sm;
+            ViewBag.imagen_xl = slider.imagen_xl;
+                        ViewBag.titulo = slider.titulo;
+                        ViewBag.alt = slider.alt;
+                        ViewBag.descripcion = slider.descripcion;
+            ViewBag.url = slider.url;
+                 
+
+
             datosNotasModel.notas = getNotas();
             datosNotasModel.provincias = getProvincias();
+            
             return View(datosNotasModel);
         }
 
@@ -75,7 +93,7 @@ namespace ytuqueplanes.Controllers
             ViewBag.provincia_imagen = prov.imagen;
             ViewBag.provincia_slug = prov.slug;
 
-            var notas = db.posts.Where(c => c.provincia_id == prov.id).Select(p => new
+            var notas = db.posts.OrderByDescending(d => d.id ).Where(c => c.provincia_id == prov.id).Select(p => new
             {
                 p.id,
                 p.titulo,
@@ -83,6 +101,9 @@ namespace ytuqueplanes.Controllers
                 p.contenido,
                 p.resumen,
                 p.imagen,
+                p.imagen_m,
+                p.imagen_t,
+                p.thumb,
                 p.categoria_blog_id,
                 p.tipo_id,
                 p.provincia_id
@@ -97,19 +118,22 @@ namespace ytuqueplanes.Controllers
 
             List<Blog> datonotas = new List<Blog>();
 
-            for (var j = 0; j < notas.Count(); j++)
+            foreach (var item in notas)
             {
                 datonotas.Add(
                     new Blog
                     {
-                        id = notas[j].id,
-                        titulo = notas[j].titulo,
-                        imagen = notas[j].imagen, 
-                        resumen = notas[j].resumen,
-                        slug = notas[j].slug,
-                        categoria_id = notas[j].categoria_blog_id,
-                        provincia_id = notas[j].provincia_id,
-                        tipo = notas[j].tipo_id,
+                        id = item.id,
+                        titulo = item.titulo,
+                        imagen = item.imagen, 
+                        thumb = item.thumb,
+                        imagen_m = item.imagen_m,
+                        imagen_t = item.imagen_t,
+                        resumen = item.resumen,
+                        slug = item.slug,
+                        categoria_id = item.categoria_blog_id,
+                        provincia_id = item.provincia_id,
+                        tipo = item.tipo_id,
                         provincia = prov.nombre,
                         provincia_imagen = prov.imagen
                     }
@@ -136,6 +160,8 @@ namespace ytuqueplanes.Controllers
                 p.contenido,
                 p.resumen,
                 p.imagen,
+                p.imagen_m,
+                p.imagen_t,
                 p.categoria_blog_id,
                 p.provincia_id,
                 p.seo_id
@@ -175,11 +201,12 @@ namespace ytuqueplanes.Controllers
                 ViewBag.provinciaSlug = prov.slug;
                 ViewBag.provincia = prov.nombre;
 
-            var rl = db.posts.Where(d => d.provincia_id == prov.id).Where(c => c.slug != id ).Select(p => new
+            var rl = db.posts.OrderByDescending(d => d.id).Where(d => d.provincia_id == prov.id).Where(c => c.slug != id ).Select(p => new
             {
                 p.titulo,
                 p.resumen,
                 p.imagen,
+                p.thumb,
                 p.slug
             });
 
@@ -197,6 +224,7 @@ namespace ytuqueplanes.Controllers
                     titulo = relacionados[j].titulo,
                     resumen = relacionados[j].resumen,
                     imagen = relacionados[j].imagen,
+                    thumb = relacionados[j].thumb,
                     slug = relacionados[j].slug
                 });
             }
@@ -224,6 +252,9 @@ namespace ytuqueplanes.Controllers
                         contenido =  pd.contenido,
                         resumen = pd.resumen,
                          imagen = pd.imagen,
+                         thumb = pd.thumb,
+                         imagen_m = pd.imagen_m,
+                         imagen_t = pd.imagen_t,
                          categoria_id = pd.categoria_blog_id,
                          categoria = ct.nombre,
                         tipo =  pd.tipo_id,
@@ -248,6 +279,9 @@ namespace ytuqueplanes.Controllers
                         id = notas[j].id,
                         titulo = notas[j].titulo,
                         imagen = notas[j].imagen,
+                        imagen_m = notas[j].imagen_m,
+                        imagen_t = notas[j].imagen_t,
+                        thumb = notas[j].thumb,
                         resumen = notas[j].resumen,
                         slug = notas[j].slug,
                         categoria_id = notas[j].categoria_id,

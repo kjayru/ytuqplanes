@@ -93,5 +93,9 @@ namespace EntidadesData
         public virtual DbSet<post_tag> post_tag { get; set; }
         public virtual DbSet<rutas_seo> rutas_seo { get; set; }
         public virtual DbSet<comunitario_imagen> comunitario_imagen { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
     }
 }
