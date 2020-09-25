@@ -4,7 +4,7 @@
     string grillaInicial = "-mas-4- -mas-6- -mas-8-";
 }
 
-<section class="page__header m--bg-black" style="background-image: url('http://static.mmsolutions.com.pe/images/cuyuni-interna.jpg');">
+<section class="page__header m--bg-black" style="background-image: url('@ViewBag.hostStaticUrl\images/cuyuni-interna.jpg');">
     <div class="limit page__header__inset">
         <a href="/festividades" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a festividades</span></a>
         <h2 class="page__header__titulo">Turismo comunitario</h2>
@@ -47,7 +47,7 @@
                     @foreach (ytuqueplanes.Models.Comunitarios coms in Model.comunitarios)
                     {
                         <article class="card-poster m--tipo3" data-filtro="@coms.categorias">
-                            <img src="@coms.thumb" alt="" class="card-poster__imagen">
+                            <img src="@ViewBag.hostStaticUrl@coms.thumb" alt="" class="card-poster__imagen">
                             <address class="card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@coms.provincia</address>
                             <header class="card-poster__header">
                                 <h1 class="card-poster__titulo">@coms.titulo</h1>

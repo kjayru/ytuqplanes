@@ -14,6 +14,7 @@ namespace ytuqueplanes.Models
         public string banner { get; set; }
         public string banner_m { get; set; }
         public string banner_t { get; set; }
+        public string thumb { get; set; }
         public string descripcion { get; set; }
         public string resumen { get; set; }
         public string contenido { get; set; }

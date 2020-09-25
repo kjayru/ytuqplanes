@@ -261,7 +261,7 @@
     <Property Name="imagen" Type="varchar" MaxLength="255" />
     <Property Name="provincia_id" Type="int" />
     <Property Name="slug" Type="varchar" MaxLength="255" />
-    <Property Name="alt" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="alt" Type="varchar" MaxLength="255" />
     <Property Name="resumen" Type="varchar" MaxLength="255" />
     <Property Name="descripcion" Type="text" />
     <Property Name="thumb" Type="varchar" MaxLength="255" />

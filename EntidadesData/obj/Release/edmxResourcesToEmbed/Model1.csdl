@@ -208,7 +208,7 @@
     <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="provincia_id" Type="Int32" />
     <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="alt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="alt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="resumen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />

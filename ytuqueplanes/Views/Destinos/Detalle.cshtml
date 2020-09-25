@@ -76,80 +76,80 @@
 
     @if (ViewBag.countComollegar > 0)
     {
-    <section class="seccion m--slider-standard m--transporte">
-        <div class="limit">
-            <h3 class="seccion__titulo">¿No sabes como llegar? Mira las siguientes opciones de transporte disponibles</h3>
-            <div class="swiper-container seccion__slider fnSliderFree">
-                <div class="swiper-wrapper">
+        <section class="seccion m--slider-standard m--transporte">
+            <div class="limit">
+                <h3 class="seccion__titulo">¿No sabes como llegar? Mira las siguientes opciones de transporte disponibles</h3>
+                <div class="swiper-container seccion__slider fnSliderFree">
+                    <div class="swiper-wrapper">
 
-                    @foreach (ytuqueplanes.Models.Comollegar como in Model.comollegar)
-                    {
+                        @foreach (ytuqueplanes.Models.Comollegar como in Model.comollegar)
+                        {
 
-                        <div class="swiper-slide">
-                            <article class="card-transporte">
-                                <header class="card-transporte__header">
-                                    <figure class="card-transporte__imagen">
-                                        <img src="@como.comollegarIcon" alt="@como.comollegarAlt" />
-                                    </figure>
-                                    <strong class="card-transporte__titulo">@como.comollegarNombre</strong>
-                                </header>
-                                <dl class="card-transporte__lista">
-                                    <dt>Duración:</dt>
-                                    <dd> @como.duracion</dd>
+                            <div class="swiper-slide">
+                                <article class="card-transporte">
+                                    <header class="card-transporte__header">
+                                        <figure class="card-transporte__imagen">
+                                            <img src="@como.comollegarIcon" alt="@como.comollegarAlt" />
+                                        </figure>
+                                        <strong class="card-transporte__titulo">@como.comollegarNombre</strong>
+                                    </header>
+                                    <dl class="card-transporte__lista">
+                                        <dt>Duración:</dt>
+                                        <dd> @como.duracion</dd>
 
-                                    @if (como.comollegarID == 1)
-                                    {
-                                        <dt>Aerolíneas:</dt>
-                                        <dd>@como.empresa</dd>
-                                    }
-                                    @if (como.comollegarID == 2)
-                                    {
-                                        <dt>Empresas:</dt>
-                                        <dd>@como.empresa</dd>
-                                    }
-                                    @if (como.comollegarID == 3)
-                                    {
-                                        <dt>Distancia:</dt>
-                                        <dd>@como.distancia</dd>
-                                    }
+                                        @if (como.comollegarID == 1)
+                                        {
+                                            <dt>Aerolíneas:</dt>
+                                            <dd>@como.empresa</dd>
+                                        }
+                                        @if (como.comollegarID == 2)
+                                        {
+                                            <dt>Empresas:</dt>
+                                            <dd>@como.empresa</dd>
+                                        }
+                                        @if (como.comollegarID == 3)
+                                        {
+                                            <dt>Distancia:</dt>
+                                            <dd>@como.distancia</dd>
+                                        }
 
-                                    @if (como.comollegarID == 4)
+                                        @if (como.comollegarID == 4)
+                                        {
+                                            <dt>Empresas:</dt>
+                                            <dd>@como.empresa</dd>
+                                        }
+                                        @if (como.comollegarID == 7)
+                                        {
+                                            <dt>Empresas:</dt>
+                                            <dd>@como.empresa</dd>
+                                        }
+                                        @if (como.comollegarID == 8)
+                                        {
+                                            <dt>Empresas:</dt>
+                                            <dd>@como.empresa</dd>
+                                        }
+                                    </dl>
+                                    @if (como.waze != null)
                                     {
-                                        <dt>Empresas:</dt>
-                                        <dd>@como.empresa</dd>
+                                        <a href="@como.waze" class="card-transporte__enlace-inferior">Abrir ruta en Waze</a>
                                     }
-                                    @if (como.comollegarID == 7)
+                                    @if (como.recomendar == 1)
                                     {
-                                        <dt>Empresas:</dt>
-                                        <dd>@como.empresa</dd>
+                                        <span class="card-transporte__recomendado">Recomendado</span>
                                     }
-                                    @if (como.comollegarID == 8)
-                                    {
-                                        <dt>Empresas:</dt>
-                                        <dd>@como.empresa</dd>
-                                    }
-                                </dl>
-                                @if (como.waze != null)
-                                {
-                                <a href="@como.waze" class="card-transporte__enlace-inferior">Abrir ruta en Waze</a>
-                                }
-                                @if (como.recomendar == 1)
-                                {
-                                    <span class="card-transporte__recomendado">Recomendado</span>
-                                }
-                            </article>
-                        </div>
-                    }
+                                </article>
+                            </div>
+                        }
                     </div>
+                </div>
+                @if (ViewBag.tenencuenta != null)
+                {
+                    <p class="seccion__texto-inferior">
+                        <strong>Ten en cuenta:</strong> @ViewBag.tenencuenta
+                    </p>
+                }
             </div>
-            @if (ViewBag.tenencuenta!=null)
-            {
-            <p class="seccion__texto-inferior">
-                <strong>Ten en cuenta:</strong> @ViewBag.tenencuenta
-            </p>
-            }
-        </div>
-    </section>
+        </section>
 
     }
     <section class="seccion">
@@ -163,20 +163,20 @@
     </section>
 
     @* <section class="seccion m--slider-horizontal">
-        <div class="limit seccion__inset">
-            <article class="seccion__contenido">
-                <h2 class="seccion__titulo">¡No hay excusas!</h2>
-                <p class="seccion__resumen">Encuentra las mejores ofertas para tu próximo viaje.</p>
-                <a href="/ofertas" class="boton m--amarillo m--grande m--235"><strong>Ver todas las ofertas</strong></a>
-            </article>
-            <div class="swiper-container seccion__slider fnSliderFree" data-api-tipo="card-poster-tipo-1"
-                data-api-data="{'type[]': 'package', 'limit': '3'}">
-                <div class="swiper-wrapper">
+            <div class="limit seccion__inset">
+                <article class="seccion__contenido">
+                    <h2 class="seccion__titulo">¡No hay excusas!</h2>
+                    <p class="seccion__resumen">Encuentra las mejores ofertas para tu próximo viaje.</p>
+                    <a href="/ofertas" class="boton m--amarillo m--grande m--235"><strong>Ver todas las ofertas</strong></a>
+                </article>
+                <div class="swiper-container seccion__slider fnSliderFree" data-api-tipo="card-poster-tipo-1"
+                    data-api-data="{'type[]': 'package', 'limit': '3'}">
+                    <div class="swiper-wrapper">
+                    </div>
                 </div>
+                <a href="/ofertas" class="boton m--amarillo m--grande m--235 seccion__boton-mobile"><strong>Ver todas las ofertas</strong></a>
             </div>
-            <a href="/ofertas" class="boton m--amarillo m--grande m--235 seccion__boton-mobile"><strong>Ver todas las ofertas</strong></a>
-        </div>
-    </section> *@
+        </section> *@
 
     <section class="seccion m--slider-horizontal">
         <div class="limit seccion__inset">
@@ -191,7 +191,7 @@
             <div class="boton m--amarillo mverde m--235 seccion__boton-mobile"><strong>Ver todas las ofertas</strong></div>
         </div>
     </section>
-
+   
     <section class="seccion m--bg-tramado m--slider-standard m--festividades">
         <div class="limit section__inset">
             <h4 class="seccion__titulo">Festivales y eventos</h4>
@@ -201,7 +201,7 @@
                     {
                         <div class="swiper-slide">
                             <article class="card-info m--tipo3">
-                                <img src="@festivo.imagen" alt="@festivo.nombre" class="card-info__imagen">
+                                <img src="@ViewBag.hostStaticUrl@festivo.thumb" alt="@festivo.nombre" class="card-info__imagen">
                                 <header class="card-info__header">
                                     <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@festivo.provincia</address>
                                     <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>1</aside>
@@ -230,7 +230,7 @@
 
                         <div class="swiper-slide">
                             <article class="card-info m--tipo2">
-                                <img src="@destacado.imagen" alt="@destacado.titulo" class="card-info__imagen">
+                                <img src="@ViewBag.hostStaticUrl@destacado.thumb" alt="@destacado.titulo" class="card-info__imagen">
                                 <header class="card-info__header">
                                     <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@destacado.provincia</address>
                                     <!--<aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>-->

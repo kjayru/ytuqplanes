@@ -4,13 +4,13 @@
         ViewBag.Title = "DestinoProvincia";
     }
 
-    <section class="page__header  m--bg-black" style="background-image: url('@ViewBag.imagen');">
-        <div class="limit page__header__inset">
-            <a href="/destinos/@ViewBag.provinciaSlug" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a @ViewBag.provincia</span></a>
-            <h2 class="page__header__titulo">@ViewBag.titulo</h2>
-            <p class="page__header__resumen">@ViewBag.contenido</p>
-        </div>
-    </section>
+<section class="page__header  m--bg-black" style="background-image: url('@ViewBag.hostStaticUrl@ViewBag.imagen');">
+    <div class="limit page__header__inset">
+        <a href="/destinos/@ViewBag.provinciaSlug" class="page__header__miga-de-pan"><img src="/assets/images/flecha-volver.svg" alt=""><span>Volver a @ViewBag.provincia</span></a>
+        <h2 class="page__header__titulo">@ViewBag.titulo</h2>
+        <p class="page__header__resumen">@ViewBag.contenido</p>
+    </div>
+</section>
 
     <main class="seccion">
 
@@ -20,7 +20,7 @@
 
                 <article class="card-info m--tipo5">
                     <figure>
-                        <img src="@atractivo.banner" alt="" class="card-info__imagen" loading="lazy">
+                        <img src="@ViewBag.hostStaticUrl@atractivo.thumb" alt="" class="card-info__imagen" loading="lazy">
                     </figure>
                     <div class="card-info__contenido">
                         <header class="card-info__header">

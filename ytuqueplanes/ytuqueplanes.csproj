@@ -142,7 +142,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\ApFestividad.cs" />
+    <Compile Include="Models\ApRutas.cs" />
+    <Compile Include="Models\Apt.cs" />
     <Compile Include="Models\Atractivo.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\CategoriaComunitario.cs" />
@@ -157,6 +160,7 @@
     <Compile Include="Models\ComunitarioServicio.cs" />
     <Compile Include="Models\ComunitarioTip.cs" />
     <Compile Include="Models\ContactoOptions.cs" />
+    <Compile Include="Models\Cordinate.cs" />
     <Compile Include="Models\Destacado.cs" />
     <Compile Include="Models\DestinosProvincia.cs" />
     <Compile Include="Models\Festividad.cs" />
@@ -167,9 +171,11 @@
     <Compile Include="Models\MapaApt.cs" />
     <Compile Include="Models\MapaCoordinate.cs" />
     <Compile Include="Models\MapaPlace.cs" />
+    <Compile Include="Models\Place.cs" />
     <Compile Include="Models\Provincias.cs" />
     <Compile Include="Models\Relacionados.cs" />
     <Compile Include="Models\Ruta.cs" />
+    <Compile Include="Models\RutaCar.cs" />
     <Compile Include="Models\RutaDestacado.cs" />
     <Compile Include="Models\RutaProvincia.cs" />
     <Compile Include="Models\Slide.cs" />

@@ -1,4 +1,5 @@
 ﻿using EntidadesData;
+using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -296,8 +297,9 @@ namespace ytuqueplanes.Controllers
         {
 
 
+            List<ApRutas> arutas = new List<ApRutas>();
 
-            var prov = db.provincias.Where(c => c.slug == id).Select(p => new { p.id, p.nombre, p.slug, p.imagen }).FirstOrDefault();
+            var prov = db.provincias.Where(c => c.slug == id).FirstOrDefault();
 
             var rutas = db.rutas.Where(c => c.provincia_id == prov.id).AsEnumerable().Select(p =>
             new
@@ -305,7 +307,7 @@ namespace ytuqueplanes.Controllers
                
                 name = p.titulo,
                 url = p.slug,
-                image = ConfigurationManager.AppSettings["staticURL"]+p.image,
+                image = p.image!=null? ConfigurationManager.AppSettings["staticURL"]+p.image:"",
                 region = prov.nombre,
                 urlRegion = prov.slug,
                 destacar = p.destacar,
@@ -314,11 +316,11 @@ namespace ytuqueplanes.Controllers
                 pdf = p.documento,
                 google = p.google,
       
-                car = p.transportes.Where(a => a.tipotransporte_id == 1).Select(e => new { description = e.descripcion }),
-                bus = p.transportes.Where(a => a.tipotransporte_id == 2).Select(e => new { description = e.descripcion }),
-                airplane = p.transportes.Where(a => a.tipotransporte_id == 3).Select(e => new { description = e.descripcion }),
-                train = p.transportes.Where(a => a.tipotransporte_id == 4).Select(e => new { description = e.descripcion }),
-                ship = p.transportes.Where(a => a.tipotransporte_id == 5).Select(e => new { description = e.descripcion }),
+                car = p.transportes.Where(a => a.tipotransporte_id == 1).Select( q => new { p.descripcion}),
+                bus = p.transportes.Where(a => a.tipotransporte_id == 2).Select(q => new { p.descripcion }),
+                airplane = p.transportes.Where(a => a.tipotransporte_id == 3).Select(q => new { p.descripcion }),
+                train = p.transportes.Where(a => a.tipotransporte_id == 4).Select(q => new { p.descripcion }),
+                ship = p.transportes.Where(a => a.tipotransporte_id == 5).Select(q => new { p.descripcion }),
 
                 maximumWeather = p.maxtemp,
                 minimumWeather = p.mintemp,
@@ -328,15 +330,45 @@ namespace ytuqueplanes.Controllers
                     order = d.id,
                     description = d.descripcion,
                     height = d.height,
-
-                    image = ConfigurationManager.AppSettings["staticURL"] + d.image,
+                    image = d.image !=null? ConfigurationManager.AppSettings["staticURL"]+d.image:"",
                     apt = d.place_apt.Select(f => new { description = f.descripcion }),
-                    activity = d.place_activity.AsEnumerable().Select(g => new { name = g.nombre, icon = ConfigurationManager.AppSettings["staticURL"] + g.icono }),
-                    cordinate = d.place_coordinate.Select(h => new { latitude = h.latitude, longitude = h.longitude })
+                    activity = d.place_activity.AsEnumerable().Select(g => new {
+                        name = g.nombre,
+                        icon =  g.icono !=null? ConfigurationManager.AppSettings["staticURL"]+g.icono:"",
+                    }),
+                    cordinate = d.place_coordinate.Select(h => new {
+                        latitude = h.latitude, 
+                        longitude = h.longitude
+                    })
                 }),
 
             }).ToList();
+            /*
+            foreach (var item in rutas) {
+                arutas.Add(
+                    
+                    new ApRutas { 
+                        name = item.name,
+                        url = item.url,
+                        image = item.image,
+                        region = item.region,
+                        urlRegion = item.urlRegion,
+                        destacar = item.destacar,
+                        category = item.category,
+                        featured = item.featured,
+                        pdf = item.pdf,
+                        google = item.google,
+                        car = item.car.descripcion,
+                        bus = item.bus.descripcion,
+                        airplane = item.airplane.descripcion,
+                        train = item.train.descripcion,
+                        ship = item.ship.descripcion,
+                        maximumWeather = item.maximumWeather,
+                        minimumWeather = item.minimumWeather
 
+
+                    });
+            }*/
             
 
 

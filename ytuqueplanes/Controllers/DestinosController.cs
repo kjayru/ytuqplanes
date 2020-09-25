@@ -83,6 +83,8 @@ namespace ytuqueplanes.Controllers
             ViewBag.slugProvincia = prov.slug;
             ViewBag.nombreProvincia = prov.nombre;
             ViewBag.imagenProvincia = prov.imagen;
+            ViewBag.imagenMovilProvincia = prov.imagen_m;
+            ViewBag.imagenTableProvincia = prov.imagen_t;
             ViewBag.tenencuenta = prov.tenencuenta;
 
             var dt = from t1 in db.destinos
@@ -151,7 +153,8 @@ namespace ytuqueplanes.Controllers
                 p.final,
                 p.slug,
                 p.mes_id,
-                p.imagen
+                p.imagen,
+                p.thumb
 
             }).ToList();
 
@@ -163,7 +166,8 @@ namespace ytuqueplanes.Controllers
                 p.final,
                 p.slug,
                 p.mes_id,
-                p.imagen
+                p.imagen,
+                p.thumb
 
             }).Count();
             var mesid = 1;
@@ -194,7 +198,8 @@ namespace ytuqueplanes.Controllers
                         imagen = fs[i].imagen,
                         mes = m.nombre,
                         mes_id = fs[i].mes_id,
-                        slug = fs[i].slug
+                        slug = fs[i].slug,
+                        thumb = fs[i].thumb
                     }
 
                 );
@@ -265,7 +270,10 @@ namespace ytuqueplanes.Controllers
                          destino_id = t2.id,
                          slug = t1.slug,
                          imagen = t1.banner,
-                         destino_slug = t2.slug
+                         imagen_m = t1.banner_m,
+                         imagen_t = t1.banner_t,
+                         destino_slug = t2.slug,
+                         thumb = t1.thumb
 
                      };
 
@@ -286,6 +294,7 @@ namespace ytuqueplanes.Controllers
                         provincia = prv.nombre,
                         slug = destacados[i].slug,
                         imagen = destacados[i].imagen,
+                        thumb = destacados[i].thumb,
                         provincia_slug = prv.slug,
                         destino_slug = destacados[i].destino_slug
                     }
@@ -348,7 +357,8 @@ namespace ytuqueplanes.Controllers
                 p.titulo,
                 p.slug,
                 p.resumen,
-                p.banner
+                p.banner,
+                p.thumb
 
             }).ToList();
 
@@ -361,7 +371,8 @@ namespace ytuqueplanes.Controllers
                     titulo = at[i].titulo,
                     resumen = at[i].resumen,
                     slug = at[i].slug,
-                    banner = at[i].banner
+                    banner = at[i].banner,
+                    thumb = at[i].thumb
                 });
             }
 
@@ -386,6 +397,7 @@ namespace ytuqueplanes.Controllers
                 p.banner,
                 p.banner_m,
                 p.banner_t,
+                p.thumb,
                 p.destino_id,
                 p.seo_id
             }).FirstOrDefault();
@@ -414,13 +426,13 @@ namespace ytuqueplanes.Controllers
 
 
             ViewBag.id = detalle.id;
-                ViewBag.titulo = detalle.titulo;
-                ViewBag.slug = detalle.slug;
-                ViewBag.contenido = detalle.contenido;
-                ViewBag.descripcion = detalle.descripcion;
-                ViewBag.resumen = detalle.resumen;
-                ViewBag.banner = detalle.banner;
-                ViewBag.banner_m = detalle.banner_m;
+            ViewBag.titulo = detalle.titulo;
+            ViewBag.slug = detalle.slug;
+            ViewBag.contenido = detalle.contenido;
+            ViewBag.descripcion = detalle.descripcion;
+            ViewBag.resumen = detalle.resumen;
+            ViewBag.banner = detalle.banner;
+            ViewBag.banner_m = detalle.banner_m;
             ViewBag.banner_t = detalle.banner_t;
 
             
@@ -447,6 +459,7 @@ namespace ytuqueplanes.Controllers
                          destino_id = t2.id,
                          slug = t1.slug,
                          imagen = t1.banner,
+                         thumb = t1.thumb,
                          destino_slug = t2.slug
 
                      };
@@ -468,6 +481,7 @@ namespace ytuqueplanes.Controllers
                         provincia = prov.nombre,
                         slug = destacados[i].slug,
                         imagen = destacados[i].imagen,
+                        thumb = destacados[i].thumb,
                         provincia_slug = prov.slug,
                         destino_slug = destacados[i].destino_slug
                     }
@@ -583,6 +597,7 @@ namespace ytuqueplanes.Controllers
                            destino_id =  t2.id,
                            slug = t1.slug,
                            imagen = t1.banner,
+                           thumb = t1.thumb,
                            destino_slug = t2.slug
                            
                        };
@@ -603,6 +618,7 @@ namespace ytuqueplanes.Controllers
                         provincia = prov.nombre,
                         slug = destacados[i].slug,
                         imagen = destacados[i].imagen,
+                        thumb =destacados[i].thumb,
                         provincia_slug = prov.slug,
                         destino_slug = destacados[i].destino_slug
                     }

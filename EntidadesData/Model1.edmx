@@ -266,7 +266,7 @@
           <Property Name="imagen" Type="varchar" MaxLength="255" />
           <Property Name="provincia_id" Type="int" />
           <Property Name="slug" Type="varchar" MaxLength="255" />
-          <Property Name="alt" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="alt" Type="varchar" MaxLength="255" />
           <Property Name="resumen" Type="varchar" MaxLength="255" />
           <Property Name="descripcion" Type="text" />
           <Property Name="thumb" Type="varchar" MaxLength="255" />
@@ -1745,7 +1745,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <Property Name="imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="provincia_id" Type="Int32" />
           <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="alt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="alt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="resumen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="thumb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />

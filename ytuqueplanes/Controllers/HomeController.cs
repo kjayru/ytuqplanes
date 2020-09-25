@@ -183,13 +183,14 @@ namespace ytuqueplanes.Controllers
                nombre = t1.nombre,
                inicio = t1.inicio,
                final = t1.final,
-               provincia = t3.nombre ,
+               provincia = t3.nombre,
                imagen = t1.imagen,
                thumb = t1.thumb,
                contenido = t1.contenido,
                mes =  t2.nombre,
                likes = t1.likes,
-              documento =  t1.documento
+              documento =  t1.documento,
+              slug = t1.slug
             };
 
           var festividades = fest.ToList();
@@ -211,7 +212,8 @@ namespace ytuqueplanes.Controllers
                         contenido = festividades[k].contenido,
                         mes = festividades[k].mes,
                         likes = festividades[k].likes,
-                        documento = festividades[k].documento
+                        documento = festividades[k].documento,
+                        slug = festividades[k].slug
                     });
 
             }

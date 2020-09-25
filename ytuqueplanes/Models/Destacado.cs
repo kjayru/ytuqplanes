@@ -11,6 +11,7 @@ namespace ytuqueplanes.Models
         public string titulo { get; set; }
         public string provincia { get; set; }
         public string imagen { get; set; }
+        public string thumb { get; set; }
         public string slug { get; set; }
         public string destino_slug { get; set; }
         public string provincia_slug { get; set; }
