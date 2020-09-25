@@ -1685,6 +1685,8 @@
 		z-index 2
 		&.m--center
 			text-align center
+		&.m--small
+			max-width 400px
 
 	&__cerrar
 		position absolute
@@ -1706,9 +1708,14 @@
 		text-align center
 		display block
 		padding-bottom 15px
+		&.m--big
+			font-size 2.25rem
+			padding-bottom 0
+			@media (max-width 500px)
+				font-size 1.8rem
 
 	.boton
-		margin-top 50px
+		margin-top 20px
 
 	&.-activo-
 		display block
@@ -1737,7 +1744,8 @@
 			right 20px
 			width 25px
 		.boton
-			margin-top 25px
+			margin-top 10px
+			min-height 40px
 
 @keyframes boxIn
 	0%
