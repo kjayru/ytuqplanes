@@ -100,18 +100,26 @@ namespace ytuqueplanes.Controllers
                                      
                                  }).ToList();
 
-                    for (var j = 0;j< rutas.Count; j++)
+                    foreach (var item in  rutas)
                     {
-                        
-                            
+                        var pls = db.rutas.Where(c => c.provincia_id == item.id).AsEnumerable().Select(p => new { p.titulo }).ToList();
+
+                        List<Lugares> lugar = new List<Lugares>();
+                        foreach (var row in pls) {
+                            lugar.Add( new Lugares { 
+                                nombre = row.titulo,
+                            });
+                        }
+                        lugar.Add(new Lugares {nombre = item.provincia });
+
                         rp.Add(
                             new RutaProvincia
                             {
                                 conteo = conteo,
-                                lugares = JsonConvert.SerializeObject(lugares),
-                                provincia_nombre = rutas[j].provincia,
-                                provincia_slug = rutas[j].slug,
-                                provincia_thumb = rutas[j].thumb
+                                lugares = JsonConvert.SerializeObject(lugar.Select(p =>p.nombre)),
+                                provincia_nombre = item.provincia,
+                                provincia_slug = item.slug,
+                                provincia_thumb = item.thumb
                             });
                     }
                 }
