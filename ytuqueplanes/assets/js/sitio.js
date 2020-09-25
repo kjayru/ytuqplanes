@@ -201,6 +201,20 @@ const site = (function(){
 				speed: 1200
 			});
 
+			let swiperMorado = new Swiper('.fnSliderMorado', {
+				effect: 'fade',
+				autoplay: { delay: 3500 },
+				speed: 750,
+				navigation: {
+					nextEl: '.seccion__slider-morado__nav__adelante',
+					prevEl: '.seccion__slider-morado__nav__atras'
+				},
+				loop: true
+			});
+			swiperMorado.on('slideChange', function () {
+				$('.fnNumSlider').html( swiperMorado.realIndex+1 );
+			});
+
 		},
 
 		clicks : function(){
@@ -275,18 +289,19 @@ const site = (function(){
 				.on('click change', function(e){
 					const target = $( $(this).closest('.filtro-selector').data('target') );
 					const filtro = $(this).data('filtro')!==undefined ? $(this).data('filtro') : $(this).val() ;
-					const filtroClass = '.card-poster[data-filtro*="'+filtro+'"]';
+					const filtroClass = $('.card-poster').length ? '.card-poster[data-filtro*="'+filtro+'"]' : '.card-info[data-filtro*="'+filtro+'"]';
 					$(this).parent('.filtro-selector').find('.filtro-selector__boton').removeClass(dom.active);
 					$(this).addClass(dom.active);
 					if(filtro!==undefined && filtro!=='') {
 						target
-							.removeClass('-mostrar-todos- -mostrar-ocultos- -ocultar-boton- -mas-8- -mas-6- -mas-4-')
+							.removeClass('-mostrar-todos- -mostrar-ocultos- -ocultar-boton- -mas-8- -mas-6- -mas-4- -mas-3-')
 							.addClass(dom.active)
-							.find('.card-poster')
-								.removeClass('-activo- -si-4- -si-6- -si-8-')
+							.find('.card-poster, .card-info')
+								.removeClass('-activo- -si-3- -si-4- -si-6- -si-8-')
 							.end()
 							.find(filtroClass)
 								.addClass(dom.active)
+								.eq(2).addClass('-si-3-')
 								.eq(3).addClass('-si-4-')
 								.end()
 								.eq(5).addClass('-si-6-')
@@ -297,16 +312,18 @@ const site = (function(){
 						activos>8 && target.addClass('-mas-8-');
 						activos>6 && target.addClass('-mas-6-');
 						activos>4 && target.addClass('-mas-4-');
+						activos>3 && target.addClass('-mas-3-');
 					} else {
 						target
 							.removeClass('-activo- -mostrar-ocultos- -ocultar-boton-')
 							.addClass('-mostrar-todos-')
-							.find('.card-poster')
+							.find('.card-poster, .card-info')
 								.removeClass(dom.active);
-						const activos = target.find('.card-poster').length;
+						const activos = target.find('.card-poster, .card-info').length;
 						activos>8 && target.addClass('-mas-8-');
 						activos>6 && target.addClass('-mas-6-');
 						activos>4 && target.addClass('-mas-4-');
+						activos>3 && target.addClass('-mas-3-');
 					}
 				});
 			$('.fnFiltrarGrillaTodo')
