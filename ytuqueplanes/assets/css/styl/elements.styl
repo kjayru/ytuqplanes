@@ -1056,6 +1056,114 @@
 .seccion
 	padding 40px 0
 
+	&__slider-morado
+		background-color morado
+		padding 35px
+		border-radius 20px
+		margin-bottom 40px
+		height fit-content
+		position relative
+		&__nav
+			position absolute
+			right 35px
+			bottom 35px
+			z-index 6
+			color #fff
+			line-height 1
+			display flex
+			align-items center
+			&__atras, &__adelante
+				width 26px
+				height 26px
+				border 1px solid #fff
+				border-radius 50%
+				display flex
+				align-items center
+				justify-content center
+				cursor pointer
+				transition all ease .25s
+				&:hover
+					color morado
+					background-color #fff
+			&__posicion
+				width 60px
+				text-align center
+				font-family f-book
+				letter-spacing 1px
+				span
+					font-family f-bold
+
+		&__article
+			display flex
+			color #fff
+		&__imagen
+			flex 1
+			img
+				max-width 100%
+				height 330px
+				border-radius 10px
+				object-fit cover
+		&__contenido
+			flex 1
+			padding 10px 0 0 20px
+			display flex
+			flex-direction column
+			background-color morado
+		&__subtitulo
+			font-size 0.8rem
+			border-left 2px solid #fff
+			padding-left 10px
+			text-transform uppercase
+			line-height 1.2
+		&__titulo
+			font-size 1rem
+			font-family f-bold
+			padding 12px 0 15px
+			line-height 1.3rem
+			letter-spacing 0.3px
+		&__texto
+			font-size 0.75rem
+			font-family f-book
+			line-height 1.1rem
+			letter-spacing 0.3px
+		&__cita
+			margin-top auto
+			font-size 0.75rem
+			font-family f-book
+			font-style normal
+			padding-right 125px
+			strong
+				font-family f-bold
+
+		@media (max-width 900px)
+			&__contenido
+				flex 1.1
+
+		@media (max-width 760px)
+			padding 25px
+		@media (max-width 700px)
+			&__article
+				flex-direction column
+			&__contenido
+				padding 20px 0 0
+			&__imagen
+				img
+					width 100%
+					height 240px
+			&__cita
+				margin-top 30px
+			&__nav
+				bottom 25px
+				right 25px
+		@media (max-width 500px)
+			&__imagen
+				img
+					height 200px
+		@media (max-width 400px)
+			&__imagen
+				img
+					height 170px
+
 	&__titulo
 		font-size 1.65rem
 		font-family f-bold
@@ -1236,18 +1344,56 @@
 						display block
 
 		&.m--noticias
+			padding-top 0
+			.destinos
+				&__subtitulo, &__subtitulo-mobile
+					color gris
+					text-align left
 			.seccion
 				&__grilla
-					margin 0
+					margin 0 -7px
 					&__bloques
-						justify-content space-between
+						justify-content flex-start
 					.card-info
-						margin-bottom 10px
+						margin 0 5px 10px
 					&.-mas-6-
 						.card-info:nth-of-type(6) ~ .card-info
 							display none
 						.boton-contenedor
 							display flex
+					&.-activo-
+						.card-info
+							display none
+							&.-activo-
+								display block
+								&.-si-6- ~ .card-poster.-activo-
+									display none
+					&.-mostrar-ocultos-
+						.card-info
+							display block !important
+			@media (max-width 1120px)
+				.seccion
+					&__grilla
+						&__bloques
+							max-width 740px
+							margin auto
+							justify-content center
+						.card-info
+							margin-bottom 20px
+			@media (max-width 750px)
+				.seccion
+					&__grilla
+						&__bloques
+							max-width 600px
+							justify-content center
+						.card-info
+							margin-bottom 15px
+						&.-mas-3-
+							.card-info:nth-of-type(3) ~ .card-info
+								display none
+							.boton-contenedor
+								display flex
+
 
 	&.m--slider-standard
 		.seccion
