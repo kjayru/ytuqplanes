@@ -321,7 +321,7 @@ namespace ytuqueplanes.Controllers
                 destacar = p.destacar,
                 category = p.categoria_ruta_id,
                 featured = p.destacar,
-                pdf = p.documento,
+                pdf = p.documento!=null? ConfigurationManager.AppSettings["staticURL"] + p.documento : "",
                 google = p.google,
       
                 car = p.transportes.Where(a => a.tipotransporte_id == 1).Select( q => new { p.descripcion}),
@@ -342,7 +342,7 @@ namespace ytuqueplanes.Controllers
                     apt = d.place_apt.Select(f => new { description = f.descripcion }),
                     activity = d.place_activity.AsEnumerable().Select(g => new {
                         name = g.nombre,
-                        icon =  g.icono !=null? ConfigurationManager.AppSettings["staticURL"]+g.icono:"",
+                        icon =  g.icono != null? ConfigurationManager.AppSettings["staticURL"]+g.icono:"",
                     }),
                     cordinate = d.place_coordinate.Select(h => new {
                         latitude = h.latitude, 
