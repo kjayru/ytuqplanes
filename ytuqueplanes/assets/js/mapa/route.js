@@ -2,18 +2,6 @@ $(document).ready(function() {
 
 	var map, marker, popup, fontAwesomeIcon, bounds;
 
-	/* Este evento redirecciona desde la vista de los mapas hacia la vista del listado de rutas
-	En la vista de los mapas se encuentra como "<- Rutas cortas desde ..." */
-	$(".wrapper-navbar").on("click", ".wrapper-navbar-link", function() {
-		window.location.href = $(this).attr("data-href");
-	});
-
-	$(".wrapper-navbar")
-		.on("click", ".fnBackToUrl", function(e) {
-			e.preventDefault();
-			window.location.href = '/'+slugRegion+'/'+slugRuta;
-		});
-
 	/* Cada vez que cambie el ancho de la ventana del navegador,
 	llama a la función "waypointItems", esto se hace para refrescar el scrolleo y que los marcadores te sigan */
 	$(window).on("resize", function() {
@@ -93,12 +81,12 @@ $(document).ready(function() {
 		var contenido = "";
 		contenido += "<div class='wrapper-navbar-container'>";
 		contenido += "<div class='wrapper-navbar-left'>";
-		contenido += "<div class='wrapper-navbar-link fnBackToUrl'>";
+		contenido += '<a class="wrapper-navbar-link" href="/rutas-cortas/'+slugRegion+'/'+slugRuta+'">';
 		contenido += "<i class='fa fa-long-arrow-left'></i>Rutas cortas desde " + data[0].region + "";
-		contenido += "</div>";
+		contenido += '</a>';
 		contenido += "</div>";
 		contenido += "<div class='wrapper-navbar-right'>";
-		contenido += "<div class='wrapper-navbar-link fnBackToUrl'>";
+		contenido += '<a class="wrapper-navbar-link" href="/rutas-cortas/'+slugRegion+'/'+slugRuta+'">';
 		contenido += "<i class='fa fa-times'></i>";
 		contenido += "</div>";
 		contenido += "</div>";
