@@ -16,11 +16,11 @@
             </form>
             <strong class="buscador-principal__subtitulo">Lo más buscado por los viajeros</strong>
             <p class="buscador-principal__tags">
-                <a href="http://dev.mmsolutions.com.pe/destinos/lima/churin">Churín</a>
-                <a href="http://dev.mmsolutions.com.pe/destinos/san-martin/ciudad-de-tarapoto">Tarapoto</a>
-                <a href="http://dev.mmsolutions.com.pe/destinos/lima/lunahuana">Lunahuaná</a>
-                <a href="http://dev.mmsolutions.com.pe/destinos/ancash/ciudad-de-huaraz">Huaraz</a>
-                <a href="http://dev.mmsolutions.com.pe/destinos/loreto/la-ciudad-de-iquitos">Iquitos</a>
+                <a href="/destinos/lima/churin">Churín</a>
+                <a href="/destinos/san-martin/ciudad-de-tarapoto">Tarapoto</a>
+                <a href="/destinos/lima/lunahuana">Lunahuaná</a>
+                <a href="/destinos/ancash/ciudad-de-huaraz">Huaraz</a>
+                <a href="/destinos/loreto/la-ciudad-de-iquitos">Iquitos</a>
             </p>
         </aside>
     </div>
@@ -39,7 +39,7 @@
 
                             <div class="swiper-slide">
                                 <article class="card-info m--tipo2">
-                                    <img src="@atractivo.banner" alt="@atractivo.titulo" class="card-info__imagen">
+                                    <img src="@ViewBag.hostStaticUrl@atractivo.thumb" alt="@atractivo.titulo" class="card-info__imagen">
                                     <header class="card-info__header">
                                         <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@atractivo.provincia</address>
                                         <!--<aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>-->
@@ -66,7 +66,7 @@
                     {
                         <div class="swiper-slide">
                             <article class="card-poster m--tipo5" data-filtro="@prov.categoria">
-                                <img src="/@prov.imagen" alt="" class="card-poster__imagen">
+                                <img src="@ViewBag.hostStaticUrl@prov.imagen" alt="" class="card-poster__imagen">
                                 <aside class="corazon m--blanco card-poster__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@prov.provincia_nombre</aside>
                                 <header class="card-poster__header">
                                     <h1 class="card-poster__titulo">@prov.nombre</h1>
@@ -94,7 +94,7 @@
                         {
                             <div class="swiper-slide">
                                 <article class="card-info m--tipo2">
-                                    <img src="@nota.imagen" alt="" class="card-info__imagen">
+                                    <img src="@ViewBag.hostStaticUrl@nota.thumb" alt="" class="card-info__imagen">
                                     <header class="card-info__header">
                                         <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@nota.provincia</address>
                                         <!--<aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>-->
@@ -134,11 +134,11 @@
                 </form>
                 <strong class="buscador-principal__subtitulo">Lo más buscado por los viajeros</strong>
                 <p class="buscador-principal__tags">
-                    <a href="http://dev.mmsolutions.com.pe/destinos/lima/churin">Churín</a>
-                    <a href="http://dev.mmsolutions.com.pe/destinos/san-martin/ciudad-de-tarapoto">Tarapoto</a>
-                    <a href="http://dev.mmsolutions.com.pe/destinos/lima/lunahuana">Lunahuaná</a>
-                    <a href="http://dev.mmsolutions.com.pe/destinos/ancash/ciudad-de-huaraz">Huaraz</a>
-                    <a href="http://dev.mmsolutions.com.pe/destinos/loreto/la-ciudad-de-iquitos">Iquitos</a>
+                    <a href="/destinos/lima/churin">Churín</a>
+                    <a href="/destinos/san-martin/ciudad-de-tarapoto">Tarapoto</a>
+                    <a href="/destinos/lima/lunahuana">Lunahuaná</a>
+                    <a href="/destinos/ancash/ciudad-de-huaraz">Huaraz</a>
+                    <a href="/destinos/loreto/la-ciudad-de-iquitos">Iquitos</a>
                 </p>
             </aside>
 

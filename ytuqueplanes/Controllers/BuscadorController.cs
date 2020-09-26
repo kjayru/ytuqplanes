@@ -15,8 +15,8 @@ namespace ytuqueplanes.Controllers
         ytuqueplanesDBEntities1 db = new ytuqueplanesDBEntities1();
         public BuscadorController()
         {
-
-            ViewBag.hosturl = ConfigurationManager.AppSettings["staticURL"];
+            ViewBag.hostStaticUrl = ConfigurationManager.AppSettings["staticURL"];
+            
             var prov = db.provincias.Where(c => c.estado == 1 && c.id != 26).Select(p => new { p.id, p.nombre, p.slug, p.region_id }).ToList();
 
             List<Provincias> pr = new List<Provincias>();
@@ -58,14 +58,7 @@ namespace ytuqueplanes.Controllers
            
                 //busqueda destinos
 
-                var rd = db.atractivos.Where(c => c.titulo.ToLower().Contains(word)).Select(p => new
-                {
-                    p.titulo,
-                    p.slug,
-                    p.resumen,
-                    p.banner,
-                    p.destino_id
-                }).ToList();
+                var rd = db.atractivos.Where(c => c.titulo.ToLower().Contains(word)).ToList();
 
                 ViewBag.totalDestino = rd.Count();
                 List<Atractivo> atractivos = new List<Atractivo>();
@@ -85,7 +78,8 @@ namespace ytuqueplanes.Controllers
                         banner = rd[i].banner,
                         provincia = pv.nombre,
                         provincia_slug = pv.slug,
-                        destino_slug = dt.slug
+                        destino_slug = dt.slug,
+                        thumb = rd[i].thumb
 
                     });
                 }
@@ -98,7 +92,7 @@ namespace ytuqueplanes.Controllers
 
 
 
-                var rutas = db.rutas.Where(c => c.titulo.ToLower().Contains(word)).Select(p => new { p.titulo, p.slug, p.id, p.categoria_ruta_id, p.image, p.provincia_id }).ToList();
+                var rutas = db.rutas.Where(c => c.titulo.ToLower().Contains(word)).ToList();
 
                 ViewBag.totalRutas = rutas.Count();
                 //eturn Json(rutas, JsonRequestBehavior.AllowGet);
@@ -128,7 +122,8 @@ namespace ytuqueplanes.Controllers
                             provincia_slug = pv.slug,
                             nombre = rutas[j].titulo,
                             slug = rutas[j].slug,
-                            imagen = rutas[j].image
+                            imagen = rutas[j].image,
+                            thumb = rutas[j].thumb
 
                         });
                 }
@@ -139,14 +134,7 @@ namespace ytuqueplanes.Controllers
 
                 //busqueda notas
 
-                var rl = db.posts.Where(c => c.titulo.ToLower().Contains(word)).Select(p => new
-                {
-                    p.titulo,
-                    p.resumen,
-                    p.imagen,
-                    p.slug,
-                    p.provincia_id
-                });
+                var rl = db.posts.Where(c => c.titulo.ToLower().Contains(word));
 
                 var rltotal = rl.Count();
                 var relacionados = rl.ToList();
@@ -165,6 +153,7 @@ namespace ytuqueplanes.Controllers
                         titulo = relacionados[j].titulo,
                         resumen = relacionados[j].resumen,
                         imagen = relacionados[j].imagen,
+                        thumb = relacionados[j].thumb,
                         slug = relacionados[j].slug,
                         provincia = pv.nombre,
                         provincia_slug = pv.slug
