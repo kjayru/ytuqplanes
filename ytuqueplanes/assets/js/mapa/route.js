@@ -11,7 +11,7 @@ $(document).ready(function() {
 	$(".wrapper-navbar")
 		.on("click", ".fnBackToUrl", function(e) {
 			e.preventDefault();
-			window.history.back();
+			window.location.href = '/'+slugRegion+'/'+slugRuta;
 		});
 
 	/* Cada vez que cambie el ancho de la ventana del navegador,
@@ -66,7 +66,7 @@ $(document).ready(function() {
 			url = $(this).attr("data-href");
 			window.open(url, "_blank");
 		} else if($(this).hasClass("download")) {
-			url = "../../" + $(this).attr("data-href");
+			url = $(this).attr("data-href");
 			window.open(url, "_blank");
 		}
 	});
