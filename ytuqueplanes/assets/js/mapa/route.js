@@ -1,3 +1,4 @@
+/* fecha 28/09/2020 */
 $(document).ready(function() {
 
 	var map, marker, popup, fontAwesomeIcon, bounds;
@@ -81,12 +82,12 @@ $(document).ready(function() {
 		var contenido = "";
 		contenido += "<div class='wrapper-navbar-container'>";
 		contenido += "<div class='wrapper-navbar-left'>";
-		contenido += '<a class="wrapper-navbar-link" href="/rutas-cortas/'+slugRegion+'/'+slugRuta+'">';
+		contenido += '<a class="wrapper-navbar-link" href="/rutas-cortas/'+slugRegion+'">';
 		contenido += "<i class='fa fa-long-arrow-left'></i>Rutas cortas desde " + data[0].region + "";
 		contenido += '</a>';
 		contenido += "</div>";
 		contenido += "<div class='wrapper-navbar-right'>";
-		contenido += '<a class="wrapper-navbar-link" href="/rutas-cortas/'+slugRegion+'/'+slugRuta+'">';
+		contenido += '<a class="wrapper-navbar-link" href="/rutas-cortas/'+slugRegion+'">';
 		contenido += "<i class='fa fa-times'></i>";
 		contenido += "</div>";
 		contenido += "</div>";
