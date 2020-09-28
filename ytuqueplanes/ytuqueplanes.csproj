@@ -652,6 +652,7 @@
     <Content Include="assets\js\mapa\magnific-popup.min.js" />
     <Content Include="assets\js\mapa\mapa-dev.js" />
     <Content Include="assets\js\mapa\mapa.js" />
+    <Content Include="assets\js\mapa\route-dist.js" />
     <Content Include="assets\js\mapa\route.js" />
     <Content Include="assets\js\mapa\sitevar.js" />
     <Content Include="assets\js\plugins.js" />
