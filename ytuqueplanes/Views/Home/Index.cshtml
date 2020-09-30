@@ -122,18 +122,18 @@
             <div class="swiper-container seccion__slider fnSliderGrilla">
                 <div class="swiper-wrapper">
                     @foreach (ytuqueplanes.Models.Festividad festividad in Model.festividades) {
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo3">
-                            <img src="@ViewBag.hostStaticUrl@festividad.thumb" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@festividad.provincia</address>
-                                <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>1</aside>
-                                <h1 class="card-info__titulo">@festividad.nombre</h1>
-                                <aside class="card-info__fecha">@festividad.inicio @festividad.mes</aside>
-                            </header>
-                            <a href="/festividades/detalle/@festividad.slug" class="card-info__mas-informacion">Más información</a>
-                        </article>
-                    </div>
+                        <div class="swiper-slide">
+                            <article class="card-info m--tipo3">
+                                <img src="@ViewBag.hostStaticUrl@festividad.thumb" alt="" class="card-info__imagen">
+                                <header class="card-info__header">
+                                    <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@festividad.provincia</address>
+                                    <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>1</aside>
+                                    <h1 class="card-info__titulo">@festividad.nombre</h1>
+                                    <aside class="card-info__fecha">@festividad.inicio @festividad.mes</aside>
+                                </header>
+                                <a href="/festividades/detalle/@festividad.slug" class="card-info__mas-informacion">Más información</a>
+                            </article>
+                        </div>
                     }
                 </div>
             </div>
