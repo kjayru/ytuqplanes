@@ -1794,7 +1794,13 @@
 
 	&__item
 		flex 0 0 14.28%
+		max-width 14.28%
 		padding 0px 4px 30px 4px
+		&:hover
+			.calendario__festividad.full
+			.calendario__festividad__slider
+				background-color crema
+				color #fff
 
 	&__article
 		position relative
@@ -1817,9 +1823,51 @@
 		position relative
 		transition all ease .25s
 
-		&.full:hover
-			background-color crema
-			color #fff
+		// &.full:hover
+		// 	background-color crema
+		// 	color #fff
+
+		&__slider
+			min-height 240px
+			height initial
+			position relative
+			background-color #f5f5f5
+			border-radius 3px
+			transition all ease .25s
+			.__nav
+				position absolute
+				bottom 0
+				left 0
+				width 100%
+				z-index 2
+				display flex
+				padding 0 8px 8px
+				justify-content space-between
+				align-items center
+				line-height 1
+			.__flecha
+				width 16px
+				height 16px
+				border-radius 50%
+				line-height 14px
+				text-align center
+				font-size 1rem
+				background-color morado
+				color #fff
+				bottom 8px
+				font-family arial
+				cursor pointer
+				z-index 2
+			.__left
+				&:before
+					content '\2039'
+			.__right
+				&:before
+					content '\203A'
+			.__posicion
+				color morado
+				font-family f-bold
+				letter-spacing 1px
 
 	&__hora
 		color rojo
@@ -1830,6 +1878,9 @@
 
 	&__imagen
 		width 100%
+		height 120px
+		object-fit cover
+		object-position center top
 		margin-bottom 5px
 
 	&__resumen
@@ -1860,16 +1911,19 @@
 
 		&__item
 			flex 0 0 20%
+			max-width 20%
 
 	@media (max-width 600px)
 
 		&__item
 			flex 0 0 25%
+			max-width 25%
 
 	@media (max-width 500px)
 
 		&__item
 			flex 0 0 33.3%
+			max-width 33.3%
 
 	@media (max-width 400px)
 
@@ -1891,6 +1945,7 @@
 
 		&__item
 			flex 0 0 100%
+			max-width 100%
 			min-height 75px
 			padding 0 0 20px
 

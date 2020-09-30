@@ -520,24 +520,57 @@ const site = (function(){
 			}
 			document.getElementById('calendario').innerHTML = diasHtml;
 			document.getElementById('calendario_mes_titulo').innerHTML = MesAnioTitulo;
+
+			$.each($('.fnSliderCalendarioFestividad'), function(index, val) {
+				let t = $(this);
+				let slideFestividad = new Swiper(t, {
+					speed: 750, loop: true, autoHeight: true,
+					navigation: {
+			     		nextEl: t.find('.__right'),
+	        			prevEl: t.find('.__left')
+			     	}
+				});
+				slideFestividad.on( 'slideChange', function () {
+					t.find('.__index').html( slideFestividad.realIndex+1 );
+				});
+			});
+			// let festSlider = new Swiper('.fnSliderCalendarioFestividad', {
+			// 	speed: 1500, autoplay: true, loop: true
+			// });
 		});
 	}
 
 	function printDia(json, diaId, mesIdJson) {
 		let festividades = '';
+		let festividadesLength = 0;
+		let slideStart = '';
+		let slideEnd = '';
+		json.forEach( function(dia, index) {
+			dia.inicio == diaId && dia.mes_id == mesIdJson && dia.anio == dom.calendarioFecha.anio && festividadesLength++;
+		});
+		if( festividadesLength > 1 ) {
+			slideStart = '<div class="swiper-slide">';
+			slideEnd = '</div>';
+			festividadesLength = 1;
+		}
 		json.forEach(function(dia, index){
-			if(dia.inicio==diaId&&dia.mes_id==mesIdJson&&dia.anio==dom.calendarioFecha.anio) {
+			if( dia.inicio == diaId &&
+				dia.mes_id == mesIdJson &&
+				dia.anio == dom.calendarioFecha.anio
+				) {
 				let filtro = dia.tipo_de_festividad=='fin' || dia.tipo_de_festividad=='feriado' ? dia.tipo_de_festividad : ['feriado', 'fin'][Math.floor(Math.random() * 2)];
 				let activo = dom.calendarioFiltro==filtro?'-activo-':'';
-				festividades += `<article class="calendario__festividad full ${activo}" data-filtro="${filtro}">
+				festividades += slideStart + `<article class="calendario__festividad full ${activo}" data-filtro="${filtro}">
 									<img src="${dia.imagen}" class="calendario__imagen" />
 			                        <strong class="calendario__resumen">${dia.nombre}</strong>
 			                        <address class="calendario__lugar"><i class="fa fa-map-marker" aria-hidden="true"></i> ${dia.provincia}</address>
 			                        <a href="/festividades/${dia.provincia_slug}/${dia.slug}" class="calendario__enlace">Más información</a>
-			                    </article>`;
+			                    </article>` + slideEnd;
+			    festividadesLength++;
 			}
 		});
-		return festividades==''?'<div class="calendario__festividad"></div>':festividades;
+
+		return festividades == '' ? '<div class="calendario__festividad"></div>' : ( festividadesLength > 2 ? '<div class="swiper-container calendario__festividad__slider fnSliderCalendarioFestividad"><div class="swiper-wrapper">' + festividades + '</div><div class="__nav"><div class="__flecha __left"></div><div class="__posicion"><span class="__index">1</span>/'+(festividadesLength-1)+'</div><div class="__flecha __right"></div></div></div>' : festividades );
 	}
 
 	function cardPosterTipo1(val) {
