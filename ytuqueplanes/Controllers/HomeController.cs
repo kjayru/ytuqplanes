@@ -61,6 +61,7 @@ namespace ytuqueplanes.Controllers
 
             dynamic datosHomeModel = new ExpandoObject();
 
+            
             datosHomeModel.sliders = GetSliders();
             datosHomeModel.notas = getNotas();
             datosHomeModel.festividades = getFestividad();
@@ -171,12 +172,39 @@ namespace ytuqueplanes.Controllers
         {
             Festividad festividad = new Festividad();
 
+            var mesActual = DateTime.Now.Month;
+           
+            
+          var festi = db.festividades.Where(c => c.estado == 1).Where(d=> d.mes_id == mesActual).Take(8);
 
-            var fest = from t1 in db.festividades
+            List<Festividad> datos = new List<Festividad>();
+
+
+            foreach (var item in festi) {
+
+                datos.Add(new Festividad {
+                    id = item.id,
+                    nombre = item.nombre,
+                    inicio = item.inicio,
+                    final = item.final,
+                    provincia = item.nombre,
+                    imagen = item.imagen,
+                    thumb = item.thumb,
+                    contenido = item.contenido,
+                    mes = item.mes.nombre,
+                    likes = item.likes,
+                    documento = item.documento,
+                    slug = item.slug
+                });
+            }
+
+          
+           /* var fest = from t1 in db.festividades
             join t2 in db.meses
             on t1.mes_id equals t2.id
             join t3 in db.provincias
             on t1.provincia_id equals t3.id
+            where t1.estado == 1
             select new
             {
                id =  t1.id,
@@ -193,32 +221,32 @@ namespace ytuqueplanes.Controllers
               slug = t1.slug
             };
 
-          var festividades = fest.ToList();
+          var festividades = fest.Take(8);
 
 
             List < Festividad > festidatos = new List<Festividad>();
-            for (var k = 0; k < festividades.Count(); k++)
+            foreach (var item in festividades)
             {
                 festidatos.Add(
                     new Festividad
                     {
-                        id = festividades[k].id,
-                        nombre = festividades[k].nombre,
-                        inicio = festividades[k].inicio,
-                        final = festividades[k].final,
-                        provincia = festividades[k].provincia,
-                        imagen = festividades[k].imagen,
-                        thumb = festividades[k].thumb,
-                        contenido = festividades[k].contenido,
-                        mes = festividades[k].mes,
-                        likes = festividades[k].likes,
-                        documento = festividades[k].documento,
-                        slug = festividades[k].slug
+                        id = item.id,
+                        nombre = item.nombre,
+                        inicio = item.inicio,
+                        final = item.final,
+                        provincia = item.provincia,
+                        imagen = item.imagen,
+                        thumb =item.thumb,
+                        contenido = item.contenido,
+                        mes = item.mes,
+                        likes = item.likes,
+                        documento = item.documento,
+                        slug = item.slug
                     });
 
-            }
+            }*/
 
-            return festidatos;
+            return datos;
         
 
         }

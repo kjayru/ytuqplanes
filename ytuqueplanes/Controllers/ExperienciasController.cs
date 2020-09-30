@@ -139,7 +139,7 @@ namespace ytuqueplanes.Controllers
             var ft = from t1 in db.festividades
             join t2 in db.provincias
             on t1.provincia_id equals t2.id
-           
+           where t1.estado == 1
             select new
             {
                 id = t1.id,
@@ -201,7 +201,7 @@ namespace ytuqueplanes.Controllers
             var ft = from t1 in db.festividades
                      join t2 in db.provincias
                      on t1.provincia_id equals t2.id
-                     where t1.provincia_id == prov.id
+                     where t1.provincia_id == prov.id && t1.estado == 1
                      select new
                      {
                          id = t1.id,

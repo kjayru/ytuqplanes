@@ -7,12 +7,16 @@
 @{int icss = 1; int islide = 1;}
 @foreach (ytuqueplanes.Models.Slide slide in Model.sliders)
 {
-<style type="text/css" media="screen and (min-width: 1401px)"> .slider-@icss { background-image:url('@ViewBag.hostStaticUrl@slide.imagen_xl'); } </style>
-<style type="text/css" media="screen and (min-width: 801px) and (max-width: 1400px)"> .slider-@icss { background-image:url('@ViewBag.hostStaticUrl@slide.imagen_lg'); } </style>
-<style type="text/css" media="screen and (min-width: 501px) and (max-width: 800px)"> .slider-@icss { background-image:url('@ViewBag.hostStaticUrl@slide.imagen_md'); } </style>
-<style type="text/css" media="screen and (max-width: 500px)"> .slider-@icss { background-image:url('@ViewBag.hostStaticUrl@slide.imagen_sm'); } </style>
+    <style type="text/css" media="screen and (min-width: 1401px)"> .slider-@icss { background-image:url('@ViewBag.hostStaticUrl@slide.imagen_xl'); } </style>
+    <style type="text/css" media="screen and (min-width: 801px) and (max-width: 1400px)"> .slider-@icss { background-image:url('@ViewBag.hostStaticUrl@slide.imagen_lg'); } </style>
+    <style type="text/css" media="screen and (min-width: 501px) and (max-width: 800px)"> .slider-@icss { background-image:url('@ViewBag.hostStaticUrl@slide.imagen_md'); } </style>
+    <style type="text/css" media="screen and (max-width: 500px)"> .slider-@icss { background-image:url('@ViewBag.hostStaticUrl@slide.imagen_sm'); } </style>
     icss++;
 }
+
+
+
+vista::: @ViewBag.mes<br />
 <section class="all swiper-container sliders fnSliderHome">
     <div class="swiper-wrapper">
         @foreach (ytuqueplanes.Models.Slide slide in Model.sliders)
@@ -50,18 +54,18 @@
 <main class="seccion">
 
     @* <section class="seccion m--slider-horizontal">
-        <div class="limit seccion__inset">
-            <article class="seccion__contenido">
-                <h2 class="seccion__titulo">¡No hay excusas!</h2>
-                <p class="seccion__resumen">Encuentra las mejores ofertas para tu próximo viaje.</p>
-                <a href="https://ytuqueplanes-9c1b7.web.app/" target="_blank" class="boton m--amarillo m--grande m--235"><strong>Ver todas las ofertas</strong></a>
-            </article>
-            <div class="swiper-container seccion__slider fnSliderFree" data-api-tipo="card-poster-tipo-1" data-api-data="{'type[]': 'package', 'limit': '3'}">
-                <div class="swiper-wrapper"></div>
+            <div class="limit seccion__inset">
+                <article class="seccion__contenido">
+                    <h2 class="seccion__titulo">¡No hay excusas!</h2>
+                    <p class="seccion__resumen">Encuentra las mejores ofertas para tu próximo viaje.</p>
+                    <a href="https://ytuqueplanes-9c1b7.web.app/" target="_blank" class="boton m--amarillo m--grande m--235"><strong>Ver todas las ofertas</strong></a>
+                </article>
+                <div class="swiper-container seccion__slider fnSliderFree" data-api-tipo="card-poster-tipo-1" data-api-data="{'type[]': 'package', 'limit': '3'}">
+                    <div class="swiper-wrapper"></div>
+                </div>
+                <a href="https://ytuqueplanes-9c1b7.web.app/" target="_blank" class="boton m--amarillo m--grande m--235 seccion__boton-mobile"><strong>Ver todas las ofertas</strong></a>
             </div>
-            <a href="https://ytuqueplanes-9c1b7.web.app/" target="_blank" class="boton m--amarillo m--grande m--235 seccion__boton-mobile"><strong>Ver todas las ofertas</strong></a>
-        </div>
-    </section> *@
+        </section> *@
 
     <section class="seccion m--slider-horizontal">
         <div class="limit seccion__inset">
@@ -86,19 +90,20 @@
             </article>
             <div class="swiper-container seccion__slider fnSliderFree">
                 <div class="swiper-wrapper">
-                 @foreach (ytuqueplanes.Models.Blog blog in Model.notas) {
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo1">
-                            <img src="@ViewBag.hostStaticUrl@blog.thumb" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@blog.provincia</address>
-                               <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>-->
-                                <h1 class="card-info__titulo">@blog.titulo</h1>
-                            </header>
-                            <a href="/blog-viajero/@blog.provincia_slug/@blog.slug" class="card-info__mas-informacion">Más información</a>
-                        </article>
-                    </div>
-                  }
+                    @foreach (ytuqueplanes.Models.Blog blog in Model.notas)
+                    {
+                        <div class="swiper-slide">
+                            <article class="card-info m--tipo1">
+                                <img src="@ViewBag.hostStaticUrl@blog.thumb" alt="" class="card-info__imagen">
+                                <header class="card-info__header">
+                                    <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@blog.provincia</address>
+                                    <!-- <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>10</aside>-->
+                                    <h1 class="card-info__titulo">@blog.titulo</h1>
+                                </header>
+                                <a href="/blog-viajero/@blog.provincia_slug/@blog.slug" class="card-info__mas-informacion">Más información</a>
+                            </article>
+                        </div>
+                    }
                 </div>
             </div>
             <a href="/blog-viajero" class="boton m--verde-hoja m--grande seccion__boton-mobile"><strong>Ir al Blog</strong></a>
@@ -121,19 +126,20 @@
             <h4 class="seccion__titulo">Festivales y eventos</h4>
             <div class="swiper-container seccion__slider fnSliderGrilla">
                 <div class="swiper-wrapper">
-                    @foreach (ytuqueplanes.Models.Festividad festividad in Model.festividades) {
-                    <div class="swiper-slide">
-                        <article class="card-info m--tipo3">
-                            <img src="@ViewBag.hostStaticUrl@festividad.thumb" alt="" class="card-info__imagen">
-                            <header class="card-info__header">
-                                <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@festividad.provincia</address>
-                                <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>1</aside>
-                                <h1 class="card-info__titulo">@festividad.nombre</h1>
-                                <aside class="card-info__fecha">@festividad.inicio @festividad.mes</aside>
-                            </header>
-                            <a href="/festividades/detalle/@festividad.slug" class="card-info__mas-informacion">Más información</a>
-                        </article>
-                    </div>
+                    @foreach (ytuqueplanes.Models.Festividad festividad in Model.festividades)
+                    {
+                        <div class="swiper-slide">
+                            <article class="card-info m--tipo3">
+                                <img src="@ViewBag.hostStaticUrl@festividad.thumb" alt="" class="card-info__imagen">
+                                <header class="card-info__header">
+                                    <address class="card-info__ubicacion"><i class="fa fa-map-marker" aria-hidden="true"></i>@festividad.provincia</address>
+                                    <aside class="corazon"><i class="fa fa-heart" aria-hidden="true"></i>1</aside>
+                                    <h1 class="card-info__titulo">@festividad.nombre</h1>
+                                    <aside class="card-info__fecha">@festividad.inicio @festividad.mes</aside>
+                                </header>
+                                <a href="/festividades/detalle/@festividad.slug" class="card-info__mas-informacion">Más información</a>
+                            </article>
+                        </div>
                     }
                 </div>
             </div>
@@ -196,14 +202,14 @@
     </section>
 
     @* <section class="seccion">
-        <div class="limit">
-            <article class="card-full m--centrado" style="background-image: url('/assets/images/bg_card-servicios.jpg');">
-                <header><h1 class="card-full__titulo">Servicios complementarios</h1></header>
-                <p class="card-full__contenido">Vive un viaje personalizado para ti y tu familia.</p>
-                <a href="#" class="boton m--grande m--morado m--padding-pequeno"><strong>Ver servicios</strong></a>
-            </article>
-        </div>
-    </section> *@
+            <div class="limit">
+                <article class="card-full m--centrado" style="background-image: url('/assets/images/bg_card-servicios.jpg');">
+                    <header><h1 class="card-full__titulo">Servicios complementarios</h1></header>
+                    <p class="card-full__contenido">Vive un viaje personalizado para ti y tu familia.</p>
+                    <a href="#" class="boton m--grande m--morado m--padding-pequeno"><strong>Ver servicios</strong></a>
+                </article>
+            </div>
+        </section> *@
 
 </main>
 
