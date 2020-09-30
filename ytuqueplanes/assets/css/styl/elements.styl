@@ -1434,13 +1434,17 @@
 	&.m--tipo7
 		.seccion
 			&__slider
+				// .swiper-wrapper
+				// 	min-height max-content
+				// 	display flex
+				// 	align-items stretch
 				.swiper-wrapper
-					min-height max-content
-					display flex
-					align-items stretch
+					width 100%
 				.swiper-slide
 					width 363px
 					height inherit
+					&:last-of-type
+						width 363px
 					.card-info
 						height 100%
 						padding-bottom 40px
