@@ -181,13 +181,14 @@ namespace ytuqueplanes.Controllers
 
 
             foreach (var item in festi) {
-
+                var nid = item.provincia_id;
+                var prov = db.provincias.Where(c => c.id == nid).FirstOrDefault();
                 datos.Add(new Festividad {
                     id = item.id,
                     nombre = item.nombre,
                     inicio = item.inicio,
                     final = item.final,
-                    provincia = item.nombre,
+                    provincia = prov.nombre,
                     imagen = item.imagen,
                     thumb = item.thumb,
                     contenido = item.contenido,
