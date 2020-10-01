@@ -853,5 +853,22 @@
         <ScalarProperty Name="Id" ColumnName="RoleId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="activities">
+      <EntityTypeMapping TypeName="ytuqueplanesDBModel.activity">
+        <MappingFragment StoreEntitySet="activities">
+          <ScalarProperty Name="icono" ColumnName="icono" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="activity_Id" ColumnName="activity_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="activity_place" TypeName="ytuqueplanesDBModel.activity_place" StoreEntitySet="activity_place">
+      <EndProperty Name="place">
+        <ScalarProperty Name="id" ColumnName="place_Id" />
+      </EndProperty>
+      <EndProperty Name="activity">
+        <ScalarProperty Name="activity_Id" ColumnName="activity_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -108,6 +108,8 @@
         <AssociationConnector Association="ytuqueplanesDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="ytuqueplanesDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="ytuqueplanesDBModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="ytuqueplanesDBModel.activity" Width="1.5" PointX="25.375" PointY="0.875" />
+        <AssociationConnector Association="ytuqueplanesDBModel.activity_place" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

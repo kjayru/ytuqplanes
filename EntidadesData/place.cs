@@ -20,6 +20,7 @@ namespace EntidadesData
             this.place_activity = new HashSet<place_activity>();
             this.place_apt = new HashSet<place_apt>();
             this.place_coordinate = new HashSet<place_coordinate>();
+            this.activities = new HashSet<activity>();
         }
     
         public int id { get; set; }
@@ -38,5 +39,7 @@ namespace EntidadesData
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<place_coordinate> place_coordinate { get; set; }
         public virtual ruta ruta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<activity> activities { get; set; }
     }
 }

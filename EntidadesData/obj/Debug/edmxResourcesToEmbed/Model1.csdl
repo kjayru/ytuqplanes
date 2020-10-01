@@ -426,6 +426,7 @@
     <NavigationProperty Name="place_apt" Relationship="Self.foreing_apt_place" FromRole="places" ToRole="place_apt" />
     <NavigationProperty Name="place_coordinate" Relationship="Self.foreing_coordinate_place" FromRole="places" ToRole="place_coordinate" />
     <NavigationProperty Name="ruta" Relationship="Self.foreign_place_rutas" FromRole="places" ToRole="rutas" />
+    <NavigationProperty Name="activities" Relationship="ytuqueplanesDBModel.activity_place" FromRole="place" ToRole="activity" />
   </EntityType>
   <EntityType Name="post">
     <Key>
@@ -1311,6 +1312,11 @@
       <End Role="AspNetRole" EntitySet="AspNetRoles" />
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
     </AssociationSet>
+    <EntitySet Name="activities" EntityType="ytuqueplanesDBModel.activity" />
+    <AssociationSet Name="activity_place" Association="ytuqueplanesDBModel.activity_place">
+      <End Role="activity" EntitySet="activities" />
+      <End Role="place" EntitySet="places" />
+    </AssociationSet>
   </EntityContainer>
   <Association Name="foreign_provincia001_fk">
     <End Type="ytuqueplanesDBModel.provincia" Role="provincia" Multiplicity="0..1">
@@ -1429,5 +1435,18 @@
   <Association Name="AspNetUserRoles">
     <End Type="ytuqueplanesDBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
     <End Type="ytuqueplanesDBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityType Name="activity">
+    <Key>
+      <PropertyRef Name="activity_Id" />
+    </Key>
+    <Property Name="activity_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="icono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="places" Relationship="ytuqueplanesDBModel.activity_place" FromRole="activity" ToRole="place" />
+  </EntityType>
+  <Association Name="activity_place">
+    <End Type="ytuqueplanesDBModel.activity" Role="activity" Multiplicity="*" />
+    <End Type="ytuqueplanesDBModel.place" Role="place" Multiplicity="*" />
   </Association>
 </Schema>

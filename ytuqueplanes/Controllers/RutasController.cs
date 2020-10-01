@@ -340,10 +340,14 @@ namespace ytuqueplanes.Controllers
                     height = d.height,
                     image = d.image !=null? ConfigurationManager.AppSettings["staticURL"]+d.image:"",
                     apt = d.place_apt.Select(f => new { description = f.descripcion }),
-                    activity = d.place_activity.AsEnumerable().Select(g => new {
+                    activity = d.activities.Select(g => new { 
+                        name= g.nombre,
+                        icon = g.icono !=null? ConfigurationManager.AppSettings["staticURL"] + g.icono : ""
+                    }),
+                   /* activity = d.place_activity.AsEnumerable().Select(g => new {
                         name = g.nombre,
                         icon =  g.icono != null? ConfigurationManager.AppSettings["staticURL"]+g.icono:"",
-                    }),
+                    }),*/
                     cordinate = d.place_coordinate.Select(h => new {
                         latitude = h.latitude, 
                         longitude = h.longitude

@@ -24,6 +24,22 @@
           <Property Name="icono" Type="varchar(max)" Nullable="false" />
           <Property Name="ruta_id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="activities">
+          <Key>
+            <PropertyRef Name="activity_Id" />
+          </Key>
+          <Property Name="activity_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="255" />
+          <Property Name="icono" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="activity_place">
+          <Key>
+            <PropertyRef Name="activity_Id" />
+            <PropertyRef Name="place_Id" />
+          </Key>
+          <Property Name="activity_Id" Type="int" Nullable="false" />
+          <Property Name="place_Id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="agencias">
           <Key>
             <PropertyRef Name="id" />
@@ -1015,6 +1031,20 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="foreign_activity_010_fk">
+          <End Role="activities" Type="Self.activities" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="activity_place" Type="Self.activity_place" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="activities">
+              <PropertyRef Name="activity_Id" />
+            </Principal>
+            <Dependent Role="activity_place">
+              <PropertyRef Name="activity_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="foreign_categoriacomunitario_fk">
           <End Role="categoria_comunitario" Type="Self.categoria_comunitario" Multiplicity="1" />
           <End Role="categoria_comunitario_comunitarios" Type="Self.categoria_comunitario_comunitarios" Multiplicity="*" />
@@ -1136,6 +1166,20 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </Principal>
             <Dependent Role="comunitario_llegar">
               <PropertyRef Name="comunitario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="foreign_place_010_fk">
+          <End Role="places" Type="Self.places" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="activity_place" Type="Self.activity_place" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="places">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="activity_place">
+              <PropertyRef Name="place_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1264,6 +1308,8 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
         <EntityContainer Name="ytuqueplanesDBModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="actividades" EntityType="Self.actividades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="activities" EntityType="Self.activities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="activity_place" EntityType="Self.activity_place" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="agencias" EntityType="Self.agencias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="alertas" EntityType="Self.alertas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -1460,6 +1506,10 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="ofertas" EntitySet="ofertas" />
             <End Role="opciones" EntitySet="opciones" />
           </AssociationSet>
+          <AssociationSet Name="foreign_activity_010_fk" Association="Self.foreign_activity_010_fk">
+            <End Role="activities" EntitySet="activities" />
+            <End Role="activity_place" EntitySet="activity_place" />
+          </AssociationSet>
           <AssociationSet Name="foreign_categoriacomunitario_fk" Association="Self.foreign_categoriacomunitario_fk">
             <End Role="categoria_comunitario" EntitySet="categoria_comunitario" />
             <End Role="categoria_comunitario_comunitarios" EntitySet="categoria_comunitario_comunitarios" />
@@ -1495,6 +1545,10 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <AssociationSet Name="foreign_llega001_fk" Association="Self.foreign_llega001_fk">
             <End Role="comunitarios" EntitySet="comunitarios" />
             <End Role="comunitario_llegar" EntitySet="comunitario_llegar" />
+          </AssociationSet>
+          <AssociationSet Name="foreign_place_010_fk" Association="Self.foreign_place_010_fk">
+            <End Role="places" EntitySet="places" />
+            <End Role="activity_place" EntitySet="activity_place" />
           </AssociationSet>
           <AssociationSet Name="foreign_place_rutas" Association="Self.foreign_place_rutas">
             <End Role="rutas" EntitySet="rutas" />
@@ -1963,6 +2017,7 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
           <NavigationProperty Name="place_apt" Relationship="Self.foreing_apt_place" FromRole="places" ToRole="place_apt" />
           <NavigationProperty Name="place_coordinate" Relationship="Self.foreing_coordinate_place" FromRole="places" ToRole="place_coordinate" />
           <NavigationProperty Name="ruta" Relationship="Self.foreign_place_rutas" FromRole="places" ToRole="rutas" />
+          <NavigationProperty Name="activities" Relationship="ytuqueplanesDBModel.activity_place" FromRole="place" ToRole="activity" />
         </EntityType>
         <EntityType Name="post">
           <Key>
@@ -2848,6 +2903,11 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="activities" EntityType="ytuqueplanesDBModel.activity" />
+          <AssociationSet Name="activity_place" Association="ytuqueplanesDBModel.activity_place">
+            <End Role="activity" EntitySet="activities" />
+            <End Role="place" EntitySet="places" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="foreign_provincia001_fk">
           <End Type="ytuqueplanesDBModel.provincia" Role="provincia" Multiplicity="0..1">
@@ -2966,6 +3026,19 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
         <Association Name="AspNetUserRoles">
           <End Type="ytuqueplanesDBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="ytuqueplanesDBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="activity">
+          <Key>
+            <PropertyRef Name="activity_Id" />
+          </Key>
+          <Property Name="activity_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="icono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="places" Relationship="ytuqueplanesDBModel.activity_place" FromRole="activity" ToRole="place" />
+        </EntityType>
+        <Association Name="activity_place">
+          <End Type="ytuqueplanesDBModel.activity" Role="activity" Multiplicity="*" />
+          <End Type="ytuqueplanesDBModel.place" Role="place" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -3823,6 +3896,23 @@ advertencia 6002: La tabla o vista 'ytuqueplanesDB.dbo.rutas_seo' no tiene defin
             </EndProperty>
             <EndProperty Name="AspNetRole">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="activities">
+            <EntityTypeMapping TypeName="ytuqueplanesDBModel.activity">
+              <MappingFragment StoreEntitySet="activities">
+                <ScalarProperty Name="icono" ColumnName="icono" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="activity_Id" ColumnName="activity_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="activity_place" TypeName="ytuqueplanesDBModel.activity_place" StoreEntitySet="activity_place">
+            <EndProperty Name="place">
+              <ScalarProperty Name="id" ColumnName="place_Id" />
+            </EndProperty>
+            <EndProperty Name="activity">
+              <ScalarProperty Name="activity_Id" ColumnName="activity_Id" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
