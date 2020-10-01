@@ -153,22 +153,22 @@ const site = (function(){
 			let swiperGrilla = new Swiper('.fnSliderGrilla', {
 				spaceBetween: 0,
 				freeMode: true,
-				slidesPerView: 'auto',
-				slidesPerColumn: 2,
-				breakpoints : {
-					680 : {
-						spaceBetween: 0,
-						freeMode: true,
-						slidesPerView: 'auto',
-						slidesPerColumn: 2
-					},
-					0 : {
-						spaceBetween: 0,
-						freeMode: true,
-						slidesPerView: 'auto',
-						slidesPerColumn: 1
-					}
-				}
+				slidesPerView: 'auto'
+				// slidesPerColumn: 2,
+				// breakpoints : {
+				// 	680 : {
+				// 		spaceBetween: 0,
+				// 		freeMode: true,
+				// 		slidesPerView: 'auto',
+				// 		slidesPerColumn: 2
+				// 	},
+				// 	0 : {
+				// 		spaceBetween: 0,
+				// 		freeMode: true,
+				// 		slidesPerView: 'auto',
+				// 		slidesPerColumn: 1
+				// 	}
+				// }
 		    });
 
 		    let swiperDestinoDetalle = new Swiper('.fnSliderDestinosDetalle', {
