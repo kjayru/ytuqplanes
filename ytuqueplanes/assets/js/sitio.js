@@ -559,7 +559,8 @@ const site = (function(){
 				dia.mes_id == mesIdJson &&
 				dia.anio == dom.calendarioFecha.anio
 				) {
-				let filtro = dia.tipo_de_festividad=='fin' || dia.tipo_de_festividad=='feriado' ? dia.tipo_de_festividad : ['feriado', 'fin'][Math.floor(Math.random() * 2)];
+				// let filtro = dia.tipo_de_festividad=='fin' || dia.tipo_de_festividad=='feriado' ? dia.tipo_de_festividad : ['feriado', 'fin'][Math.floor(Math.random() * 2)];
+				let filtro = dia.tipo_de_festividad;
 				let activo = dom.calendarioFiltro==filtro?'-activo-':'';
 				festividades += slideStart + `<article class="calendario__festividad full ${activo}" data-filtro="${filtro}">
 									<img src="${dia.imagen}" class="calendario__imagen" />

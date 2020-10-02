@@ -1,28 +1,28 @@
 
-const headerMapa = `<svg class="header__mapa__tumbes"><use xlink:href="#map-tumbes" /></svg>
-                    <svg class="header__mapa__piura"><use xlink:href="#map-piura" /></svg>
-                    <svg class="header__mapa__lambayeque"><use xlink:href="#map-lambayeque" /></svg>
-                    <svg class="header__mapa__la-libertad"><use xlink:href="#map-la-libertad" /></svg>
-                    <svg class="header__mapa__cajamarca"><use xlink:href="#map-cajamarca" /></svg>
-                    <svg class="header__mapa__amazonas"><use xlink:href="#map-amazonas" /></svg>
-                    <svg class="header__mapa__san-martin"><use xlink:href="#map-san-martin" /></svg>
-                    <svg class="header__mapa__loreto"><use xlink:href="#map-loreto" /></svg>
-                    <svg class="header__mapa__ancash"><use xlink:href="#map-ancash" /></svg>
-                    <svg class="header__mapa__lima"><use xlink:href="#map-lima" /></svg>
-                    <svg class="header__mapa__huanuco"><use xlink:href="#map-huanuco" /></svg>
-                    <svg class="header__mapa__pasco"><use xlink:href="#map-pasco" /></svg>
-                    <svg class="header__mapa__junin"><use xlink:href="#map-junin" /></svg>
-                    <svg class="header__mapa__ucayali"><use xlink:href="#map-ucayali" /></svg>
-                    <svg class="header__mapa__ica"><use xlink:href="#map-ica" /></svg>
-                    <svg class="header__mapa__huancavelica"><use xlink:href="#map-huancavelica" /></svg>
-                    <svg class="header__mapa__ayacucho"><use xlink:href="#map-ayacucho" /></svg>
-                    <svg class="header__mapa__apurimac"><use xlink:href="#map-apurimac" /></svg>
-                    <svg class="header__mapa__cusco"><use xlink:href="#map-cusco" /></svg>
-                    <svg class="header__mapa__madre-de-dios"><use xlink:href="#map-madre-de-dios" /></svg>
-                    <svg class="header__mapa__arequipa"><use xlink:href="#map-arequipa" /></svg>
-                    <svg class="header__mapa__puno"><use xlink:href="#map-puno" /></svg>
-                    <svg class="header__mapa__moquegua"><use xlink:href="#map-moquegua" /></svg>
-                    <svg class="header__mapa__tacna"><use xlink:href="#map-tacna" /></svg>`;
+const headerMapa = `<svg class="header__mapa__tumbes" width="12" height="8"><use xlink:href="#map-tumbes" /></svg>
+                    <svg class="header__mapa__piura" width="29" height="19"><use xlink:href="#map-piura" /></svg>
+                    <svg class="header__mapa__lambayeque" width="20" height="13"><use xlink:href="#map-lambayeque" /></svg>
+                    <svg class="header__mapa__la-libertad" width="39" height="17"><use xlink:href="#map-la-libertad" /></svg>
+                    <svg class="header__mapa__cajamarca" width="24" height="25"><use xlink:href="#map-cajamarca" /></svg>
+                    <svg class="header__mapa__amazonas" width="22" height="31"><use xlink:href="#map-amazonas" /></svg>
+                    <svg class="header__mapa__san-martin" width="32" height="25"><use xlink:href="#map-san-martin" /></svg>
+                    <svg class="header__mapa__loreto" width="108" height="67"><use xlink:href="#map-loreto" /></svg>
+                    <svg class="header__mapa__ancash" width="25" height="22"><use xlink:href="#map-ancash" /></svg>
+                    <svg class="header__mapa__lima" width="35" height="24"><use xlink:href="#map-lima" /></svg>
+                    <svg class="header__mapa__huanuco" width="40" height="17"><use xlink:href="#map-huanuco" /></svg>
+                    <svg class="header__mapa__pasco" width="33" height="14"><use xlink:href="#map-pasco" /></svg>
+                    <svg class="header__mapa__junin" width="42" height="17"><use xlink:href="#map-junin" /></svg>
+                    <svg class="header__mapa__ucayali" width="76" height="31"><use xlink:href="#map-ucayali" /></svg>
+                    <svg class="header__mapa__ica" width="26" height="19"><use xlink:href="#map-ica" /></svg>
+                    <svg class="header__mapa__huancavelica" width="20" height="17"><use xlink:href="#map-huancavelica" /></svg>
+                    <svg class="header__mapa__ayacucho" width="31" height="26"><use xlink:href="#map-ayacucho" /></svg>
+                    <svg class="header__mapa__apurimac" width="24" height="11"><use xlink:href="#map-apurimac" /></svg>
+                    <svg class="header__mapa__cusco" width="47" height="32"><use xlink:href="#map-cusco" /></svg>
+                    <svg class="header__mapa__madre-de-dios" width="50" height="26"><use xlink:href="#map-madre-de-dios" /></svg>
+                    <svg class="header__mapa__arequipa" width="56" height="20"><use xlink:href="#map-arequipa" /></svg>
+                    <svg class="header__mapa__puno" width="37" height="34"><use xlink:href="#map-puno" /></svg>
+                    <svg class="header__mapa__moquegua" width="20" height="16"><use xlink:href="#map-moquegua" /></svg>
+                    <svg class="header__mapa__tacna" width="22" height="13"><use xlink:href="#map-tacna" /></svg>`;
 const mapaSVG = `<svg>
         <symbol width="12" height="8" viewBox="0 0 12 8" id="map-tumbes">
             <path fill-rule="evenodd" d="M1.82 7.17c-.105 0-.105 0-.21-.263C1.463 6.54.9 6.253.552 6.166c.052-.104.105-.206.164-.289.05-.072.317-.249.494-.365.29-.193.564-.374.713-.556.216-.265.468-.787.635-1.133l.084-.172c.105-.207.365-.518.64-.684.335-.203.457-.277 1.087-.427.027.003.058.005.094.005.214 0 .39-.082.499-.23.09-.133.096-.142.284-.194.078-.021.154-.038.223-.054.26-.058.653-.146.653-.533.006-.101.179-.448.348-.525.156-.071.388-.129.584-.179L7.2.791l.102.192c.07.085.176.132.294.132.102 0 .212-.035.338-.107.06-.035.143-.087.233-.144.135-.085.386-.244.459-.268h.007c.044 0 .13-.022.212-.044.04-.011.077-.022.104-.026-.045.008.126.132.269.31.217.268.504.757.52.886-.02.217.058.753.345.966.184.138.655.353.85.37.018.001.052.004.117.108.05.079.093.14.137.192-.832.207-1.09.329-1.211.446-.082.08-.13.152-.16.199-.037.004-.075.006-.111.006-.141 0-.272-.028-.403-.054-.202-.041-.403-.079-.538-.079h-.041l-.127.021c-.24.066-.785.359-.941.505-.018.017-.051.04-.092.07-.221.162-.57.42-.66.75-.22.021-.391.038-.47.048-.548.067-1.025.714-1.123.884-.073.129-.39.521-.523.681-.176.003-2.69.335-2.966.335"/>
