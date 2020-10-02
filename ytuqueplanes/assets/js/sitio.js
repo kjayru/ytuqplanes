@@ -268,11 +268,12 @@ const site = (function(){
 					$('.buscador-principal__input').focus();
 				});
 			$('.buscador-principal__input')
-				.on('focus', function(){
+				.on('focus', function() {
 					$('.buscador-principal').removeClass('-no-focus-');
-				})
-				.on('blur', function(){
-					$('.buscador-principal').addClass('-no-focus-');
+					if( $(this).val()=='' ) {
+						$('.buscador-principal__input').val('');
+						$('.buscador-principal__input').focus();
+					}
 				});
 			$('.header__nav__destinos__enlace')
 				.on('mouseenter mouseleave', function() {
