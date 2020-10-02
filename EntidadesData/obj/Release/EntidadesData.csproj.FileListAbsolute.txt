@@ -10,18 +10,6 @@ C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Release\EntidadesData.
 C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Release\EntidadesData.csproj.CopyComplete
 C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Release\EntidadesData.dll
 C:\Users\Wile\source\repos\ytuqueplanes\EntidadesData\obj\Release\EntidadesData.pdb
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntidadesData.dll.config
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntidadesData.dll
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntidadesData.pdb
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntityFramework.dll
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntityFramework.SqlServer.dll
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntityFramework.xml
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntityFramework.SqlServer.xml
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.csprojAssemblyReference.cache
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.csproj.CoreCompileInputs.cache
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.csproj.CopyComplete
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.dll
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.pdb
 C:\laragon\www\ytuqplanes\EntidadesData\bin\Release\EntidadesData.dll.config
 C:\laragon\www\ytuqplanes\EntidadesData\bin\Release\EntidadesData.dll
 C:\laragon\www\ytuqplanes\EntidadesData\bin\Release\EntidadesData.pdb
@@ -34,7 +22,19 @@ C:\laragon\www\ytuqplanes\EntidadesData\obj\Release\EntidadesData.csproj.CoreCom
 C:\laragon\www\ytuqplanes\EntidadesData\obj\Release\EntidadesData.csproj.CopyComplete
 C:\laragon\www\ytuqplanes\EntidadesData\obj\Release\EntidadesData.dll
 C:\laragon\www\ytuqplanes\EntidadesData\obj\Release\EntidadesData.pdb
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\es\EntityFramework.resources.dll
-C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\es\EntityFramework.SqlServer.resources.dll
 C:\laragon\www\ytuqplanes\EntidadesData\bin\Release\es\EntityFramework.resources.dll
 C:\laragon\www\ytuqplanes\EntidadesData\bin\Release\es\EntityFramework.SqlServer.resources.dll
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntidadesData.dll.config
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntidadesData.dll
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntidadesData.pdb
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntityFramework.dll
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntityFramework.xml
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\es\EntityFramework.resources.dll
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\bin\Release\es\EntityFramework.SqlServer.resources.dll
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.csprojAssemblyReference.cache
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.csproj.CoreCompileInputs.cache
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.csproj.CopyComplete
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.dll
+C:\Users\Loncharich Vera\Source\Repos\ytuqplanes\EntidadesData\obj\Release\EntidadesData.pdb

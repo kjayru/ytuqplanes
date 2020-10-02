@@ -175,7 +175,7 @@ namespace ytuqueplanes.Controllers
             var mesActual = DateTime.Now.Month;
            
             
-          var festi = db.festividades.Where(c => c.estado == 1).Where(d=> d.mes_id == mesActual).Take(8);
+          var festi = db.festividades.Where(c => c.estado == 1).Where(d=> d.mes_id == mesActual).OrderBy(e => e.inicio).Take(8);
 
             List<Festividad> datos = new List<Festividad>();
 
