@@ -15,8 +15,8 @@ namespace ytuqueplanes.Controllers
         ytuqueplanesDBEntities1 db = new ytuqueplanesDBEntities1();
         public BuscadorController()
         {
-            ViewBag.hostStaticUrl = ConfigurationManager.AppSettings["staticURL"];
             
+            ViewBag.hostStaticUrl = ConfigurationManager.AppSettings["staticURL"];
             var prov = db.provincias.Where(c => c.estado == 1 && c.id != 26).Select(p => new { p.id, p.nombre, p.slug, p.region_id }).ToList();
 
             List<Provincias> pr = new List<Provincias>();
