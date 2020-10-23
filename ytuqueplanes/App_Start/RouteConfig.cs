@@ -13,108 +13,108 @@ namespace ytuqueplanes
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-         routes.MapRoute(
-             "Blog",
-             "blog-viajero",
-             new { controller = "BlogViajero", action = "Index" }
-         );
+            routes.MapRoute(
+            "Blog",
+            "blog-viajero",
+            new { controller = "BlogViajero", action = "Index" }
+            );
 
-        routes.MapRoute(
+            routes.MapRoute(
             "BlogProvincia",
             "blog-viajero/{id}",
             new { controller = "BlogViajero", action = "Provincia", id = UrlParameter.Optional }
-        );
+            );
 
             routes.MapRoute(
             "BlogDetalle",
             "blog-viajero/{provincia}/{id}",
             new { controller = "BlogViajero", action = "Detalle",provincia = UrlParameter.Optional, id =  UrlParameter.Optional  }
-        );
+            );
 
             routes.MapRoute(
-              name: "Destinos",
-              url: "Destinos",
-              defaults: new { controller = "Destinos", action = "Index" }
-          );
+            name: "Destinos",
+            url: "Destinos",
+            defaults: new { controller = "Destinos", action = "Index" }
+            );
 
             routes.MapRoute(
-              name: "DestinosDetalle",
-              url: "Destinos/{id}",
-              defaults: new { controller = "Destinos", action = "Detalle", id = UrlParameter.Optional }
-          );
+            name: "DestinosDetalle",
+            url: "Destinos/{id}",
+            defaults: new { controller = "Destinos", action = "Detalle", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
-             name: "DestinoProvinciaDetalle",
-             url: "Destinos/{provincia}/{id}",
-             defaults: new { controller = "Destinos", action = "DestinoProvincia", provincia = UrlParameter.Optional, id = UrlParameter.Optional }
-           );
+            name: "DestinoProvinciaDetalle",
+            url: "Destinos/{provincia}/{id}",
+            defaults: new { controller = "Destinos", action = "DestinoProvincia", provincia = UrlParameter.Optional, id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
             name: "DestinoLugarDetalle",
             url: "Destinos/{provincia}/{destino}/{id}",
             defaults: new { controller = "Destinos", action = "DetalleDestino", destino = UrlParameter.Optional, provincia = UrlParameter.Optional,id = UrlParameter.Optional }
-          );
-
-            routes.MapRoute(
-             "Rutas",
-             "rutas-cortas",
-             new { controller = "Rutas", action = "Index" }
-         );
-
-            routes.MapRoute(
-             "RutasDetalle",
-             "rutas-cortas/{id}",
-             new { controller = "Rutas", action = "DetalleRuta", id = UrlParameter.Optional }
-         );
-
-         routes.MapRoute(
-         name: "RutasMapa",
-         url: "rutas-cortas/{provincia}/{id}",
-         defaults: new { controller = "Rutas", action = "Mapa", id = UrlParameter.Optional, provincia = UrlParameter.Optional }
-         );
-
-        routes.MapRoute(
-           "Experiencias",
-           "festividades",
-           new { controller = "Experiencias", action = "Index" }
-        );
-
-            routes.MapRoute(
-              "ExperienciaProvincia",
-              "festividades/{id}",
-              new { controller = "Experiencias", action = "Provincia", id = UrlParameter.Optional }
-           );
-
-           routes.MapRoute(
-             "ExperienciaDetalle",
-             "festividades/{provincia}/{id}",
-             new { controller = "Experiencias", action = "Detalle", provincia = UrlParameter.Optional, id = UrlParameter.Optional }
-          );
-
-
-        routes.MapRoute(
-          "Turismo",
-          "turismo-comunitario",
-          new { controller = "Turismo", action = "Index" }
-         );
-
-
-         routes.MapRoute(
-            "TurismoDetalle",
-            "turismo-comunitario/{slug}",
-            new { controller = "Turismo", action = "Detalle", slug = UrlParameter.Optional }
-        );
-            routes.MapRoute(
-             "Suscribete",
-             "suscribete",
-             new { controller = "Suscribete", action = "Index" }
             );
 
             routes.MapRoute(
-             "SuscribeteGracias",
-             "suscribete/gracias",
-             new { controller = "Suscribete", action = "Gracias" },
-             new { httpMethod = new HttpMethodConstraint("POST") }
+            "Rutas",
+            "rutas-cortas",
+            new { controller = "Rutas", action = "Index" }
+            );
+
+            routes.MapRoute(
+            "RutasDetalle",
+            "rutas-cortas/{id}",
+            new { controller = "Rutas", action = "DetalleRuta", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+            name: "RutasMapa",
+            url: "rutas-cortas/{provincia}/{id}",
+            defaults: new { controller = "Rutas", action = "Mapa", id = UrlParameter.Optional, provincia = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+            "Experiencias",
+            "festividades",
+            new { controller = "Experiencias", action = "Index" }
+            );
+
+            routes.MapRoute(
+            "ExperienciaProvincia",
+            "festividades/{id}",
+            new { controller = "Experiencias", action = "Provincia", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+            "ExperienciaDetalle",
+            "festividades/{provincia}/{id}",
+            new { controller = "Experiencias", action = "Detalle", provincia = UrlParameter.Optional, id = UrlParameter.Optional }
+            );
+
+
+            routes.MapRoute(
+            "Turismo",
+            "turismo-comunitario",
+            new { controller = "Turismo", action = "Index" }
+            );
+
+
+            routes.MapRoute(
+            "TurismoDetalle",
+            "turismo-comunitario/{slug}",
+            new { controller = "Turismo", action = "Detalle", slug = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+            "Suscribete",
+            "suscribete",
+            new { controller = "Suscribete", action = "Index" }
+            );
+
+            routes.MapRoute(
+            "SuscribeteGracias",
+            "suscribete/gracias",
+            new { controller = "Suscribete", action = "Gracias" },
+            new { httpMethod = new HttpMethodConstraint("POST") }
             );
 
             routes.MapRoute(
@@ -122,7 +122,7 @@ namespace ytuqueplanes
             "buscar/{id}",
             new { controller = "Buscador", action = "Index", id = UrlParameter.Optional }
             
-           );
+            );
 
 
 
@@ -130,43 +130,56 @@ namespace ytuqueplanes
             "ExperienciaApi",
             "api/festividades",
             new { controller = "Experiencias", action = "AllResult" }
-         );
+            );
 
-         routes.MapRoute(
+            routes.MapRoute(
             "ExperienciaApiProvincia",
             "api/festividades/{id}",
             new { controller = "Experiencias", action = "EPProvincia", id = UrlParameter.Optional }
-         );
+            );
 
-         routes.MapRoute(
-           "RutasApiMapa",
-           "api/ApiMapa/{id}",
-           new { controller = "Rutas", action = "ApiMapa", id = UrlParameter.Optional }
-        );
+            routes.MapRoute(
+            "RutasApiMapa",
+            "api/ApiMapa/{id}",
+            new { controller = "Rutas", action = "ApiMapa", id = UrlParameter.Optional }
+            );
 
             
 
 
             routes.MapRoute(
-           "Ofertas",
-           "ofertas",
-           new { controller = "Ofertas", action = "Index" }
-       );
+            "Ofertas",
+            "ofertas",
+            new { controller = "Ofertas", action = "Index" }
+            );
             routes.MapRoute(
-           "Terminos",
-           "terminos-y-condiciones",
-           new { controller = "Terminos", action = "Index" }
-       );
-
-
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            "Terminos",
+            "terminos-y-condiciones",
+            new { controller = "Terminos", action = "Index" }
             );
 
 
-           
+            routes.MapRoute(
+            name: "Default",
+            url: "{controller}/{action}/{id}",
+            defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+
+
+
+            routes.MapRoute(
+            "Noticias",
+            "noticias",
+            new { controller = "Noticias", action = "Index" }
+            );
+
+
+            routes.MapRoute(
+            "NoticiasDetalle",
+            "noticias/{slug}",
+            new { controller = "Noticias", action = "Detalle", slug = UrlParameter.Optional }
+            );
+
 
         }
         protected void Application_Start()

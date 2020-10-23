@@ -74,7 +74,7 @@ namespace ytuqueplanes.Controllers
 
             Slide slider = new Slide();
 
-            var sliders = db.slider_item.Where(c => c.slider_id == 1).Where(d => d.estado==1).Select(p => new {
+            var sliders = db.slider_item.Where(c => c.slider_id == 1).Where(d => d.estado==1).OrderBy(e => e.orden).Select(p => new {
                 p.imagen_lg,
                 p.imagen_md,
                 p.imagen_sm,

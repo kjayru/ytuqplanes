@@ -754,10 +754,11 @@
     <Content Include="Views\Suscribete\gracias.cshtml" />
     <Content Include="Views\Terminos\Index.cshtml" />
     <Content Include="Views\Sitemap\Index.cshtml" />
+    <Content Include="Views\Noticias\Index.cshtml" />
+    <Content Include="Views\Noticias\Detalle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Noticias\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
