@@ -25,7 +25,7 @@
                                 <div class="seccion__slider-morado__contenido">
                                     <strong class="seccion__slider-morado__subtitulo">@item.categoria</strong>
                                     <h2 class="seccion__slider-morado__titulo">@item.titulo</h2>
-                                    <p class="seccion__slider-morado__texto"> @Html.Raw(item.contenido)</p>
+                                    <div class="seccion__slider-morado__texto"> @Html.Raw(item.contenido)</div>
                                   <!--
                                     <cite class="seccion__slider-morado__cita"><strong>De infotur.com</strong> / 25 de agost, 2020</cite>
                                -->
@@ -73,10 +73,10 @@
                     </select>
                 </div>
             </div>
-           
+
             <div id="fnTargetFiltroGrilla" class="seccion__grilla -mostrar-todos- -mas-3- -mas-6-">
                 <div class="seccion__grilla__bloques">
-                    
+
                     @foreach (ytuqueplanes.Models.Noticia item in Model.listado) {
                     <article class="card-info m--tipo7" data-filtro="@item.categoria">
                         <img src="@ViewBag.hostStaticUrl@item.imagen" alt="" class="card-info__imagen">
@@ -84,7 +84,7 @@
                             <strong class="card-info__empresas">@item.categoria</strong>
                             <h1 class="card-info__titulo">@item.titulo</h1>
                         </header>
-                        <p class="card-info__texto">@Html.Raw(item.contenido)</p>
+                        <div class="card-info__texto">@Html.Raw(item.contenido)</div>
                         <!--<aside class="card-info__last">
                             De: <a href="#">infotur.com</a><br>
                             17 de setiembre, 2020
