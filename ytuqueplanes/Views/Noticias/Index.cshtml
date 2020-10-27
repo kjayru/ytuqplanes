@@ -13,8 +13,38 @@
 <main class="seccion m--top">
     <section class="seccion m--grilla-poster m--noticias">
         <div class="limit">
-       
-            <strong class="destinos__subtitulo">Noticias</strong>
+            <div class="swiper-container seccion__slider-morado fnSliderMorado">
+                <div class="swiper-wrapper">
+                    @foreach (ytuqueplanes.Models.Noticia item in Model.slides)
+                    {
+                        <div class="swiper-slide">
+                            <article class="seccion__slider-morado__article">
+                                <figure class="seccion__slider-morado__imagen">
+                                    <img src="@ViewBag.hostStaticUrl@item.imagen" alt="">
+                                </figure>
+                                <div class="seccion__slider-morado__contenido">
+                                    <strong class="seccion__slider-morado__subtitulo">@item.categoria</strong>
+                                    <h2 class="seccion__slider-morado__titulo">@item.titulo</h2>
+                                    <p class="seccion__slider-morado__texto"> @Html.Raw(item.contenido)</p>
+                                  <!--
+                                    <cite class="seccion__slider-morado__cita"><strong>De infotur.com</strong> / 25 de agost, 2020</cite>
+                               -->
+                                </div>
+                            </article>
+                        </div>
+                    }
+                    </div>
+                <div class="seccion__slider-morado__nav">
+                    <div class="seccion__slider-morado__nav__atras">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    </div>
+                    <div class="seccion__slider-morado__nav__posicion"><span class="fnNumSlider">1</span>/3</div>
+                    <div class="seccion__slider-morado__nav__adelante">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <strong class="destinos__subtitulo">Historial de noticias</strong>
             <strong class="destinos__subtitulo-mobile">Mostrar destinos</strong>
             <div class="filtro-selector" data-target="#fnTargetFiltroGrilla">
                 <div class="boton m--filtro m--morado m--grande filtro-selector__boton -activo- fnFiltrarGrilla" data-filtro="">
@@ -43,92 +73,25 @@
                     </select>
                 </div>
             </div>
+           
             <div id="fnTargetFiltroGrilla" class="seccion__grilla -mostrar-todos- -mas-3- -mas-6-">
                 <div class="seccion__grilla__bloques">
-                    <article class="card-info m--tipo7" data-filtro="Turismo">
-                        <img src="/assets/images/aeropuerto.png" alt="" class="card-info__imagen">
+                    
+                    @foreach (ytuqueplanes.Models.Noticia item in Model.listado) {
+                    <article class="card-info m--tipo7" data-filtro="@item.categoria">
+                        <img src="@ViewBag.hostStaticUrl@item.imagen" alt="" class="card-info__imagen">
                         <header class="card-info__header">
-                            <strong class="card-info__empresas">Turismo</strong>
-                            <h1 class="card-info__titulo"><a href="/noticias/detalle">Aeropuerto Internacional Jorge Chávez recibe acreditación en medición de Huella de Carbono</a></h1>
+                            <strong class="card-info__empresas">@item.categoria</strong>
+                            <h1 class="card-info__titulo">@item.titulo</h1>
                         </header>
-                        <p class="card-info__texto">El Aeropuerto Internacional Jorge Chávez recibió la acreditación Mapping - Nivel 1 del Airport Carbon Accreditation (ACA), certificación que reconoce los esfuerzos en la medición de la huella de carbono asociadas a la actividad aeroportuaria. Así lo informó Julissa Salavarría, gerente de Sistemas de Gestión de Lima Airport Partners (LAP), empresa concesionaria del aeropuerto. “El objetivo es seguir alcanzando altos estándares en buenas prácticas de eficiencia ambiental y reducción de carbono, como lo hacen importantes aeropuertos en otros países”, sostuvo Julissa Salavarría.</p>
-                        <aside class="card-info__last">
+                        <p class="card-info__texto">@Html.Raw(item.contenido)</p>
+                        <!--<aside class="card-info__last">
                             De: <a href="#">infotur.com</a><br>
                             17 de setiembre, 2020
-                        </aside>
+                        </aside>-->
                     </article>
-                    <article class="card-info m--tipo7" data-filtro="Turismo">
-                        <img src="/assets/images/aeropuerto.png" alt="" class="card-info__imagen">
-                        <header class="card-info__header">
-                            <strong class="card-info__empresas">Turismo</strong>
-                            <h1 class="card-info__titulo"><a href="/noticias/detalle">Aeropuerto Internacional Jorge Chávez recibe acreditación en medición de Huella de Carbono</a></h1>
-                        </header>
-                        <p class="card-info__texto">El Aeropuerto Internacional Jorge Chávez recibió la acreditación Mapping - Nivel 1 del Airport Carbon Accreditation (ACA), certificación que reconoce los esfuerzos en la medición de la huella de carbono asociadas a la actividad aeroportuaria. Así lo informó Julissa Salavarría, gerente de Sistemas de Gestión de Lima Airport Partners (LAP), empresa concesionaria del aeropuerto. “El objetivo es seguir alcanzando altos estándares en buenas prácticas de eficiencia ambiental y reducción de carbono, como lo hacen importantes aeropuertos en otros países”, sostuvo Julissa Salavarría.</p>
-                        <aside class="card-info__last">
-                            De: <a href="/noticias/detalle">infotur.com</a><br>
-                            17 de setiembre, 2020
-                        </aside>
-                    </article>
-                    <article class="card-info m--tipo7" data-filtro="Política">
-                        <img src="/assets/images/aeropuerto.png" alt="" class="card-info__imagen">
-                        <header class="card-info__header">
-                            <strong class="card-info__empresas">Política</strong> <a href="/noticias/detalle">
-                                <h1 class="card-info__titulo"><a href="/noticias/detalle">Aeropuerto Internacional Jorge Chávez recibe acreditación en medición de Huella de Carbono</a></h1>
-                        </header>
-                        <p class="card-info__texto">El Aeropuerto Internacional Jorge Chávez recibió la acreditación Mapping - Nivel 1 del Airport Carbon Accreditation (ACA), certificación que reconoce los esfuerzos en la medición de la huella de carbono asociadas a la actividad aeroportuaria. Así lo informó Julissa Salavarría, gerente de Sistemas de Gestión de Lima Airport Partners (LAP), empresa concesionaria del aeropuerto. “El objetivo es seguir alcanzando altos estándares en buenas prácticas de eficiencia ambiental y reducción de carbono, como lo hacen importantes aeropuertos en otros países”, sostuvo Julissa Salavarría.</p>
-                        <aside class="card-info__last">
-                            De: <a href="/noticias/detalle">infotur.com</a><br>
-                            17 de setiembre, 2020
-                        </aside>
-                    </article>
-                    <article class="card-info m--tipo7" data-filtro="Comunidad">
-                        <img src="/assets/images/aeropuerto.png" alt="" class="card-info__imagen">
-                        <header class="card-info__header">
-                            <strong class="card-info__empresas">Comunidad</strong>
-                            <h1 class="card-info__titulo"><a href="/noticias/detalle">Aeropuerto Internacional Jorge Chávez recibe acreditación en medición de Huella de Carbono</a></h1>
-                        </header>
-                        <p class="card-info__texto">El Aeropuerto Internacional Jorge Chávez recibió la acreditación Mapping - Nivel 1 del Airport Carbon Accreditation (ACA), certificación que reconoce los esfuerzos en la medición de la huella de carbono asociadas a la actividad aeroportuaria. Así lo informó Julissa Salavarría, gerente de Sistemas de Gestión de Lima Airport Partners (LAP), empresa concesionaria del aeropuerto. “El objetivo es seguir alcanzando altos estándares en buenas prácticas de eficiencia ambiental y reducción de carbono, como lo hacen importantes aeropuertos en otros países”, sostuvo Julissa Salavarría.</p>
-                        <aside class="card-info__last">
-                            De: <a href="/noticias/detalle">infotur.com</a><br>
-                            17 de setiembre, 2020
-                        </aside>
-                    </article>
-                    <article class="card-info m--tipo7" data-filtro="Comunidad">
-                        <img src="/assets/images/aeropuerto.png" alt="" class="card-info__imagen">
-                        <header class="card-info__header">
-                            <strong class="card-info__empresas">Comunidad</strong>
-                            <h1 class="card-info__titulo"><a href="/noticias/detalle">Aeropuerto Internacional Jorge Chávez recibe acreditación en medición de Huella de Carbono</a></h1>
-                        </header>
-                        <p class="card-info__texto">El Aeropuerto Internacional Jorge Chávez recibió la acreditación Mapping - Nivel 1 del Airport Carbon Accreditation (ACA), certificación que reconoce los esfuerzos en la medición de la huella de carbono asociadas a la actividad aeroportuaria. Así lo informó Julissa Salavarría, gerente de Sistemas de Gestión de Lima Airport Partners (LAP), empresa concesionaria del aeropuerto. “El objetivo es seguir alcanzando altos estándares en buenas prácticas de eficiencia ambiental y reducción de carbono, como lo hacen importantes aeropuertos en otros países”, sostuvo Julissa Salavarría.</p>
-                        <aside class="card-info__last">
-                            De: <a href="/noticias/detalle">infotur.com</a><br>
-                            17 de setiembre, 2020
-                        </aside>
-                    </article>
-                    <article class="card-info m--tipo7" data-filtro="Empresas">
-                        <img src="/assets/images/aeropuerto.png" alt="" class="card-info__imagen">
-                        <header class="card-info__header">
-                            <strong class="card-info__empresas">Empresas</strong>
-                            <h1 class="card-info__titulo"><a href="/noticias/detalle">Aeropuerto Internacional Jorge Chávez recibe acreditación en medición de Huella de Carbono</a></h1>
-                        </header>
-                        <p class="card-info__texto">El Aeropuerto Internacional Jorge Chávez recibió la acreditación Mapping - Nivel 1 del Airport Carbon Accreditation (ACA), certificación que reconoce los esfuerzos en la medición de la huella de carbono asociadas a la actividad aeroportuaria. Así lo informó Julissa Salavarría, gerente de Sistemas de Gestión de Lima Airport Partners (LAP), empresa concesionaria del aeropuerto. “El objetivo es seguir alcanzando altos estándares en buenas prácticas de eficiencia ambiental y reducción de carbono, como lo hacen importantes aeropuertos en otros países”, sostuvo Julissa Salavarría.</p>
-                        <aside class="card-info__last">
-                            De: <a href="#">infotur.com</a><br>
-                            17 de setiembre, 2020
-                        </aside>
-                    </article>
-                    <article class="card-info m--tipo7" data-filtro="Empresas">
-                        <img src="/assets/images/aeropuerto.png" alt="" class="card-info__imagen">
-                        <header class="card-info__header">
-                            <strong class="card-info__empresas">Empresas</strong>
-                            <h1 class="card-info__titulo"><a href="/noticias/detalle">Aeropuerto Internacional Jorge Chávez recibe acreditación en medición de Huella de Carbono</a></h1>
-                        </header>
-                        <p class="card-info__texto">El Aeropuerto Internacional Jorge Chávez recibió la acreditación Mapping - Nivel 1 del Airport Carbon Accreditation (ACA), certificación que reconoce los esfuerzos en la medición de la huella de carbono asociadas a la actividad aeroportuaria. Así lo informó Julissa Salavarría, gerente de Sistemas de Gestión de Lima Airport Partners (LAP), empresa concesionaria del aeropuerto. “El objetivo es seguir alcanzando altos estándares en buenas prácticas de eficiencia ambiental y reducción de carbono, como lo hacen importantes aeropuertos en otros países”, sostuvo Julissa Salavarría.</p>
-                        <aside class="card-info__last">
-                            De: <a href="/noticias/detalle">infotur.com</a><br>
-                            17 de setiembre, 2020
-                        </aside>
-                    </article>
+                    }
+
                 </div>
                 <div class="boton-contenedor">
                     <div class="boton m--verde-hoja m--grande fnFiltrarGrillaTodo" data-target="#fnTargetFiltroGrilla"><strong>Ver más</strong></div>
@@ -137,5 +100,6 @@
         </div>
     </section>
 </main>
+
 
 

@@ -65,7 +65,37 @@ namespace ytuqueplanes.Controllers
             datosHomeModel.sliders = GetSliders();
             datosHomeModel.notas = getNotas();
             datosHomeModel.festividades = getFestividad();
-           
+
+
+            dynamic NoticiasModel = new ExpandoObject();
+            //ultimas 3 noticias
+
+            var destacados = db.noticias.OrderByDescending(d => d.id).Select(p =>
+           new {
+               id = p.id,
+               titulo = p.titulo,
+               contenido = p.contenido,
+               imagen = p.imagen,
+               categoria = p.categoria_noticia.nombre
+           }).Take(3);
+
+            List<Noticia> dt = new List<Noticia>();
+
+            foreach (var i in destacados)
+            {
+                dt.Add(
+
+                    new Noticia
+                    {
+                        id = i.id,
+                        titulo = i.titulo,
+                        contenido = i.contenido,
+                        imagen = i.imagen,
+                        categoria = i.categoria
+                    });
+            }
+
+            datosHomeModel.noticias = dt;
 
             return View(datosHomeModel);
         }

@@ -171,6 +171,7 @@
     <Compile Include="Models\MapaApt.cs" />
     <Compile Include="Models\MapaCoordinate.cs" />
     <Compile Include="Models\MapaPlace.cs" />
+    <Compile Include="Models\Noticia.cs" />
     <Compile Include="Models\Place.cs" />
     <Compile Include="Models\Provincias.cs" />
     <Compile Include="Models\Relacionados.cs" />

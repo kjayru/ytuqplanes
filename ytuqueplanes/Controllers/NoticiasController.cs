@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -58,7 +59,63 @@ namespace ytuqueplanes.Controllers
         // GET: Noticias
         public ActionResult Index()
         {
-            return View();
+            dynamic NoticiasModel = new ExpandoObject();
+            //ultimas 3 noticias
+
+            var destacados = db.noticias.OrderByDescending(d => d.id).Select(p =>
+           new {
+               id = p.id,
+               titulo = p.titulo,
+               contenido = p.contenido,
+               imagen = p.imagen,
+               categoria = p.categoria_noticia.nombre
+           }).Take(3);
+
+            List<Noticia> dt = new List<Noticia>();
+
+            foreach (var i in destacados)
+            {
+                dt.Add(
+
+                    new Noticia
+                    {
+                        id = i.id,
+                        titulo = i.titulo,
+                        contenido = i.contenido,
+                        imagen = i.imagen,
+                        categoria = i.categoria
+                    });
+            }
+
+
+            //todos
+            var noticias = db.noticias.OrderByDescending(d => d.id).Select(p =>
+            new {
+                id = p.id,
+                titulo = p.titulo,
+                contenido = p.contenido,
+                imagen = p.imagen,
+                categoria = p.categoria_noticia.nombre
+            }).ToList();
+
+            List<Noticia> news = new List<Noticia>();
+
+            foreach (var item in noticias) {
+                news.Add(
+                    
+                    new Noticia { 
+                        id = item.id,
+                        titulo= item.titulo,
+                        contenido=item.contenido,
+                        imagen = item.imagen,
+                        categoria=item.categoria
+                    });
+            }
+
+            NoticiasModel.listado = news;
+            NoticiasModel.slides = dt;
+
+            return View(NoticiasModel);
         }
 
         public ActionResult Detalle(string id) {
