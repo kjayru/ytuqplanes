@@ -156,14 +156,14 @@
                     @foreach (ytuqueplanes.Models.Noticia item in Model.noticias)
                     {
                         <div class="swiper-slide">
-                            <article class="card-info m--tipo7">
+                            <article class="card-info m--tipo7 m--small">
                                 <img src="@ViewBag.hostStaticUrl@item.imagen" alt="" class="card-info__imagen">
                                 <header class="card-info__header">
                                     <strong class="card-info__empresas">@item.categoria</strong>
                                     <h1 class="card-info__titulo">@item.titulo</h1>
                                 </header>
-                                <div class="card-info__texto">@Html.Raw(item.contenido)</div>
-                                <!--<aside class="card-info__last">
+                                <!--<div class="card-info__texto">@Html.Raw(item.contenido)</div>
+                                <aside class="card-info__last">
                                     De: <a href="#">Gestiónm</a><br>
                                     17 de setiembre, 2020
                                 </aside>-->
@@ -172,10 +172,14 @@
                     }
                     </div>
             </div>
+            <br>
+            <div class="boton-contenedor">
+                <a href="/noticias" class="boton m--verde-hoja m--grande"><strong>Ver más</strong></a>
+            </div>
         </div>
     </section>
 
-    @* <section class="seccion">
+    <section class="seccion">
         <div class="limit">
             <article class="card-full m--centrado" style="background-image: url('/assets/images/bg_card-servicios.jpg');">
                 <header><h1 class="card-full__titulo">Servicios complementarios</h1></header>
@@ -183,7 +187,7 @@
                 <a href="#" class="boton m--grande m--morado m--padding-pequeno"><strong>Ver servicios</strong></a>
             </article>
         </div>
-    </section> *@
+    </section>
 
 </main>
 
