@@ -84,7 +84,7 @@
 			&.m--twitter
 				background-color #3BA8FC
 			&.m--instagram
-				background-color #ADAFAF
+				background-color rgb(251, 0, 99)
 			&.m--youtube
 				background-color #E02020
 			&.m--spotify
@@ -215,6 +215,20 @@
 				flex 1
 				max-width 400px
 				width 100%
+
+	@media (max-width 400px	)
+
+		&__bloque
+			&__peru
+				display flex
+				flex-direction column-reverse
+				justify-content center
+				align-items center
+				img
+					margin-left 0
+					flex none
+					width fit-content
+					margin-bottom 10px
 
 	@media (max-width 370px	)
 		.boton
