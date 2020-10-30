@@ -237,6 +237,7 @@
     <Content Include="assets\images\404-rutas-cortas-fl.svg" />
     <Content Include="assets\images\404-rutas-cortas.svg" />
     <Content Include="assets\images\aeropuerto.png" />
+    <Content Include="assets\images\alerta-promperu.png" />
     <Content Include="assets\images\auto-svg.svg" />
     <Content Include="assets\images\avion-svg.svg" />
     <Content Include="assets\images\bell.svg" />
@@ -244,6 +245,7 @@
     <Content Include="assets\images\bg_card-servicios.jpg" />
     <Content Include="assets\images\box-cerrar.svg" />
     <Content Include="assets\images\bus-svg.svg" />
+    <Content Include="assets\images\chan-chan.png" />
     <Content Include="assets\images\festividad.jpg" />
     <Content Include="assets\images\flecha-volver-verde.svg" />
     <Content Include="assets\images\flecha-volver.svg" />
