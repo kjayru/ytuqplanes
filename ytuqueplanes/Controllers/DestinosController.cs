@@ -16,6 +16,7 @@ namespace ytuqueplanes.Controllers
     {
         // GET: Destinos
 
+
         ytuqueplanesDBEntities1 db = new ytuqueplanesDBEntities1();
 
         public DestinosController()
@@ -74,10 +75,11 @@ namespace ytuqueplanes.Controllers
 
 
         /**detalle de provincia**/
-        public ActionResult Detalle(string id) {
+        public ActionResult Detalle(string id)
+        {
 
             dynamic datosDestinoModel = new ExpandoObject();
-            
+
             var prov = db.provincias.Where(c => c.slug == id).First();
 
             ViewBag.slugProvincia = prov.slug;
@@ -103,7 +105,7 @@ namespace ytuqueplanes.Controllers
                          slug = t1.slug,
                          filtro = t3.nombre,
                          thumb = t1.thumb
-                        
+
                      };
 
             var destinos = dt.ToList();
@@ -143,9 +145,10 @@ namespace ytuqueplanes.Controllers
 
             datosDestinoModel.destinos = ddatos;
 
+            var mesid = DateTime.Now.Month;
             //festividades
 
-            var fs = db.festividades.Where(d => d.provincia_id == prov.id).Select(p => new
+            var fs = db.festividades.Where(d => d.provincia_id == prov.id).Where(e => e.mes_id == mesid).Select(p => new
             {
                 p.id,
                 p.nombre,
@@ -158,7 +161,8 @@ namespace ytuqueplanes.Controllers
 
             }).ToList();
 
-            var fscount = db.festividades.Where(d => d.provincia_id == prov.id).Select(p => new
+
+            var fscount = db.festividades.Where(d => d.provincia_id == prov.id).Where(e => e.mes_id == mesid).Select(p => new
             {
                 p.id,
                 p.nombre,
@@ -170,22 +174,24 @@ namespace ytuqueplanes.Controllers
                 p.thumb
 
             }).Count();
-            var mesid = 1;
+            /* var mesid = 1;
 
-            if (fscount > 0)
-            {
+             if (fscount > 0)
+             {
+                  mesid = 8;
+             }
+             else {
                  mesid = 8;
-            }
-            else {
-                mesid = 8;
-            }
-           // return Json(mesid, JsonRequestBehavior.AllowGet);
+             }*/
+
+            // return Json(mesid, JsonRequestBehavior.AllowGet);
 
             var m = db.meses.Where(d => d.id == mesid).Select(p => new { p.nombre }).First();
 
             List<Festividad> fests = new List<Festividad>();
 
-            for (var i = 0; i < fs.Count(); i++) {
+            for (var i = 0; i < fs.Count(); i++)
+            {
 
                 fests.Add(
                     new Festividad
@@ -207,7 +213,7 @@ namespace ytuqueplanes.Controllers
 
             datosDestinoModel.festividades = fests;
 
-           // datosDestinoModel.destacados = getDestacados();
+            // datosDestinoModel.destacados = getDestacados();
 
 
 
@@ -256,26 +262,26 @@ namespace ytuqueplanes.Controllers
 
 
             var rel = from t1 in db.atractivos
-                     join t2 in db.destinos
+                      join t2 in db.destinos
 
-                     on t1.destino_id equals t2.id
+                      on t1.destino_id equals t2.id
 
-                     where t2.provincia_Id == prov.id
+                      where t2.provincia_Id == prov.id
 
-                     select new
-                     {
-                         id = t1.id,
-                         titulo = t1.titulo,
-                         contenido = t1.contenido,
-                         destino_id = t2.id,
-                         slug = t1.slug,
-                         imagen = t1.banner,
-                         imagen_m = t1.banner_m,
-                         imagen_t = t1.banner_t,
-                         destino_slug = t2.slug,
-                         thumb = t1.thumb
+                      select new
+                      {
+                          id = t1.id,
+                          titulo = t1.titulo,
+                          contenido = t1.contenido,
+                          destino_id = t2.id,
+                          slug = t1.slug,
+                          imagen = t1.banner,
+                          imagen_m = t1.banner_m,
+                          imagen_t = t1.banner_t,
+                          destino_slug = t2.slug,
+                          thumb = t1.thumb
 
-                     };
+                      };
 
             var destacados = rel.ToList();
 
@@ -311,22 +317,23 @@ namespace ytuqueplanes.Controllers
 
         /**detalle de destinos de cada  provincia*/
 
-        public ActionResult DestinoProvincia(string id) {
+        public ActionResult DestinoProvincia(string id)
+        {
 
             dynamic datosAtractivosModel = new ExpandoObject();
 
 
             var dest = db.destinos.Where(c => c.slug == id).Select(d => d.id).FirstOrDefault();
 
-            var datos = db.destinos.Where(c => c.slug == id).Select( p => new {
-                 p.titulo,
-                 p.slug,
-                 p.contenido,
-                 p.imagen,
-                 p.provincia_Id,
-                 p.thumb,
-                 p.seo_id
-                }).First();
+            var datos = db.destinos.Where(c => c.slug == id).Select(p => new {
+                p.titulo,
+                p.slug,
+                p.contenido,
+                p.imagen,
+                p.provincia_Id,
+                p.thumb,
+                p.seo_id
+            }).First();
 
             //metas
             if (datos.seo_id > 0)
@@ -342,7 +349,7 @@ namespace ytuqueplanes.Controllers
             }
 
 
-            var prov = db.provincias.Where(c => c.id == datos.provincia_Id).Select(p => new { p.nombre,p.slug }).First();
+            var prov = db.provincias.Where(c => c.id == datos.provincia_Id).Select(p => new { p.nombre, p.slug }).First();
 
             ViewBag.titulo = datos.titulo;
             ViewBag.slug = datos.slug;
@@ -364,7 +371,8 @@ namespace ytuqueplanes.Controllers
 
             List<Atractivo> atractivos = new List<Atractivo>();
 
-            for (var i = 0; i < at.Count(); i++) {
+            for (var i = 0; i < at.Count(); i++)
+            {
                 atractivos.Add(new Atractivo
                 {
 
@@ -383,7 +391,8 @@ namespace ytuqueplanes.Controllers
         }
 
         /*Detalle destino **/
-        public ActionResult DetalleDestino(string id) {
+        public ActionResult DetalleDestino(string id)
+        {
 
             dynamic datosAtractivosModel = new ExpandoObject();
 
@@ -435,9 +444,9 @@ namespace ytuqueplanes.Controllers
             ViewBag.banner_m = detalle.banner_m;
             ViewBag.banner_t = detalle.banner_t;
 
-            
 
-            
+
+
 
 
             ///relacionados provincia
@@ -576,37 +585,38 @@ namespace ytuqueplanes.Controllers
         }
 
 
-         private List<Destacado> getDestacados()
-          {
+        private List<Destacado> getDestacados()
+        {
 
 
 
 
-              var dt = from t1 in db.atractivos
-                       join t2 in db.destinos
-                      
-                       on t1.destino_id equals t2.id 
+            var dt = from t1 in db.atractivos
+                     join t2 in db.destinos
 
-                       where t1.destacado == 1 
-                     
-                       select new
-                       {
-                           id = t1.id,
-                           titulo = t1.titulo,
-                           contenido = t1.contenido,
-                           destino_id =  t2.id,
-                           slug = t1.slug,
-                           imagen = t1.banner,
-                           thumb = t1.thumb,
-                           destino_slug = t2.slug
-                           
-                       };
+                     on t1.destino_id equals t2.id
 
-              var destacados = dt.ToList();
+                     where t1.destacado == 1
+
+                     select new
+                     {
+                         id = t1.id,
+                         titulo = t1.titulo,
+                         contenido = t1.contenido,
+                         destino_id = t2.id,
+                         slug = t1.slug,
+                         imagen = t1.banner,
+                         thumb = t1.thumb,
+                         destino_slug = t2.slug
+
+                     };
+
+            var destacados = dt.ToList();
 
             List<Destacado> dtdo = new List<Destacado>();
 
-            for (var i = 0; i < destacados.Count; i++) {
+            for (var i = 0; i < destacados.Count; i++)
+            {
                 var destinoId = destacados[i].destino_id;
                 var pvId = db.destinos.Where(d => d.id == destinoId).Select(p => new { p.provincia_Id }).First();
                 var prov = db.provincias.Where(d => d.id == pvId.provincia_Id).Select(p => new { p.slug, p.nombre }).First();
@@ -618,18 +628,19 @@ namespace ytuqueplanes.Controllers
                         provincia = prov.nombre,
                         slug = destacados[i].slug,
                         imagen = destacados[i].imagen,
-                        thumb =destacados[i].thumb,
+                        thumb = destacados[i].thumb,
                         provincia_slug = prov.slug,
                         destino_slug = destacados[i].destino_slug
                     }
                 );
 
-               
+
             }
 
             return dtdo;
 
         }
+
 
 
     }
