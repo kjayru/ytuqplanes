@@ -215,6 +215,28 @@ const site = (function(){
 				$('.fnNumSlider').html( swiperMorado.realIndex+1 );
 			});
 
+			let swiperVolverReactivacion = new Swiper('.fnSliderVolverReactivacion', {
+		    	speed: 750, autoplay: true, loop: true,
+		     	navigation: {
+		     		nextEl: '.fnSliderVolverReactivacionToRight',
+        			prevEl: '.fnSliderVolverReactivacionToleft'
+		     	},
+		     	breakpoints : {
+		     		800 : {
+		     			slidesPerView: 3,
+		     			spaceBetween: 15
+		     		},
+					520 : {
+						slidesPerView: 2,
+						spaceBetween: 10
+					},
+					0 : {
+						slidesPerView: 1,
+						spaceBetween: 10
+					}
+				}
+		    });
+
 		},
 
 		clicks : function(){
@@ -251,6 +273,9 @@ const site = (function(){
 					const removes = t.data('removes');
 					targets && active(targets);
 					removes && $(removes).removeClass(dom.active);
+					if ( t.hasClass('videoClose') ) {
+						$('#box-video').find('iframe').attr('src', '');
+					}
 				});
 			$('.fnVerDepartamentosPorZona')
 				.on('click', function(){
@@ -283,6 +308,12 @@ const site = (function(){
 			$('.fnSelect')
 				.on('change', function(e){
 					$(this).parent().find('.fnTargetSelect').text($(this).find('option:selected').text());
+				});
+			$('.fnBoxVideo')
+				.on('click', function(e) {
+					e.preventDefault();
+					let url = 'https://www.youtube.com/embed/' + $(this).data('video') ;
+					$('#box-video').addClass(dom.active).find('iframe').attr('src', url);
 				});
 
 			// Grilla

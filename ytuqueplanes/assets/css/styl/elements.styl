@@ -151,6 +151,12 @@
 		&:hover:before
 			background-color moradoOscuro
 
+	&.m--rojo
+		background-color rojo
+		&:hover:before
+			background-color rojoOscuro
+
+
 	&.m--wsp
 		background-color #77b822
 		i
@@ -1721,6 +1727,23 @@
 			text-align center
 		&.m--small
 			max-width 400px
+		&.m--video
+			padding 0
+			background none
+			box-shadow none
+			iframe
+				width 100%
+				height 400px
+				box-shadow 0 2px 18px 0 rgba(130, 130, 130, 0.5)
+				margin 0
+				background rgba(0,0,0,0.9)
+			.box__cerrar
+				display block
+				top 0
+				right 0
+				background-color #fff
+				padding 15px
+				box-sizing initial
 
 	&__cerrar
 		position absolute
