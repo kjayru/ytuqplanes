@@ -139,6 +139,7 @@
     <Compile Include="Controllers\SuscribeteController.cs" />
     <Compile Include="Controllers\TerminosController.cs" />
     <Compile Include="Controllers\TurismoController.cs" />
+    <Compile Include="Controllers\VamosVolverController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -645,6 +646,45 @@
     <Content Include="assets\images\tren-svg.svg" />
     <Content Include="assets\images\usuario-icono.svg" />
     <Content Include="assets\images\usuario.svg" />
+    <Content Include="assets\images\vamosavolver\acuatico.svg" />
+    <Content Include="assets\images\vamosavolver\aereo.svg" />
+    <Content Include="assets\images\vamosavolver\agencias.svg" />
+    <Content Include="assets\images\vamosavolver\alojamientos.svg" />
+    <Content Include="assets\images\vamosavolver\areas-naturales.svg" />
+    <Content Include="assets\images\vamosavolver\arequipa-misti.jpg" />
+    <Content Include="assets\images\vamosavolver\artesania.svg" />
+    <Content Include="assets\images\vamosavolver\aventura.svg" />
+    <Content Include="assets\images\vamosavolver\casa_1.jpg" />
+    <Content Include="assets\images\vamosavolver\casa_2.jpg" />
+    <Content Include="assets\images\vamosavolver\casa_3.jpg" />
+    <Content Include="assets\images\vamosavolver\casa_4.jpg" />
+    <Content Include="assets\images\vamosavolver\casa_4.png" />
+    <Content Include="assets\images\vamosavolver\casa_5.jpg" />
+    <Content Include="assets\images\vamosavolver\casa_6.jpg" />
+    <Content Include="assets\images\vamosavolver\casa_6.png" />
+    <Content Include="assets\images\vamosavolver\flecha-slider.png" />
+    <Content Include="assets\images\vamosavolver\guiado.svg" />
+    <Content Include="assets\images\vamosavolver\ico_foto.svg" />
+    <Content Include="assets\images\vamosavolver\ico_video.svg" />
+    <Content Include="assets\images\vamosavolver\infografia_alojamientos.png" />
+    <Content Include="assets\images\vamosavolver\infografia_areas-naturales.jpg" />
+    <Content Include="assets\images\vamosavolver\infografia_guiado.png" />
+    <Content Include="assets\images\vamosavolver\infografia_museos.png" />
+    <Content Include="assets\images\vamosavolver\infografia_restaurantes.png" />
+    <Content Include="assets\images\vamosavolver\infografia_viajes-aereos.png" />
+    <Content Include="assets\images\vamosavolver\islay-arequipa.jpg" />
+    <Content Include="assets\images\vamosavolver\luxury-collection-resort.jpg" />
+    <Content Include="assets\images\vamosavolver\museos.svg" />
+    <Content Include="assets\images\vamosavolver\pampa-ayacucho-quinua.jpg" />
+    <Content Include="assets\images\vamosavolver\pasco-oxapampa.jpg" />
+    <Content Include="assets\images\vamosavolver\playa-trompa-de-elefante.jpg" />
+    <Content Include="assets\images\vamosavolver\promperu.png" />
+    <Content Include="assets\images\vamosavolver\restaurantes.svg" />
+    <Content Include="assets\images\vamosavolver\ruta-del-sillar.jpg" />
+    <Content Include="assets\images\vamosavolver\terrestres.svg" />
+    <Content Include="assets\images\vamosavolver\video-2.jpg" />
+    <Content Include="assets\images\vamosavolver\video-3.jpg" />
+    <Content Include="assets\images\vamosavolver\ytqp-volver.png" />
     <Content Include="assets\images\viaje-seguro-sutran.jpg" />
     <Content Include="assets\images\y-tu-que-planes-gris.svg" />
     <Content Include="assets\images\y-tu-que-planes.png" />
@@ -701,6 +741,7 @@
     <Content Include="assets\js\mapa\route.json" />
     <Content Include="libman.json" />
     <Content Include="assets\css\sitio.styl" />
+    <Content Include="assets\css\site\vamosavolver.styl" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -759,6 +800,7 @@
     <Content Include="Views\Sitemap\Index.cshtml" />
     <Content Include="Views\Noticias\Index.cshtml" />
     <Content Include="Views\Noticias\Detalle.cshtml" />
+    <Content Include="Views\VamosVolver\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
