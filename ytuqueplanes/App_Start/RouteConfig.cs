@@ -14,6 +14,12 @@ namespace ytuqueplanes
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+            "VamosAVolver",
+            "vamos-a-volver",
+            new { controller = "VamosVolver", action = "Index" }
+            );
+
+            routes.MapRoute(
             "Blog",
             "blog-viajero",
             new { controller = "BlogViajero", action = "Index" }
