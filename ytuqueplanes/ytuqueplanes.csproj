@@ -705,6 +705,7 @@
     <Content Include="assets\js\svg.js" />
     <Content Include="assets\js\vendor\jquery-3.3.1.min.js" />
     <Content Include="assets\js\vendor\modernizr-3.6.0.min.js" />
+    <Content Include="assets\videos\paisajes-del-peru.mp4" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -742,6 +743,10 @@
     <Content Include="libman.json" />
     <Content Include="assets\css\sitio.styl" />
     <Content Include="assets\css\site\vamosavolver.styl" />
+    <Content Include="assets\files\agencias.xlsx" />
+    <Content Include="assets\files\alojamientos.xlsx" />
+    <Content Include="assets\files\atractivos.xlsx" />
+    <Content Include="assets\files\restaurantes.xlsx" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Properties\Settings.settings">
