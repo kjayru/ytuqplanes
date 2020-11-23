@@ -83,7 +83,7 @@ $(document).ready(function() {
 		contenido += "<div class='wrapper-navbar-container'>";
 		contenido += "<div class='wrapper-navbar-left'>";
 		contenido += '<a class="wrapper-navbar-link" href="/rutas-cortas/'+slugRegion+'">';
-		contenido += "<i class='fa fa-long-arrow-left'></i>Rutas cortas desde " + data[0].region + "";
+		contenido += "<i class='fa fa-long-arrow-left'></i>Volver a Rutas cortas <span class='mapa__volver__origen'>(" + data[0].region + ")</span>";
 		contenido += '</a>';
 		contenido += "</div>";
 		contenido += "<div class='wrapper-navbar-right'>";

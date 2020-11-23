@@ -5,6 +5,9 @@
 @import 'loading.min.css'
 @import 'route.min.css'
 
+celeste = #0091ff
+azul = #0070ba
+amarillo = #ffdc7b
 
 .wrapper-first-right-header-buttons-left
 	.wrapper-first-right-header-buttons-item
@@ -14,3 +17,75 @@
 				align-items center
 				justify-content center
 
+.mapa__volver__origen
+	display block
+	color #888
+	font-family 'FC_Light'
+	padding 5px 0 0 25px
+
+.wrapper-navbar-left .wrapper-navbar-link
+.wrapper-navbar-right .wrapper-navbar-link
+	color celeste
+
+.wrapper-first-right-container
+	background-color azul
+
+.wrapper-first-right-header h1, .wrapper-first-right-header h2
+.wrapper-first-right-header-buttons-left .wrapper-first-right-header-buttons-item label
+.wrapper-first-right-header h2 i
+.wrapper-first-right-list-item .wflitem-title
+.wrapper-first-right-list-item .wflitem-height
+.wrapper-first-right-list-item .wflitem-activity-list li span
+.wrapper-first-right-list-item .wflitem-apt-list li
+.wrapper-first-right-list-item .wflitem-apt-description
+	color #fff
+
+.wrapper-first-right-list-item .wflitem-activity-title
+.wrapper-first-right-list-item .wflitem-apt-title
+.wrapper-first-right-body>h2
+	color amarillo
+
+.wrapper-first-right-list-item .wflitem-height
+	padding 5px 0 0 30px
+
+.wrapper-first-right-list-item .wflitem-title span
+	background-color celeste
+
+.wrapper-first-right-header-buttons-left .wrapper-first-right-header-buttons-item .popup
+	background-color #fff
+	color celeste
+	i
+		display none
+.wrapper-first-right-header-buttons-left .wrapper-first-right-header-buttons-item ul li.fb
+.wrapper-first-right-header-buttons-left .wrapper-first-right-header-buttons-item ul li.tw
+.wrapper-first-right-header-buttons-left .wrapper-first-right-header-buttons-item ul li.wa
+	background-color #fff
+	color azul
+.wrapper-first-right-header-buttons-left .wrapper-first-right-header-buttons-item ul li.wa
+	font-size 20px
+
+.wrapper-first-right-list-item .wflitem-activity-list li img
+	filter grayscale(100) brightness(100)
+
+.wrapper-first-right-container
+	padding 0 40px 40px
+
+.extra-marker-square-violet
+	background-position -181px -46px
+.leaflet-popup-content
+.leaflet-popup-content-wrapper, .leaflet-popup-tip
+	background-color azul
+	color #fff
+
+@media (max-width: 979px) {
+	.wrapper-first-right-container {
+	    padding: 0 15px 20px !important;
+	}
+}
+
+::-webkit-scrollbar-track
+	background #fff !important
+
+::-webkit-scrollbar-thumb
+	background celeste !important
+	border-radius 20px
