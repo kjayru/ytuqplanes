@@ -442,6 +442,11 @@ const site = (function(){
 				.on('change', function() {
 					window.location = $(this).val();
 				});
+			document.addEventListener("keydown", function (event) {
+				if (event.keyCode === 27) {
+					$('.box').removeClass(dom.active);
+				}
+			});
 		},
 
 		forms : function(){
