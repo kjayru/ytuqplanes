@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /registro-agradecimiento.aspx
+Disallow: /registro-confirmacion.aspx
+Disallow: /suscribete-agradecimiento.aspx
+Disallow: /suscribete-confirmacion.aspx
+Disallow: /mis-datos.aspx
+Disallow: /vista-previa-oferta.aspx
+Sitemap: https://www.ytuqueplanes.com/sitemap.xml
+
