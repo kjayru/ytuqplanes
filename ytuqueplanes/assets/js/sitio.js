@@ -237,6 +237,75 @@ const site = (function(){
 				}
 		    });
 
+
+		   	let swiperVolverAViajarAyudar = new Swiper('.fnSliderVolverAViajarAyudar', {
+				speed: 750, autoplay: true, loop: true,
+				pagination: { el: '.volveraviajar__ayudar__slider__pagination' },
+				breakpoints : {
+					900 : {
+						slidesPerView: 2,
+						spaceBetween: 50
+					},
+					700 : {
+						slidesPerView: 2,
+						spaceBetween: 20
+					},
+					0 : {
+						slidesPerView: 1,
+						spaceBetween: 0
+					}
+				}
+		    });
+
+
+		    let swiperVolverAViajarInstagrameable = new Swiper('.fnSliderVolverAViajarInstagrameable', {
+				speed: 750, autoplay: true, loop: true,
+				// pagination: { el: '.volveraviajar__ayudar__slider__pagination' },
+				breakpoints : {
+					1000 : {
+						slidesPerView: 4,
+						spaceBetween: 10
+					},
+					700 : {
+						slidesPerView: 3,
+						spaceBetween: 10
+					},
+					500 : {
+						slidesPerView: 2,
+						spaceBetween: 10
+					},
+					0 : {
+						slidesPerView: 1,
+						spaceBetween: 0
+					}
+				}
+		    });
+
+		    let swiperVolverAViajarVoces = new Swiper('.fnSliderVolverAViajarVoces', {
+				pagination: { el: '.volveraviajar__voces__slider__pagination' },
+				breakpoints : {
+					1000 : {
+						slidesPerView: 3, slidesPerColumn: 2, spaceBetween: 30
+					},
+					680 : {
+						slidesPerView: 2, slidesPerColumn: 2, spaceBetween: 30
+					},
+					0 : {
+						slidesPerView: 1, slidesPerColumn: 2, spaceBetween: 30
+					}
+				}
+		    });
+
+		    $('.fnChangeVoces a')
+				.on('click', function (e) {
+					e.preventDefault();
+					const target = $( $(this).attr('href') );
+					const prev = $('.volveraviajar__voces__slider, .volveraviajar__voces__nav a');
+					prev.removeClass('-active-');
+					$(this).addClass('-active-');
+					target.addClass('-active-');
+				});
+
 		},
 
 		clicks : function(){

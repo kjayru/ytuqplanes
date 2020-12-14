@@ -1,0 +1,298 @@
+volverAmarillo = #f0b127
+volverRojo = #e13b3d
+volverRojoOscuro = #D22020
+volverVerde = #77b822
+
+
+.volveraviajar
+
+	&__banner-principal
+		background url('../images/volveraviajar/fondo_banner-principal.jpg') no-repeat center center / cover
+		height 565px
+
+		display flex
+		// flex-direction column
+
+		&__image
+			width 240px
+			margin 0 auto 15px
+
+		&__titulo
+			color #fff
+			text-align center
+			margin 0 auto 22px
+			max-width 500px
+			font-family f-news
+			font-size 26px
+			text-shadow 2px 2px 3px rgba(0,0,0,1)
+
+		// .limit
+			// margin auto auto 34px
+
+
+		@media ( max-width 800px )
+
+			height 460px
+
+			&__titulo
+				font-size 20px
+				margin-bottom 15px
+
+
+		@media ( max-width 600px )
+
+			height 320px
+
+			&__image
+				width 170px
+
+			&__titulo
+				font-size 18px
+
+
+	&__ayudar
+		background url('../images/volveraviajar/img_viajar.png') no-repeat center center / cover
+		color #fff
+
+		&__slider
+			width 100%
+			max-width 950px
+			margin 0 auto
+			padding-bottom 50px
+
+			.swiper-pagination
+				bottom 0
+			.swiper-pagination-bullet
+				background-color #fff
+				opacity 0.5
+				cursor pointer
+			.swiper-pagination-bullet-active
+				background-color #fff
+				opacity 1
+
+		&__card
+
+			&__header
+				color #fff
+				margin-bottom 15px
+				display flex
+				align-items center
+				img
+					flex none
+				p
+					font-size 12px
+					font-family f-news
+					padding-left 10px
+					letter-spacing 0.5px
+					strong
+						display block
+						font-family f-bold
+
+			&__image
+				width 100%
+				max-width 439px
+				height 266px
+				border-radius 4px
+				position relative
+				overflow hidden
+
+				img
+					width 100%
+					height 100%
+					object-fit cover
+
+			&__play
+				display block
+				position absolute
+				top 50%
+				left 50%
+				transform translate(-50%, -50%)
+				background-color #e13b3d
+				width 95px
+				height 95px
+				border-radius 50%
+				&:after
+					content ''
+					display inline-block
+					border-top 20px solid transparent
+					border-bottom 20px solid transparent
+					border-left 30px solid #fff
+					position absolute
+					top 50%
+					left 50%
+					transform translate(-30%, -50%)
+
+		.volver__titulo-tipo2
+			color #fff
+
+
+		@media (max-width 800px)
+
+			&__card__play
+				width 60px
+				height 60px
+				&:after
+					border-top 10px solid transparent
+					border-bottom 10px solid transparent
+					border-left 16px solid #fff
+
+
+		@media (max-width 700px)
+
+			&__slider
+				max-width 440px
+				padding-bottom 30px
+
+
+		@media (max-width 500px)
+
+			&__card__image
+				height 220px
+
+
+	&__instagrameable
+		&__slider
+			max-width 1084px
+		&__card
+			width 265px
+			height 265px
+			position relative
+			border-radius 6px
+			overflow hidden
+			&__image
+				width 100%
+				height 100%
+				object-fit cover
+			&__text
+				font-size 16px
+				color #fff
+				position absolute
+				bottom 0
+				left 0
+				padding 10px
+
+			@media (max-width 500px)
+				height 220px
+
+
+	&__voces
+		background url('../images/volveraviajar/fondo-voces.png') no-repeat top center / cover
+		color #fff
+		.volver__titulo-tipo2
+			color #fff
+
+		&__nav
+			text-align center
+			padding-bottom 35px
+			a
+				color #fff
+				font-size 22px
+				margin 0 25px
+				&:hover, &.-active-
+					text-decoration underline
+
+			@media (max-width 700px)
+				padding-bottom 25px
+				a
+					font-size 18px
+					margin 0 15px
+
+		&__slider
+			height 0
+			overflow hidden
+			&.-active-
+				height 308px
+				padding-bottom 50px
+
+			.swiper-pagination
+				bottom 0
+			.swiper-pagination-bullet
+				background-color #fff
+				opacity 0.5
+				cursor pointer
+			.swiper-pagination-bullet-active
+				background-color #fff
+				opacity 1
+
+			@media (max-width 1000px)
+				max-width 800px
+				margin 0 auto
+
+			@media (max-width 700px)
+
+				&.-active-
+					height 278px
+					padding-bottom 30px
+
+		&__card
+			width 350px
+			height calc((100% - 30px) / 2)
+
+			display flex
+			justify-content center
+			align-items flex-start
+
+			&__image
+				flex none
+				width 196px
+				height 114px
+				border-radius 6px
+				position relative
+				overflow hidden
+				cursor pointer
+				img
+					width 100%
+					height 100%
+				@media (max-width 430px)
+					width 160px
+				@media (max-width 340px)
+					width 130px
+			&__play
+				display block
+				position absolute
+				top 50%
+				left 50%
+				transform translate(-50%, -50%)
+				background-color #e13b3d
+				width 50px
+				height 50px
+				border-radius 50%
+				&:after
+					content ''
+					display inline-block
+					border-top 10px solid transparent
+					border-bottom 10px solid transparent
+					border-left 15px solid #fff
+					position absolute
+					top 50%
+					left 50%
+					transform translate(-30%, -50%)
+			&__content
+				padding 5px 0 0 10px
+				font-size 14px
+				font-family f-news
+				strong
+					display block
+					font-size 18px
+					font-family f-bbold
+					letter-spacing 0.5px
+
+
+
+	&__manual
+		background url('../images/volveraviajar/img_manual.png') no-repeat top center / cover
+		color #fff
+		min-height 540px
+		.volver__titulo-tipo2
+			color #fff
+
+		.volver__resumen
+			max-width 700px
+			margin 0 auto
+			padding-bottom 20px
+
+		&__logo
+			margin 0 auto 15px
+
+		@media (max-width 700px)
+			min-height 360px
